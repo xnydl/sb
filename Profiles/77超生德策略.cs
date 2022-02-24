@@ -426,10 +426,35 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       Bot.Log("防护改装师 -40");
       }
 #endregion
+#region 霜刃豹头领 AV_291
+      if(board.HasCardInHand(Card.Cards.AV_291)){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(-5)); 
+      Bot.Log("霜刃豹头领 -5");
+      }
+#endregion
+#region 幽影猫头鹰 DMF_060
+      if(board.HasCardInHand(Card.Cards.DMF_060)){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(-5)); 
+      Bot.Log("幽影猫头鹰 -5");
+      }
+#endregion
 #region 霜狼巢屋 AV_360 
       if(board.HasCardInHand(Card.Cards.AV_360)){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-99));
-      Bot.Log("霜狼巢屋 -99");
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-150));
+      Bot.Log("霜狼巢屋 -150");
+      }
+#endregion
+#region 空军指挥官穆维里克 AV_293
+      if(board.HasCardInHand(Card.Cards.AV_293)
+      &&(board.MinionFriend.Count == 0||board.MinionEnemy.Count == 0 )
+      ){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(130));
+      Bot.Log("空军指挥官穆维里克 -130");
+      }
+      if(board.HasCardInHand(Card.Cards.AV_293)
+      ){
+    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(250)); 
+      Bot.Log("不送空军指挥官穆维里克");
       }
 #endregion
 
@@ -437,11 +462,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     //  当随从数量大于等于2时增加施肥 Composting     SW_437优先级施肥 Composting     SW_437
     if(board.HasCardInHand(Card.Cards.SW_437))
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-95*(friendCount)));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-50*(friendCount)));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-100)); 
 
       // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(150)); //小德不用技能
-      Bot.Log("技能 130 施肥:"+-95*friendCount);
+      Bot.Log("技能 130 施肥:"+-50*friendCount);
     }
     // if(board.HasCardInHand(Card.Cards.SW_437))
     // { 
@@ -529,8 +554,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
 #region 月光指引 DED_002 
          if(board.HasCardInHand(Card.Cards.DED_002)){
-               p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_002, new Modifier(-55));
-          Bot.Log("月光指引 -55");
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_002, new Modifier(-150));
+          Bot.Log("月光指引 -150");
       }
 #endregion
 #region 野性印记 Mark of the Wild ID：CORE_CS2_009 
@@ -915,8 +940,8 @@ if(board.ManaAvailable ==2
 
 #region 橡果 Acorn     SW_439t
       if(board.HasCardInHand(Card.Cards.SW_439t)){
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_439t, new Modifier(-5)); // 橡果 Acorn     SW_439t
-        Bot.Log("橡果-5");
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_439t, new Modifier(-20)); // 橡果 Acorn     SW_439t
+        Bot.Log("橡果-20");
       }
 #endregion
 

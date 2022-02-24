@@ -37,6 +37,31 @@ using SmartBot.Plugins.API;
 // AAECAbSKAwSSzQPG0QOm4QPE+QMN174Dm84DudIDjOQD9+gDuewDku4DiPQDyfUD7PUD0fYDgfcDhPcDAA==
 // # 
 // # 想要使用这副套牌，请先复制到剪贴板，然后在游戏中点击“新套牌”进行粘贴。
+// ### 野兽德
+// # 职业：德鲁伊
+// # 模式：标准模式
+// # 狮鹫年
+// #
+// # 2x (1) 萌物来袭
+// # 2x (1) 自然研习
+// # 2x (1) 活泼的松鼠
+// # 2x (1) 暗礁德鲁伊
+// # 2x (1) 播种施肥
+// # 1x (2) 野性之力
+// # 2x (2) 荆棘护卫
+// # 2x (2) 月光指引
+// # 2x (2) 应急木工
+// # 2x (2) 堆肥
+// # 2x (3) 霜狼巢屋
+// # 2x (3) 艾露恩神谕者
+// # 1x (4) 空军指挥官穆维里克 AV_293
+// # 2x (5) 树木生长
+// # 2x (7) 霜刃豹头领 AV_291
+// # 2x (7) 幽影猫头鹰 DMF_060
+// #
+// AAECAZICAtmfBJSlBA6bzgO50gOV4AOM5AOt7APJ9QPs9QOB9wOE9wOsgASvgASwgATnpAS4vgQA
+// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
+// # 套牌详情请查看https://hsreplay.net/decks/KSMoUD7PB3K1s5vVkqRxGd/
 
 namespace SmartBot.Mulligan
 {
@@ -162,6 +187,24 @@ namespace SmartBot.Mulligan
                        if(!CardsToKeep.Contains(Card.Cards.SW_419))
                     {
                         Keep(card,"艾露恩神谕者");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.SCH_333//自然研习 Nature Studies      SCH_333  
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.SCH_333))
+                    {
+                        Keep(card,"自然研习");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.SCH_617//萌物来袭 Adorable Infestation      SCH_617  
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.SCH_617))
+                    {
+                        Keep(card,"萌物来袭");
                     }
                     }   
                 }

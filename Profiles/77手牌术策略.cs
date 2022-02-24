@@ -379,6 +379,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 Bot.Log("我方牌库剩余牌数" + board.FriendDeckCount);
 Bot.Log("坟场随从数" + board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION));
 Bot.Log("手牌数" + board.Hand.Count);
+Bot.Log("剩余血量" + shengyuxueliang);
 #endregion
 
 #region 满血时不用回血
@@ -421,56 +422,56 @@ Bot.Log("满血不用回血怪");
 
 #region 亡者复生 Raise Dead   SCH_514
 // 如果坟场没有随从,不用亡者复生
-// if(board.HasCardInHand(Card.Cards.SCH_514)
-// &&(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)==0)
-// ){
-//   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(999));
-//   Bot.Log("亡者复生 999 条件1");
-// }
-// if(board.HasCardInHand(Card.Cards.SCH_514)
-// &&(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)<=3)
-// &&board.FriendGraveyard.Contains(Card.Cards.BAR_911)//魂撕裂 Soul Rend     BAR_911
-// ){
-//   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(999));
-//   Bot.Log("亡者复生 999 条件3");
-// }
-// if(board.HasCardInHand(Card.Cards.SCH_514)
-// &&board.Hand.Count>=10
-// ){
-//   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(999));
-//   Bot.Log("亡者复生 999 条件2");
-// }
+if(board.HasCardInHand(Card.Cards.SCH_514)
+&&(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)==0)
+){
+  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(999));
+  Bot.Log("亡者复生 999 条件1");
+}
+if(board.HasCardInHand(Card.Cards.SCH_514)
+&&(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)<=3)
+&&board.FriendGraveyard.Contains(Card.Cards.BAR_911)//魂撕裂 Soul Rend     BAR_911
+){
+  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(999));
+  Bot.Log("亡者复生 999 条件3");
+}
+if(board.HasCardInHand(Card.Cards.SCH_514)
+&&board.Hand.Count>=10
+){
+  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(999));
+  Bot.Log("亡者复生 999 条件2");
+}
 // 如果坟场没有随从,不用亡者复生
-// if(board.HasCardInHand(Card.Cards.SCH_514)
-// &&(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)>=2)
-// &&!board.FriendGraveyard.Contains(Card.Cards.BAR_911)//魂撕裂 Soul Rend     BAR_911
-// ){
-//   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(-40));
-//   Bot.Log("亡者复生 -40");
-// }
-// if(board.HasCardInHand(Card.Cards.SCH_514)
-// &&(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)>=5)
-// &&board.FriendGraveyard.Contains(Card.Cards.BAR_911)//魂撕裂 Soul Rend     BAR_911
-// ){
-//   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(-5*(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION))));
-//    Bot.Log("亡者复生"+(-5*(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION))));
-// }
-// // 如果坟场有安纳塞隆 Anetheron     SW_092 闪金镇豺狼人 Goldshire Gnoll     SW_062亡者复生
-// if(board.HasCardInHand(Card.Cards.SCH_514)
-// &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)>=2
-// &&(board.FriendGraveyard.Contains(Card.Cards.SW_092)//安纳塞隆 Anetheron     SW_092
-// ||board.FriendGraveyard.Contains(Card.Cards.SW_062)//闪金镇豺狼人 Goldshire Gnoll     SW_062
-// ||board.FriendGraveyard.Contains(Card.Cards.BAR_918)//塔姆辛·罗姆 Tamsin Roame     BAR_918 
-// ||board.FriendGraveyard.Contains(Card.Cards.BAR_916)//血岩碎片刺背野猪人 Blood Shard Bristleback     BAR_916
-// ||board.FriendGraveyard.Contains(Card.Cards.BAR_917)//贫瘠之地拾荒者 Barrens Scavenger     BAR_917
-// ||board.FriendGraveyard.Contains(Card.Cards.SW_056)//香料面包师 Spice Bread Baker     SW_056
-// ||board.FriendGraveyard.Contains(Card.Cards.SCH_120)//血肉巨人 Flesh Giant     SCH_140
-// )
-// ){
-//   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(-99));
-//   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(999)); 
-//   Bot.Log("亡者复生 -99");
-// } 
+if(board.HasCardInHand(Card.Cards.SCH_514)
+&&(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)>=2)
+&&!board.FriendGraveyard.Contains(Card.Cards.BAR_911)//魂撕裂 Soul Rend     BAR_911
+){
+  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(-40));
+  Bot.Log("亡者复生 -40");
+}
+if(board.HasCardInHand(Card.Cards.SCH_514)
+&&(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)>=5)
+&&board.FriendGraveyard.Contains(Card.Cards.BAR_911)//魂撕裂 Soul Rend     BAR_911
+){
+  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(-5*(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION))));
+   Bot.Log("亡者复生"+(-5*(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION))));
+}
+// 如果坟场有安纳塞隆 Anetheron     SW_092 闪金镇豺狼人 Goldshire Gnoll     SW_062亡者复生
+if(board.HasCardInHand(Card.Cards.SCH_514)
+&&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Type == Card.CType.MINION)>=2
+&&(board.FriendGraveyard.Contains(Card.Cards.SW_092)//安纳塞隆 Anetheron     SW_092
+||board.FriendGraveyard.Contains(Card.Cards.SW_062)//闪金镇豺狼人 Goldshire Gnoll     SW_062
+||board.FriendGraveyard.Contains(Card.Cards.BAR_918)//塔姆辛·罗姆 Tamsin Roame     BAR_918 
+||board.FriendGraveyard.Contains(Card.Cards.BAR_916)//血岩碎片刺背野猪人 Blood Shard Bristleback     BAR_916
+||board.FriendGraveyard.Contains(Card.Cards.BAR_917)//贫瘠之地拾荒者 Barrens Scavenger     BAR_917
+||board.FriendGraveyard.Contains(Card.Cards.SW_056)//香料面包师 Spice Bread Baker     SW_056
+||board.FriendGraveyard.Contains(Card.Cards.SCH_120)//血肉巨人 Flesh Giant     SCH_140
+)
+){
+  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(-99));
+  p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_514, new Modifier(999)); 
+  Bot.Log("亡者复生 -99");
+} 
 #endregion
 
 #region 恶魔之种 The Demon Seed   SW_091
@@ -518,11 +519,11 @@ if(board.HasCardInHand(Card.Cards.DMF_191)
 #region 恐惧巫妖塔姆辛 Dreadlich Tamsin ID：AV_316 
  if(board.HasCardInHand(Card.Cards.AV_316)
       ){
-		 p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_316, new Modifier(-99));
-         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_316, new Modifier(-99)); //提高旋岩虫 Gyreworm ID：DMF_062 优先级
-        p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_316, new Modifier(-99));   //修改武器优先级
-        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_316, new Modifier(-99)); //修改英雄技能
-        Bot.Log("恐惧巫妖塔姆辛 -99");
+		 p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_316, new Modifier(-150));
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_316, new Modifier(-150)); //提高旋岩虫 Gyreworm ID：DMF_062 优先级
+        p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_316, new Modifier(-150));   //修改武器优先级
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_316, new Modifier(-150)); //修改英雄技能
+        Bot.Log("恐惧巫妖塔姆辛 -150");
         }
 #endregion
 
@@ -565,7 +566,21 @@ if(board.HasCardInHand(Card.Cards.BAR_913)
       // Bot.Log("纳斯雷兹姆之触 -13");
       // }
 #endregion
+#region 痛苦诅咒 Curse of Agony ID：ONY_034 
+// 如果血量小于15,对方无随从,提高优先级
+      if(board.HasCardInHand(Card.Cards.ONY_034)//痛苦诅咒 Curse of Agony ID：ONY_034
+      ){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_034, new Modifier(-99));
+      Bot.Log("痛苦诅咒 -40");
+      }
+#endregion
 #region 邪恶入骨 Full-Blown Evil AV_285 
+
+      if(board.HasCardInHand(Card.Cards.AV_285)
+      ){
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_285, new Modifier(999)); 
+      Bot.Log("邪恶入骨优先使用 999");
+      }
       if(board.HasCardInHand(Card.Cards.AV_285)
       &&board.MinionEnemy.Count == 0 
       ){
@@ -630,6 +645,26 @@ if(board.HasCardInHand(Card.Cards.WC_021)
 #region 塔姆辛·罗姆 Tamsin Roame   BAR_918
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BAR_918, new Modifier(480)); 
 // 如果手上有法术,费用大于4,提高塔姆辛·罗姆
+      if(board.HasCardInHand(Card.Cards.BAR_918)
+      &&(board.ManaAvailable >=4||(board.ManaAvailable==3&&board.HasCardInHand(Card.Cards.GAME_005)))// 硬币 GAME_005   
+      &&board.HasCardInHand(Card.Cards.CORE_EX1_302)//死亡缠绕 Mortal Coil     CORE_EX1_302
+      &&oneMinionsCount>=1
+      ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_918, new Modifier(-99));
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_302, new Modifier(-20));//死亡缠绕 Mortal Coil     CORE_EX1_302
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-20));//硬币 GAME_005
+        Bot.Log("塔姆辛·罗姆 -99 死亡缠绕 -20");
+       }
+      if(board.HasCardInHand(Card.Cards.BAR_918)
+      &&(board.ManaAvailable >=4||(board.ManaAvailable==3&&board.HasCardInHand(Card.Cards.GAME_005)))// 硬币 GAME_005   
+      &&board.HasCardInHand(Card.Cards.ONY_034)//痛苦诅咒 Curse of Agony ID：ONY_034
+      ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_918, new Modifier(-20));
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_034, new Modifier(-99));//痛苦诅咒 Curse of Agony ID：ONY_034
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-20));//硬币 GAME_005
+        Bot.Log("塔姆辛·罗姆 -99 痛苦诅咒 -99");
+       }
+      
       if(board.HasCardInHand(Card.Cards.BAR_918)
       &&(board.ManaAvailable >=4||(board.ManaAvailable==3&&board.HasCardInHand(Card.Cards.GAME_005)))// 硬币 GAME_005   
       &&board.HasCardInHand(Card.Cards.CORE_EX1_302)//死亡缠绕 Mortal Coil     CORE_EX1_302
@@ -710,7 +745,7 @@ if(board.HasCardInHand(Card.Cards.WC_021)
 #endregion
 
 #region 血岩碎片刺背野猪人 Blood Shard Bristleback   BAR_916
-        if((board.FriendDeckCount > 10)
+        if((board.FriendDeckCount > 10||changshangnum==0)
         &&board.HasCardInHand(Card.Cards.BAR_916)
         ){
 				p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_916, new Modifier(999));//血岩碎片刺背野猪人 Blood Shard Bristleback   BAR_916
@@ -729,14 +764,14 @@ if(board.HasCardInHand(Card.Cards.WC_021)
 
   
         
-          if((board.FriendDeckCount <=10)
-          &&board.HasCardInHand(Card.Cards.BAR_916)
-          &&changshangnum ==0   
-        )
-          {
-				p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_916, new Modifier(150));//血岩碎片刺背野猪人 Blood Shard Bristleback   BAR_916
-        Bot.Log("血岩碎片刺背野猪人 150条件2");
-          }
+        //   if((board.FriendDeckCount <=10)
+        //   &&board.HasCardInHand(Card.Cards.BAR_916)
+        //   &&changshangnum ==0   
+        // )
+        //   {
+		// 		p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_916, new Modifier(150));//血岩碎片刺背野猪人 Blood Shard Bristleback   BAR_916
+        // Bot.Log("血岩碎片刺背野猪人 150条件2");
+        //   }
 
       if(board.HasCardInHand(Card.Cards.SCH_514)//亡者复生 Raise Dead     SCH_514
       &&board.HasCardOnBoard(Card.Cards.BAR_916)//血岩碎片刺背野猪人 Blood Shard Bristleback   BAR_916
@@ -753,9 +788,18 @@ if(board.HasCardInHand(Card.Cards.WC_021)
         if(board.HasCardInHand(Card.Cards.YOP_033)     
         &&board.Hand.Count<=7
         &&board.HeroFriend.CurrentHealth>=10
+        &&board.FriendDeckCount>0
         ){
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_033, new Modifier(-999));//赛车回火 Backfire   YOP_033
-          Bot.Log("手牌小于等于7血量>=10,赛车回火 -999 ");
+          Bot.Log("手牌小于等于7血量>=10,下过自残 赛车回火 -999 ");
+        }
+        if(board.HasCardInHand(Card.Cards.YOP_033)     
+        &&board.Hand.Count<=7
+        &&board.HeroFriend.CurrentHealth>=10
+        &&(board.HasCardOnBoard(Card.Cards.SW_091t4)||board.FriendGraveyard.Contains(Card.Cards.SW_091t4))
+        ){
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_033, new Modifier(-999));//赛车回火 Backfire   YOP_033
+          Bot.Log("手牌小于等于7血量>=10,下过自残 赛车回火 -999 ");
         }
     //     if((!board.HasCardOnBoard(Card.Cards.SW_091t4)||!board.FriendGraveyard.Contains(Card.Cards.SW_091t4))
     //     &&board.FriendDeckCount <=0
@@ -953,7 +997,7 @@ if(board.HasCardInHand(Card.Cards.WC_021)
         &&board.Hand.Count==10
         ){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_092, new Modifier(-99));
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_092, new Modifier(999)); 
+        //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_092, new Modifier(999)); 
           Bot.Log("安纳塞隆 -99");
         }else{
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_092, new Modifier(130));
@@ -963,20 +1007,20 @@ if(board.HasCardInHand(Card.Cards.WC_021)
         &&board.Hand.Count==9
         ){
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_312, new Modifier(999));//巡游向导 Tour Guide     SCH_312
-        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_07bp, new Modifier(-99));//生命分流 Life Tap ID：HERO_07bp
-        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_316hp, new Modifier(-99));//生命分流 Life Tap ID：HERO_07bp
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_07bp, new Modifier(-999));//生命分流 Life Tap ID：HERO_07bp
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_316hp, new Modifier(-999));//生命分流 Life Tap ID：HERO_07bp
         Bot.Log("9张抽一口下安塞");
         }
         // 如果手上有9张牌,手里有安纳塞隆,提高赛车回火
-        // if(board.HasCardInHand(Card.Cards.SW_092)
-        // &&board.Hand.Count==7
-        // &&board.HeroFriend.CurrentHealth>=10
-        // &&board.HasCardInHand(Card.Cards.YOP_033)//赛车回火 Backfire   YOP_033
-        // ){
-        // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_033, new Modifier(-999));//赛车回火 Backfire   YOP_033
-        //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.YOP_033, new Modifier(999)); 
-        // Bot.Log("8张赛车下安塞");
-        // }
+        if(board.HasCardInHand(Card.Cards.SW_092)
+        &&board.Hand.Count==8
+        &&board.HeroFriend.CurrentHealth>=10
+        &&board.HasCardInHand(Card.Cards.YOP_033)//赛车回火 Backfire   YOP_033
+        ){
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_033, new Modifier(-999));//赛车回火 Backfire   YOP_033
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.YOP_033, new Modifier(999)); 
+        Bot.Log("8张赛车下安塞");
+        }
 
     
 #endregion
@@ -1003,7 +1047,7 @@ if(board.HasCardInHand(Card.Cards.WC_021)
       if(board.HasCardInHand(Card.Cards.BAR_917)
       &&board.FriendDeckCount>10
       ){
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_917, new Modifier(150));
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_917, new Modifier(250));
       }
 #endregion
 
@@ -1012,8 +1056,8 @@ if(board.HasCardInHand(Card.Cards.WC_021)
 
 #region 血肉巨人 Flesh Giant   SCH_140
 if(board.HasCardInHand(Card.Cards.SCH_140)){
-p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_140, new Modifier(130));
-Bot.Log("血肉巨人 130");
+p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_140, new Modifier(150));
+Bot.Log("血肉巨人 150");
 }
 #endregion
 
