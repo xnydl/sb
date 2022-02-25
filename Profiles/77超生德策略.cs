@@ -216,6 +216,8 @@ namespace SmartBotProfiles
             }
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
+            int aomiCount = board.Secret.Count;
+            Bot.Log("自己奥秘数量"+aomiCount);
  #endregion
 
 
@@ -428,28 +430,35 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 霜刃豹头领 AV_291
       if(board.HasCardInHand(Card.Cards.AV_291)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(-5)); 
-      Bot.Log("霜刃豹头领 -5");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(55)); 
+      Bot.Log("霜刃豹头领 55");
       }
 #endregion
 #region 幽影猫头鹰 DMF_060
       if(board.HasCardInHand(Card.Cards.DMF_060)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(-5)); 
-      Bot.Log("幽影猫头鹰 -5");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(55)); 
+      Bot.Log("幽影猫头鹰 55");
       }
 #endregion
 #region 霜狼巢屋 AV_360 
-      if(board.HasCardInHand(Card.Cards.AV_360)){
+      if(board.HasCardInHand(Card.Cards.AV_360)
+      &&board.Secret.Count != 0
+      ){
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-150));
-      Bot.Log("霜狼巢屋 -150");
+      Bot.Log("头上无奥秘霜狼巢屋 -150");
       }
 #endregion
+#region 雷霆绽放 SCH_427  硬币 GAME_005
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(55));//雷霆绽放 SCH_427
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));//硬币 GAME_005
+
+#endregion 
 #region 空军指挥官穆维里克 AV_293
       if(board.HasCardInHand(Card.Cards.AV_293)
       &&(board.MinionFriend.Count == 0||board.MinionEnemy.Count == 0 )
       ){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(130));
-      Bot.Log("空军指挥官穆维里克 -130");
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(650));
+      Bot.Log("空军指挥官穆维里克 -650");
       }
       if(board.HasCardInHand(Card.Cards.AV_293)
       ){
