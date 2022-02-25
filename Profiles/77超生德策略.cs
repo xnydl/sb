@@ -217,6 +217,7 @@ namespace SmartBotProfiles
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
             int aomiCount = board.Secret.Count;
+            int dangqianfeiyong = board.ManaAvailable;
             Bot.Log("自己奥秘数量"+aomiCount);
  #endregion
 
@@ -441,12 +442,20 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
 #endregion
 #region 霜狼巢屋 AV_360 
+    //   if(board.HasCardInHand(Card.Cards.AV_360)
+    //   &&board.Secret.Count != 0
+    //   ){
+    //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(150));
+    //   Bot.Log("头上有奥秘霜狼巢屋 150");
+    //   }
       if(board.HasCardInHand(Card.Cards.AV_360)
-      &&board.Secret.Count != 0
+      &&board.MinionFriend.Count <7
       ){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-150));
-      Bot.Log("头上无奥秘霜狼巢屋 -150");
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-250));
+    //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-100)); 
+      Bot.Log("霜狼巢屋且随从小于等于6  -250");
       }
+
 #endregion
 #region 雷霆绽放 SCH_427  硬币 GAME_005
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(55));//雷霆绽放 SCH_427
@@ -548,8 +557,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 自然研习 SCH_333
       // 提高龟壳印记贴嘲讽
       if(board.HasCardInHand(Card.Cards.SCH_333)){
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_333, new Modifier(999));//1级定罪最先使用
-      Bot.Log("自然研习优先级 999");
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_333, new Modifier(999));
+        Bot.Log("自然研习优先级 999");
 
       }
 #endregion
@@ -563,9 +572,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
 #region 月光指引 DED_002 
          if(board.HasCardInHand(Card.Cards.DED_002)){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_002, new Modifier(-150));
-          Bot.Log("月光指引 -150");
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_002, new Modifier(-25*(dangqianfeiyong)));
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_002, new Modifier(999));
+          Bot.Log("月光指引优先级"+(-25*(dangqianfeiyong)));
       }
+
 #endregion
 #region 野性印记 Mark of the Wild ID：CORE_CS2_009 
          if(board.HasCardInHand(Card.Cards.CORE_CS2_009)){
@@ -671,33 +682,33 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(650)); 
             Bot.Log("艾露恩神谕者 550");
         }
-        // if(board.ManaAvailable >=2
-        // && board.Hand.Count(x=>x.CurrentCost>=2 && x.Template.Id==Card.Cards.SW_419&&x.Type == Card.CType.MINION)>=1//艾露恩神谕者     SW_419
-        // && myAttack >= enemyMinionHealth
-        // )
-        // {
-        //     p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(-99));
-        //     p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(600)); 
-        //     Bot.Log("艾露恩神谕者 -99");
-        // }
+        if(board.ManaAvailable >=2
+        && board.Hand.Count(x=>x.CurrentCost>=2 && x.Template.Id==Card.Cards.SW_419&&x.Type == Card.CType.MINION)>=1//艾露恩神谕者     SW_419
+        && myAttack >= enemyMinionHealth
+        )
+        {
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(-99));
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(600)); 
+            Bot.Log("艾露恩神谕者 -99");
+        }
 
-        // if(board.ManaAvailable ==3
-        //   && board.Hand.Count(x=>x.CurrentCost>=2 && x.Template.Id==Card.Cards.SW_419)>=1//艾露恩神谕者     SW_419
-        //   && myAttack <= enemyMinionHealth
-        //   ){
-        //   p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(999));
-        //   Bot.Log("艾露恩神谕者 150 条件3");
-        //   }
+        if(board.ManaAvailable ==3
+          && board.Hand.Count(x=>x.CurrentCost>=2 && x.Template.Id==Card.Cards.SW_419)>=1//艾露恩神谕者     SW_419
+          && myAttack <= enemyMinionHealth
+          ){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(999));
+          Bot.Log("艾露恩神谕者 150 条件3");
+          }
 
-        // if(board.ManaAvailable >=2
-        //     && board.Hand.Count(x=>x.CurrentCost>=2 && x.Template.Id==Card.Cards.SW_419)>=1//艾露恩神谕者     SW_419
-        //     && board.MinionEnemy.Count == 0
-        // )
-        // {
-        //     p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(-99));
-        //     p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(600)); 
-        //     Bot.Log("艾露恩神谕者 -99");
-        // }
+        if(board.ManaAvailable >=2
+            && board.Hand.Count(x=>x.CurrentCost>=2 && x.Template.Id==Card.Cards.SW_419)>=1//艾露恩神谕者     SW_419
+            && board.MinionEnemy.Count == 0
+        )
+        {
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(-99));
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(600)); 
+            Bot.Log("艾露恩神谕者 -99");
+        }
       
       // 如果自己场上有324提高223优先级艾露恩神谕者      SW_419 钢鬃卫兵      BAR_537 
         if(board.HasCardOnBoard(Card.Cards.SW_419)
@@ -771,6 +782,15 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617, new Modifier(999));//萌物来袭      SCH_617
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_617, new Modifier(-55)); 
             Bot.Log("萌物来袭 999 出牌优先级 -55");
+        }
+    //    三费有霜狼，优先霜狼
+         if(board.ManaAvailable ==3
+        &&board.HasCardInHand(Card.Cards.SW_419)//艾露恩神谕者      SW_419
+        &&board.HasCardInHand(Card.Cards.AV_360)//霜狼巢屋 AV_360  
+        ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(999));///艾露恩神谕者      SW_419
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617, new Modifier(-999));//霜狼巢屋      SCH_617
+         Bot.Log("三费有霜狼，优先霜狼");
         }
 
 #endregion
