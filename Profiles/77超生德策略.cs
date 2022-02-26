@@ -431,29 +431,23 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 霜刃豹头领 AV_291
       if(board.HasCardInHand(Card.Cards.AV_291)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(55)); 
-      Bot.Log("霜刃豹头领 55");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(35)); 
+      Bot.Log("霜刃豹头领 35");
       }
 #endregion
 #region 幽影猫头鹰 DMF_060
       if(board.HasCardInHand(Card.Cards.DMF_060)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(55)); 
-      Bot.Log("幽影猫头鹰 55");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(35)); 
+      Bot.Log("幽影猫头鹰 35");
       }
 #endregion
 #region 霜狼巢屋 AV_360 
-    //   if(board.HasCardInHand(Card.Cards.AV_360)
-    //   &&board.Secret.Count != 0
-    //   ){
-    //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(150));
-    //   Bot.Log("头上有奥秘霜狼巢屋 150");
-    //   }
       if(board.HasCardInHand(Card.Cards.AV_360)
       &&board.MinionFriend.Count <7
       ){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-250));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-550));
     //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-100)); 
-      Bot.Log("霜狼巢屋且随从小于等于6  -250");
+      Bot.Log("霜狼巢屋且随从小于等于6  -550");
       }
 
 #endregion
@@ -466,13 +460,20 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       if(board.HasCardInHand(Card.Cards.AV_293)
       &&(board.MinionFriend.Count == 0||board.MinionEnemy.Count == 0 )
       ){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(650));
-      Bot.Log("空军指挥官穆维里克 -650");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(150)); 
+      Bot.Log("空军指挥官穆维里克 150");
       }
       if(board.HasCardInHand(Card.Cards.AV_293)
       ){
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(250)); 
+        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(250)); 
       Bot.Log("不送空军指挥官穆维里克");
+      }
+#endregion
+#region 普瑞斯托女士 Lady Prestor ID：SW_078
+      if(board.HasCardInHand(Card.Cards.SW_078)
+      ){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_078, new Modifier(-200)); 
+      Bot.Log("普瑞斯托女士 -200");
       }
 #endregion
 
@@ -480,11 +481,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     //  当随从数量大于等于2时增加施肥 Composting     SW_437优先级施肥 Composting     SW_437
     if(board.HasCardInHand(Card.Cards.SW_437))
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-50*(friendCount)));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-60*(friendCount)));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-100)); 
 
-      // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(150)); //小德不用技能
-      Bot.Log("技能 130 施肥:"+-50*friendCount);
+      // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(160)); //小德不用技能
+      Bot.Log("技能 130 施肥:"+-60*friendCount);
     }
     // if(board.HasCardInHand(Card.Cards.SW_437))
     // { 
@@ -591,9 +592,10 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
 #endregion
 #region 德雷克塔尔 Drek'Thar ID：AV_100  
-         if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<=4){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-99));
-          Bot.Log("德雷克塔尔 -99");
+         if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-200));
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(2000));
+          Bot.Log("德雷克塔尔 -200");
       }else{
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
           Bot.Log("德雷克塔尔 150");
@@ -609,9 +611,10 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
           Bot.Log("深铁穴居人 650");
         } 
         if(board.HasCardOnBoard(Card.Cards.AV_137)
+        &&board.MinionFriend.Count<7
         )
         {
-         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(250)); 
+         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(350)); 
           Bot.Log("深铁穴居人 不送");
         } 
          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617,new Modifier(-999,Card.Cards.AV_137));
@@ -678,7 +681,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         if(board.HasCardOnBoard(Card.Cards.SW_419)
         &&board.Hand.Exists(card => card.CurrentCost<=2)
         ){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(-150));
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(-200));
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(650)); 
             Bot.Log("艾露恩神谕者 550");
         }
@@ -785,11 +788,10 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         }
     //    三费有霜狼，优先霜狼
          if(board.ManaAvailable ==3
-        &&board.HasCardInHand(Card.Cards.SW_419)//艾露恩神谕者      SW_419
         &&board.HasCardInHand(Card.Cards.AV_360)//霜狼巢屋 AV_360  
         ){
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(999));///艾露恩神谕者      SW_419
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617, new Modifier(-999));//霜狼巢屋      SCH_617
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-999));//霜狼巢屋      SCH_617
          Bot.Log("三费有霜狼，优先霜狼");
         }
 
