@@ -481,11 +481,10 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 施肥 Composting     SW_437
     //  当随从数量大于等于2时增加施肥 Composting     SW_437优先级施肥 Composting     SW_437
     if(board.HasCardInHand(Card.Cards.SW_437)
-    &&friendCount>1
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-95*(friendCount)));
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-500)); 
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-65*(friendCount)));
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-100)); 
 
       // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(160)); //小德不用技能
       Bot.Log("技能 130 施肥:"+-95*friendCount);
@@ -573,6 +572,12 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
           Bot.Log("应急木工 -55");
       }
 #endregion
+#region 群羊指挥官 Ram Commander ID：AV_219 
+         if(board.HasCardInHand(Card.Cards.AV_219)){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_219, new Modifier(-55));
+          Bot.Log("群羊指挥官 -55");
+      }
+#endregion
 
 #region 月光指引 DED_002 
          if(board.HasCardInHand(Card.Cards.DED_002)){
@@ -591,6 +596,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 野性之心 Heart of the Wild ID：AV_292 
          if(board.HasCardInHand(Card.Cards.AV_292)){
                p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_292, new Modifier(130));
+               p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_292, new Modifier(999));
           Bot.Log("野性之心 130");
       }
 #endregion
@@ -609,9 +615,9 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         )
         {
          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(650)); 
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-999));
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-9999));
 
-          Bot.Log("深铁穴居人 650");
+          Bot.Log("深铁穴居人 -9999");
         } 
         if(board.HasCardOnBoard(Card.Cards.AV_137)
         &&board.MinionFriend.Count<7
