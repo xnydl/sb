@@ -63,6 +63,34 @@ using SmartBot.Plugins.API;
 // # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
 // # 套牌详情请查看https://hsreplay.net/decks/KSMoUD7PB3K1s5vVkqRxGd/
 
+// ### 跳费德
+// # 职业：德鲁伊
+// # 模式：标准模式
+// # 狮鹫年
+// #
+// # 2x (0) 雷霆绽放 SCH_427
+// # 2x (0) 激活
+// # 2x (1) 随心口袋
+// # 2x (1) 自然研习 SCH_333
+// # 1x (2) 铁木树皮
+// # 2x (2) 猜重量 DMF_075 
+// # 2x (2) 月蚀
+// # 2x (2) 月光指引
+// # 2x (2) 日蚀
+// # 2x (3) 野性成长 CORE_CS2_013
+// # 1x (3) 沼泽射线
+// # 2x (4) 过度生长 BT_130
+// # 1x (5) 野性之心古夫 AV_205 
+// # 2x (7) 奥妮克希亚鳞片
+// # 2x (8) 塞纳里奥结界
+// # 1x (8) 卡扎库杉
+// # 1x (9) 织法者玛里苟斯
+// # 1x (10) 团本首领奥妮克希亚
+// #
+// AAECAZICBuy6A+66A7WKBImLBKWtBISwBAzougObzgPw1AOJ4AOK4AOk4QPR4QOP5AOvgASJnwSunwTPrAQA
+// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
+// # 套牌详情请查看https://hsreplay.net/decks/YOOT57qNGAaf6wj43xkgbh/
+
 namespace SmartBot.Mulligan
 {
     [Serializable]
@@ -181,12 +209,12 @@ namespace SmartBot.Mulligan
 
             foreach (Card.Cards card in choices)
             {
-                 if((card==Card.Cards.SW_419//艾露恩神谕者 Oracle of Elune      SW_419 
+                 if((card==Card.Cards.SCH_427//雷霆绽放 SCH_427
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.SW_419))
+                       if(!CardsToKeep.Contains(Card.Cards.SCH_427))
                     {
-                        Keep(card,"艾露恩神谕者");
+                        Keep(card,"雷霆绽放");
                     }
                     }   
                 }
@@ -199,48 +227,39 @@ namespace SmartBot.Mulligan
                     }
                     }   
                 }
-                //  if((card==Card.Cards.SCH_617//萌物来袭 Adorable Infestation      SCH_617  
-                // )){
-                //     {
-                //        if(!CardsToKeep.Contains(Card.Cards.SCH_617))
-                //     {
-                //         Keep(card,"萌物来袭");
-                //     }
-                //     }   
-                // }
-                 if((card==Card.Cards.BAR_533//荆棘护卫 Thorngrowth Sentries ID：BAR_533 
+                 if((card==Card.Cards.DMF_075//猜重量 DMF_075 
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.BAR_533))
+                       if(!CardsToKeep.Contains(Card.Cards.DMF_075))
                     {
-                        Keep(card,"荆棘护卫");
+                        Keep(card,"猜重量");
                     }
                     }   
                 }
-                 if((card==Card.Cards.AV_219//群羊指挥官 Ram Commander ID：AV_219
+                 if((card==Card.Cards.CORE_CS2_013//野性成长 CORE_CS2_013
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.AV_219))
+                       if(!CardsToKeep.Contains(Card.Cards.CORE_CS2_013))
                     {
-                        Keep(card,"群羊指挥官");
+                        Keep(card,"野性成长");
                     }
                     }   
                 }
-                 if((card==Card.Cards.AV_360//霜狼巢屋 Frostwolf Kennels ID：AV_360 
+                 if((card==Card.Cards.BT_130//过度生长 BT_130
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.AV_360))
+                       if(!CardsToKeep.Contains(Card.Cards.BT_130))
                     {
-                        Keep(card,"霜狼巢屋");
+                        Keep(card,"过度生长");
                     }
                     }   
                 }
-                 if((card==Card.Cards.DED_003//应急木工 Jerry Rig Carpenter ID：DED_003 
+                 if((card==Card.Cards.AV_205//野性之心古夫 AV_205 
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.DED_003))
+                       if(!CardsToKeep.Contains(Card.Cards.AV_205))
                     {
-                        Keep(card,"应急木工");
+                        Keep(card,"野性之心古夫");
                     }
                     }   
                 }
