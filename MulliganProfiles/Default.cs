@@ -60,7 +60,7 @@ namespace SmartBot.Mulligan
             var WorthyTwoDrop = choices.Count(IsWorthyTwoDrop);
             var WorthyThreeDrop = choices.Count(IsWorthyThreeDrop);
 
-            var MaxOneDrop = HasCoin && WorthyOneDrop == 2 && WorthyTwoDrop >= 1 && WorthyThreeDrop >= 1 ? 2 : 1;
+            var MaxOneDrop = HasCoin && WorthyOneDrop >= 1 && WorthyTwoDrop >= 1 && WorthyThreeDrop >= 1 ? 2 : 1;
 
             var MaxTwoDrop = (HasCoin && WorthyOneDrop == 0 && WorthyTwoDrop >= 2) ||
                              (WorthyTwoDrop >= 2 && WorthyThreeDrop == 0 && WorthyOneDrop == 0 && HasCoin)

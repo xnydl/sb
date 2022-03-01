@@ -84,7 +84,7 @@ using SmartBot.Plugins.API;
 // # 2x (7) 奥妮克希亚鳞片
 // # 2x (8) 塞纳里奥结界
 // # 1x (8) 卡扎库杉
-// # 1x (9) 织法者玛里苟斯
+// # 1x (9) 织法者玛里苟斯 CS3_034 
 // # 1x (10) 团本首领奥妮克希亚
 // #
 // AAECAZICBuy6A+66A7WKBImLBKWtBISwBAzougObzgPw1AOJ4AOK4AOk4QPR4QOP5AOvgASJnwSunwTPrAQA

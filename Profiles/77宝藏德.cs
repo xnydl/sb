@@ -215,9 +215,9 @@ namespace SmartBotProfiles
             }
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
-            int aomiCount = board.Secret.Count;
+            // int aomiCount = board.Secret.Count;
             int dangqianfeiyong = board.ManaAvailable;
-            Bot.Log("自己奥秘数量"+aomiCount);
+            // Bot.Log("自己奥秘数量"+aomiCount);
  #endregion
 
 
@@ -260,7 +260,7 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
 
 #region 雷霆绽放 SCH_427  硬币 GAME_005
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(55));//雷霆绽放 SCH_427
-        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));//硬币 GAME_005
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));//硬币 GAME_005
 
 #endregion 
 
@@ -338,7 +338,14 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
 #region 卡扎库杉 Kazakusan ID：ONY_005  
          if(board.HasCardInHand(Card.Cards.ONY_005)){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(-999));
+           p.PlayOrderModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(999));
           Bot.Log("卡扎库杉 -999");
+      }
+#endregion
+#region 织法者玛里苟斯 CS3_034 
+         if(board.HasCardInHand(Card.Cards.CS3_034)){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_034, new Modifier(-99));
+          Bot.Log("织法者玛里苟斯 -99");
       }
 #endregion
 
@@ -348,6 +355,18 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
     {
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_026, new Modifier(150));  
       Bot.Log("树木生长:"+150);
+    }
+#endregion
+
+#region 随心口袋 Resizing Pouch ID：YOP_029 
+    if(board.HasCardInHand(Card.Cards.YOP_029)
+    &&board.ManaAvailable >= 10)
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_029, new Modifier(-99));  
+      Bot.Log("随心口袋:-99");
+    }else{
+       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_029, new Modifier(999));  
+      Bot.Log("随心口袋:999"); 
     }
 #endregion
 

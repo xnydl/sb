@@ -13,17 +13,17 @@ using SmartBot.Plugins.API;
 // # 2x (1) 闪电箭
 // # 2x (1) 电击学徒
 // # 2x (1) 强行透支
-// # 2x (1) 始生研习
+// # 2x (1) 始生研习 SCH_270
 // # 2x (1) 冷风
 // # 2x (2) 破霰元素 AV_260 
 // # 2x (2) 大地崩陷
-// # 2x (2) 冰霜撕咬
-// # 2x (3) 艳丽的金刚鹦鹉
+// # 2x (2) 冰霜撕咬 AV_259 
+// # 2x (3) 艳丽的金刚鹦鹉 DED_509 
 // # 2x (3) 毒蛇神殿传送门
 // # 1x (3) 原初地下城历险家 WC_005 
 // # 2x (4) 蛮爪洞穴 AV_268
 // # 2x (4) 多系施法者 DED_524 
-// # 2x (6) 雪落守护者
+// # 2x (6) 雪落守护者 AV_255 
 // # 1x (8) 元素使者布鲁坎
 // #
 // AAECAaoIAuPuA8ORBA7buAPNzgPw1AOJ5APq5wOF+gPTgASogQS5kQT5kQSVkgTckgTblAT5nwQA
@@ -184,12 +184,12 @@ namespace SmartBot.Mulligan
                     }
                     }   
                 }
-                 if((card==Card.Cards.DED_524//应急木工 Jerry Rig Carpenter ID：DED_524 
+                 if((card==Card.Cards.SCH_270//始生研习 SCH_270
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.DED_524))
+                       if(!CardsToKeep.Contains(Card.Cards.SCH_270))
                     {
-                        Keep(card,"多系施法者");
+                        Keep(card,"始生研习");
                     }
                     }   
                 }

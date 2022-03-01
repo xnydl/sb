@@ -311,6 +311,18 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
         Bot.Log("奥术智慧 -20");
       }
 #endregion
+#region 战争储备箱 War Cache ID：CS3_009  
+      if(board.HasCardInHand(Card.Cards.CS3_009)){
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS3_009, new Modifier(-60));
+        Bot.Log("战争储备箱 -60");
+      }
+#endregion
+#region 毁灭之种 Seeds of Destruction ID：AV_277  
+      if(board.HasCardInHand(Card.Cards.AV_277)){
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_277, new Modifier(-60));
+        Bot.Log("毁灭之种 -60");
+      }
+#endregion
 #region 血卫士 Blood Guard ID：AV_129 
 // 随从大于1 出血骑士
       if(board.HasCardInHand(Card.Cards.AV_129)

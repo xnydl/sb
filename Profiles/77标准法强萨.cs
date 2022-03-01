@@ -88,6 +88,7 @@ namespace SmartBotProfiles
             {Card.Cards.DMF_701, 4},//深水炸弹 Dunk Tank ID：DMF_701
             {Card.Cards.DMF_701t, 4},//深水炸弹 Dunk Tank ID：DMF_701t
             {Card.Cards.BT_100, 3},//毒蛇神殿传送门 Serpentshrine Portal ID：BT_100 
+            {Card.Cards.AV_259, 3},//冰霜撕咬 AV_259
             //德鲁伊
 
             //猎人
@@ -145,22 +146,20 @@ namespace SmartBotProfiles
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             Bot.Log("b站直播间608700~");
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
-            //攻击模式切换
-            // if (board.EnemyClass == Card.CClass.DEMONHUNTER
-            //         || board.EnemyClass == Card.CClass.HUNTER
-            //         || board.EnemyClass == Card.CClass.ROGUE
-            //         || board.EnemyClass == Card.CClass.SHAMAN
-            //         || board.EnemyClass == Card.CClass.PALADIN
-            //         || board.EnemyClass == Card.CClass.WARRIOR)
-            //     {
-            //         p.GlobalAggroModifier = (int)(a * 0.625 + 96.5);
-            //     }
-            //     else
-            //     {
-            //         p.GlobalAggroModifier = (int)(a * 0.625 + 103.5);
-            //     }	 
-                    p.GlobalAggroModifier = (int)(a * 0.625 + 120.5);
-
+             if (board.EnemyClass == Card.CClass.HUNTER
+                || board.EnemyClass == Card.CClass.SHAMAN
+                || board.EnemyClass == Card.CClass.ROGUE
+                || board.EnemyClass == Card.CClass.PALADIN
+                || board.EnemyClass == Card.CClass.WARRIOR)
+            {
+                p.GlobalAggroModifier = (int)(a * 0.625 + 96.5);
+                Bot.Log("攻击值"+(a * 0.625 + 120.5));
+            }
+            else
+            {
+                p.GlobalAggroModifier = (int)(a * 0.625 + 103.5);
+                Bot.Log("攻击值"+(a * 0.625 + 140.5));
+            }	            
        {
  
         
@@ -341,134 +340,6 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
 #endregion 
 
-#region 异变轮转 DMF_700
-      if(board.HasCardInHand(Card.Cards.DMF_700)
-          &&board.MinionEnemy.Count>=3
-          &&(
-            (myAttack <= enemyMinionHealth)//我随从攻击力小于对面的生命值
-            ||(enemyAttack>=myMinionHealth&&enemyAttack>=8)//敌方攻击力大于我方生命值
-            ||(myAttack==8&&myMinionHealth==8)
-            ||(myAttack==11&&myMinionHealth==8)
-            )
-        )
-      {
-        int friendCount=board.MinionFriend.Count;
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_700, new Modifier(-10*friendCount));
-          Bot.Log("异变轮转优先级提高,条件1");
-      }
-
-      if(board.HasCardInHand(Card.Cards.DMF_700)
-        &&board.HasCardOnBoard(Card.Cards.SW_062)//闪金镇豺狼人 SW_062
-      ){
-        int friendCount=board.MinionFriend.Count;
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_700, new Modifier(-10*friendCount));
-         Bot.Log("异变轮转优先级提高,条件2");
-      }
-
-      if(board.HasCardInHand(Card.Cards.DMF_700)
-          &&board.MinionEnemy.Count==0
-          &&enemyAttack>=10
-        )
-            {
-              int friendCount=board.MinionFriend.Count;
-              p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_700, new Modifier(-10*friendCount));
-                Bot.Log("异变轮转优先级提高,条件3");
-            }
-
-
-      if(myAttack<8&&board.MinionEnemy.Count>=4
-      &&board.HasCardInHand(Card.Cards.DMF_700)
-      ){
-        int friendCount=board.MinionFriend.Count;
-              p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_700, new Modifier(-10*friendCount));
-                Bot.Log("异变轮转优先级提高,条件4");
-      }
-
-      if(board.HasCardInHand(Card.Cards.DMF_700)
-          &&enemyAttack>=10
-        )
-      {
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_700, new Modifier(-100*enemyAttack));
-          Bot.Log("异变轮转优先级提高,条件5");
-      }
-      if(board.HasCardInHand(Card.Cards.DMF_700)
-      &&(board.WeaponFriend != null && board.WeaponFriend.Template.Id == Card.Cards.BT_102)
-      &&myAttack>=12
-      )
-      {
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_700, new Modifier(999));
-        Bot.Log("手上有刀,异变轮转优先级降低");
-      }
-
-      if(board.HasCardInHand(Card.Cards.DMF_700)
-      &&(myAttack>=15||
-      (myAttack>=10&&board.MinionFriend.Count<=3)
-      )
-      )
-      {
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_700, new Modifier(999));
-        Bot.Log("随从攻击力大于等于15,异变轮转优先级降低");
-      }
-
-      // 如果场上有废料场巨像 Scrapyard Colossus ID：BT_155,不用异变轮转
-      if(board.HasCardOnBoard(Card.Cards.BT_155)
-      &&board.HasCardInHand(Card.Cards.DMF_700)
-      ){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_700, new Modifier(999));
-          Bot.Log("场上有废料场巨像,异变轮转优先级降低");
-      }
-
-      
-#endregion
-
-#region 伯尔纳·锤喙 SW_115
-      if(board.HasCardInHand(Card.Cards.SW_115)
-        &&board.MaxMana<=3
-      ){
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_062, new Modifier(350));
-        Bot.Log("小于4费降低伯尔纳·锤喙");
-      }
-
-      if(board.HasCardInHand(Card.Cards.SW_115)
-        &&board.MaxMana>=4
-        &&(board.HasCardInHand(Card.Cards.DMF_704)//笼斗管理员 DMF_704
-        ||board.HasCardInHand(Card.Cards.SCH_160)//魔杖工匠 SCH_160
-        ||board.HasCardInHand(Card.Cards.SCH_713)//异教低阶牧师 Cult Neophyte SCH_713
-        )
-       
-      )
-      {
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(-70));
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_704, new Modifier(-20));//笼斗管理员 DMF_704
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_160, new Modifier(-20));//魔杖工匠 SCH_160
-        Bot.Log("4费提高伯尔纳·锤喙");
-      }
-
-      if(board.HasCardInHand(Card.Cards.SW_115)
-        &&board.MaxMana>=5
-        &&(board.HasCardInHand(Card.Cards.DMF_704)//笼斗管理员 DMF_704
-        ||board.HasCardInHand(Card.Cards.SCH_160)//魔杖工匠 SCH_160
-        ||board.HasCardInHand(Card.Cards.WC_005)//原初地下城历险家 WC_005
-        ||board.HasCardInHand(Card.Cards.SCH_507)//导师火心 SCH_507
-        ||board.HasCardInHand(Card.Cards.DMF_703)//死斗场管理者 DMF_703
-        ||board.HasCardInHand(Card.Cards.SCH_713)//异教低阶牧师 Cult Neophyte SCH_713
-        )
-      )
-      {
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(-70));
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_704, new Modifier(-20));//笼斗管理员 DMF_704
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_160, new Modifier(-20));//魔杖工匠 SCH_160
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.WC_005, new Modifier(-20));//原初地下城历险家 WC_005
-        Bot.Log("5费提高伯尔纳·锤喙");
-      }
-      if((board.WeaponFriend != null && board.WeaponFriend.Template.Id == Card.Cards.BT_102)
-        &&board.HasCardInHand(Card.Cards.SW_115)
-        ){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_062, new Modifier(500));
-          Bot.Log("手上有刀降低伯尔纳·锤喙");
-        }
-#endregion
-
 
 
 #region 笔记能手 SCH_236
@@ -486,15 +357,48 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
           Bot.Log("原初地下城历险家-40");
       }
 #endregion
-
-
-
-#region 深水炸弹 Dunk Tank ID：DMF_701t
-      if(board.HasCardInHand(Card.Cards.DMF_188)//亚煞极，污染之源 DMF_188
-      &&board.HasCardInHand(Card.Cards.DMF_701t)//深水炸弹 Dunk Tank ID：DMF_701t 
+#region 多系施法者 DED_524 
+      if(board.HasCardInHand(Card.Cards.DED_524)
+    //   &&board.FriendGraveyard.Count(card => card.Type == Card.CType.SPELL)<3
       ){
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_701t, new Modifier(-40));
-          Bot.Log("有亚煞极,提高腐蚀后的深水炸弹优先级");          
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_524, new Modifier(130));
+          Bot.Log("多系施法者 130");
+      }
+#endregion
+#region 雪落守护者 AV_255
+// int zongdeguai=board.MinionEnemy.Count+board.MinionFriend.Count;
+int axx=board.MinionEnemy.Count;
+      if(board.HasCardInHand(Card.Cards.AV_255)
+      &&board.MinionEnemy.Count<4
+      ){
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_255, new Modifier(150));
+          Bot.Log("雪落守护者 150");
+      }
+      if(board.HasCardInHand(Card.Cards.AV_255)
+      &&board.MinionEnemy.Count>=4
+      ){
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_255, new Modifier(-25*(axx)));
+          Bot.Log("雪落守护者 "+-25*(axx));
+      }
+#endregion
+#region 艳丽的金刚鹦鹉 DED_509
+      if(board.HasCardInHand(Card.Cards.DED_509)
+      &&board.HasCardOnBoard(Card.Cards.AV_255)
+      ){
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_509, new Modifier(-250));
+          Bot.Log("艳丽的金刚鹦鹉 -250");
+      }
+#endregion
+
+
+
+
+#region 冷风 Windchill ID：AV_266 
+      if(board.HasCardInHand(Card.Cards.AV_266)
+      &&board.MinionEnemy.Count > 0
+      ){
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_266, new Modifier(-40));
+          Bot.Log("冷风 -40");          
       }
 #endregion
 
@@ -503,10 +407,13 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 蛮爪洞穴 AV_268
        if(
         board.HasCardInHand(Card.Cards.AV_268)//硬币 GAME_005
+        &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_268)==0
       )
       {
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-550));///硬币 SCH_427
+          Bot.Log("蛮爪洞穴-550");
+      }else{
         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-99));///硬币 SCH_427
-          Bot.Log("蛮爪洞穴-99");
       }
 #endregion
 
@@ -533,6 +440,13 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-99)); 
              Bot.Log("德雷克塔尔 -99");
+            }
+#endregion
+#region 破霰元素 AV_260
+          if(board.HasCardInHand(Card.Cards.AV_260)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_260, new Modifier(-99)); 
+             Bot.Log("破霰元素 -99");
             }
 #endregion
 
