@@ -95,6 +95,9 @@ namespace SmartBotProfiles
             {Card.Cards.CORE_DS1_185, 2},//奥术射击 Arcane Shot     CORE_DS1_185
             {Card.Cards.CORE_BRM_013, 3},//快速射击 Quick Shot     CORE_BRM_013
             {Card.Cards.BT_205, 3},//废铁射击 Scrap Shot     BT_205 
+            {Card.Cards.AV_113t1, 3},//强化爆炸陷阱 Improved Explosive Trap ID：AV_113t1 
+            {Card.Cards.SW_321, 3},//瞄准射击 SW_321 
+            {Card.Cards.BAR_032, 6},//穿刺射击 BAR_032 
             //法师
             {Card.Cards.BAR_541, 2},//符文宝珠 Runed Orb     BAR_541 
             {Card.Cards.CORE_CS2_029, 6},//火球术 Fireball     CORE_CS2_029
@@ -277,20 +280,23 @@ namespace SmartBotProfiles
 #endregion
 
 
-#region 深铁穴居人  AV_137 
+#region 深铁穴居人  AV_137  
  if(board.HasCardInHand(Card.Cards.AV_137)
         )
         {
-         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(9999)); 
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-999));//十字路口哨所      BAR_075 
-          Bot.Log("深铁穴居人 200");
+         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(999)); 
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-999));
+
+          Bot.Log("深铁穴居人 -999");
         } 
-        // if(board.HasCardOnBoard(Card.Cards.AV_137)
-        // )
-        // {
-        //  p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(250)); 
-        //   Bot.Log("深铁穴居人 不送");
-        // } 
+        if(board.HasCardOnBoard(Card.Cards.AV_137)
+        &&board.MinionFriend.Count<7
+        )
+        {
+         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(150)); 
+          Bot.Log("深铁穴居人 不送");
+        } 
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617,new Modifier(-999,Card.Cards.AV_137));
          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_025,new Modifier(-999,Card.Cards.AV_345));
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_316,new Modifier(-999,Card.Cards.AV_345));
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_292,new Modifier(-999,Card.Cards.AV_345));
@@ -343,6 +349,10 @@ namespace SmartBotProfiles
       }
 #endregion
 
+#region 召唤宠物 Summon Pet ID：AV_113p 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_113p, new Modifier(999)); 
+      p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_113p, new Modifier(-99));
+#endregion
 #region 十字路口哨所      BAR_075
 
       // 如果没有随从,降低4费马桶优先级,如果有则提高优先级

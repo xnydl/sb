@@ -18,10 +18,10 @@ using SmartBot.Plugins.API;
 // # 2x (2) 快速射击
 // # 2x (2) 狗狗饼干 DED_009
 // # 2x (3) 山羊坐骑
-// # 2x (3) 瞄准射击 SW_321 
+// # 2x (3) 瞄准射击
 // # 2x (4) 战歌驯兽师
 // # 1x (4) 瑞林的步枪
-// # 2x (4) 穿刺射击 BAR_032
+// # 2x (4) 穿刺射击
 // # 1x (5) 巴拉克·科多班恩
 // # 2x (5) 狂踏的犀牛
 // # 
@@ -52,6 +52,32 @@ using SmartBot.Plugins.API;
 // AAECAR8AD96+A9zMA6LOA4LQA7nSA4vVA4biA9zqA/DsA/f4A8X7A8OABPaPBLugBOGkBAA=
 // # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
 // # 套牌详情请查看https://hsreplay.net/decks/DuVwEhqRLpu2DZ7RFAOq9f/
+// ### 德雷克塔尔猎
+// # 职业：猎人
+// # 模式：标准模式
+// # 狮鹫年
+// #
+// # 2x (1) 银色侍从 CORE_EX1_008 
+// # 2x (1) 萌物来袭
+// # 2x (1) 深铁穴居人 
+// # 2x (1) 新生刺头
+// # 2x (1) 恶魔伙伴
+// # 2x (1) 引月长弓
+// # 2x (1) 击伤猎物 BAR_801
+// # 2x (2) 狗狗饼干
+// # 2x (2) 快速射击
+// # 2x (2) 异教低阶牧师
+// # 2x (3) 贪婪的书虫
+// # 1x (3) 穆克拉
+// # 2x (3) 瞄准射击
+// # 2x (3) 山羊坐骑
+// # 1x (4) 瑞林的步枪
+// # 1x (4) 德雷克塔尔 AV_100
+// # 1x (6) 野兽追猎者塔维什
+// #
+// AAECAR8Ej+MDu4oE25EEmKAEDdzMA+HOA4LQA8bRA7nSA4vVA9vtA/f4A8X7A8OABJWgBLugBOGkBAA=
+// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
+// # 套牌详情请查看https://hsreplay.net/decks/MwZSDcQGdaHCy6o5qqDQih/
 
 
 namespace SmartBot.Mulligan
@@ -84,6 +110,12 @@ namespace SmartBot.Mulligan
 
             foreach (Card.Cards card in choices)
             {
+                if(card==Card.Cards.BAR_801// 击伤猎物 BAR_801
+                ){ if(!CardsToKeep.Contains(Card.Cards.BAR_801))
+                    {
+                        Keep(card,"击伤猎物");
+                    }
+                }
                 if(card==Card.Cards.CORE_KAR_036// 奥术畸体 CORE_KAR_036
                 ){ if(!CardsToKeep.Contains(Card.Cards.CORE_KAR_036))
                     {
@@ -116,11 +148,25 @@ namespace SmartBot.Mulligan
                         Keep(card,"新生刺头");
                     }
                 }
+              if(card==Card.Cards.AV_100)//德雷克塔尔 AV_100
+                {
+                     if(!CardsToKeep.Contains(Card.Cards.AV_100))
+                    {
+                        Keep(card,"德雷克塔尔");
+                    }
+                }
               if(card==Card.Cards.AV_137)//深铁穴居人 AV_137
                 {
                      if(!CardsToKeep.Contains(Card.Cards.AV_137))
                     {
                         Keep(card,"深铁穴居人");
+                    }
+                }
+              if(card==Card.Cards.CORE_EX1_008)//银色侍从 CORE_EX1_008 
+                {
+                     if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_008))
+                    {
+                        Keep(card,"银色侍从");
                     }
                 }
               if(card==Card.Cards.SCH_617)//萌物来袭 SCH_617
