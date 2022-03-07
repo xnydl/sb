@@ -263,6 +263,16 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));//硬币 GAME_005
 
 #endregion 
+#region 铁木树皮 Ironbark ID：BT_132 
+         if(board.HasCardInHand(Card.Cards.BT_132)
+         &&friendCount>0
+         &&board.ManaAvailable >= 7
+    )
+    { 
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_132, new Modifier(-99));
+      Bot.Log("铁木树皮"+-99);
+    }
+#endregion 
 
 
 #region 施肥 Composting     SW_437
@@ -284,7 +294,7 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
     // }
 #endregion
 #region 培育 Nurture ID：AV_205p  
-        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_205p, new Modifier(-99));
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_205p, new Modifier(-444));
          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205p, new Modifier(999)); 
 #endregion
 
@@ -357,6 +367,20 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
       Bot.Log("树木生长:"+150);
     }
 #endregion
+#region 真菌宝藏 BT_128
+    if(board.HasCardInHand(Card.Cards.BT_128))
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_128, new Modifier(-555));  
+      Bot.Log("真菌宝藏:"+-555);
+    }
+#endregion
+#region 占领冷齿矿洞 AV_295
+    if(board.HasCardInHand(Card.Cards.AV_295))
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_295, new Modifier(-99));  
+      Bot.Log("占领冷齿矿洞:"+-99);
+    }
+#endregion
 
 #region 随心口袋 Resizing Pouch ID：YOP_029 
     if(board.HasCardInHand(Card.Cards.YOP_029)
@@ -366,7 +390,28 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
       Bot.Log("随心口袋:-99");
     }else{
        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_029, new Modifier(999));  
-      Bot.Log("随心口袋:999"); 
+    }
+#endregion
+
+#region 日蚀 Solar Eclipse ID：DMF_058
+    if(board.HasCardInHand(Card.Cards.DMF_058)
+    &&board.ManaAvailable >= 10
+    &&!board.HasCardInHand(Card.Cards.AV_292)//卡扎库杉 Kazakusan ID：ONY_005  
+    &&board.HasCardInHand(Card.Cards.DMF_732)//塞纳里奥结界 Cenarion Ward ID：DMF_732 
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_058, new Modifier(-99));  
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_732, new Modifier(-99));  
+      Bot.Log("日蚀 塞纳里奥结界:-99");
+    }
+#endregion
+#region 野性之力 Power of the Wild ID：CORE_EX1_160 
+    if(board.HasCardInHand(Card.Cards.CORE_EX1_160)
+    &&board.MinionFriend.Count ==0
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_160, new Modifier(150));  
+      Bot.Log("野性之力:150");
     }
 #endregion
 

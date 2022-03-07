@@ -229,6 +229,7 @@ namespace SmartBotProfiles
             int filterHaidao=haidaonum-board.Hand.Count(x => x.Template.Id == Card.Cards.DRG_056);
             Bot.Log("除去空降匪徒海盗数量"+haidaonum);
             int changshanghaidaonum=board.MinionFriend.Count(card => card.Race == Card.CRace.PIRATE);
+            int enemychangshanghaidaonum=board.MinionEnemy.Count(card => card.Race == Card.CRace.PIRATE);
             Bot.Log("场上海盗数量"+changshanghaidaonum);
             int luokala=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.SW_028t5)+board.Hand.Count(x => x.Template.Id == Card.Cards.SW_028t5)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.SW_028t5);
             Bot.Log("船长洛卡拉"+luokala);
@@ -329,6 +330,14 @@ namespace SmartBotProfiles
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_637, new Modifier(-20)); 
             Bot.Log("海盗帕奇斯 -20");
+            }
+#endregion
+#region 葛拉卡爬行蟹 Golakka Crawler ID：UNG_807 
+            if(board.HasCardInHand(Card.Cards.UNG_807)
+            &&enemychangshanghaidaonum==0
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.UNG_807, new Modifier(130)); 
+            Bot.Log("葛拉卡爬行蟹 130");
             }
 #endregion
 #region 摧心者 Mindbreaker ICC_902  

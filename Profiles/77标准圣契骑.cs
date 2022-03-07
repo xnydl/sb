@@ -301,6 +301,17 @@ namespace SmartBotProfiles
         }
       
 #endregion
+// #region 圣盾怪补贴
+// // board.MinionEnemy.Count(x=>x.Divineshield==true && x.Template.Id==Card.Cards.CS3_031)>=1
+// int Divineshield=board.MinionFriend(x=>x.Divineshield==true);
+//         if(Divineshield)
+//         )
+//         {
+//           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_338,new Modifier(130,Divineshield));
+//           Bot.Log("圣盾怪补贴");
+//         }
+      
+// #endregion
 
 #region 血色骑士赛丹 Saidan the Scarlet ID：AV_345 
 
