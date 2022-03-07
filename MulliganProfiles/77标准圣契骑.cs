@@ -33,6 +33,7 @@ using SmartBot.Plugins.API;
 // # 十字路口哨所 BAR_075 
 // # 深铁穴居人  AV_137 
 // # 坚守桥梁 Hold the Bridge ID：AV_338 
+// # 异教低阶牧师 Cult Neophyte ID：SCH_713 
 // AAECAcHbBAj8uAOEwQOVzQOT0AP94wP76AOR7APZ+QMLyrgD/bgD6rkD67kD7LkDysEDwNEDzOsD8PYDi/gDjfgDAA==
 // # 
 // # 想要使用这副套牌，请先复制到剪贴板，然后在游戏中点击“新套牌”进行粘贴。
@@ -135,6 +136,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"圣礼骑士");
                     }
                 }
+                 if((card==Card.Cards.SCH_713//异教低阶牧师 Cult Neophyte ID：SCH_713 
+                )){
+                     if(!CardsToKeep.Contains(Card.Cards.SCH_713))
+                    {
+                        Keep(card,"异教低阶牧师");
+                    }
+                }
                  if((card==Card.Cards.CORE_ICC_038//正义保护者 CORE_ICC_038
                 )){
                      if(!CardsToKeep.Contains(Card.Cards.CORE_ICC_038))
@@ -155,27 +163,19 @@ namespace SmartBot.Mulligan
                     {
                         Keep(card,"奥尔多侍从");
                     }
-                }
-
-                if(card==Card.Cards.BT_019// 莫戈尔·莫戈尔格 BT_019 
-                ){
-               
-                        Keep(card,"莫戈尔·莫戈尔格");
-                    
-                }
-                
+                }                
                 if(card==Card.Cards.BT_292// 阿达尔之手 BT_292
                 ){ if(!CardsToKeep.Contains(Card.Cards.BT_292)&&flag1>=1)
                     {
                         Keep(card,"阿达尔之手");
                     }
                 }
-                if(card==Card.Cards.SW_316//神圣坐骑 SW_316
-                ){ if(!CardsToKeep.Contains(Card.Cards.SW_316)&&flag1>=1)
-                    {
-                        Keep(card,"神圣坐骑");
-                    }
-                }
+                // if(card==Card.Cards.SW_316//神圣坐骑 SW_316
+                // ){ if(!CardsToKeep.Contains(Card.Cards.SW_316)&&flag1>=1)
+                //     {
+                //         Keep(card,"神圣坐骑");
+                //     }
+                // }
                 if(card==Card.Cards.AV_137// 深铁穴居人  AV_137 
                 ){ 
                         Keep(card,"深铁穴居人");
@@ -187,10 +187,11 @@ namespace SmartBot.Mulligan
                         Keep(card,"新生入学");
                     }
                 }
-                if(card==Card.Cards.AV_343// 新生入学 AV_343 
-                ){ 
+                if(card==Card.Cards.AV_343
+                ){ if(!CardsToKeep.Contains(Card.Cards.AV_343))
+                    {
                         Keep(card,"石炉守备者");
-                    
+                    }
                 }
                 if(card==Card.Cards.DMF_236//古神在上 DMF_236
                 ){ if(!CardsToKeep.Contains(Card.Cards.DMF_236))
@@ -257,6 +258,10 @@ namespace SmartBot.Mulligan
                 if(card==Card.Cards.SCH_526&&DRUID>0// 巴罗夫领主 SCH_526   
                 ){              
                         Keep(card,"巴罗夫领主");
+                }
+                if(card==Card.Cards.AV_206// 光铸凯瑞尔 Lightforged Cariel ID：AV_206 
+                ){              
+                        Keep(card,"光铸凯瑞尔");
                 }
               
                

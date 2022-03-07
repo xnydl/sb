@@ -431,23 +431,23 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 霜刃豹头领 AV_291
       if(board.HasCardInHand(Card.Cards.AV_291)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(45)); 
-      Bot.Log("霜刃豹头领 45");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(100)); 
+      Bot.Log("霜刃豹头领 100");
       }
 #endregion
 #region 幽影猫头鹰 DMF_060
       if(board.HasCardInHand(Card.Cards.DMF_060)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(45)); 
-      Bot.Log("幽影猫头鹰 45");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(100)); 
+      Bot.Log("幽影猫头鹰 100");
       }
 #endregion
 #region 霜狼巢屋 AV_360 
       if(board.HasCardInHand(Card.Cards.AV_360)
       &&board.MinionFriend.Count <7
       ){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-550));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-999));
     //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-100)); 
-      Bot.Log("霜狼巢屋且随从小于等于6  -550");
+      Bot.Log("霜狼巢屋且随从小于等于6  -999");
       }
 
 #endregion
@@ -499,6 +499,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
 #region 技能
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(-550)); 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(-550)); //冰雪绽放 Ice Blossom ID：AV_205a 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(999)); //山谷植根 Valley Root ID：AV_205pb  
 #endregion
 #region 前沿哨所      BAR_074
   //一费提高马桶优先级，如果有硬币前沿哨所      BAR_074 ,无钢鬃卫兵      BAR_537 
@@ -593,6 +595,12 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
           Bot.Log("野性印记 150");
       }
 #endregion
+#region 真菌宝藏 Fungal Fortunes ID：BT_128 
+         if(board.HasCardInHand(Card.Cards.BT_128)){
+               p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_128, new Modifier(999));
+          Bot.Log("真菌宝藏 999");
+      }
+#endregion
 #region 野性之心 Heart of the Wild ID：AV_292 
          if(board.HasCardInHand(Card.Cards.AV_292)){
                p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_292, new Modifier(130));
@@ -603,7 +611,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 德雷克塔尔 Drek'Thar ID：AV_100  
          if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-200));
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(2000));
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(9999));
           Bot.Log("德雷克塔尔 -99");
       }else{
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
@@ -611,13 +619,14 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
 #endregion
 #region 深铁穴居人  AV_137  
- if(board.HasCardInHand(Card.Cards.AV_137)
+        if(board.HasCardInHand(Card.Cards.AV_137)
+        &&board.MinionFriend.Count<6
         )
         {
          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(999)); 
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-260));
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-999));
 
-          Bot.Log("深铁穴居人 -260");
+          Bot.Log("深铁穴居人 -999");
         } 
         if(board.HasCardOnBoard(Card.Cards.AV_137)
         &&board.MinionFriend.Count<7
@@ -627,7 +636,13 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
           Bot.Log("深铁穴居人 不送");
         } 
          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617,new Modifier(-999,Card.Cards.AV_137));
-       #endregion
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_025,new Modifier(-999,Card.Cards.AV_345));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_316,new Modifier(-999,Card.Cards.AV_345));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_292,new Modifier(-999,Card.Cards.AV_345));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_338,new Modifier(-999,Card.Cards.AV_345));//坚守桥梁 Hold the Bridge ID：AV_338 
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_138,new Modifier(-999,Card.Cards.AV_345));//威能祝福 Blessing of Authority ID：SCH_138 
+
+#endregion
 
 #region 钢鬃卫兵  BAR_537 
         // 不送钢鬃卫兵      BAR_537 
@@ -977,20 +992,20 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
 
 #endregion
 
-#region 二费手上有二费牌不用一费牌
-if(board.ManaAvailable ==2
-  &&board.Hand.Exists(card => card.CurrentCost==2)
-      ){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(999));//农夫      SW_319
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_008, new Modifier(999));//银色侍从  CORE_EX1_008 
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_617t, new Modifier(999));//魔鼠宝宝      SCH_617t 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_422, new Modifier(999));//播种施肥      SW_422
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(999));//活泼的松鼠      SW_439
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_333, new Modifier(999));//自然研习  SCH_333
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617, new Modifier(999));//萌物来袭      SCH_617
-      Bot.Log("农夫 播种施肥 活泼的松鼠 自然研习 萌物来袭 银色侍从 魔鼠宝宝 999 ");
-      }
-#endregion
+// #region 二费手上有二费牌不用一费牌
+// if(board.ManaAvailable ==2
+//   &&board.Hand.Exists(card => card.CurrentCost==2)
+//       ){
+//       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(999));//农夫      SW_319
+//       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_008, new Modifier(999));//银色侍从  CORE_EX1_008 
+//       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_617t, new Modifier(999));//魔鼠宝宝      SCH_617t 
+//       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_422, new Modifier(999));//播种施肥      SW_422
+//       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(999));//活泼的松鼠      SW_439
+//       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_333, new Modifier(999));//自然研习  SCH_333
+//       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617, new Modifier(999));//萌物来袭      SCH_617
+//       Bot.Log("农夫 播种施肥 活泼的松鼠 自然研习 萌物来袭 银色侍从 魔鼠宝宝 999 ");
+//       }
+// #endregion
 
 #region 橡果 Acorn     SW_439t
       if(board.HasCardInHand(Card.Cards.SW_439t)){

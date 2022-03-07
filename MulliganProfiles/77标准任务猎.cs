@@ -4,56 +4,32 @@ using System.Linq;
 using SmartBot.Database;
 using SmartBot.Plugins.API;
 
-// ### 法强萨
-// # 职业：萨满祭司
+// ### 任务猎
+// # 职业：猎人
 // # 模式：标准模式
 // # 狮鹫年
 // #
-// # 2x (0) 雷霆绽放 SCH_427
-// # 2x (1) 闪电箭
-// # 2x (1) 电击学徒
-// # 2x (1) 强行透支
-// # 2x (1) 始生研习 SCH_270
-// # 2x (1) 冷风
-// # 2x (2) 破霰元素 AV_260 
-// # 2x (2) 大地崩陷
-// # 2x (2) 冰霜撕咬 AV_259 
-// # 2x (3) 艳丽的金刚鹦鹉 DED_509 
-// # 2x (3) 毒蛇神殿传送门
-// # 1x (3) 原初地下城历险家 WC_005 
-// # 2x (4) 蛮爪洞穴 AV_268
-// # 2x (4) 多系施法者 DED_524 
-// # 2x (6) 雪落守护者 AV_255 
-// # 1x (8) 元素使者布鲁坎
-// #
-// AAECAaoIAuPuA8ORBA7buAPNzgPw1AOJ5APq5wOF+gPTgASogQS5kQT5kQSVkgTckgTblAT5nwQA
-// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
-// # 套牌详情请查看https://hsreplay.net/decks/3zdp1X5kIA1byIKl51JT5f/
-// ### 法强萨
-// # 职业：萨满祭司
-// # 模式：标准模式
-// # 狮鹫年
-// #
-// # 2x (0) 雷霆绽放 SCH_427
-// # 2x (1) 闪电箭 CORE_EX1_238
-// # 2x (1) 电击学徒 CS3_007 
-// # 2x (1) 强行透支
-// # 2x (1) 始生研习 SCH_270
-// # 1x (1) 冷风 AV_266
-// # 2x (2) 破霰元素 AV_260
-// # 2x (2) 大地崩陷 YOP_023
-// # 2x (2) 冰霜撕咬 AV_259
-// # 2x (3) 艳丽的金刚鹦鹉 DED_509
-// # 2x (3) 毒蛇神殿传送门 BT_100
-// # 2x (3) 原初地下城历险家 WC_005 
-// # 2x (4) 蛮爪洞穴 AV_268
+// # 2x (1) 追踪术
+// # 2x (1) 数量压制 SCH_604
+// # 2x (1) 奥术射击 CORE_DS1_185 
+// # 2x (1) 击伤猎物 BAR_801
+// # 1x (1) 保卫矮人区 SW_322 
+// # 2x (2) 爆炸陷阱
+// # 2x (2) 灭龙射击 ONY_010
+// # 2x (2) 快速射击
+// # 2x (2) 套索射击 YOP_027 
+// # 2x (2) 冰霜陷阱 AV_226
+// # 2x (2) 冰冻陷阱 
+// # 2x (2) 丹巴达尔碉堡 AV_147 
+// # 2x (3) 瞄准射击
+// # 2x (4) 布置陷阱
 // # 2x (4) 多系施法者 DED_524
-// # 2x (6) 雪落守护者 AV_255
-// # 1x (8) 元素使者布鲁坎
+// # 1x (5) 巴拉克·科多班恩
 // #
-// AAECAaoIAsORBNySBA7buAPNzgPw1AOJ5APq5wPj7gOF+gPTgASogQS5kQT5kQSVkgTblAT5nwQA
+// AAECAR8C5e8D/fgDDrnQA43kA9vtA/f4A6iBBKmNBKuNBKmfBKqfBOOfBOSfBLugBMGsBJmtBAA=
 // # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
-// # 套牌详情请查看https://hsreplay.net/decks/DQBfU3QNYAeDZ6yN8FxSzc/
+// # 套牌详情请查看https://hsreplay.net/decks/bGZEPaZqObHVQUdwnC2wie/
+
 
 namespace SmartBot.Mulligan
 {
@@ -117,59 +93,77 @@ namespace SmartBot.Mulligan
             }
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.SW_419
+                if(card==Card.Cards.SW_419//艾露恩神谕者 Oracle of Elune      SW_419  
                 ){flag1+=1;}
                 
+               
             }
 
             foreach (Card.Cards card in choices)
             {
-                 if((card==Card.Cards.SCH_427
+                 if((card==Card.Cards.SCH_604//数量压制 SCH_604
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.SCH_427))
+                       if(!CardsToKeep.Contains(Card.Cards.SCH_604))
                     {
-                        Keep(card,"雷霆绽放");
+                        Keep(card,"数量压制");
                     }
                     }   
                 }
-                 if((card==Card.Cards.AV_260
+                 if((card==Card.Cards.CORE_DS1_185//奥术射击 CORE_DS1_185 
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.AV_260))
+                       if(!CardsToKeep.Contains(Card.Cards.CORE_DS1_185))
                     {
-                        Keep(card,"破霰元素");
+                        Keep(card,"奥术射击");
                     }
                     }   
                 }
-                 if((card==Card.Cards.WC_005
+                 if((card==Card.Cards.BAR_801//击伤猎物 BAR_801
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.WC_005))
+                       if(!CardsToKeep.Contains(Card.Cards.BAR_801))
                     {
-                        Keep(card,"原初地下城历险家");
+                        Keep(card,"击伤猎物");
                     }
                     }   
                 }
-                 if((card==Card.Cards.AV_268//霜狼巢屋 Frostwolf Kennels ID：AV_268 
+                 if((card==Card.Cards.SW_322//保卫矮人区 SW_322 
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.AV_268))
+                       if(!CardsToKeep.Contains(Card.Cards.SW_322))
                     {
-                        Keep(card,"蛮爪洞穴");
+                        Keep(card,"保卫矮人区");
                     }
                     }   
                 }
-                 if((card==Card.Cards.SCH_270//始生研习 SCH_270
+                 if((card==Card.Cards.ONY_010//灭龙射击 ONY_010
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.SCH_270))
+                       if(!CardsToKeep.Contains(Card.Cards.ONY_010))
                     {
-                        Keep(card,"始生研习");
+                        Keep(card,"灭龙射击");
                     }
                     }   
                 }
-				// //有逝者之剑 Sword of the Fallen      BAR_875留北卫军指挥官 Northwatch Commander      BAR_876
+                 if((card==Card.Cards.YOP_027//套索射击 YOP_027 
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.YOP_027))
+                    {
+                        Keep(card,"套索射击");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.AV_147//丹巴达尔碉堡 AV_147 
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.AV_147))
+                    {
+                        Keep(card,"丹巴达尔碉堡");
+                    }
+                    }   
+                }
         //         if(card==Card.Cards.BAR_876 && flag7>=1
         //         && HasCoin==true
         //          )

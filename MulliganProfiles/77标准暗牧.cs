@@ -3,57 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using SmartBot.Database;
 using SmartBot.Plugins.API;
-
-// ### 法强萨
-// # 职业：萨满祭司
+// ### 快攻暗牧
+// # 职业：牧师
 // # 模式：标准模式
 // # 狮鹫年
 // #
-// # 2x (0) 雷霆绽放 SCH_427
-// # 2x (1) 闪电箭
-// # 2x (1) 电击学徒
-// # 2x (1) 强行透支
-// # 2x (1) 始生研习 SCH_270
-// # 2x (1) 冷风
-// # 2x (2) 破霰元素 AV_260 
-// # 2x (2) 大地崩陷
-// # 2x (2) 冰霜撕咬 AV_259 
-// # 2x (3) 艳丽的金刚鹦鹉 DED_509 
-// # 2x (3) 毒蛇神殿传送门
-// # 1x (3) 原初地下城历险家 WC_005 
-// # 2x (4) 蛮爪洞穴 AV_268
-// # 2x (4) 多系施法者 DED_524 
-// # 2x (6) 雪落守护者 AV_255 
-// # 1x (8) 元素使者布鲁坎
+// # 2x (0) 亡者复生 SCH_514
+// # 2x (1) 防护改装师
+// # 2x (1) 虚触侍从 SW_446 
+// # 2x (1) 疲倦的大一新生 SCH_137
+// # 2x (1) 深铁穴居人 AV_137
+// # 2x (1) 巡游向导 SCH_312
+// # 2x (1) 农夫 SW_319
+// # 2x (2) 迪菲亚麻风侏儒 DED_513 
+// # 2x (2) 蠕动的恐魔 DMF_091
+// # 2x (2) 暮光欺诈者
+// # 1x (2) 暗中生长 CS3_028 
+// # 2x (2) 异教低阶牧师 SCH_713 
+// # 2x (2) 库尔提拉斯教士
+// # 1x (3) 曼科里克 BAR_721
+// # 2x (4) 虚空碎片 SW_442
+// # 1x (5) 黑暗主教本尼迪塔斯
+// # 1x (6) 重拳先生
 // #
-// AAECAaoIAuPuA8ORBA7buAPNzgPw1AOJ5APq5wOF+gPTgASogQS5kQT5kQSVkgTckgTblAT5nwQA
+// AAECAa0GBOfwA7v3A7+ABK2KBA3evgObzQPXzgO70QOL1QPK4wP09gOI9wOj9wOt9wONgQTvnwThpAQA
 // # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
-// # 套牌详情请查看https://hsreplay.net/decks/3zdp1X5kIA1byIKl51JT5f/
-// ### 法强萨
-// # 职业：萨满祭司
-// # 模式：标准模式
-// # 狮鹫年
-// #
-// # 2x (0) 雷霆绽放 SCH_427
-// # 2x (1) 闪电箭 CORE_EX1_238
-// # 2x (1) 电击学徒 CS3_007 
-// # 2x (1) 强行透支
-// # 2x (1) 始生研习 SCH_270
-// # 1x (1) 冷风 AV_266
-// # 2x (2) 破霰元素 AV_260
-// # 2x (2) 大地崩陷 YOP_023
-// # 2x (2) 冰霜撕咬 AV_259
-// # 2x (3) 艳丽的金刚鹦鹉 DED_509
-// # 2x (3) 毒蛇神殿传送门 BT_100
-// # 2x (3) 原初地下城历险家 WC_005 
-// # 2x (4) 蛮爪洞穴 AV_268
-// # 2x (4) 多系施法者 DED_524
-// # 2x (6) 雪落守护者 AV_255
-// # 1x (8) 元素使者布鲁坎
-// #
-// AAECAaoIAsORBNySBA7buAPNzgPw1AOJ5APq5wPj7gOF+gPTgASogQS5kQT5kQSVkgTblAT5nwQA
-// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
-// # 套牌详情请查看https://hsreplay.net/decks/DQBfU3QNYAeDZ6yN8FxSzc/
+// # 套牌详情请查看https://hsreplay.net/decks/fRe2XmbfvXVnHQvXrhqCve/
 
 namespace SmartBot.Mulligan
 {
@@ -124,48 +99,75 @@ namespace SmartBot.Mulligan
 
             foreach (Card.Cards card in choices)
             {
-                 if((card==Card.Cards.SCH_427
+                 if((card==Card.Cards.SW_446
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.SCH_427))
+                       if(!CardsToKeep.Contains(Card.Cards.SW_446))
                     {
-                        Keep(card,"雷霆绽放");
+                        Keep(card,"虚触侍从");
                     }
                     }   
                 }
-                 if((card==Card.Cards.AV_260
+                 if((card==Card.Cards.SCH_137
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.AV_260))
+                       if(!CardsToKeep.Contains(Card.Cards.SCH_137))
                     {
-                        Keep(card,"破霰元素");
+                        Keep(card,"疲倦的大一新生");
                     }
                     }   
                 }
-                 if((card==Card.Cards.WC_005
+                 if((card==Card.Cards.AV_137
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.WC_005))
+                       if(!CardsToKeep.Contains(Card.Cards.AV_137))
                     {
-                        Keep(card,"原初地下城历险家");
+                        Keep(card,"深铁穴居人");
                     }
                     }   
                 }
-                 if((card==Card.Cards.AV_268//霜狼巢屋 Frostwolf Kennels ID：AV_268 
+                 if((card==Card.Cards.SCH_312
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.AV_268))
+                       if(!CardsToKeep.Contains(Card.Cards.SCH_312))
                     {
-                        Keep(card,"蛮爪洞穴");
+                        Keep(card,"巡游向导");
                     }
                     }   
                 }
-                 if((card==Card.Cards.SCH_270//始生研习 SCH_270
+                 if((card==Card.Cards.SW_319
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.SCH_270))
+                       if(!CardsToKeep.Contains(Card.Cards.SW_319))
                     {
-                        Keep(card,"始生研习");
+                        Keep(card,"农夫");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.DMF_091
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.DMF_091))
+                    {
+                        Keep(card,"蠕动的恐魔");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.SCH_713
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.SCH_713))
+                    {
+                        Keep(card,"异教低阶牧师");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.BAR_721
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.BAR_721))
+                    {
+                        Keep(card,"曼科里克");
                     }
                     }   
                 }

@@ -152,13 +152,13 @@ namespace SmartBotProfiles
                 || board.EnemyClass == Card.CClass.PALADIN
                 || board.EnemyClass == Card.CClass.WARRIOR)
             {
-                p.GlobalAggroModifier = (int)(a * 0.625 + 96.5);
-                Bot.Log("攻击值"+(a * 0.625 + 120.5));
+                p.GlobalAggroModifier = (int)(a * 0.625 + 200.5);
+                Bot.Log("攻击值"+(a * 0.625 + 200.5));
             }
             else
             {
-                p.GlobalAggroModifier = (int)(a * 0.625 + 103.5);
-                Bot.Log("攻击值"+(a * 0.625 + 140.5));
+                p.GlobalAggroModifier = (int)(a * 0.625 + 250.5);
+                Bot.Log("攻击值"+(a * 0.625 + 250.5));
             }	            
        {
  
@@ -215,7 +215,27 @@ namespace SmartBotProfiles
                     enemyMinionHealth += board.MinionEnemy[x].CurrentHealth;
                 }
             }
-
+            // 坟场奥数法术数量
+            int NumbeOlympicspells=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CORE_DS1_185);
+           Bot.Log("坟场奥数法术数量"+NumbeOlympicspells);
+            // 坟场火焰法术数量
+        //     int Numbeflamespells=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CORE_EX1_610);
+        //    Bot.Log("坟场火焰法术数量"+Numbeflamespells);
+            // 坟场冰霜法术数量
+            int Numbesherbetspells=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_266)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_259);
+           Bot.Log("坟场冰霜法术数量"+Numbesherbetspells);
+            // 坟场自然法术数量
+            int Numbenaturespells=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.SCH_427)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CORE_EX1_238)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.YOP_023)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.BT_100);
+           Bot.Log("坟场自然法术数量"+Numbenaturespells);
+            // 敌方随从数量
+            int Numberofenemyfollowers=board.MinionEnemy.Count;
+           Bot.Log("敌方随从数量"+Numberofenemyfollowers);
+           // 剩余卡牌数
+            int Remainingcards=board.FriendDeckCount;
+           Bot.Log("剩余卡牌数"+Remainingcards);
+           // 用过的的冰封雄鹿守卫 Frozen Stagguard ID：AV_257t 
+            int usedFrozen=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.AV_257t)+board.Hand.Count(x => x.Template.Id == Card.Cards.AV_257t)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_257t);
+           Bot.Log("用过的的冰封雄鹿守卫"+usedFrozen);
  #endregion
 
 
@@ -349,44 +369,66 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
           Bot.Log("笔记能手优先级9999");
       }
 #endregion
+#region 电击学徒 CS3_007 
+      if(board.HasCardInHand(Card.Cards.CS3_007)
+      ){
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_007, new Modifier(250));
+          Bot.Log("电击学徒 250");
+      }
+#endregion
 
 #region 原初地下城历险家 WC_005
       if(board.HasCardInHand(Card.Cards.WC_005)
       ){
-         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.WC_005, new Modifier(-40));
-          Bot.Log("原初地下城历险家-40");
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.WC_005, new Modifier(-99));
+          Bot.Log("原初地下城历险家-99");
       }
 #endregion
-#region 多系施法者 DED_524 
-      if(board.HasCardInHand(Card.Cards.DED_524)
-    //   &&board.FriendGraveyard.Count(card => card.Type == Card.CType.SPELL)<3
-      ){
-         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_524, new Modifier(130));
-          Bot.Log("多系施法者 130");
-      }
+#region 多系施法者 DED_524
+        if(board.HasCardInHand(Card.Cards.DED_524)
+        &&NumbeOlympicspells>0
+        &&Numbesherbetspells>0
+        )
+        {
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_524, new Modifier(-250));
+         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_524, new Modifier(9999));
+         Bot.Log("多系施法者"+-250);
+        }else if(board.HasCardInHand(Card.Cards.DED_524)
+        &&NumbeOlympicspells>0
+        &&Numbenaturespells>0
+        ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_524, new Modifier(-250));
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_524, new Modifier(9999));
+         Bot.Log("多系施法者"+-250);
+        }else if(board.HasCardInHand(Card.Cards.DED_524)
+        &&Numbesherbetspells>0
+        &&Numbenaturespells>0
+        ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_524, new Modifier(-250));
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_524, new Modifier(9999));
+         Bot.Log("多系施法者"+-250);
+        }else{
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_524, new Modifier(999));
+        }
 #endregion
 #region 雪落守护者 AV_255
 // int zongdeguai=board.MinionEnemy.Count+board.MinionFriend.Count;
 int axx=board.MinionEnemy.Count;
       if(board.HasCardInHand(Card.Cards.AV_255)
-      &&board.MinionEnemy.Count<4
-      ){
-         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_255, new Modifier(150));
-          Bot.Log("雪落守护者 150");
-      }
-      if(board.HasCardInHand(Card.Cards.AV_255)
-      &&board.MinionEnemy.Count>=4
+      &&(board.MinionEnemy.Count>=3||enemyAttack>=5)
       ){
          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_255, new Modifier(-25*(axx)));
-          Bot.Log("雪落守护者 "+-25*(axx));
+          Bot.Log("雪落守护者 "+-50*(Numberofenemyfollowers));
+      }else{
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_255, new Modifier(150));
       }
 #endregion
 #region 艳丽的金刚鹦鹉 DED_509
       if(board.HasCardInHand(Card.Cards.DED_509)
       &&board.HasCardOnBoard(Card.Cards.AV_255)
       ){
-         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_509, new Modifier(-250));
-          Bot.Log("艳丽的金刚鹦鹉 -250");
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_509, new Modifier(-999));
+          Bot.Log("艳丽的金刚鹦鹉 -999");
       }
 #endregion
 
@@ -398,22 +440,28 @@ int axx=board.MinionEnemy.Count;
       &&board.MinionEnemy.Count > 0
       ){
         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_266, new Modifier(-40));
-          Bot.Log("冷风 -40");          
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_266, new Modifier(999)); 
+        Bot.Log("冷风 -40");          
       }
 #endregion
 
 
 
 #region 蛮爪洞穴 AV_268
-       if(
-        board.HasCardInHand(Card.Cards.AV_268)//硬币 GAME_005
+       if(board.HasCardInHand(Card.Cards.AV_268)//硬币 GAME_005
         &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_268)==0
+        &&board.MinionFriend.Count <7
       )
       {
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-550));///硬币 SCH_427
-          Bot.Log("蛮爪洞穴-550");
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-9999));
+        Bot.Log("蛮爪洞穴-9999");
+      }else if( board.HasCardInHand(Card.Cards.AV_268)//硬币 GAME_005
+        &&usedFrozen==3
+        &&board.MinionFriend.Count <7){
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-9999));
+        Bot.Log("蛮爪洞穴-9999");
       }else{
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-99));///硬币 SCH_427
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-99));
       }
 #endregion
 
@@ -449,7 +497,17 @@ int axx=board.MinionEnemy.Count;
              Bot.Log("破霰元素 -99");
             }
 #endregion
-
+#region 卡扎库杉 Kazakusan ID：ONY_005  
+         if(board.HasCardInHand(Card.Cards.ONY_005)
+            &&Remainingcards==0
+            ){
+                p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(-999));
+                p.PlayOrderModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(999));
+                Bot.Log("卡扎库杉 -999");
+             }else{
+                p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(999));
+             }
+#endregion
 
 #region 攻击优先 卡牌威胁（通用）  更新到贫瘠之地
 
