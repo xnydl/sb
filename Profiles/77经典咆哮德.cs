@@ -338,25 +338,49 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_317, new Modifier(200));//原野联络人 Field Contact ID：BAR_317 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_030, new Modifier(200));//邪火神射手 Felfire Deadeye ID：YOP_030  
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_004, new Modifier(200));//年轻的女祭司 Young Priestess ID：VAN_EX1_004 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.VAN_NEW1_040, new Modifier(200));//霍格 Hogger ID：VAN_NEW1_040 
+#endregion
+#region 野性之力 Power of the Wild ID：VAN_EX1_160 
+    if(board.HasCardInHand(Card.Cards.VAN_EX1_160)
+    &&board.MinionFriend.Count ==0
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_160, new Modifier(150));  
+      Bot.Log("野性之力:150");
+    }
 #endregion
 
-
 #region 野蛮咆哮 Savage Roar ID：VAN_CS2_011 
-    if(board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)==1
-    &&board.ManaAvailable <9
+    if(board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)>0
+
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_011, new Modifier(150));
-        Bot.Log("野蛮咆哮"+150);
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_011, new Modifier(650));
+        Bot.Log("野蛮咆哮"+650);
+    }
+#endregion
+#region 激活 VAN_EX1_169
+int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_EX1_571);
+        Bot.Log("combo牌数量"+combo);
+
+    if(board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_EX1_169)==1
+    &&board.ManaAvailable !=10
+    &&combo>=2
+    )
+    { 
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_169, new Modifier(150));
+        Bot.Log("有双咆哮和单树人，小于10费，留combo");
     }
 #endregion
 
 #region 自然之力 VAN_EX1_571
     if(board.HasCardInHand(Card.Cards.VAN_EX1_571)
+    &&board.HeroFriend.CurrentHealth>13
+    &&board.EnemyClass != Card.CClass.WARLOCK
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(550));
-        Bot.Log("自然之力"+550);
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(650));
+        Bot.Log("自然之力"+650);
     }
 #endregion
 #region 野性成长 VAN_CS2_013 
@@ -366,8 +390,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     ) { 
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(150));
         Bot.Log("野性成长"+150);
-    }else
-    { 
+    }else if(board.HasCardInHand(Card.Cards.VAN_CS2_013 )
+    &&board.ManaAvailable ==9){
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(150));
+        Bot.Log("野性成长"+150);
+    }else{ 
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(-20));
         Bot.Log("野性成长"+-20);
     }
@@ -384,8 +411,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
          if(board.HasCardInHand(Card.Cards.VAN_EX1_166)
          &&board.MinionEnemy.Count == 0
          ){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_016, new Modifier(150));
-          Bot.Log("丛林守护者 150");
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_016, new Modifier(130));
+          Bot.Log("丛林守护者 130");
       }
 #endregion
 #region 知识古树 Ancient of Lore ID：VAN_NEW1_008  
@@ -402,12 +429,27 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 王牌猎人 Big Game Hunter ID：VAN_EX1_005 
          if(board.HasCardInHand(Card.Cards.VAN_EX1_005)
-         &&enemyAttack<8
+         &&board.MinionEnemy.Count(minion => minion.CurrentAtk >=7)==0
          ){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_005, new Modifier(250));
-          Bot.Log("王牌猎人 150");
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_005, new Modifier(650));
+          Bot.Log("王牌猎人 650");
       }
 #endregion
+#region 精神控制技师 Mind Control Tech ID：VAN_EX1_085 
+         if(board.HasCardInHand(Card.Cards.VAN_EX1_085)
+         &&board.MinionEnemy.Count<=3
+         ){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_085, new Modifier(650));
+          Bot.Log("精神控制技师 650");
+      }
+#endregion
+// #region 丛林守护者 VAN_EX1_166
+//          if(board.HasCardInHand(Card.Cards.VAN_EX1_166)
+//          ){
+//           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_166, new Modifier(250));
+//           Bot.Log("丛林守护者 250");
+//       }
+// #endregion
 
 #region 技能
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(-550)); 
