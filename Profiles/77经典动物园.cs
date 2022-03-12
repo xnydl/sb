@@ -351,9 +351,10 @@ if(board.HasCardInHand(Card.Cards.SCH_514)
             if(board.HasCardInHand(Card.Cards.VAN_EX1_004)
             &&board.MinionFriend.Count ==0
             ){
-           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_004, new Modifier(150));
-            Bot.Log("年轻的女祭司 150");
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_004, new Modifier(250));
+            Bot.Log("年轻的女祭司 250");
             }
+            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.VAN_EX1_004, new Modifier(150));
 #endregion
 #region 邪恶低语 Wicked Whispers ID：DMF_119 
             if(board.HasCardInHand(Card.Cards.DMF_119)
@@ -361,6 +362,13 @@ if(board.HasCardInHand(Card.Cards.SCH_514)
             ){
            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_119, new Modifier(130));
             Bot.Log("邪恶低语 130");
+            }
+#endregion
+#region 灵魂之火 Soulfire ID：VAN_EX1_308 
+            if(board.HasCardInHand(Card.Cards.VAN_EX1_308)
+            ){
+           p.PlayOrderModifiers.AddOrUpdate(Card.Cards.VAN_EX1_308, new Modifier(-9999));
+            Bot.Log("灵魂之火 -9999");
             }
 #endregion
 #region 被亵渎的墓园 Desecrated Graveyard ID：AV_657 

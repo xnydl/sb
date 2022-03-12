@@ -254,7 +254,8 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_030, new Modifier(200));//货物保镖 Cargo Guard ID：SW_030
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_317, new Modifier(200));//原野联络人 Field Contact ID：BAR_317 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_030, new Modifier(200));//邪火神射手 Felfire Deadeye ID：YOP_030  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DRG_092, new Modifier(200));//幻化师 Transmogrifier ID：DRG_092 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DRG_092, new Modifier(250));//幻化师 Transmogrifier ID：DRG_092 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
 #endregion
 
 #region 雷霆绽放 SCH_427  硬币 GAME_005

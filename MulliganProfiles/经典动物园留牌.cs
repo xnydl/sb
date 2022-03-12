@@ -99,14 +99,14 @@ namespace SmartBot.Mulligan
             foreach (Card.Cards card in choices)
             {
                
-                if(card==Card.Cards.VAN_CS2_188//叫嚣的中士 VAN_CS2_188 
-                )
-                {
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_188))
-                    {
-                        Keep(card,"叫嚣的中士 ");
-                    }   
-                }
+                // if(card==Card.Cards.VAN_CS2_188//叫嚣的中士 VAN_CS2_188 
+                // )
+                // {
+                //     if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_188))
+                //     {
+                //         Keep(card,"叫嚣的中士 ");
+                //     }   
+                // }
                 if(card==Card.Cards.VAN_EX1_004//年轻的女祭司 VAN_EX1_004 
                 )
                 {

@@ -375,21 +375,24 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
 
 #region 自然之力 VAN_EX1_571
     if(board.HasCardInHand(Card.Cards.VAN_EX1_571)
-    &&board.HeroFriend.CurrentHealth>13
-    &&board.EnemyClass != Card.CClass.WARLOCK
+    &&board.HeroFriend.CurrentHealth>10
+    &&enemyAttack<=5
+    &&(board.EnemyClass != Card.CClass.WARLOCK&&board.HeroFriend.CurrentHealth>20)
     )
     { 
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(650));
         Bot.Log("自然之力"+650);
+    }else{
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(150));
     }
 #endregion
-#region 野性成长 VAN_CS2_013 
+#region 野性成长 VAN_CS2_013 -
     if(board.HasCardInHand(Card.Cards.VAN_CS2_013 )
     &&board.ManaAvailable ==1
     &&!board.HasCardInHand(Card.Cards.GAME_005 )//硬币 GAME_005
     ) { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(150));
-        Bot.Log("野性成长"+150);
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(-99));
+        Bot.Log("野性成长"+-99);
     }else if(board.HasCardInHand(Card.Cards.VAN_CS2_013 )
     &&board.ManaAvailable ==9){
         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(150));

@@ -219,6 +219,8 @@ namespace SmartBotProfiles
             int aomiCount = board.Secret.Count;
             int dangqianfeiyong = board.ManaAvailable;
             Bot.Log("自己奥秘数量"+aomiCount);
+            // int NumberOfBeastsUsed = board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.BEAST); 
+            // Bot.Log("使用过的野兽数量"+NumberOfBeastsUsed);
  #endregion
 
 
@@ -416,6 +418,13 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
           }
 #endregion
 
+#region 亚煞极印记 Mark of Y'Shaarj ID：OG_048 
+      // 提高改装师对艾露恩神谕者      SW_419 优先级
+      if(board.HasCardInHand(Card.Cards.OG_048)){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.OG_048, new Modifier(250,Card.Cards.SW_419));
+      Bot.Log("亚煞极印记 250");
+      }
+#endregion
 #region 防护改装师      BT_722
       // 提高改装师对艾露恩神谕者      SW_419 优先级
       if(board.HasCardInHand(Card.Cards.BT_722)
@@ -430,14 +439,27 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
 #endregion
 #region 霜刃豹头领 AV_291
-      if(board.HasCardInHand(Card.Cards.AV_291)){
+      if(board.HasCardInHand(Card.Cards.AV_291)
+    //   &&NumberOfBeastsUsed<=5
+      ){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(100)); 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(-100)); 
       Bot.Log("霜刃豹头领 100");
+      }
+#endregion
+#region 荒野骑士 Knight of the Wild ID：AT_041 
+      if(board.HasCardInHand(Card.Cards.AT_041)
+    //    &&NumberOfBeastsUsed<=5
+       ){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(150)); 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(-150)); 
+      Bot.Log("荒野骑士 150");
       }
 #endregion
 #region 幽影猫头鹰 DMF_060
       if(board.HasCardInHand(Card.Cards.DMF_060)){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(100)); 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(-100)); 
       Bot.Log("幽影猫头鹰 100");
       }
 #endregion
@@ -450,6 +472,13 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       Bot.Log("霜狼巢屋且随从小于等于6  -999");
       }
 
+#endregion
+#region 荆棘护卫 Thorngrowth Sentries ID：BAR_533 
+      if(board.HasCardInHand(Card.Cards.BAR_533)
+      ){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_533, new Modifier(-99));
+      Bot.Log("荆棘护卫  -99");
+      }
 #endregion
 #region 雷霆绽放 SCH_427  硬币 GAME_005
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(55));//雷霆绽放 SCH_427
@@ -481,6 +510,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 施肥 Composting     SW_437
     //  当随从数量大于等于2时增加施肥 Composting     SW_437优先级施肥 Composting     SW_437
     if(board.HasCardInHand(Card.Cards.SW_437)
+    &&board.MinionFriend.Count >= 2
     )
     { 
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-65*(friendCount)));
@@ -499,8 +529,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
 #region 技能
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(-550)); 
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(-550)); //冰雪绽放 Ice Blossom ID：AV_205a 
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(999)); //山谷植根 Valley Root ID：AV_205pb  
+      if(board.Hand.Count<4){
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(9999)); //山谷植根 Valley Root ID：AV_205pb  
+      p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(-9999)); 
+      }
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205a, new Modifier(-9999)); //冰雪绽放 Ice Blossom ID：AV_205a 
 #endregion
 #region 前沿哨所      BAR_074
   //一费提高马桶优先级，如果有硬币前沿哨所      BAR_074 ,无钢鬃卫兵      BAR_537 
@@ -582,8 +615,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 尼鲁巴蛛网领主 FP1_017
          if(board.HasCardInHand(Card.Cards.FP1_017)){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.FP1_017, new Modifier(-99));
-          Bot.Log("尼鲁巴蛛网领主 -99");
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.FP1_017, new Modifier(-150));
+          Bot.Log("尼鲁巴蛛网领主 -150");
       }
 #endregion
 
@@ -599,6 +632,14 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
          if(board.HasCardInHand(Card.Cards.CORE_CS2_009)){
                p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_009, new Modifier(150));
           Bot.Log("野性印记 150");
+      }
+#endregion
+#region 蜂群来袭 BEEEES!!! ID：ULD_134  
+         if(board.HasCardInHand(Card.Cards.ULD_134)
+         &&board.HasCardInHand(Card.Cards.AT_041)//荒野骑士 Knight of the Wild ID：AT_041 
+         ){
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ULD_134, new Modifier(-99));
+          Bot.Log("蜂群来袭 -99");
       }
 #endregion
 #region 真菌宝藏 Fungal Fortunes ID：BT_128 
@@ -946,8 +987,8 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
     if(board.HasCardInHand(Card.Cards.YOP_026)
     &&board.MinionFriend.Count ==0)
     {
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_026, new Modifier(150));  
-      Bot.Log("树木生长:"+150);
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_026, new Modifier(650));  
+      Bot.Log("树木生长:"+650);
     }
 #endregion
 

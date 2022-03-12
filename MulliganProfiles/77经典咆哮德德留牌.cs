@@ -249,6 +249,22 @@ namespace SmartBot.Mulligan
                         Keep(card,"战利品贮藏者");
                     }
                 }
+                if(card==Card.Cards.VAN_EX1_005&&WARRIOR>0// 王牌猎人 Big Game Hunter ID：VAN_EX1_005 
+                )
+                 {
+                       if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_005))
+                    {
+                        Keep(card,"王牌猎人");
+                    }
+                }
+                if(card==Card.Cards.VAN_EX1_085&&WARLOCK>0// 精神控制技师 Mind Control Tech ID：VAN_EX1_085
+                )
+                 {
+                       if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_085))
+                    {
+                        Keep(card,"精神控制技师");
+                    }
+                }
              
         
             }
