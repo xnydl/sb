@@ -247,6 +247,12 @@ namespace SmartBot.Mulligan
                         Keep(card,"活化扫帚");
                     }
                 }
+                if(card==Card.Cards.ONY_022// 武装教士 Battle Vicar ID：ONY_022 
+                ){ if(!CardsToKeep.Contains(Card.Cards.ONY_022))
+                    {
+                        Keep(card,"武装教士");
+                    }
+                }
                 if(card==Card.Cards.BAR_078&&HUNTER+SHAMAN+DRUID>0// 剑圣萨穆罗 BAR_078  
                 ){              
                         Keep(card,"剑圣萨穆罗");

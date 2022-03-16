@@ -219,8 +219,8 @@ namespace SmartBotProfiles
             int aomiCount = board.Secret.Count;
             int dangqianfeiyong = board.ManaAvailable;
             Bot.Log("自己奥秘数量"+aomiCount);
-            // int NumberOfBeastsUsed = board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.BEAST); 
-            // Bot.Log("使用过的野兽数量"+NumberOfBeastsUsed);
+            int NumberOfBeastsUsed = board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PET)+board.MinionFriend.Count(card => card.Race == Card.CRace.PET); 
+            Bot.Log("使用过的野兽数量"+NumberOfBeastsUsed);
  #endregion
 
 
@@ -439,8 +439,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
 #endregion
 #region 霜刃豹头领 AV_291
-      if(board.HasCardInHand(Card.Cards.AV_291)
-    //   &&NumberOfBeastsUsed<=5
+      if(board.Hand.Exists(x=>x.CurrentCost>0 && x.Template.Id==Card.Cards.AV_291)
       ){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(100)); 
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(-100)); 
@@ -448,8 +447,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
 #endregion
 #region 荒野骑士 Knight of the Wild ID：AT_041 
-      if(board.HasCardInHand(Card.Cards.AT_041)
-    //    &&NumberOfBeastsUsed<=5
+      if(board.Hand.Exists(x=>x.CurrentCost>0 && x.Template.Id==Card.Cards.AT_041)
        ){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(150)); 
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(-150)); 
@@ -457,7 +455,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
 #endregion
 #region 幽影猫头鹰 DMF_060
-      if(board.HasCardInHand(Card.Cards.DMF_060)){
+      if(board.Hand.Exists(x=>x.CurrentCost>0 && x.Template.Id==Card.Cards.DMF_060)){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(100)); 
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(-100)); 
       Bot.Log("幽影猫头鹰 100");
@@ -985,10 +983,10 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
 
 #region 树木生长 Arbor Up     YOP_026
     if(board.HasCardInHand(Card.Cards.YOP_026)
-    &&board.MinionFriend.Count ==0)
+    &&board.MinionFriend.Count == 0)
     {
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_026, new Modifier(650));  
-      Bot.Log("树木生长:"+650);
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_026, new Modifier(150));  
+      Bot.Log("树木生长:"+150);
     }
 #endregion
 

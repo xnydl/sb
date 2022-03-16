@@ -254,7 +254,7 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_030, new Modifier(200));//货物保镖 Cargo Guard ID：SW_030
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_317, new Modifier(200));//原野联络人 Field Contact ID：BAR_317 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_030, new Modifier(200));//邪火神射手 Felfire Deadeye ID：YOP_030  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DRG_092, new Modifier(250));//幻化师 Transmogrifier ID：DRG_092 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DRG_092, new Modifier(350));//幻化师 Transmogrifier ID：DRG_092 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
 #endregion
 
@@ -298,6 +298,30 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.ONY_029, new Modifier(9999));
          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_029, new Modifier(-9999));
         Bot.Log("龙火护符 -9999");
+      }
+#endregion
+#region 憎恨之翼（等级1） Wings of Hate (Rank 1) ID：ONY_016 
+      if(board.HasCardInHand(Card.Cards.ONY_016)){
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_016, new Modifier(-20));
+        Bot.Log("憎恨之翼（等级1） -20");
+      }
+#endregion
+#region 护甲碎片 Armor Scrap ID：AV_136t 
+      if(board.HasCardInHand(Card.Cards.AV_136t)){
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_136t, new Modifier(-199));
+        Bot.Log("护甲碎片 -199");
+      }
+#endregion
+#region 憎恨之翼（等级2） Wings of Hate (Rank 1) ID：ONY_016t 
+      if(board.HasCardInHand(Card.Cards.ONY_016t)){
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_016t, new Modifier(-60));
+        Bot.Log("憎恨之翼（等级2） -60");
+      }
+#endregion
+#region 憎恨之翼（等级3） Wings of Hate (Rank 1) ID：ONY_016t2 
+      if(board.HasCardInHand(Card.Cards.ONY_016t2)){
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_016t2, new Modifier(-80));
+        Bot.Log("憎恨之翼（等级3） -80");
       }
 #endregion
 #region 小鬼侵染 Impfestation ID：ONY_033 
@@ -364,6 +388,15 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
           p.PlayOrderModifiers.AddOrUpdate(Card.Cards.UNG_088, new Modifier(9999));
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.UNG_088, new Modifier(-9999)); 
         Bot.Log("始祖龟预言者 -9999");
+      }
+#endregion
+#region 唐·汉古 Don Han'Cho ID：CFM_685 
+// 随从大于1 出血骑士
+      if(board.HasCardInHand(Card.Cards.CFM_685)
+      ){
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CFM_685, new Modifier(999));
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_685, new Modifier(-99)); 
+        Bot.Log("唐·汉古 -99");
       }
 #endregion
 #region 深渊召唤者 Abyssal Summoner ID：DRG_207 

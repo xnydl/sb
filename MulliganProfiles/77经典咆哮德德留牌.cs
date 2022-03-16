@@ -16,7 +16,7 @@ using SmartBot.Plugins.API;
 // # 2x (3) 野蛮咆哮
 // # 2x (3) 麦田傀儡 VAN_EX1_556 
 // # 2x (4) 丛林守护者 VAN_EX1_166
-// # 2x (4) 横扫
+// # 2x (4) 横扫 横扫 Swipe ID：VAN_CS2_012
 // # 1x (4) 火车王里诺艾
 // # 2x (4) 紫罗兰教师 VAN_NEW1_026
 // # 2x (5) 利爪德鲁伊
@@ -96,7 +96,7 @@ namespace SmartBot.Mulligan
         {
             bool HasCoin = choices.Count >= 4;
 
-            int flag1=0;//艾露恩神谕者 Oracle of Elune      SW_419
+            int flag1=0;//激活 VAN_EX1_169
             
                int DRUID=0;
             int HUNTER=0;
@@ -142,7 +142,7 @@ namespace SmartBot.Mulligan
             }
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.SW_419//艾露恩神谕者 Oracle of Elune      SW_419  
+                if(card==Card.Cards.VAN_EX1_169//激活 VAN_EX1_169
                 ){flag1+=1;}
                 
               
@@ -188,17 +188,15 @@ namespace SmartBot.Mulligan
                  if((card==Card.Cards.VAN_CS2_013//野性成长 VAN_CS2_013 
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_013))
-                    {
+                       
                         Keep(card,"野性成长");
-                    }
+                    
                     }   
                 }
                    if(card==Card.Cards.VAN_EX1_556// 麦田傀儡 VAN_EX1_556 
-                ){ if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_556))
-                    {
+                ){ 
                         Keep(card,"麦田傀儡");
-                    }
+                    
                 }
 
                 // if(card==Card.Cards.VAN_EX1_166//丛林守护者 VAN_EX1_166
@@ -209,7 +207,7 @@ namespace SmartBot.Mulligan
                 //         Keep(card,"丛林守护者");
                 //     }
                 // }
-                if(card==Card.Cards.VAN_NEW1_026// 紫罗兰教师 VAN_NEW1_026
+                if(card==Card.Cards.VAN_NEW1_026&flag1>0// 紫罗兰教师 VAN_NEW1_026
                 )
                  {
                        if(!CardsToKeep.Contains(Card.Cards.VAN_NEW1_026))
@@ -235,19 +233,14 @@ namespace SmartBot.Mulligan
                 }
                 if(card==Card.Cards.VAN_EX1_008// 银色侍从 VAN_EX1_008 
                 )
-                 {
-                       if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_008))
-                    {
+                 {  
                         Keep(card,"银色侍从");
-                    }
                 }
                 if(card==Card.Cards.VAN_EX1_096// 战利品贮藏者 VAN_EX1_096
                 )
                  {
-                       if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_096))
-                    {
                         Keep(card,"战利品贮藏者");
-                    }
+
                 }
                 if(card==Card.Cards.VAN_EX1_005&&WARRIOR>0// 王牌猎人 Big Game Hunter ID：VAN_EX1_005 
                 )
@@ -265,6 +258,14 @@ namespace SmartBot.Mulligan
                         Keep(card,"精神控制技师");
                     }
                 }
+                // if(card==Card.Cards.VAN_CS2_012&&WARLOCK>0// 横扫 Swipe ID：VAN_CS2_012
+                // )
+                //  {
+                //        if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_012))
+                //     {
+                //         Keep(card,"横扫");
+                //     }
+                // }
              
         
             }

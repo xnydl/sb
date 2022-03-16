@@ -339,6 +339,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_030, new Modifier(200));//邪火神射手 Felfire Deadeye ID：YOP_030  
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_004, new Modifier(200));//年轻的女祭司 Young Priestess ID：VAN_EX1_004 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.VAN_NEW1_040, new Modifier(200));//霍格 Hogger ID：VAN_NEW1_040 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_393, new Modifier(200));//阿曼尼狂战士 Amani Berserker ID：VAN_EX1_393 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_065, new Modifier(20));//虚空行者 Voidwalker ID：VAN_CS2_065 
 #endregion
 #region 野性之力 Power of the Wild ID：VAN_EX1_160 
     if(board.HasCardInHand(Card.Cards.VAN_EX1_160)
@@ -376,8 +378,7 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
 #region 自然之力 VAN_EX1_571
     if(board.HasCardInHand(Card.Cards.VAN_EX1_571)
     &&board.HeroFriend.CurrentHealth>10
-    &&enemyAttack<=5
-    &&(board.EnemyClass != Card.CClass.WARLOCK&&board.HeroFriend.CurrentHealth>20)
+    &&board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_EX1_571)==1
     )
     { 
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(650));
@@ -391,15 +392,12 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
     &&board.ManaAvailable ==1
     &&!board.HasCardInHand(Card.Cards.GAME_005 )//硬币 GAME_005
     ) { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(-99));
-        Bot.Log("野性成长"+-99);
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(-999));
+        Bot.Log("野性成长"+-999);
     }else if(board.HasCardInHand(Card.Cards.VAN_CS2_013 )
     &&board.ManaAvailable ==9){
         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(150));
         Bot.Log("野性成长"+150);
-    }else{ 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(-20));
-        Bot.Log("野性成长"+-20);
     }
 #endregion
 #region 希尔瓦娜斯·风行者 Sylvanas Windrunner ID：VAN_EX1_016 
@@ -420,14 +418,32 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
 #endregion
 #region 知识古树 Ancient of Lore ID：VAN_NEW1_008  
          if(board.HasCardInHand(Card.Cards.VAN_NEW1_008)){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_NEW1_008, new Modifier(-40));
-          Bot.Log("知识古树 -40");
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_NEW1_008, new Modifier(-99));
+          Bot.Log("知识古树 -99");
+      }
+#endregion
+#region 紫罗兰教师 VAN_NEW1_026
+         if(board.HasCardInHand(Card.Cards.VAN_NEW1_026)){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_NEW1_026, new Modifier(-99));
+          Bot.Log("紫罗兰教师 -99");
       }
 #endregion
 #region 麦田傀儡 VAN_EX1_556 
          if(board.HasCardInHand(Card.Cards.VAN_EX1_556)){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_556, new Modifier(-20));
-          Bot.Log("麦田傀儡 -20");
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_556, new Modifier(-99));
+          Bot.Log("麦田傀儡 -99");
+      }
+#endregion
+#region 银色侍从 VAN_EX1_008
+         if(board.HasCardInHand(Card.Cards.VAN_EX1_008)){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_008, new Modifier(-99));
+          Bot.Log("银色侍从 -99");
+      }
+#endregion
+#region 战利品贮藏者 VAN_EX1_096
+         if(board.HasCardInHand(Card.Cards.VAN_EX1_096)){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_096, new Modifier(-99));
+          Bot.Log("战利品贮藏者 -99");
       }
 #endregion
 #region 王牌猎人 Big Game Hunter ID：VAN_EX1_005 
@@ -837,6 +853,18 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
         public Card.Cards KazakusChoice(List<Card.Cards> choices)
         {
             return choices[0];
+        }
+        //卡扎库斯选择
+        public Card.Cards DruidOfTheClawChoice(List<Card.Cards> choices)//利爪德鲁伊 Druid of the Claw ID：VAN_EX1_165 
+        {
+            Bot.Log("利爪德鲁伊"+2);
+            return choices[2];
+        }
+        //卡扎库斯选择
+        public Card.Cards AncientOfLoreChoice(List<Card.Cards> choices)//知识古树 Ancient of Lore ID：VAN_NEW1_008  
+        {
+            Bot.Log("知识古树"+1);
+            return choices[1];
         }
 
         //计算类

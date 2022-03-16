@@ -354,13 +354,16 @@ namespace SmartBotProfiles
 #endregion
 #region 光铸凯瑞尔 AV_206 
 
-        if(board.HasCardInHand(Card.Cards.AV_206)
-        )
-        {
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(9999)); 
-          Bot.Log("光铸凯瑞尔 -9999");
-        }
+        // if(board.HasCardInHand(Card.Cards.AV_206)
+        // )
+        // {
+        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
+        //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(9999)); 
+        //   p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
+        //   p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
+        //   p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));  
+        //   Bot.Log("光铸凯瑞尔 -9999");
+        // }
         if(minionNumber>0){
           // 女王的祝福 Blessing of Queens ID：AV_206p
           p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_206p, new Modifier(-99));
@@ -447,12 +450,19 @@ namespace SmartBotProfiles
 #region 古神在上 DMF_236
 
         if(board.HasCardInHand(Card.Cards.DMF_236)
-        &&board.WeaponFriend == null
-        &&!board.HasCardInHand(Card.Cards.BAR_875)
         )
         {
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_236, new Modifier(-99)); 
           Bot.Log("古神在上 -99");
+        }
+#endregion
+#region 公正审判 Judgment of Justice ID：WC_033 
+
+        if(board.HasCardInHand(Card.Cards.WC_033)
+        )
+        {
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.WC_033, new Modifier(-99)); 
+          Bot.Log("公正审判 -99");
         }
 #endregion
 // #region 威能祝福 Blessing of Authority ID：SCH_138 
@@ -752,6 +762,12 @@ namespace SmartBotProfiles
          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(150)); 
           Bot.Log("深铁穴居人 不送");
         } 
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_025,new Modifier(-999,Card.Cards.AV_137));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_316,new Modifier(-999,Card.Cards.AV_137));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_292,new Modifier(-999,Card.Cards.AV_137));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_338,new Modifier(-999,Card.Cards.AV_137));//坚守桥梁 Hold the Bridge ID：AV_338 
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_138,new Modifier(-999,Card.Cards.AV_137));//威能祝福 Blessing of Authority ID：SCH_138 
+     
 #endregion
 
 #region Card.Cards.HERO_04bp 英雄技能
