@@ -141,23 +141,18 @@ namespace SmartBotProfiles
       {
 
             var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
-            //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
-            //攻击模式切换
-            if (board.EnemyClass == Card.CClass.HUNTER
-                || board.EnemyClass == Card.CClass.SHAMAN
-                || board.EnemyClass == Card.CClass.ROGUE
-                || board.EnemyClass == Card.CClass.PALADIN
-                || board.EnemyClass == Card.CClass.WARRIOR)
+           
+                p.GlobalAggroModifier = (int)(a );
+                Bot.Log("攻击值"+(a ));      
+             if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
+                   (BoardHelper.GetEnemyHealthAndArmor(board) -
+                  BoardHelper.GetPotentialMinionDamages(board) -
+                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
+                BoardHelper.GetTotalBlastDamagesInHand(board)))
             {
-                p.GlobalAggroModifier = (int)(a * 0.625 + 96.5);
-                Bot.Log("攻击值"+(a * 0.625 + 46.5));
+                p.GlobalAggroModifier = 450;
             }
-            else
-            {
-                p.GlobalAggroModifier = (int)(a * 0.625 + 103.5);
-                Bot.Log("攻击值"+(a * 0.625 + 53.5));
-            }	            
        {
  
         
@@ -308,8 +303,8 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
 #endregion
 #region 护甲碎片 Armor Scrap ID：AV_136t 
       if(board.HasCardInHand(Card.Cards.AV_136t)){
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_136t, new Modifier(-199));
-        Bot.Log("护甲碎片 -199");
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_136t, new Modifier(-9999));
+        Bot.Log("护甲碎片 -9999");
       }
 #endregion
 #region 憎恨之翼（等级2） Wings of Hate (Rank 1) ID：ONY_016t 
@@ -498,8 +493,8 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
 #region 邪魂狱卒 Felsoul Jailer ID：CS3_003 
       if(board.HasCardInHand(Card.Cards.CS3_003)
       ){
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_003, new Modifier(-60)); 
-        Bot.Log("邪魂狱卒 -60");
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_003, new Modifier(-99)); 
+        Bot.Log("邪魂狱卒 -99");
       }
 #endregion
 #region 野性成长 CORE_CS2_013

@@ -762,11 +762,11 @@ namespace SmartBotProfiles
          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(150)); 
           Bot.Log("深铁穴居人 不送");
         } 
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_025,new Modifier(-999,Card.Cards.AV_137));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_316,new Modifier(-999,Card.Cards.AV_137));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_292,new Modifier(-999,Card.Cards.AV_137));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_338,new Modifier(-999,Card.Cards.AV_137));//坚守桥梁 Hold the Bridge ID：AV_338 
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_138,new Modifier(-999,Card.Cards.AV_137));//威能祝福 Blessing of Authority ID：SCH_138 
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_025,new Modifier(-60,Card.Cards.AV_137));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_316,new Modifier(-60,Card.Cards.AV_137));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_292,new Modifier(-60,Card.Cards.AV_137));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_338,new Modifier(-60,Card.Cards.AV_137));//坚守桥梁 Hold the Bridge ID：AV_338 
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_138,new Modifier(-60,Card.Cards.AV_137));//威能祝福 Blessing of Authority ID：SCH_138 
      
 #endregion
 

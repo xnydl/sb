@@ -158,7 +158,15 @@ namespace SmartBotProfiles
             {
                 p.GlobalAggroModifier = (int)(a * 0.625 + 103.5);
                 Bot.Log("攻击值"+(a * 0.625 + 103.5));
-            }	            
+            }	  
+             if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
+                   (BoardHelper.GetEnemyHealthAndArmor(board) -
+                  BoardHelper.GetPotentialMinionDamages(board) -
+                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
+                BoardHelper.GetTotalBlastDamagesInHand(board)))
+            {
+                p.GlobalAggroModifier = 450;
+            }                 
        {
  
         

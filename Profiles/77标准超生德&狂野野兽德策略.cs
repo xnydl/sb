@@ -158,7 +158,15 @@ namespace SmartBotProfiles
             {
                 p.GlobalAggroModifier = (int)(a * 0.625 + 103.5);
                 Bot.Log("攻击值"+(a * 0.625 + 103.5));
-            }	            
+            }	  
+            if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
+                   (BoardHelper.GetEnemyHealthAndArmor(board) -
+                  BoardHelper.GetPotentialMinionDamages(board) -
+                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
+                BoardHelper.GetTotalBlastDamagesInHand(board)))
+            {
+                p.GlobalAggroModifier = 450;
+            }          
        {
  
         
@@ -449,9 +457,9 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 荒野骑士 Knight of the Wild ID：AT_041 
       if(board.Hand.Exists(x=>x.CurrentCost>0 && x.Template.Id==Card.Cards.AT_041)
        ){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(150)); 
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(-150)); 
-      Bot.Log("荒野骑士 150");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(130)); 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(-130)); 
+      Bot.Log("荒野骑士 130");
       }
 #endregion
 #region 幽影猫头鹰 DMF_060
@@ -508,7 +516,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 施肥 Composting     SW_437
     //  当随从数量大于等于2时增加施肥 Composting     SW_437优先级施肥 Composting     SW_437
     if(board.HasCardInHand(Card.Cards.SW_437)
-    &&board.MinionFriend.Count >= 2
+    &&board.MinionFriend.Count >= 3
     )
     { 
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-65*(friendCount)));
@@ -634,10 +642,10 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 蜂群来袭 BEEEES!!! ID：ULD_134  
          if(board.HasCardInHand(Card.Cards.ULD_134)
-         &&board.HasCardInHand(Card.Cards.AT_041)//荒野骑士 Knight of the Wild ID：AT_041 
+        //  &&board.HasCardInHand(Card.Cards.AT_041)//荒野骑士 Knight of the Wild ID：AT_041 
          ){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ULD_134, new Modifier(-99));
-          Bot.Log("蜂群来袭 -99");
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ULD_134, new Modifier(-150));
+          Bot.Log("蜂群来袭 -150");
       }
 #endregion
 #region 真菌宝藏 Fungal Fortunes ID：BT_128 
@@ -985,8 +993,8 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
     if(board.HasCardInHand(Card.Cards.YOP_026)
     &&board.MinionFriend.Count == 0)
     {
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_026, new Modifier(150));  
-      Bot.Log("树木生长:"+150);
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_026, new Modifier(250));  
+      Bot.Log("树木生长:"+250);
     }
 #endregion
 
