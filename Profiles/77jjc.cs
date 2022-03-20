@@ -143,16 +143,8 @@ namespace SmartBotProfiles
             var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
            
-                p.GlobalAggroModifier = (int)(a );
-                Bot.Log("攻击值"+(a ));      
-             if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
-                   (BoardHelper.GetEnemyHealthAndArmor(board) -
-                  BoardHelper.GetPotentialMinionDamages(board) -
-                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
-                BoardHelper.GetTotalBlastDamagesInHand(board)))
-            {
-                p.GlobalAggroModifier = 450;
-            }
+                p.GlobalAggroModifier = a;
+                Bot.Log("攻击值"+(a));      
        {
  
         

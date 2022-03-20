@@ -218,7 +218,7 @@ namespace SmartBot.Mulligan
                 if(card==Card.Cards.VAN_CS2_179// 森金持盾卫士 VAN_CS2_179 
                 )
                  {
-                       if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_179))
+                       if(CardsToKeep.Contains(Card.Cards.VAN_CS2_179)&flag1>0)
                     {
                         Keep(card,"森金持盾卫士");
                     }

@@ -159,14 +159,7 @@ namespace SmartBotProfiles
                 p.GlobalAggroModifier = (int)(a * 0.625 + 103.5);
                 Bot.Log("攻击值"+(a * 0.625 + 103.5));
             }	  
-             if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
-                   (BoardHelper.GetEnemyHealthAndArmor(board) -
-                  BoardHelper.GetPotentialMinionDamages(board) -
-                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
-                BoardHelper.GetTotalBlastDamagesInHand(board)))
-            {
-                p.GlobalAggroModifier = 450;
-            }                 
+             
        {
  
         
@@ -365,8 +358,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_011, new Modifier(650));
-        Bot.Log("野蛮咆哮"+650);
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_011, new Modifier(999));
+        Bot.Log("野蛮咆哮"+999);
     }
 #endregion
 #region 激活 VAN_EX1_169
@@ -385,14 +378,11 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
 
 #region 自然之力 VAN_EX1_571
     if(board.HasCardInHand(Card.Cards.VAN_EX1_571)
-    &&board.HeroFriend.CurrentHealth>10
-    &&board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_EX1_571)==1
+    // &&board.HeroFriend.CurrentHealth>10
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(650));
-        Bot.Log("自然之力"+650);
-    }else{
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(150));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(999));
+        Bot.Log("自然之力"+999);
     }
 #endregion
 #region 野性成长 VAN_CS2_013 -
