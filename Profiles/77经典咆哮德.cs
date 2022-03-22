@@ -159,7 +159,14 @@ namespace SmartBotProfiles
                 p.GlobalAggroModifier = (int)(a * 0.625 + 103.5);
                 Bot.Log("攻击值"+(a * 0.625 + 103.5));
             }	  
-             
+             if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
+                   (BoardHelper.GetEnemyHealthAndArmor(board) -
+                  BoardHelper.GetPotentialMinionDamages(board) -
+                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
+                BoardHelper.GetTotalBlastDamagesInHand(board)))
+            {
+                p.GlobalAggroModifier = 450;
+            }       
        {
  
         
@@ -362,6 +369,15 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         Bot.Log("野蛮咆哮"+999);
     }
 #endregion
+#region 愤怒 Wrath ID：VAN_EX1_154  
+    if(board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_EX1_154)>0
+
+    )
+    { 
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_154, new Modifier(150));
+        Bot.Log("愤怒"+150);
+    }
+#endregion
 #region 激活 VAN_EX1_169
 int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_EX1_571);
         Bot.Log("combo牌数量"+combo);
@@ -377,12 +393,16 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
 #endregion
 
 #region 自然之力 VAN_EX1_571
-    if(board.HasCardInHand(Card.Cards.VAN_EX1_571)
-    // &&board.HeroFriend.CurrentHealth>10
+    if(
+    board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_EX1_571)==1
+    &&board.HeroFriend.CurrentHealth>10
+    
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(999));
-        Bot.Log("自然之力"+999);
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(650));
+      Bot.Log("自然之力"+650);
+    }else{
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(150));
     }
 #endregion
 #region 野性成长 VAN_CS2_013 -
@@ -404,6 +424,13 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
          ){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_016, new Modifier(-40));
           Bot.Log("希尔瓦娜斯·风行者 -40");
+      }
+#endregion
+#region 血法师萨尔诺斯 Bloodmage Thalnos ID：VAN_EX1_012 
+         if(board.HasCardInHand(Card.Cards.VAN_EX1_012)
+         ){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_012, new Modifier(-99));
+          Bot.Log("血法师萨尔诺斯 -99");
       }
 #endregion
 #region 丛林守护者 VAN_EX1_166
@@ -448,17 +475,26 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
          if(board.HasCardInHand(Card.Cards.VAN_EX1_005)
          &&board.MinionEnemy.Count(minion => minion.CurrentAtk >=7)==0
          ){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_005, new Modifier(650));
-          Bot.Log("王牌猎人 650");
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_005, new Modifier(150));
+          Bot.Log("王牌猎人 150");
       }
 #endregion
 #region 精神控制技师 Mind Control Tech ID：VAN_EX1_085 
          if(board.HasCardInHand(Card.Cards.VAN_EX1_085)
          &&board.MinionEnemy.Count<=3
+         &&board.ManaAvailable <= 6
          ){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_085, new Modifier(650));
           Bot.Log("精神控制技师 650");
-      }
+        }else{
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_085, new Modifier(150));
+        }
+#endregion
+#region 利爪德鲁伊 Druid of the Claw ID：VAN_EX1_165 
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_165t1, new Modifier(650));//利爪德鲁伊 Druid of the Claw ID：VAN_EX1_165t1 
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_165t2, new Modifier(-250));//利爪德鲁伊 Druid of the Claw ID：VAN_EX1_165t2 
+         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.VAN_EX1_165t1, new Modifier(-999));
+         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.VAN_EX1_165t2, new Modifier(999));
 #endregion
 // #region 丛林守护者 VAN_EX1_166
 //          if(board.HasCardInHand(Card.Cards.VAN_EX1_166)
@@ -839,7 +875,8 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
 //德：DRUID 猎：HUNTER 法：MAGE 骑：PALADIN 牧：PRIEST 贼：ROGUE 萨：SHAMAN 术：WARLOCK 战：WARRIOR 瞎：DEMONHUNTER
             return p;
         }}
-        
+       
+
         //芬利·莫格顿爵士技能选择
         public Card.Cards SirFinleyChoice(List<Card.Cards> choices)
         {
@@ -852,18 +889,7 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
         {
             return choices[0];
         }
-        //卡扎库斯选择
-        public Card.Cards DruidOfTheClawChoice(List<Card.Cards> choices)//利爪德鲁伊 Druid of the Claw ID：VAN_EX1_165 
-        {
-            Bot.Log("利爪德鲁伊"+2);
-            return choices[2];
-        }
-        //卡扎库斯选择
-        public Card.Cards AncientOfLoreChoice(List<Card.Cards> choices)//知识古树 Ancient of Lore ID：VAN_NEW1_008  
-        {
-            Bot.Log("知识古树"+1);
-            return choices[1];
-        }
+        
 
         //计算类
         public static class BoardHelper

@@ -362,8 +362,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     if((board.ManaAvailable >=1)
     &&board.HasCardInHand(Card.Cards.SW_439))
     {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(-250));
-      Bot.Log("活泼的松鼠 -250 ");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(-550));
+      Bot.Log("活泼的松鼠 -550 ");
     }
 #endregion
 #region 暗礁德鲁伊 DED_001
@@ -411,7 +411,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         //    一费对面有随从,手里有其他随从,或者对面是贼,小德,法师,恶魔猎手,不用农夫
           if(board.ManaAvailable <=2
             &&(board.EnemyClass == Card.CClass.ROGUE
-            ||board.EnemyClass == Card.CClass.DRUID))
+            ||board.EnemyClass == Card.CClass.DRUID)
+            ||board.Hand.Exists(card => card.CurrentCost==2))
             {
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(130));//降低农夫      SW_319
             Bot.Log("农夫 130");
@@ -473,11 +474,16 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       if(board.HasCardInHand(Card.Cards.AV_360)
       &&board.MinionFriend.Count <7
       ){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-999));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-99));
     //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-100)); 
-      Bot.Log("霜狼巢屋且随从小于等于6  -999");
+      Bot.Log("霜狼巢屋且随从小于等于6  -99");
       }
-
+               if(board.ManaAvailable ==3
+        &&board.HasCardInHand(Card.Cards.AV_360)//霜狼巢屋 AV_360  
+        ){
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-9999));//霜狼巢屋      SCH_617
+         Bot.Log("三费有霜狼，优先霜狼");
+        }
 #endregion
 #region 荆棘护卫 Thorngrowth Sentries ID：BAR_533 
       if(board.HasCardInHand(Card.Cards.BAR_533)
@@ -516,14 +522,13 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 施肥 Composting     SW_437
     //  当随从数量大于等于2时增加施肥 Composting     SW_437优先级施肥 Composting     SW_437
     if(board.HasCardInHand(Card.Cards.SW_437)
-    &&board.MinionFriend.Count >= 3
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-65*(friendCount)));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-35*(friendCount)));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-100)); 
 
       // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(160)); //小德不用技能
-      Bot.Log("技能 130 施肥:"+-95*friendCount);
+      Bot.Log("技能 130 施肥:"+-35*friendCount);
     }
     // if(board.HasCardInHand(Card.Cards.SW_437))
     // { 
@@ -535,11 +540,17 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
 #region 技能
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(-550)); 
-      if(board.Hand.Count<4){
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(9999)); //山谷植根 Valley Root ID：AV_205pb  
-      p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(-9999)); 
-      }
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205a, new Modifier(-9999)); //冰雪绽放 Ice Blossom ID：AV_205a 
+    //   if(board.Hand.Count<4){
+    //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(9999)); //山谷植根 Valley Root ID：AV_205pb  
+    //   p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(-9999)); 
+    //   p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_205a, new Modifier(9999)); 
+    //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205a, new Modifier(-9999)); //冰雪绽放 Ice Blossom ID：AV_205a 
+    //   Bot.Log("山谷植根 -9999");
+    //   }
+    p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(-1000));//山谷植根 Valley Root ID：AV_205pb  
+    p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_205a, new Modifier(-1000, board.HeroFriend.Id));//冰雪绽放 Ice Blossom ID：AV_205a
+    p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(500));//山谷植根 Valley Root ID：AV_205pb  最先使用
+    p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205a, new Modifier(200));//冰雪绽放 Ice Blossom ID：AV_205a
 #endregion
 #region 前沿哨所      BAR_074
   //一费提高马桶优先级，如果有硬币前沿哨所      BAR_074 ,无钢鬃卫兵      BAR_537 
@@ -863,14 +874,6 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_617, new Modifier(-55)); 
             Bot.Log("萌物来袭 999 出牌优先级 -55");
         }
-    // //    三费有霜狼，优先霜狼
-    //      if(board.ManaAvailable ==3
-    //     &&board.HasCardInHand(Card.Cards.AV_360)//霜狼巢屋 AV_360  
-    //     ){
-    //     p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(999));///艾露恩神谕者      SW_419
-    //     p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-99));//霜狼巢屋      SCH_617
-    //      Bot.Log("三费有霜狼，优先霜狼");
-    //     }
 
 #endregion
 
@@ -990,8 +993,7 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
 #endregion
 
 #region 树木生长 Arbor Up     YOP_026
-    if(board.HasCardInHand(Card.Cards.YOP_026)
-    &&board.MinionFriend.Count == 0)
+    if(board.HasCardInHand(Card.Cards.YOP_026))
     {
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.YOP_026, new Modifier(250));  
       Bot.Log("树木生长:"+250);

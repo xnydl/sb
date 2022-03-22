@@ -144,7 +144,7 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(BaseProfile.Default) { DiscoverSimulationValueThresholdPercent = -10 };           
+            var p = new ProfileParameters(BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 };           
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
             if ( board.EnemyClass == Card.CClass.SHAMAN
@@ -161,7 +161,15 @@ namespace SmartBotProfiles
             {
                 p.GlobalAggroModifier = (int)(a * 0.625 + 113.5);
                 Bot.Log("攻击值"+(a * 0.625 + 303.5));
-            }	 
+            }
+             if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
+                   (BoardHelper.GetEnemyHealthAndArmor(board) -
+                  BoardHelper.GetPotentialMinionDamages(board) -
+                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
+                BoardHelper.GetTotalBlastDamagesInHand(board)))
+            {
+                p.GlobalAggroModifier = 450;
+            }   	 
 
        {
  
@@ -316,6 +324,15 @@ namespace SmartBotProfiles
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_513, new Modifier(130));
           Bot.Log("迪菲亚麻风侏儒 130");
         } 
+#endregion
+#region 虚触侍从 Voidtouched Attendant ID：SW_446 
+ if(board.HasCardInHand(Card.Cards.SW_446)
+        )
+        {p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_446, new Modifier(999));
+          Bot.Log("虚触侍从优先级999");
+        } 
+         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_446, new Modifier(150)); 
+
 #endregion
 #region 曼科里克 BAR_721
  if(board.HasCardInHand(Card.Cards.BAR_721)

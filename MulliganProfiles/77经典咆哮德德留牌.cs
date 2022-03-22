@@ -199,14 +199,14 @@ namespace SmartBot.Mulligan
                     
                 }
 
-                // if(card==Card.Cards.VAN_EX1_166//丛林守护者 VAN_EX1_166
-                // )
-                // {
-                //        if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_166))
-                //     {
-                //         Keep(card,"丛林守护者");
-                //     }
-                // }
+                if(card==Card.Cards.VAN_EX1_166//丛林守护者 VAN_EX1_166
+                )
+                {
+                       if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_166))
+                    {
+                        Keep(card,"丛林守护者");
+                    }
+                }
                 if(card==Card.Cards.VAN_NEW1_026&flag1>0// 紫罗兰教师 VAN_NEW1_026
                 )
                  {

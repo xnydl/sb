@@ -45,7 +45,7 @@ using SmartBot.Plugins.API;
 // # 2x (1) 萌物来袭
 // # 2x (1) 自然研习
 // # 2x (1) 活泼的松鼠
-// # 2x (1) 暗礁德鲁伊
+// # 2x (1) 暗礁德鲁伊 DED_001
 // # 2x (1) 播种施肥
 // # 1x (2) 野性之力
 // # 2x (2) 荆棘护卫
@@ -199,22 +199,19 @@ namespace SmartBot.Mulligan
                     }
                     }   
                 }
-                //  if((card==Card.Cards.SCH_617//萌物来袭 Adorable Infestation      SCH_617  
-                // )){
-                //     {
-                //        if(!CardsToKeep.Contains(Card.Cards.SCH_617))
-                //     {
-                //         Keep(card,"萌物来袭");
-                //     }
-                //     }   
-                // }
+                 if((card==Card.Cards.SCH_617//萌物来袭 Adorable Infestation      SCH_617  
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.SCH_617))
+                    {
+                        Keep(card,"萌物来袭");
+                    }
+                    }   
+                }
                  if((card==Card.Cards.BAR_533//荆棘护卫 Thorngrowth Sentries ID：BAR_533 
                 )){
                     {
-                       if(!CardsToKeep.Contains(Card.Cards.BAR_533))
-                    {
                         Keep(card,"荆棘护卫");
-                    }
                     }   
                 }
                  if((card==Card.Cards.AV_219//群羊指挥官 Ram Commander ID：AV_219
@@ -346,19 +343,12 @@ namespace SmartBot.Mulligan
                 if(card==Card.Cards.SW_439//活泼的松鼠 Vibrant Squirrel      SW_439 
                 )
                 {
-                   if(!CardsToKeep.Contains(Card.Cards.SW_439))
-                    {
                         Keep(card,"活泼的松鼠");
-                    }
                 }
                   if(card==Card.Cards.DED_001//活泼的松鼠 Vibrant Squirrel      SW_439 
                 )
-                {//暗礁德鲁伊 Druid of the Reef ID：DED_001 
-
-                   if(!CardsToKeep.Contains(Card.Cards.DED_001))
-                    {
+                {
                         Keep(card,"暗礁德鲁");
-                    }
                 }
                 if(card==Card.Cards.CORE_EX1_008//银色侍从 Argent Squire      CORE_EX1_008
                 )
@@ -371,10 +361,7 @@ namespace SmartBot.Mulligan
                 if(card==Card.Cards.SW_319//农夫 Peasant      SW_319
                 )
                 {
-                   if(!CardsToKeep.Contains(Card.Cards.SW_319))
-                    {
                         Keep(card,"农夫");
-                    }
                 }
                 if(card==Card.Cards.SCH_231//新生刺头 Intrepid Initiate      SCH_231
                 )
@@ -416,107 +403,7 @@ namespace SmartBot.Mulligan
                         Keep(card,"雷霆绽放 ");
                     }   
                 }
-                // if(card==Card.Cards.BAR_076//莫尔杉哨所 Mor'shan Watch Post      BAR_076
-                // )
-                // {
-                //     if(!CardsToKeep.Contains(Card.Cards.BAR_076)&&flag1+flag2>=1)
-                //     {
-                //         Keep(card,"留1莫尔杉哨所 ");
-                //     }   
-                // }
-                // if(card==Card.Cards.WC_005//原初地下城历险家 Primal Dungeoneer      WC_005 
-                // )
-                // {
-                //     if(!CardsToKeep.Contains(Card.Cards.WC_005))
-                //     {
-                //         Keep(card,"留1原初地下城历险家");
-                //     }   
-                // }
-                // if(card==Card.Cards.CORE_BOT_533//凶恶的雨云 Menacing Nimbus      CORE_BOT_533 
-                // )
-                // {
-                //      Keep(card,"留2凶恶的雨云 ");
-                // }
-                // if(card==Card.Cards.SW_025//拍卖行木槌 Auctionhouse Gavel      SW_025 
-                // )
-                // {
-                //      Keep(card,"留2拍卖行木槌 ");
-                // }
-
-                // if(card==Card.Cards.BT_292//阿达尔之手 Hand of A'dal      BT_292  
-                // ){
-                //     if(!CardsToKeep.Contains(Card.Cards.BT_292)
-                //     )
-                //     {
-                //         Keep(card,"留一张阿达尔之手");
-                //     }
-                // }                
-
-                // if(card==Card.Cards.YOP_031//螃蟹骑士 Crabrider      YOP_031 
-                // ){
-                //     if(!CardsToKeep.Contains(Card.Cards.YOP_031)
-                //        && HasCoin==true)
-                //     {
-                //         Keep(card,"后手留一张螃蟹骑士");
-                //     }
-                // }
-
-                // if(card==Card.Cards.DMF_194//赤鳞驯龙者 Redscale Dragontamer      DMF_194
-                // ){
-                //     if(!CardsToKeep.Contains(Card.Cards.DMF_194)
-                //        && HasCoin==true)
-                //     {
-                //         Keep(card,"后手留一张赤鳞驯龙者 Redscale Dragontamer");
-                //     }
-                // }
-
-
-                // if(card==Card.Cards.CORE_FP1_007//蛛魔之卵 Nerubian Egg      CORE_FP1_007 
-                // ){
-                //     {
-                //         if(!CardsToKeep.Contains(Card.Cards.CORE_FP1_007)
-                //         )
-                //         {
-                //         Keep(card,"留一张蛛魔之卵 Nerubian Egg");
-                //         } 
-                //     }  //蛛魔之卵 Nerubian Egg      CORE_FP1_007
-                // }
-
-                // if(card==Card.Cards.DMF_704//笼斗管理员 Cagematch Custodian      DMF_704 
-                // ){
-                //     if(!CardsToKeep.Contains(Card.Cards.DMF_704)
-                //        && HasCoin==true)
-                //     {
-                //         Keep(card,"后手留一张莫戈尔·莫戈尔格 Murgur Murgurgle");
-                //     }
-                //     else
-                //     {
-                //         if(!CardsToKeep.Contains(Card.Cards.DMF_704)
-                //         && flag1+flag2+flag3>=1
-                //         )
-                //         {
-                //         Keep(card,"先手有1费留一张莫戈尔·莫戈尔格 Murgur Murgurgle");
-                //         } 
-                //     }  //笼斗管理员 Cagematch Custodian      DMF_704 
-                // }
-
-                // //留第一张逝者之剑 Sword of the Fallen      BAR_875
-                // if(card==Card.Cards.BAR_875)
-                // {
-                //     if(!CardsToKeep.Contains(Card.Cards.BAR_875))
-                //     {
-                //         Keep(card,"留第一张逝者之剑 Sword of the Fallen");
-                //     }   
-                // }
-				
-				
-				// //有逝者之剑 Sword of the Fallen      BAR_875留北卫军指挥官 Northwatch Commander      BAR_876
-        //         if(card==Card.Cards.BAR_876 && flag7>=1
-        //         && HasCoin==true
-        //          )
-				// {Keep(card,"后手有逝者之剑 Sword of the Fallen留北卫军指挥官 Northwatch Commander");}
-
-
+            
         
             }
             return CardsToKeep;

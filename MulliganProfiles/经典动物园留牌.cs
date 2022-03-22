@@ -126,67 +126,62 @@ namespace SmartBot.Mulligan
                 if(card==Card.Cards.VAN_EX1_319//烈焰小鬼 VAN_EX1_319
                 )
                 {
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_319))
-                    {
+                   
                         Keep(card,"烈焰小鬼 ");
-                    }   
+                      
                 }
-                if(card==Card.Cards.VAN_CS2_189//精灵弓箭手 VAN_CS2_189
-                )
-                {
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_189))
-                    {
-                        Keep(card,"精灵弓箭手 ");
-                    }   
-                }
+                // if(card==Card.Cards.VAN_CS2_189//精灵弓箭手 VAN_CS2_189
+                // )
+                // {
+                //     if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_189))
+                //     {
+                //         Keep(card,"精灵弓箭手 ");
+                //     }   
+                // }
                 if(card==Card.Cards.VAN_CS2_065//虚空行者 VAN_CS2_065 
                 )
                 {
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_065))
-                    {
+                   
                         Keep(card,"虚空行者 ");
-                    }   
+                   
                 }
                 if(card==Card.Cards.VAN_EX1_008//银色侍从 VAN_EX1_008
                 )
                 {
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_008))
-                    {
+                   
                         Keep(card,"银色侍从 ");
-                    }   
+                      
                 }
                 if(card==Card.Cards.VAN_EX1_029//麻风侏儒 VAN_EX1_029 
                 )
                 {
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_029))
-                    {
+                    
                         Keep(card,"麻风侏儒 ");
-                    }   
+                       
                 }
              
-                if(card==Card.Cards.VAN_EX1_162//恐狼前锋 VAN_EX1_162 
-                )
-                {
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_162))
-                    {
-                        Keep(card,"恐狼前锋 ");
-                    }   
-                }
-                if(card==Card.Cards.VAN_EX1_066//酸性沼泽软泥怪 VAN_EX1_066 
-                )
-                {
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_066))
-                    {
-                        Keep(card,"酸性沼泽软泥怪 ");
-                    }   
-                }
+                // if(card==Card.Cards.VAN_EX1_162//恐狼前锋 VAN_EX1_162 
+                // )
+                // {
+                //     if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_162))
+                //     {
+                //         Keep(card,"恐狼前锋 ");
+                //     }   
+                // }
+                // if(card==Card.Cards.VAN_EX1_066//酸性沼泽软泥怪 VAN_EX1_066 
+                // )
+                // {
+                //     if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_066))
+                //     {
+                //         Keep(card,"酸性沼泽软泥怪 ");
+                //     }   
+                // }
                 if(card==Card.Cards.VAN_EX1_393//阿曼尼狂战士 VAN_EX1_393 
                 )
                 {
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_EX1_393))
-                    {
+                   
                         Keep(card,"阿曼尼狂战士 ");
-                    }   
+                      
                 }
                 if(card==Card.Cards.VAN_NEW1_019//飞刀杂耍者 VAN_NEW1_019
                 )

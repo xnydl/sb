@@ -236,6 +236,14 @@ namespace SmartBotProfiles
            // 用过的的冰封雄鹿守卫 Frozen Stagguard ID：AV_257t 
             int usedFrozen=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.AV_257t)+board.Hand.Count(x => x.Template.Id == Card.Cards.AV_257t)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_257t);
            Bot.Log("用过的的冰封雄鹿守卫"+usedFrozen);
+           int serectnum=board.Secret.Count;
+           Bot.Log("头上奥秘数量"+serectnum);
+           int goodnum=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.WC_005)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.WC_005)
+        +  board.MinionFriend.Count(x => x.Template.Id == Card.Cards.WC_030)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.WC_030)
+        +  board.MinionFriend.Count(x => x.Template.Id == Card.Cards.BT_109t)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.BT_109t)
+        +  board.MinionFriend.Count(x => x.Template.Id == Card.Cards.DED_524)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.DED_524)
+        +  board.MinionFriend.Count(x => x.Template.Id == Card.Cards.AV_255)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_255);
+            Bot.Log("有用的随从"+goodnum);
  #endregion
 
 
@@ -375,6 +383,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_007, new Modifier(250));
           Bot.Log("电击学徒 250");
       }
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_238, new Modifier(150));//闪电箭 CORE_EX1_238
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_259, new Modifier(150));//冰霜撕咬 AV_259
 #endregion
 
 #region 原初地下城历险家 WC_005
@@ -382,6 +392,20 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       ){
          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.WC_005, new Modifier(-99));
           Bot.Log("原初地下城历险家-99");
+      }
+#endregion
+#region 吞噬者穆坦努斯 Mutanus the Devourer ID：WC_030 
+      if(board.HasCardInHand(Card.Cards.WC_030)
+      ){
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.WC_030, new Modifier(-350));
+          Bot.Log("吞噬者穆坦努斯-350");
+      }
+#endregion
+#region 终极瓦丝琪 Vashj Prime ID：BT_109t
+      if(board.HasCardInHand(Card.Cards.BT_109t)
+      ){
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BT_109t, new Modifier(-350));
+          Bot.Log("终极瓦丝琪-350");
       }
 #endregion
 #region 多系施法者 DED_524
@@ -425,10 +449,12 @@ int axx=board.MinionEnemy.Count;
 #endregion
 #region 艳丽的金刚鹦鹉 DED_509
       if(board.HasCardInHand(Card.Cards.DED_509)
-      &&board.HasCardOnBoard(Card.Cards.AV_255)
+      &&goodnum>0
       ){
-         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_509, new Modifier(-999));
-          Bot.Log("艳丽的金刚鹦鹉 -999");
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_509, new Modifier(-150));
+          Bot.Log("艳丽的金刚鹦鹉 -150");
+      }else{
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_509, new Modifier(150));
       }
 #endregion
 
@@ -451,17 +477,18 @@ int axx=board.MinionEnemy.Count;
        if(board.HasCardInHand(Card.Cards.AV_268)//硬币 GAME_005
         &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_268)==0
         &&board.MinionFriend.Count <7
+        &&usedFrozen==0
       )
       {
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-9999));
-        Bot.Log("蛮爪洞穴-9999");
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-999));
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(999));
+        Bot.Log("蛮爪洞穴-999");
       }else if( board.HasCardInHand(Card.Cards.AV_268)//硬币 GAME_005
         &&usedFrozen==3
         &&board.MinionFriend.Count <7){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-9999));
-        Bot.Log("蛮爪洞穴-9999");
-      }else{
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-99));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-999));
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(999));
+        Bot.Log("蛮爪洞穴-999");
       }
 #endregion
 
