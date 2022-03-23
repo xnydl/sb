@@ -465,6 +465,12 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
           Bot.Log("银色侍从 -99");
       }
 #endregion
+#region 烈日行者 Sunwalker ID：VAN_EX1_032 
+         if(board.HasCardInHand(Card.Cards.VAN_EX1_032)){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_032, new Modifier(-88));
+          Bot.Log("烈日行者 -88");
+      }
+#endregion
 #region 战利品贮藏者 VAN_EX1_096
          if(board.HasCardInHand(Card.Cards.VAN_EX1_096)){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_096, new Modifier(-99));
@@ -488,6 +494,12 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
           Bot.Log("精神控制技师 650");
         }else{
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_085, new Modifier(150));
+        }
+         if(board.HasCardInHand(Card.Cards.VAN_EX1_085)
+         &&board.MinionEnemy.Count>=4
+         ){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_085, new Modifier(-77));
+          Bot.Log("精神控制技师 -77");
         }
 #endregion
 #region 利爪德鲁伊 Druid of the Claw ID：VAN_EX1_165 
