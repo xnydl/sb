@@ -402,7 +402,7 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(650));
       Bot.Log("自然之力"+650);
     }else{
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(150));
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_571, new Modifier(250));
     }
 #endregion
 #region 野性成长 VAN_CS2_013 -

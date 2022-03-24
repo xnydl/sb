@@ -23,6 +23,7 @@ using SmartBot.Plugins.API;
 // # 2x (5) 树木生长
 // # 2x (7) 荒野骑士 AT_041
 // # 2x (7) 霜刃豹头领
+// 森然巨化 Embiggen ID：DRG_315 
 // # 
 // AAEBAZarBAAPiA7kFcGrAs27AovlAq+iA7nSA4zkA63sA8n1A4H3A4T3A6yABK+ABOekBAA=
 // # 
@@ -156,6 +157,15 @@ namespace SmartBot.Mulligan
                        if(!CardsToKeep.Contains(Card.Cards.SCH_617))
                     {
                         Keep(card,"萌物来袭");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.DRG_315//森然巨化 Embiggen ID：DRG_315 
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.DRG_315))
+                    {
+                        Keep(card,"森然巨化");
                     }
                     }   
                 }

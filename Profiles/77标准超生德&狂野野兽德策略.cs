@@ -229,6 +229,9 @@ namespace SmartBotProfiles
             Bot.Log("自己奥秘数量"+aomiCount);
             int NumberOfBeastsUsed = board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PET)+board.MinionFriend.Count(card => card.Race == Card.CRace.PET); 
             Bot.Log("使用过的野兽数量"+NumberOfBeastsUsed);
+            // 用过的的霜狼宝宝 Frostwolf Cub ID：AV_211t 
+            int usedFrozen=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.AV_211t)+board.Hand.Count(x => x.Template.Id == Card.Cards.AV_211t)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_211t);
+           Bot.Log("用过的的霜狼宝宝"+usedFrozen);
  #endregion
 
 
@@ -359,11 +362,10 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(-5)); 
     Bot.Log("活泼的松鼠,送掉 -5");
     }
-    if((board.ManaAvailable >=1)
-    &&board.HasCardInHand(Card.Cards.SW_439))
+    if(board.HasCardInHand(Card.Cards.SW_439))
     {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(-550));
-      Bot.Log("活泼的松鼠 -550 ");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(-999));
+      Bot.Log("活泼的松鼠 -999 ");
     }
 #endregion
 #region 暗礁德鲁伊 DED_001
@@ -430,8 +432,9 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 亚煞极印记 Mark of Y'Shaarj ID：OG_048 
       // 提高改装师对艾露恩神谕者      SW_419 优先级
       if(board.HasCardInHand(Card.Cards.OG_048)){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.OG_048, new Modifier(250,Card.Cards.SW_419));
-      Bot.Log("亚煞极印记 250");
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.OG_048, new Modifier(999,Card.Cards.SW_419));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.OG_048, new Modifier(130));
+      Bot.Log("亚煞极印记 130");
       }
 #endregion
 #region 防护改装师      BT_722
@@ -471,20 +474,37 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
 #endregion
 #region 霜狼巢屋 AV_360 
-      if(board.HasCardInHand(Card.Cards.AV_360)
-      &&board.MinionFriend.Count <7
-      ){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-99));
-    //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-100)); 
-      Bot.Log("霜狼巢屋且随从小于等于6  -99");
+    //   if(board.HasCardInHand(Card.Cards.AV_360)
+    //   &&board.MinionFriend.Count <7
+    //   ){
+    //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-99));
+    // //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-100)); 
+    //   Bot.Log("霜狼巢屋且随从小于等于6  -99");
+    //   }
+    //            if(board.ManaAvailable ==3
+    //     &&board.HasCardInHand(Card.Cards.AV_360)//霜狼巢屋 AV_360  
+    //     ){
+    //     p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-9999));//霜狼巢屋      SCH_617
+    //      Bot.Log("三费有霜狼，优先霜狼");
+    //     }
+        if(board.HasCardInHand(Card.Cards.AV_360)//硬币 GAME_005
+        &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_360)==0
+        &&board.MinionFriend.Count <7
+        &&usedFrozen==0
+      )
+      {
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-999));
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(999));
+        Bot.Log("霜狼巢屋-999");
+      }else if( board.HasCardInHand(Card.Cards.AV_360)//硬币 GAME_005
+        &&usedFrozen==3
+        &&board.MinionFriend.Count <7){
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-999));
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(999));
+        Bot.Log("霜狼巢屋-999");
       }
-               if(board.ManaAvailable ==3
-        &&board.HasCardInHand(Card.Cards.AV_360)//霜狼巢屋 AV_360  
-        ){
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-9999));//霜狼巢屋      SCH_617
-         Bot.Log("三费有霜狼，优先霜狼");
-        }
 #endregion
+
 #region 荆棘护卫 Thorngrowth Sentries ID：BAR_533 
       if(board.HasCardInHand(Card.Cards.BAR_533)
       ){
@@ -618,6 +638,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
 #endregion
 
+
 #region 应急木工 DED_003 
          if(board.HasCardInHand(Card.Cards.DED_003)){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_003, new Modifier(-55));
@@ -632,8 +653,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 尼鲁巴蛛网领主 FP1_017
          if(board.HasCardInHand(Card.Cards.FP1_017)){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.FP1_017, new Modifier(-150));
-          Bot.Log("尼鲁巴蛛网领主 -150");
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.FP1_017, new Modifier(-999));
+          Bot.Log("尼鲁巴蛛网领主 -999");
       }
 #endregion
 
@@ -794,6 +815,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         if(board.ManaAvailable >=2
             && board.Hand.Count(x=>x.CurrentCost>=2 && x.Template.Id==Card.Cards.SW_419)>=1//艾露恩神谕者     SW_419
             && board.MinionEnemy.Count == 0
+            &&board.Hand.Exists(card => card.CurrentCost<=2)
         )
         {
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(-99));
@@ -810,9 +832,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         Bot.Log("钢鬃卫兵 -99 ");
         }
       // 4费时，如果有一个艾露恩，则不下另一个，艾露恩神谕者      SW_419 钢鬃卫兵      BAR_537 
-        if(board.ManaAvailable<=4
-          &&board.HasCardOnBoard(Card.Cards.SW_419)//艾露恩神谕者 SW_419 
-          &&board.Hand.Exists(card => card.CurrentCost<=1)){
+        if(board.HasCardOnBoard(Card.Cards.SW_419)//艾露恩神谕者 SW_419 
+          &&board.Hand.Exists(card => card.CurrentCost<=2)){
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(999));
         Bot.Log("第二个艾露恩优先级 999");
         }

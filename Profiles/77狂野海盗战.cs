@@ -609,8 +609,9 @@ Bot.Log("恩佐斯的副官 -99 ");
 
 #region 港口匪徒 SW_029 
          if(board.HasCardInHand(Card.Cards.SW_029)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-99)); 
-           Bot.Log("港口匪徒 -99 ");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-150)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(999));
+           Bot.Log("港口匪徒 -150 ");
             }
 #endregion
 #region 暴风城海盗 Stormwind Freebooter SW_093 

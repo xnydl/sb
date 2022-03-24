@@ -117,6 +117,15 @@ namespace SmartBot.Mulligan
                     }
                     }   
                 }
+                 if((card==Card.Cards.GVG_009//暗影投弹手 Shadowbomber ID：GVG_009 
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.GVG_009))
+                    {
+                        Keep(card,"暗影投弹手");
+                    }
+                    }   
+                }
                  if((card==Card.Cards.AV_137
                 )){
                     {
