@@ -411,12 +411,17 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
     &&!board.HasCardInHand(Card.Cards.GAME_005 )//硬币 GAME_005
     ) { 
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(-999));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005 , new Modifier(-999));
         Bot.Log("野性成长"+-999);
     }else if(board.HasCardInHand(Card.Cards.VAN_CS2_013 )
     &&board.ManaAvailable ==9){
         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_013 , new Modifier(150));
         Bot.Log("野性成长"+150);
     }
+#endregion
+#region 硬币 GAME_005
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));//硬币 GAME_005
+
 #endregion
 #region 希尔瓦娜斯·风行者 Sylvanas Windrunner ID：VAN_EX1_016 
          if(board.HasCardInHand(Card.Cards.VAN_EX1_016)
@@ -443,8 +448,8 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
 #endregion
 #region 知识古树 Ancient of Lore ID：VAN_NEW1_008  
          if(board.HasCardInHand(Card.Cards.VAN_NEW1_008)){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_NEW1_008, new Modifier(-99));
-          Bot.Log("知识古树 -99");
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.VAN_NEW1_008, new Modifier(-150));
+          Bot.Log("知识古树 -150");
       }
 #endregion
 #region 紫罗兰教师 VAN_NEW1_026

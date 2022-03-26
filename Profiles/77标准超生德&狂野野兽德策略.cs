@@ -353,6 +353,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_030, new Modifier(200));//货物保镖 Cargo Guard ID：SW_030
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_317, new Modifier(200));//原野联络人 Field Contact ID：BAR_317 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_030, new Modifier(200));//邪火神射手 Felfire Deadeye ID：YOP_030  
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));//迪菲亚炮手 Defias Cannoneer ID：DED_519 
 #endregion
 
 #region 松鼠      SW_439 
@@ -469,7 +470,6 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 幽影猫头鹰 DMF_060
       if(board.Hand.Exists(x=>x.CurrentCost>0 && x.Template.Id==Card.Cards.DMF_060)){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_060, new Modifier(100)); 
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AT_041, new Modifier(-100)); 
       Bot.Log("幽影猫头鹰 100");
       }
 #endregion
@@ -493,15 +493,17 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         &&usedFrozen==0
       )
       {
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-999));
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(999));
-        Bot.Log("霜狼巢屋-999");
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-9999));
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(9999));
+        Bot.Log("霜狼巢屋-9999");
       }else if( board.HasCardInHand(Card.Cards.AV_360)//硬币 GAME_005
         &&usedFrozen==3
         &&board.MinionFriend.Count <7){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-999));
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(999));
-        Bot.Log("霜狼巢屋-999");
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-9999));
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(9999));
+        Bot.Log("霜狼巢屋-9999");
+      }else{
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(999)); 
       }
 #endregion
 
@@ -560,6 +562,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
 #region 技能
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(-550)); 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205p, new Modifier(9999)); //培育 Nurture ID：AV_205p 
+      p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_205p, new Modifier(-9999));//培育 Nurture ID：AV_205p
     //   if(board.Hand.Count<4){
     //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(9999)); //山谷植根 Valley Root ID：AV_205pb  
     //   p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_205pb, new Modifier(-9999)); 
@@ -634,7 +638,12 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       if(board.HasCardInHand(Card.Cards.SCH_333)){
         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_333, new Modifier(999));
         Bot.Log("自然研习优先级 999");
-
+      }
+#endregion
+#region 极寒之击 Pure Cold ID：ONY_005ta4 
+      if(board.HasCardInHand(Card.Cards.ONY_005ta4)){
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.ONY_005ta4, new Modifier(-20));
+        Bot.Log("极寒之击 -20");
       }
 #endregion
 
@@ -1020,8 +1029,127 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
       Bot.Log("树木生长:"+250);
     }
 #endregion
+#region 铁木树皮 Ironbark ID：BT_132 
+    if(board.HasCardInHand(Card.Cards.BT_132)
+    &&board.ManaAvailable >= 7
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_132, new Modifier(-99));  
+      Bot.Log("铁木树皮:"+-99);
+    }
+#endregion
+#region 沼泽射线 Bogbeam ID：BT_134
+    if(board.HasCardInHand(Card.Cards.BT_134)
+    &&board.ManaAvailable >= 7
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_134, new Modifier(-20));  
+      Bot.Log("沼泽射线:"+-20);
+    }
+#endregion
+#region 望远镜 Spyglass ID：ONY_005ta10 
+    if(board.HasCardInHand(Card.Cards.ONY_005ta10)
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_005ta10, new Modifier(-20));  
+      Bot.Log("望远镜:"+-20);
+    }
+#endregion
+#region 谜之匣 Puzzle Box ID：ONY_005ta13 
+    if(board.HasCardInHand(Card.Cards.ONY_005ta13)
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_005ta13, new Modifier(-20));  
+      Bot.Log("谜之匣:"+-20);
+    }
+#endregion
+#region 变异注射 Mutating Injection ID：ONY_005ta2 
+    if(board.HasCardInHand(Card.Cards.ONY_005ta2)
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_005ta2, new Modifier(-20));  
+      Bot.Log("变异注射:"+-20);
+    }
+#endregion
+#region 神圣典籍 Holy Book ID：ONY_005ta6 
+    if(board.HasCardInHand(Card.Cards.ONY_005ta6)
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_005ta6, new Modifier(-20));  
+      Bot.Log("神圣典籍:"+-20);
+    }
+#endregion
+#region 浮光掠影 Looming Presence ID：ONY_005ta8 
+    if(board.HasCardInHand(Card.Cards.ONY_005ta8)
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_005ta8, new Modifier(-20));  
+      Bot.Log("浮光掠影:"+-20);
+    }
+#endregion
+#region 砰砰博士的砰砰箱 Dr. Boom's Boombox ID：ONY_005tb12 
+    if(board.HasCardInHand(Card.Cards.ONY_005tb12)
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_005tb12, new Modifier(-20));  
+      Bot.Log("砰砰博士的砰砰箱:"+-20);
+    }
+#endregion
+#region 裂解魔杖 Wand of Disintegration ID：ONY_005tb4 
+    if(board.HasCardInHand(Card.Cards.ONY_005tb4)
+    )
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_005tb4, new Modifier(-20));  
+      Bot.Log("裂解魔杖:"+-20);
+    }
+#endregion
 
 
+#region 蜡油暴怒者 Wax Rager ID：ONY_005tb13 
+          if(board.HasCardInHand(Card.Cards.ONY_005tb13))
+          {
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005tb13, new Modifier(-99));
+            Bot.Log("蜡油暴怒者 -99");
+          }
+#endregion
+#region 野兽美女 Beastly Beauty ID：ONY_005ta9 
+          if(board.HasCardInHand(Card.Cards.ONY_005ta9))
+          {
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005ta9, new Modifier(-20));
+            Bot.Log("野兽美女 -20");
+          }
+#endregion
+
+#region 硬壳横行蟹 Crusty the Crustacean ID：ONY_005ta7 
+          if(board.HasCardInHand(Card.Cards.ONY_005ta7))
+          {
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005ta7, new Modifier(-20));
+            Bot.Log("硬壳横行蟹 -20");
+          }
+#endregion
+
+#region 布巴 Bubba ID：ONY_005ta5  
+          if(board.HasCardInHand(Card.Cards.ONY_005ta5))
+          {
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005ta5, new Modifier(-99));
+            Bot.Log("布巴 -99");
+          }
+#endregion
+
+#region 残暴的奴隶主 Grimmer Patron ID：ONY_005ta12 
+          if(board.HasCardInHand(Card.Cards.ONY_005ta12))
+          {
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005ta12, new Modifier(-99));
+            Bot.Log("残暴的奴隶主 -99");
+          }
+#endregion
+#region 发条助手 Clockwork Assistant ID：ONY_005ta11 
+          if(board.HasCardInHand(Card.Cards.ONY_005ta11))
+          {
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005ta11, new Modifier(-99));
+            Bot.Log("发条助手 -99");
+          }
+#endregion
 #region 卖花女郎 Florist     SW_060
 // 如果手上有自然法术和卖花女 提高卖花女优先级
           if((board.HasCardInHand(Card.Cards.SW_437)//施肥 Composting     SW_437
@@ -1085,8 +1213,8 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
 
 #region 橡果 Acorn     SW_439t
       if(board.HasCardInHand(Card.Cards.SW_439t)){
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_439t, new Modifier(-20)); // 橡果 Acorn     SW_439t
-        Bot.Log("橡果-20");
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_439t, new Modifier(-9999)); // 橡果 Acorn     SW_439t
+        Bot.Log("橡果-9999");
       }
 #endregion
 

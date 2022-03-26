@@ -453,8 +453,15 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
 #region 龙眠净化者 Wyrmrest Purifier ID：DRG_062 
       if(board.HasCardInHand(Card.Cards.DRG_062)
       ){
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_062, new Modifier(-60)); 
-        Bot.Log("龙眠净化者 -60");
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_062, new Modifier(-99)); 
+        Bot.Log("龙眠净化者 -99");
+      }
+#endregion
+#region 年轻的酒仙 Youthful Brewmaster ID：CORE_EX1_049 
+      if(board.HasCardInHand(Card.Cards.CORE_EX1_049)
+      ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_049, new Modifier(130)); 
+        Bot.Log("年轻的酒仙 130");
       }
 #endregion
 #region 被背小鬼 Piggyback Imp ID：AV_309 
