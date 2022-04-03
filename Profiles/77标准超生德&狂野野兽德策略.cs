@@ -355,6 +355,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_030, new Modifier(200));//邪火神射手 Felfire Deadeye ID：YOP_030  
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));//迪菲亚炮手 Defias Cannoneer ID：DED_519 
     // p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(600));//剑圣奥卡尼 Blademaster Okani ID：TSC_032 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
 #endregion
 
 #region 松鼠      SW_439 
@@ -551,11 +552,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     if(board.HasCardInHand(Card.Cards.SW_437)
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-45*(friendCount)));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier((-45*(friendCount))-20));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-100)); 
 
       // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(160)); //小德不用技能
-      Bot.Log("技能 130 施肥:"+-45*friendCount);
+      Bot.Log("施肥:"+-45*friendCount);
     }
     // if(board.HasCardInHand(Card.Cards.SW_437))
     // { 
@@ -682,8 +683,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 野性印记 Mark of the Wild ID：CORE_CS2_009 
          if(board.HasCardInHand(Card.Cards.CORE_CS2_009)){
-               p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_009, new Modifier(150));
-          Bot.Log("野性印记 150");
+               p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_009, new Modifier(250));
+          Bot.Log("野性印记 250");
       }
 #endregion
 #region 蜂群来袭 BEEEES!!! ID：ULD_134  
@@ -737,7 +738,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         &&board.MinionFriend.Count<7
         )
         {
-         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(150)); 
+         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(250)); 
           Bot.Log("深铁穴居人 不送");
         } 
          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617,new Modifier(-999,Card.Cards.AV_137));
@@ -897,7 +898,6 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         }
      
         if(board.ManaAvailable>=2
-        &&!board.HasCardInHand(Card.Cards.AV_100)
         ){
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
           Bot.Log("硬币 55");

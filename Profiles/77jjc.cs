@@ -288,6 +288,23 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
         Bot.Log("自然研习优先级 999");
       }
 #endregion
+#region 探索安戈洛 Explore Un'Goro ID：UNG_922 
+      // 提高龟壳印记贴嘲讽
+      if(board.HasCardInHand(Card.Cards.UNG_922)){
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.UNG_922, new Modifier(-999));
+        Bot.Log("探索安戈洛 -999");
+      }
+#endregion
+#region 宠物收集者 Pet Collector ID：ONY_009 
+    if(board.HasCardInHand(Card.Cards.ONY_009)
+        )
+        {
+         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.ONY_009, new Modifier(999)); 
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_009, new Modifier(-150));
+
+          Bot.Log("宠物收集者 -150");
+        } 
+#endregion
 #region 龙火护符 Drakefire Amulet ID：ONY_029 
       if(board.HasCardInHand(Card.Cards.ONY_029)){
         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.ONY_029, new Modifier(9999));
@@ -477,17 +494,6 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
       ){
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_309, new Modifier(-60)); 
         Bot.Log("被背小鬼 -60");
-      }
-#endregion
-#region 塔楼中士 Tower Sergeant ID：AV_125 
-      if(board.HasCardInHand(Card.Cards.AV_125)
-      &&board.MinionFriend.Count >= 2
-      ){
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_125, new Modifier(-60)); 
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_125, new Modifier(999));
-        Bot.Log("塔楼中士 -60");
-      }else{
-           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_125, new Modifier(130)); 
       }
 #endregion
 #region 痛苦诅咒 Curse of Agony ID：ONY_034 
