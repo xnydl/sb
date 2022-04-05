@@ -356,6 +356,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));//迪菲亚炮手 Defias Cannoneer ID：DED_519 
     // p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(600));//剑圣奥卡尼 Blademaster Okani ID：TSC_032 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));//历战先锋 Battleworn Vanguard ID：AV_118 
 #endregion
 
 #region 松鼠      SW_439 
@@ -378,12 +379,6 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_001, new Modifier(-200)); 
     Bot.Log("暗礁德鲁伊,后手出");
     }
-    if((board.ManaAvailable >=1)
-    &&board.HasCardInHand(Card.Cards.SW_439))
-    {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(-250));
-      Bot.Log("活泼的松鼠 -250 ");
-    }
 #endregion
 #region 大导师野爪 Shan'do Wildclaw ID：SCH_607 
    
@@ -401,7 +396,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     }
 #endregion
 
-#region 农夫      SW_319
+#region 农夫 SW_319
           //   if(board.ManaAvailable >=3
           //   && board.HasCardInHand(Card.Cards.SW_319)//农夫      SW_319
           //   &&(board.HasCardInHand(Card.Cards.SW_306)//劳累的驮骡      SW_306
@@ -430,6 +425,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(130));
             Bot.Log("农夫 130");
           }
+          if(board.HasCardOnBoard(Card.Cards.SW_319))// 农夫 SW_319
+            {
+            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(650)); 
+            Bot.Log("农夫不送");
+            }
 #endregion
 
 #region 亚煞极印记 Mark of Y'Shaarj ID：OG_048 
@@ -447,18 +447,31 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BT_722, new Modifier(-50,Card.Cards.SW_419)); 
       Bot.Log("防护改装师 -40");
       }
-      if(board.HasCardInHand(Card.Cards.BT_722)
-      &&board.HasCardOnBoard(Card.Cards.BAR_537)){//钢鬃卫兵  BAR_537 
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BT_722, new Modifier(-40,Card.Cards.BAR_537)); 
-      Bot.Log("防护改装师 -40");
-      }
+    //   if(board.HasCardInHand(Card.Cards.BT_722)
+    //   &&board.HasCardOnBoard(Card.Cards.BAR_537)){//钢鬃卫兵  BAR_537 
+    //   p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BT_722, new Modifier(-40,Card.Cards.BAR_537)); 
+    //   Bot.Log("防护改装师 -40");
+    //   }
 #endregion
 #region 霜刃豹头领 AV_291
       if(board.Hand.Exists(x=>x.CurrentCost>0 && x.Template.Id==Card.Cards.AV_291)
       ){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(130)); 
+    //   p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(130)); 
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(-130)); 
       Bot.Log("霜刃豹头领 100");
+      }
+#endregion
+#region 热情的柜员 Enthusiastic Banker ID：SW_069 
+      if(board.HasCardOnBoard(Card.Cards.SW_069)
+      ){
+    //   p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(130)); 
+    //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(-130)); 
+     p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_069, new Modifier(150));
+      Bot.Log("热情的柜员不送");
+      }
+         if(board.HasCardInHand(Card.Cards.SW_069)){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_069, new Modifier(-40)); 
+      Bot.Log("热情的柜员 -40");
       }
 #endregion
 #region 荒野骑士 Knight of the Wild ID：AT_041 
@@ -552,11 +565,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     if(board.HasCardInHand(Card.Cards.SW_437)
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier((-45*(friendCount))-20));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier((-95*(friendCount))));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-100)); 
 
       // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(160)); //小德不用技能
-      Bot.Log("施肥:"+-45*friendCount);
+      Bot.Log("施肥:"+-95*friendCount);
     }
     // if(board.HasCardInHand(Card.Cards.SW_437))
     // { 
@@ -722,6 +735,9 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
        &&board.ManaAvailable <3){
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
           Bot.Log("有德雷克，三费之前不用硬币");
+      }else{
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
+          Bot.Log("硬币 55");
       }
 #endregion
 #region 深铁穴居人  AV_137  
@@ -741,12 +757,12 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(250)); 
           Bot.Log("深铁穴居人 不送");
         } 
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617,new Modifier(-999,Card.Cards.AV_137));
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_025,new Modifier(-999,Card.Cards.AV_345));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_316,new Modifier(-999,Card.Cards.AV_345));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_292,new Modifier(-999,Card.Cards.AV_345));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_338,new Modifier(-999,Card.Cards.AV_345));//坚守桥梁 Hold the Bridge ID：AV_338 
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_138,new Modifier(-999,Card.Cards.AV_345));//威能祝福 Blessing of Authority ID：SCH_138 
+        //  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617,new Modifier(-999,Card.Cards.AV_137));
+        //  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_025,new Modifier(-999,Card.Cards.AV_345));
+        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_316,new Modifier(-999,Card.Cards.AV_345));
+        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_292,new Modifier(-999,Card.Cards.AV_345));
+        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_338,new Modifier(-999,Card.Cards.AV_345));//坚守桥梁 Hold the Bridge ID：AV_338 
+        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_138,new Modifier(-999,Card.Cards.AV_345));//威能祝福 Blessing of Authority ID：SCH_138 
 
 #endregion
 
@@ -897,11 +913,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
          Bot.Log("艾露恩神谕者 999 条件1");
         }
      
-        if(board.ManaAvailable>=2
-        ){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
-          Bot.Log("硬币 55");
-        }
+       
 
        
         if((board.HasCardOnBoard(Card.Cards.SW_419)

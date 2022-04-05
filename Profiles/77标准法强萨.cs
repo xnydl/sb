@@ -142,7 +142,7 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
+            var p = new ProfileParameters(BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 };           
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             Bot.Log("b站直播间608700~");
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
@@ -360,6 +360,9 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_230, new Modifier(200));//伊格诺斯 Il'gynoth ID：DMF_230 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_733, new Modifier(200));//莫尔葛工匠 Mo'arg Artificer ID：BT_733 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_734, new Modifier(200));//格雷布 Greybough ID：DMF_734  
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007  
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_045, new Modifier(200));//旱地风暴 Arid Stormer ID：BAR_045   
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(200));//深铁穴居人 Irondeep Trogg ID：AV_137 
 #endregion
 
 #region 雷霆绽放 SCH_427  硬币 GAME_005
@@ -383,8 +386,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_007, new Modifier(250));
           Bot.Log("电击学徒 250");
       }
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_238, new Modifier(150));//闪电箭 CORE_EX1_238
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_259, new Modifier(150));//冰霜撕咬 AV_259
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_238, new Modifier(250));//闪电箭 CORE_EX1_238
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_259, new Modifier(250));//冰霜撕咬 AV_259
 #endregion
 
 #region 原初地下城历险家 WC_005
@@ -442,7 +445,7 @@ int axx=board.MinionEnemy.Count;
       &&(board.MinionEnemy.Count>=3||enemyAttack>=5)
       ){
          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_255, new Modifier(-25*(axx)));
-          Bot.Log("雪落守护者 "+-50*(Numberofenemyfollowers));
+          Bot.Log("雪落守护者 "+-25*(Numberofenemyfollowers));
       }else{
          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_255, new Modifier(150));
       }
@@ -451,8 +454,8 @@ int axx=board.MinionEnemy.Count;
       if(board.HasCardInHand(Card.Cards.DED_509)
       &&goodnum>0
       ){
-         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_509, new Modifier(-150));
-          Bot.Log("艳丽的金刚鹦鹉 -150");
+         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_509, new Modifier(-99));
+          Bot.Log("艳丽的金刚鹦鹉 -99");
       }else{
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_509, new Modifier(150));
       }
@@ -465,9 +468,9 @@ int axx=board.MinionEnemy.Count;
       if(board.HasCardInHand(Card.Cards.AV_266)
       &&board.MinionEnemy.Count > 0
       ){
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_266, new Modifier(-40));
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_266, new Modifier(999)); 
-        Bot.Log("冷风 -40");          
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_266, new Modifier(-5));
+        // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_266, new Modifier(999)); 
+        Bot.Log("冷风 -5");          
       }
 #endregion
 
@@ -475,18 +478,11 @@ int axx=board.MinionEnemy.Count;
 
 #region 蛮爪洞穴 AV_268
        if(board.HasCardInHand(Card.Cards.AV_268)//硬币 GAME_005
-        &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_268)==0
         &&board.MinionFriend.Count <7
-        &&usedFrozen==0
+        &&(usedFrozen==0||usedFrozen==3||usedFrozen==6||usedFrozen==9)
       )
       {
         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-999));
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(999));
-        Bot.Log("蛮爪洞穴-999");
-      }else if( board.HasCardInHand(Card.Cards.AV_268)//硬币 GAME_005
-        &&usedFrozen==3
-        &&board.MinionFriend.Count <7){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(-999));
         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_268, new Modifier(999));
         Bot.Log("蛮爪洞穴-999");
       }
@@ -500,6 +496,15 @@ int axx=board.MinionEnemy.Count;
       {
         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.WC_020, new Modifier(250));///硬币 SCH_427
           Bot.Log("敌方攻击力小于6不用永恒之火");
+      }
+#endregion
+#region 衰变飞弹 Devolving Missiles ID：SCH_235 
+       if(
+        board.HasCardInHand(Card.Cards.SCH_235)//硬币 GAME_005
+      )
+      {
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_235, new Modifier(999)); 
+          Bot.Log("衰变飞弹 -20");
       }
 #endregion
 #region 风暴召唤者布鲁坎 SW_031t7 

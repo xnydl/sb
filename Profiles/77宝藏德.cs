@@ -346,10 +346,12 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
 #endregion
 
 #region 卡扎库杉 Kazakusan ID：ONY_005  
-         if(board.HasCardInHand(Card.Cards.ONY_005)){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(-999));
+         if(board.HasCardInHand(Card.Cards.ONY_005)
+         &&board.FriendDeckCount <=0//野性之心古夫 AV_205 
+         ){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(-99));
            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(999));
-          Bot.Log("卡扎库杉 -999");
+          Bot.Log("卡扎库杉 -99");
       }
 #endregion
 #region 织法者玛里苟斯 CS3_034 

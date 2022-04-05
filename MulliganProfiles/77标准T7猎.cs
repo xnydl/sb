@@ -144,6 +144,28 @@ namespace SmartBot.Mulligan
                         Keep(card,"狗狗饼干");
                     }
                 }
+              if(card==Card.Cards.AV_100)//德雷克塔尔 Drek'Thar ID：AV_100
+                {
+                     if(!CardsToKeep.Contains(Card.Cards.AV_100))
+                    {
+                        Keep(card,"德雷克塔尔");
+                    }
+                }
+              if(card==Card.Cards.CORE_EX1_008)//银色侍从 Argent Squire ID：CORE_EX1_008 
+                {
+                     if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_008))
+                    {
+                        Keep(card,"银色侍从");
+                    }
+                }
+        
+              if(card==Card.Cards.SCH_279)//引月长弓 Trueaim Crescent ID：SCH_279 
+                {
+                     if(!CardsToKeep.Contains(Card.Cards.SCH_279))
+                    {
+                        Keep(card,"引月长弓");
+                    }
+                }
         
             }
             return CardsToKeep;

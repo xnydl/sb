@@ -144,7 +144,7 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
+            var p = new ProfileParameters(BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 };           
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
             if ( board.EnemyClass == Card.CClass.SHAMAN
@@ -155,14 +155,13 @@ namespace SmartBotProfiles
               )
             {
                 p.GlobalAggroModifier = (int)(a * 0.625 + 96.5);
-                Bot.Log("攻击值"+(a * 0.625 + 296.5));
+                Bot.Log("攻击值"+(a * 0.625 + 96.5));
             }
             else
             {
                 p.GlobalAggroModifier = (int)(a * 0.625 + 113.5);
-                Bot.Log("攻击值"+(a * 0.625 + 303.5));
+                Bot.Log("攻击值"+(a * 0.625 + 113.5));
             }	 
-
        {
  
         
@@ -278,39 +277,57 @@ namespace SmartBotProfiles
 
   
 #endregion
-
-
+#region Card.Cards.HERO_04bp 英雄技能
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-999)); 
+        // 召唤宠物 Summon Pet ID：AV_113p 
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_113p, new Modifier(5)); 
+#endregion
 #region 深铁穴居人  AV_137  
- if(board.HasCardInHand(Card.Cards.AV_137)
+        if(board.HasCardInHand(Card.Cards.AV_137)
+        &&board.MinionFriend.Count<6
         )
         {
          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(999)); 
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-999));
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-99));
 
-          Bot.Log("深铁穴居人 -999");
+          Bot.Log("深铁穴居人 -99");
         } 
         if(board.HasCardOnBoard(Card.Cards.AV_137)
         &&board.MinionFriend.Count<7
         )
         {
-         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(150)); 
+         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(250)); 
           Bot.Log("深铁穴居人 不送");
         } 
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617,new Modifier(-999,Card.Cards.AV_137));
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_025,new Modifier(-999,Card.Cards.AV_345));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_316,new Modifier(-999,Card.Cards.AV_345));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_292,new Modifier(-999,Card.Cards.AV_345));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_338,new Modifier(-999,Card.Cards.AV_345));//坚守桥梁 Hold the Bridge ID：AV_338 
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_138,new Modifier(-999,Card.Cards.AV_345));//威能祝福 Blessing of Authority ID：SCH_138 
-
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617,new Modifier(-999,Card.Cards.AV_137));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_458,new Modifier(-999,Card.Cards.AV_345));//山羊坐骑 Ramming Mount ID：SW_458 
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_009,new Modifier(-999,Card.Cards.AV_345));//狗狗饼干 Doggie Biscuit ID：DED_009 
+#endregion
+#region 德雷克塔尔 Drek'Thar ID：AV_100  
+         if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-999));
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(9999));
+          Bot.Log("德雷克塔尔 -999");
+      }else{
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
+          Bot.Log("德雷克塔尔 150");
+      }
+       if(board.HasCardInHand(Card.Cards.AV_100)
+       &&board.HasCardInHand(Card.Cards.GAME_005)
+       &&board.ManaAvailable <3){
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
+          Bot.Log("有德雷克，三费之前不用硬币");
+      }else{
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
+          Bot.Log("硬币 55");
+      }
 #endregion
 #region 战歌驯兽师 Warsong Wrangler ID：BAR_037 
  if(board.HasCardInHand(Card.Cards.BAR_037)
         )
         {
-         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BAR_037, new Modifier(9999)); 
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_037, new Modifier(-99));//十字路口哨所      BAR_075 
-          Bot.Log("战歌驯兽师 -99");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_037, new Modifier(-555));//十字路口哨所      BAR_075 
+          Bot.Log("战歌驯兽师 -555");
         } 
 #endregion
 
@@ -318,20 +335,20 @@ namespace SmartBotProfiles
         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-999)); 
         // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(130)); 
 #endregion
-#region 魔鼠宝宝 Marsuul Cub ID：SCH_617t 
-        if(board.HasCardInHand(Card.Cards.SCH_617t)
-        )
-        {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_617t, new Modifier(-20));
-          Bot.Log("魔鼠宝宝 -20");
-        }
-#endregion
+// #region 魔鼠宝宝 Marsuul Cub ID：SCH_617t 
+//         if(board.HasCardInHand(Card.Cards.SCH_617t)
+//         )
+//         {
+//       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_617t, new Modifier(-20));
+//           Bot.Log("魔鼠宝宝 -20");
+//         }
+// #endregion
 
 #region 恶魔伙伴 SCH_600
          if(board.HasCardInHand(Card.Cards.SCH_600)
       ){
-     p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_600, new Modifier(130));
-      Bot.Log("恶魔伙伴"+-100*friendCount);
+     p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_600, new Modifier(155));
+      Bot.Log("恶魔伙伴"+-155);
       }
 #endregion
 #region 山羊坐骑 Ramming Mount ID：SW_458 
@@ -346,6 +363,14 @@ namespace SmartBotProfiles
       ){
      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_DS1_184, new Modifier(130));
       Bot.Log("追踪术"+130);
+      }
+#endregion
+#region 引月长弓 Trueaim Crescent ID：SCH_279 
+         if((board.WeaponFriend != null && board.WeaponFriend.Template.Id == Card.Cards.SCH_279)
+         &&board.MinionEnemy.Count == 0
+      ){
+    p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.SCH_279, new Modifier(-50));//SCH_279
+      Bot.Log("引月长弓不a");
       }
 #endregion
 

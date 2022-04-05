@@ -206,15 +206,6 @@ namespace SmartBot.Mulligan
 
             foreach (Card.Cards card in choices)
             {
-                //  if((card==Card.Cards.SW_419//艾露恩神谕者 Oracle of Elune      SW_419 
-                // )){
-                //     {
-                //        if(!CardsToKeep.Contains(Card.Cards.SW_419))
-                //     {
-                //         Keep(card,"艾露恩神谕者");
-                //     }
-                //     }   
-                // }
                  if((card==Card.Cards.SCH_333//自然研习 Nature Studies      SCH_333  
                 )){
                     {
@@ -224,15 +215,6 @@ namespace SmartBot.Mulligan
                     }
                     }   
                 }
-                //  if((card==Card.Cards.SCH_617//萌物来袭 Adorable Infestation      SCH_617  
-                // )){
-                //     {
-                //        if(!CardsToKeep.Contains(Card.Cards.SCH_617))
-                //     {
-                //         Keep(card,"萌物来袭");
-                //     }
-                //     }   
-                // }
                  if((card==Card.Cards.BAR_533//荆棘护卫 Thorngrowth Sentries ID：BAR_533 
                 )){
                     {
@@ -317,29 +299,6 @@ namespace SmartBot.Mulligan
                         Keep(card,"德雷克塔尔");
                     
                 }
-                // if(card==Card.Cards.SCH_244//教师的爱宠 Teacher's Pet      SCH_244 
-                // )
-                // {
-                //        if(!CardsToKeep.Contains(Card.Cards.SCH_244)&&flag2+flag3+flag4+flag8+flag12>=2)
-                //     {
-                //         Keep(card,"教师的爱宠");
-                //     }
-                // }
-                // if(card==Card.Cards.DMF_734//格雷布 Greybough      DMF_734 
-                // )
-                // {
-                //        if(!CardsToKeep.Contains(Card.Cards.DMF_734)&&flag2+flag3+flag4+flag8+flag12>=2)
-                //     {
-                //         Keep(card,"格雷布");
-                //     }
-                // }
-              // if(card==Card.Cards.SW_306&&flag2>0&&flag3+flag4+flag8==0)//劳累的驮骡 Encumbered Pack Mule      SW_306 
-              //   {
-              //        if(!CardsToKeep.Contains(Card.Cards.SW_306))
-              //       {
-              //           Keep(card,"劳累的驮骡");
-              //       }
-              //   }
                 if(card==Card.Cards.BT_715)//噬骨殴斗者 Bonechewer Brawler      BT_715
                 {
                   if(!CardsToKeep.Contains(Card.Cards.BT_715))
@@ -347,13 +306,6 @@ namespace SmartBot.Mulligan
                         Keep(card,"噬骨殴斗者");
                     }
                 }
-                // if(card==Card.Cards.BT_722)//防护改装师 BT_722 
-                // {
-                //    if(!CardsToKeep.Contains(Card.Cards.BT_722))
-                //     {
-                //         Keep(card,"防护改装师");
-                //     }
-                // }
                 if(card==Card.Cards.BAR_743&&flag2>0)//狂野蟾蜍 Toad of the Wilds      BAR_743 
                 {
                         Keep(card,"2狂野蟾蜍 ");   
@@ -362,14 +314,6 @@ namespace SmartBot.Mulligan
                 {
                         Keep(card,"吵吵机器人 ");   
                 }
-                // if(card==Card.Cards.SW_422//播种施肥 Sow the Soil      SW_422
-                // )
-                // {
-                //    if(!CardsToKeep.Contains(Card.Cards.SW_422))
-                //     {
-                //         Keep(card,"播种施肥");
-                //     }
-                // }
                 if(card==Card.Cards.CORE_KAR_300//魔法乌鸦 Enchanted Raven      CORE_KAR_300
                 )
                 {
@@ -417,22 +361,6 @@ namespace SmartBot.Mulligan
                         Keep(card,"前沿哨所");
                     }
                 }
-                // if(card==Card.Cards.SW_437//施肥 Composting      SW_437
-                // )
-                // {
-                //    if(!CardsToKeep.Contains(Card.Cards.SW_437))
-                //     {
-                //         Keep(card,"施肥");
-                //     }
-                // }
-                // if(card==Card.Cards.BAR_743//狂野蟾蜍 Toad of the Wilds      BAR_743 
-                // )
-                // {
-                //    if(!CardsToKeep.Contains(Card.Cards.BAR_743))
-                //     {
-                //         Keep(card,"狂野蟾蜍");
-                //     }
-                // }
                 if(card==Card.Cards.SCH_427&&flag1+flag2>0//雷霆绽放 Lightning Bloom      SCH_427
                 )
                 {
