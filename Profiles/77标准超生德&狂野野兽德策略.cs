@@ -357,6 +357,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     // p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(600));//剑圣奥卡尼 Blademaster Okani ID：TSC_032 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));//历战先锋 Battleworn Vanguard ID：AV_118 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BOT_423, new Modifier(200));//梦境花栽种师 Dreampetal Florist ID：BOT_423
 #endregion
 
 #region 松鼠      SW_439 
@@ -456,7 +457,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 霜刃豹头领 AV_291
       if(board.Hand.Exists(x=>x.CurrentCost>0 && x.Template.Id==Card.Cards.AV_291)
       ){
-    //   p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(130)); 
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(130)); 
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_291, new Modifier(-130)); 
       Bot.Log("霜刃豹头领 100");
       }
@@ -565,11 +566,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     if(board.HasCardInHand(Card.Cards.SW_437)
     )
     { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier((-95*(friendCount))));
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier((-55*(friendCount))));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-100)); 
 
       // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(160)); //小德不用技能
-      Bot.Log("施肥:"+-95*friendCount);
+      Bot.Log("施肥:"+-55*friendCount);
     }
     // if(board.HasCardInHand(Card.Cards.SW_437))
     // { 
@@ -702,10 +703,18 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 蜂群来袭 BEEEES!!! ID：ULD_134  
          if(board.HasCardInHand(Card.Cards.ULD_134)
-        //  &&board.HasCardInHand(Card.Cards.AT_041)//荒野骑士 Knight of the Wild ID：AT_041 
+         &&board.HasCardInHand(Card.Cards.AT_041)//荒野骑士 Knight of the Wild ID：AT_041 
          ){
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ULD_134, new Modifier(-150));
           Bot.Log("蜂群来袭 -150");
+      }
+#endregion
+#region 萌物来袭      SCH_617 
+         if(board.HasCardInHand(Card.Cards.SCH_617)
+        //  &&board.HasCardInHand(Card.Cards.AT_041)//荒野骑士 Knight of the Wild ID：AT_041 
+         ){
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617, new Modifier(-150));
+          Bot.Log("萌物来袭 -150");
       }
 #endregion
 #region 真菌宝藏 Fungal Fortunes ID：BT_128 
@@ -970,7 +979,7 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
 }
            
     // 书虫相关
-        if (board.Hand.Count >=4
+        if (board.Hand.Count >=5
         && board.HasCardInHand(Card.Cards.SCH_142)
        )//贪婪的书虫      SCH_142
         {

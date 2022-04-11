@@ -160,6 +160,15 @@ namespace SmartBot.Mulligan
                     }
                     }   
                 }
+                   if(card==Card.Cards.SW_319//农夫 Peasant      SW_319
+                )
+                {
+                     if(!CardsToKeep.Contains(Card.Cards.SW_319))
+                    {
+                        Keep(card,"农夫");
+                    }
+                        
+                }
                  if((card==Card.Cards.DRG_315//森然巨化 Embiggen ID：DRG_315 
                 )){
                     {
