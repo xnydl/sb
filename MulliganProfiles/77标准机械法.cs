@@ -28,6 +28,31 @@ using SmartBot.Plugins.API;
 // AAECAZ8FAuCLBLCyBA7w9gOq+APJoATWoAT5pASStQThtQTeuQTjuQTUvQSywQTa0wTa2QSUpAUA
 // # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
 // # 套牌详情请查看https://hsreplay.net/decks/NcprLgn8dYXNpwLcNfjOOd/
+// ### 机械法
+// # 职业：法师
+// # 模式：标准模式
+// # 狮鹫年
+// #
+// # 2x (1) 械钳虾 TSC_632 
+// # 2x (2) 矿道工程师 SW_059
+// # 2x (2) 深海融合怪
+// # 2x (2) 海沟勘测机 TSC_642
+// # 2x (2) 安保自动机 TSC_928
+// # 2x (2) 吵吵机器人 BOT_270t
+// # 2x (3) 艾萨拉的清道夫 TSC_776 
+// # 2x (3) 海底侦察兵
+// # 2x (3) 海床传送口 TSC_055 
+// # 2x (3) 机械鲨鱼 TSC_054 
+// # 2x (3) 奥术智慧
+// # 2x (3) A3型机械金刚
+// # 2x (4) 火球术
+// # 1x (5) 伊妮·积雷
+// # 2x (6) 母舰
+// # 1x (8) 盖亚，巨力机甲
+// #
+// AAECAf0EAqGxBOy6BA7D+QP8ngT9ngTWoASStQThtQTJtwTKtwTduQTjuQTkuQSywQTY2QSUpAUA
+// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
+// # 套牌详情请查看https://hsreplay.net/decks/fqCuwdBruEUYhO4dIoDYf/
 
 
 namespace SmartBot.Mulligan
@@ -60,43 +85,43 @@ namespace SmartBot.Mulligan
 
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.CORE_ICC_038// 正义保护者 CORE_ICC_038 
+                if(card==Card.Cards.TSC_632// 械钳虾 TSC_632 
                 ){
-                    if(!CardsToKeep.Contains(Card.Cards.CORE_ICC_038))
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_632))
                     {
-                        Keep(card,"正义保护者");
+                        Keep(card,"械钳虾");
                     } 
                 }
 
-                if(card==Card.Cards.SW_048// 棱彩珠宝工具 SW_048
+                if(card==Card.Cards.SW_059// 矿道工程师 SW_059
                 ){   
-                    if(!CardsToKeep.Contains(Card.Cards.SW_048))
+                    if(!CardsToKeep.Contains(Card.Cards.SW_059))
                     {
-                        Keep(card,"棱彩珠宝工具");
+                        Keep(card,"矿道工程师");
                     } 
                 }
-                if(card==Card.Cards.TSC_632// 械钳虾 TSC_632
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_632))
+                if(card==Card.Cards.TSC_642// 海沟勘测机 TSC_642
+                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_642))
                     {
-                        Keep(card,"械钳虾");
+                        Keep(card,"海沟勘测机");
                     }
                 }
-                if(card==Card.Cards.TSC_079// 雷达探测 TSC_079
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_079))
+                if(card==Card.Cards.TSC_776// 艾萨拉的清道夫 TSC_776 
+                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_776))
                     {
-                        Keep(card,"雷达探测");
+                        Keep(card,"艾萨拉的清道夫");
                     }
                 }
-                if(card==Card.Cards.TSC_069// 深海融合怪 TSC_069
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_069))
+                if(card==Card.Cards.TSC_055// 海床传送口 TSC_055
+                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_055))
                     {
-                        Keep(card,"深海融合怪");
+                        Keep(card,"海床传送口");
                     }
                 }
-                if(card==Card.Cards.TSC_083// 海床救生员 TSC_083
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_083))
+                if(card==Card.Cards.TSC_054// 机械鲨鱼 TSC_054
+                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_054))
                     {
-                        Keep(card,"海床救生员");
+                        Keep(card,"机械鲨鱼");
                     }
                 }
                 if(card==Card.Cards.TSC_928// 安保自动机 TSC_928
@@ -109,24 +134,6 @@ namespace SmartBot.Mulligan
                 ){ if(!CardsToKeep.Contains(Card.Cards.BOT_270t))
                     {
                         Keep(card,"吵吵机器人");
-                    }
-                }
-                if(card==Card.Cards.TSC_644// 艾萨拉的观月仪 TSC_644
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_644))
-                    {
-                        Keep(card,"艾萨拉的观月仪");
-                    }
-                }
-                if(card==Card.Cards.SW_315// 联盟旗手 SW_315
-                ){ if(!CardsToKeep.Contains(Card.Cards.SW_315))
-                    {
-                        Keep(card,"联盟旗手");
-                    }
-                }
-                if(card==Card.Cards.AV_343// 石炉守备官 AV_343
-                ){ if(!CardsToKeep.Contains(Card.Cards.AV_343))
-                    {
-                        Keep(card,"石炉守备官");
                     }
                 }
             }
