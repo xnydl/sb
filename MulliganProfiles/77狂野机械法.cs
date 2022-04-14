@@ -3,56 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using SmartBot.Database;
 using SmartBot.Plugins.API;
-// ### 法师
+// ### Mage
 // # 职业：法师
 // # 模式：狂野模式
 // #
-// # 2x (1) 可靠的灯泡
-// # 2x (1) 机械袋鼠 BOT_445 
-// # 2x (1) 械钳虾 TSC_632
 // # 2x (1) 滑板机器人
-// # 2x (2) 安保自动机 TSC_928
-// # 2x (2) 怨灵之书 GIL_548
-// # 2x (2) 星占师 BT_014 
-// # 2x (2) 机械跃迁者 GVG_006 
-// # 2x (2) 海沟勘测机
-// # 2x (2) 深海融合怪
+// # 2x (1) 械钳虾 TSC_632
+// # 2x (1) 机械袋鼠 BOT_445
 // # 2x (2) 通电机器人 BOT_907
-// # 2x (3) A3型机械金刚
-// # 2x (3) 机械鲨鱼
-// # 2x (3) 海床传送口
-// # 2x (3) 艾萨拉的清道夫
-// # 
-// AAEBAcz6AwAPlA/O7wKf9QKZ9wL2/QLX/gL3uAOStQThtQTJtwTKtwTduQSywQTY2QSUpAUA
-// # 
-// # 想要使用这副套牌，请先复制到剪贴板，然后在游戏中点击“新套牌”进行粘贴。
-
-// ### 机械法
-// # 职业：法师
-// # 模式：标准模式
-// # 狮鹫年
-// #
-// # 2x (1) 械钳虾 TSC_632 
-// # 2x (2) 矿道工程师 SW_059
+// # 2x (2) 碎雪机器人
 // # 2x (2) 深海融合怪
 // # 2x (2) 海沟勘测机 TSC_642
+// # 2x (2) 机械跃迁者 GVG_006
+// # 2x (2) 怨灵之书 GIL_548
 // # 2x (2) 安保自动机 TSC_928
-// # 2x (2) 吵吵机器人 BOT_270t
-// # 2x (3) 艾萨拉的清道夫 TSC_776 
-// # 2x (3) 海底侦察兵
-// # 2x (3) 海床传送口 TSC_055 
-// # 2x (3) 机械鲨鱼 TSC_054 
-// # 2x (3) 奥术智慧
-// # 2x (3) A3型机械金刚
-// # 2x (4) 火球术
-// # 1x (5) 伊妮·积雷
-// # 2x (6) 母舰
+// # 1x (2) 吵吵机器人
+// # 2x (3) 艾萨拉的清道夫
+// # 2x (3) 海床传送口 TSC_055
+// # 2x (3) 机械鲨鱼 TSC_054
+// # 1x (3) 大铡蟹
+// # 1x (5) 奇利亚斯
 // # 1x (8) 盖亚，巨力机甲
 // #
-// AAECAf0EAqGxBOy6BA7D+QP8ngT9ngTWoASStQThtQTJtwTKtwTduQTjuQTkuQSywQTY2QSUpAUA
+// AAEBAf0EBKCAA5+3A9agBKGxBA2ID5QPzu8Cn/UC9v0C1/4CkrUE4bUEybcEyrcE3bkEssEE2NkEAA==
 // # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
-// # 套牌详情请查看https://hsreplay.net/decks/fqCuwdBruEUYhO4dIoDYf/
-
+// # 套牌详情请查看https://hsreplay.net/decks/YLWF2GbzPfWF02UK6fbrtb/
 
 namespace SmartBot.Mulligan
 {
@@ -98,13 +73,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"安保自动机");
                     } 
                 }
-                // if(card==Card.Cards.GIL_548// 怨灵之书 GIL_548 
-                // ){
-                //     if(!CardsToKeep.Contains(Card.Cards.GIL_548))
-                //     {
-                //         Keep(card,"怨灵之书");
-                //     } 
-                // }
+                if(card==Card.Cards.GIL_548// 怨灵之书 GIL_548 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.GIL_548))
+                    {
+                        Keep(card,"怨灵之书");
+                    } 
+                }
                 if(card==Card.Cards.GVG_006// 机械跃迁者 GVG_006 
                 ){  if(!CardsToKeep.Contains(Card.Cards.GVG_006))
                     {
@@ -132,13 +107,20 @@ namespace SmartBot.Mulligan
                         Keep(card,"海沟勘测机");
                     } 
                 }
-                // if(card==Card.Cards.BT_014// 星占师 BT_014
-                // ){
-                //     if(!CardsToKeep.Contains(Card.Cards.BT_014))
-                //     {
-                //         Keep(card,"星占师");
-                //     } 
-                // }
+                if(card==Card.Cards.TSC_055// 海床传送口 TSC_055
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_055))
+                    {
+                        Keep(card,"海床传送口");
+                    } 
+                }
+                if(card==Card.Cards.TSC_054// 机械鲨鱼 TSC_054
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_054))
+                    {
+                        Keep(card,"机械鲨鱼");
+                    } 
+                }
             }
             return CardsToKeep;
         }

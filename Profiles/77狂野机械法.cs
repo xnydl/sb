@@ -362,6 +362,15 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
       Bot.Log("海床传送口 -250");
       }
+       if(board.HasCardInHand(Card.Cards.TSC_055)
+       &&board.HasCardInHand(Card.Cards.GAME_005)
+       &&board.ManaAvailable <2){
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
+          Bot.Log("有海床传送口，2费之前不用硬币");
+      }else{
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
+          Bot.Log("硬币 55");
+      }
 #endregion
 #region 怨灵之书 GIL_548  
       if(board.HasCardInHand(Card.Cards.GIL_548)){
@@ -371,7 +380,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 安保自动机 TSC_928
       if(board.HasCardInHand(Card.Cards.TSC_928)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-150));
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-999));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(999)); 
       Bot.Log("安保自动机 -150");
       }
@@ -407,51 +416,6 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       Bot.Log("星占师 -99 ");
     }
 #endregion
-#region 德雷克塔尔 Drek'Thar ID：AV_100  
-         if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-999));
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(9999));
-          Bot.Log("德雷克塔尔 -999");
-      }else{
-           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
-          Bot.Log("德雷克塔尔 150");
-      }
-       if(board.HasCardInHand(Card.Cards.AV_100)
-       &&board.HasCardInHand(Card.Cards.GAME_005)
-       &&board.ManaAvailable <3){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
-          Bot.Log("有德雷克，三费之前不用硬币");
-      }else{
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
-          Bot.Log("硬币 55");
-      }
-#endregion
-#region 深铁穴居人  AV_137  
-        if(board.HasCardInHand(Card.Cards.AV_137)
-        &&board.MinionFriend.Count<6
-        )
-        {
-         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(999)); 
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-999));
-
-          Bot.Log("深铁穴居人 -999");
-        } 
-        if(board.HasCardOnBoard(Card.Cards.AV_137)
-        &&board.MinionFriend.Count<7
-        )
-        {
-         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(250)); 
-          Bot.Log("深铁穴居人 不送");
-        } 
-        //  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617,new Modifier(-999,Card.Cards.AV_137));
-        //  p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_025,new Modifier(-999,Card.Cards.AV_345));
-        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_316,new Modifier(-999,Card.Cards.AV_345));
-        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BT_292,new Modifier(-999,Card.Cards.AV_345));
-        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_338,new Modifier(-999,Card.Cards.AV_345));//坚守桥梁 Hold the Bridge ID：AV_338 
-        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_138,new Modifier(-999,Card.Cards.AV_345));//威能祝福 Blessing of Authority ID：SCH_138 
-
-#endregion
-
 
 #region 攻击优先 卡牌威胁
 
