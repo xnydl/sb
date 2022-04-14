@@ -225,6 +225,8 @@ namespace SmartBotProfiles
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
             int aomiCount = board.Secret.Count;
+             int NumberOfMachinesHave = board.Hand.Count(card => card.Race == Card.CRace.MECHANICAL); 
+            Bot.Log("手上机器数量"+NumberOfMachinesHave);
  #endregion
 
 
@@ -315,8 +317,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_080, new Modifier(250)); 
     // 不送考内留斯·罗姆 Cornelius Roame     SW_080 
     p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(250)); 
-      //修饰贪婪的书虫      SCH_142
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(250));
+      //修饰基维斯      GVG_094
+    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.GVG_094, new Modifier(250));
     p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(250));
     p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_431, new Modifier(100));// 花园猎豹 Park Panther     SW_431
     p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_080, new Modifier(250));// 考内留斯·罗姆 Cornelius Roame     SW_080
@@ -357,20 +359,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 海床传送口 TSC_055  
       if(board.HasCardInHand(Card.Cards.TSC_055)){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_055, new Modifier(-250));
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_055, new Modifier(1000)); 
-
-      Bot.Log("海床传送口 -250");
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_055, new Modifier(-250*NumberOfMachinesHave));
+       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_055, new Modifier(999)); 
+      Bot.Log("海床传送口"+-250*NumberOfMachinesHave);
       }
-       if(board.HasCardInHand(Card.Cards.TSC_055)
-       &&board.HasCardInHand(Card.Cards.GAME_005)
-       &&board.ManaAvailable <2){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
-          Bot.Log("有海床传送口，2费之前不用硬币");
-      }else{
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
-          Bot.Log("硬币 55");
-      }
 #endregion
 #region 怨灵之书 GIL_548  
       if(board.HasCardInHand(Card.Cards.GIL_548)){
@@ -380,9 +373,15 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 安保自动机 TSC_928
       if(board.HasCardInHand(Card.Cards.TSC_928)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-999));
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-99));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(999)); 
       Bot.Log("安保自动机 -150");
+      }
+#endregion
+#region 机械鲨鱼 TSC_054
+      if(board.HasCardInHand(Card.Cards.TSC_054)){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(130));
+      Bot.Log("机械鲨鱼 130");
       }
 #endregion
 #region 机械跃迁者 GVG_006
@@ -393,9 +392,16 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 通电机器人 BOT_907
       if(board.HasCardInHand(Card.Cards.BOT_907)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(-555));
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(1001)); 
-      Bot.Log("通电机器人 -555");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(-50*NumberOfMachinesHave));
+    //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(1001)); 
+      Bot.Log("通电机器人"+-50*NumberOfMachinesHave);
+      }
+      if(board.HasCardInHand(Card.Cards.BOT_907)
+      &&board.HasCardInHand(Card.Cards.TSC_055)
+      ){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(130));
+    //   p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(1001)); 
+      Bot.Log("通电机器人"+130);
       }
 #endregion
 #region 沉没的清道夫 Sunken Sweeper ID：TSC_776t
@@ -416,7 +422,41 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       Bot.Log("星占师 -99 ");
     }
 #endregion
+#region 基维斯      GVG_094
+// if( board.HasCardInHand(Card.Cards.GVG_094)){
+//            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_094,new Modifier(999)); 
+//           Bot.Log("基维斯 优先级999");
 
+// }
+           
+    // 基维斯 Jeeves ID：GVG_094 
+        if (board.Hand.Count >=5
+        && board.HasCardInHand(Card.Cards.GVG_094)
+       )//基维斯      GVG_094
+        {
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_094, new Modifier(999));//基维斯      GVG_094
+           Bot.Log("基维斯 999");
+        }
+        // 剩余卡牌为0  送掉基维斯
+        if (board.FriendDeckCount == 0
+        && board.HasCardOnBoard(Card.Cards.GVG_094)//基维斯      GVG_094
+       )//基维斯      GVG_094
+        {
+           p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.GVG_094, new Modifier(-999));
+           Bot.Log("剩余卡牌为0  送掉基维斯");
+        }
+     
+    //场上有基维斯，提高手里硬币优先值
+        if (board.HasCardOnBoard(Card.Cards.GVG_094)//基维斯      GVG_094
+        && board.HasCardInHand(Card.Cards.YOP_025)
+        )
+        {
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-10));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(-10));//雷霆绽放      SCH_427
+          Bot.Log("雷霆绽放 -10 硬币 -10");
+        }
+    
+#endregion
 #region 攻击优先 卡牌威胁
 
 

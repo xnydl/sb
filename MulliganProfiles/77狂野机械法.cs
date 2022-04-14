@@ -59,13 +59,13 @@ namespace SmartBot.Mulligan
 
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.TSC_632// 械钳虾 TSC_632 
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.TSC_632))
-                    {
-                        Keep(card,"械钳虾");
-                    } 
-                }
+                // if(card==Card.Cards.TSC_632// 械钳虾 TSC_632 
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.TSC_632))
+                //     {
+                //         Keep(card,"械钳虾");
+                //     } 
+                // }
                 if(card==Card.Cards.TSC_928// 安保自动机 TSC_928
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.TSC_928))
@@ -93,13 +93,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"通电机器人");
                     } 
                        }
-                if(card==Card.Cards.BOT_445// 机械袋鼠 BOT_445
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.BOT_445))
-                    {
-                        Keep(card,"机械袋鼠");
-                    } 
-                }
+                // if(card==Card.Cards.BOT_445// 机械袋鼠 BOT_445
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.BOT_445))
+                //     {
+                //         Keep(card,"机械袋鼠");
+                //     } 
+                // }
                 if(card==Card.Cards.TSC_642// 海沟勘测机 TSC_642
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.TSC_642))
