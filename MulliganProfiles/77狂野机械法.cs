@@ -106,21 +106,30 @@ namespace SmartBot.Mulligan
                 //     } 
                 // }
                 if(card==Card.Cards.GVG_006// 机械跃迁者 GVG_006 
-                ){
+                ){  if(!CardsToKeep.Contains(Card.Cards.GVG_006))
+                    {
                         Keep(card,"机械跃迁者");
-                }
+                    }
+                        }
                 if(card==Card.Cards.BOT_907// 通电机器人 BOT_907
                 ){
-                    if(!CardsToKeep.Contains(Card.Cards.BOT_907))
+                   if(!CardsToKeep.Contains(Card.Cards.BOT_907))
                     {
                         Keep(card,"通电机器人");
                     } 
-                }
+                       }
                 if(card==Card.Cards.BOT_445// 机械袋鼠 BOT_445
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.BOT_445))
                     {
                         Keep(card,"机械袋鼠");
+                    } 
+                }
+                if(card==Card.Cards.TSC_642// 海沟勘测机 TSC_642
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_642))
+                    {
+                        Keep(card,"海沟勘测机");
                     } 
                 }
                 // if(card==Card.Cards.BT_014// 星占师 BT_014

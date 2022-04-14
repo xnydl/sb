@@ -357,8 +357,10 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 海床传送口 TSC_055  
       if(board.HasCardInHand(Card.Cards.TSC_055)){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_055, new Modifier(-99));
-      Bot.Log("海床传送口 -99");
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_055, new Modifier(-250));
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_055, new Modifier(1000)); 
+
+      Bot.Log("海床传送口 -250");
       }
 #endregion
 #region 怨灵之书 GIL_548  
@@ -380,10 +382,17 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       Bot.Log("机械跃迁者 -150");
       }
 #endregion
+#region 通电机器人 BOT_907
+      if(board.HasCardInHand(Card.Cards.BOT_907)){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(-555));
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(1001)); 
+      Bot.Log("通电机器人 -555");
+      }
+#endregion
 #region 沉没的清道夫 Sunken Sweeper ID：TSC_776t
       if(board.HasCardInHand(Card.Cards.TSC_776t)){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_776t, new Modifier(-99));
-      Bot.Log("机械跃迁者 -99");
+      Bot.Log("沉没的清道夫 -99");
       }
 #endregion
 #region 星占师 BT_014 
