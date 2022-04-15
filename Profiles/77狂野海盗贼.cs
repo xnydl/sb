@@ -295,6 +295,21 @@ namespace SmartBotProfiles
             Bot.Log("空降歹徒 999");
             }
 #endregion
+#region 秘密通道 SCH_305
+            if(board.HasCardInHand(Card.Cards.SCH_305)
+            &&board.ManaAvailable >= 4
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-20)); 
+            Bot.Log("秘密通道 -20");
+            }
+#endregion
+#region 影袭 Sinister Strike     CORE_CS2_075
+            if(board.HasCardInHand(Card.Cards.CORE_CS2_075)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_075, new Modifier(-20)); 
+            Bot.Log("影袭 -20");
+            }
+#endregion
 #region 海盗帕奇斯 CFM_637 
             if(board.HasCardInHand(Card.Cards.CFM_637)
             ){

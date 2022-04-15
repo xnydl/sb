@@ -365,17 +365,42 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       }
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
 #endregion
-#region 怨灵之书 GIL_548  
-      if(board.HasCardInHand(Card.Cards.GIL_548)){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GIL_548, new Modifier(-99));
-      Bot.Log("怨灵之书 -99");
+#region 雷达探测 TSC_079
+      if(board.HasCardInHand(Card.Cards.TSC_079)
+      &&board.Hand.Count<6
+      ){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_079, new Modifier(-999));
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_079, new Modifier(999)); 
+      Bot.Log("雷达探测 -999");
+      }
+#endregion
+#region 水晶学 BOT_909
+      if(board.HasCardInHand(Card.Cards.BOT_909)
+      ){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BOT_909, new Modifier(-555));
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BOT_909, new Modifier(777)); 
+      Bot.Log("水晶学 -555");
+      }
+#endregion
+#region 石炉守备官 AV_343 
+      if(board.HasCardInHand(Card.Cards.AV_343)
+      &&board.Hand.Count<6
+      &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_079)<2){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(-999));
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(999)); 
+      Bot.Log("石炉守备官 -999");
       }
 #endregion
 #region 安保自动机 TSC_928
       if(board.HasCardInHand(Card.Cards.TSC_928)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-60));
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(999)); 
-      Bot.Log("安保自动机 -60");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-88));
+      Bot.Log("安保自动机 -88");
+      }
+#endregion
+#region 艾萨拉的观月仪 TSC_644
+      if(board.HasCardInHand(Card.Cards.TSC_644)){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_644, new Modifier(-99));
+      Bot.Log("艾萨拉的观月仪 -99");
       }
 #endregion
 #region 机械鲨鱼 TSC_054

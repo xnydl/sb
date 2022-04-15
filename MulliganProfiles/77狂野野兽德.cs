@@ -24,6 +24,7 @@ using SmartBot.Plugins.API;
 // # 2x (7) 荒野骑士 AT_041
 // # 2x (7) 霜刃豹头领
 // 森然巨化 Embiggen ID：DRG_315 
+// 底层掠食鱼 Bottomfeeder ID：TSC_653 
 // # 
 // AAEBAZarBAAPiA7kFcGrAs27AovlAq+iA7nSA4zkA63sA8n1A4H3A4T3A6yABK+ABOekBAA=
 // # 
@@ -121,6 +122,15 @@ namespace SmartBot.Mulligan
                        if(!CardsToKeep.Contains(Card.Cards.LOOT_258))
                     {
                         Keep(card,"厄运鼹鼠");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.TSC_653//底层掠食鱼 Bottomfeeder ID：TSC_653   
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.TSC_653))
+                    {
+                        Keep(card,"底层掠食鱼");
                     }
                     }   
                 }
