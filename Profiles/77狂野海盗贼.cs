@@ -351,49 +351,49 @@ namespace SmartBotProfiles
             Bot.Log("血帆海盗 -99");
             }
 #endregion
-#region 船载火炮 GVG_075 
-          if(board.HasCardInHand(Card.Cards.GVG_075)
-            &&haidaonum>=1
-            &&board.Hand.Exists(card => card.CurrentCost==1)
-            &&board.MaxMana ==2
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
-            Bot.Log("船载火炮 -999 优先级 550");
-            }
-          if(board.HasCardInHand(Card.Cards.GVG_075)
-            &&haidaonum>=1
-            &&(board.MaxMana >=3||(board.MaxMana==2&&board.HasCardInHand(Card.Cards.GAME_005)))
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-99)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
-            Bot.Log("船载火炮 -99 优先级 550");
-            }
-#endregion
-#region  空中炮艇 Skybarge ID：DRG_023  
-          if(board.HasCardInHand(Card.Cards.DRG_023)
-            &&haidaonum>=1
-            &&board.MaxMana ==3
-            &&enemyAttack<5
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(-99)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(550)); 
-            Bot.Log("空中炮艇 -99 优先级 550");
-            }
-          if(board.HasCardInHand(Card.Cards.DRG_023)
-            &&haidaonum>=1
-            &&(board.MaxMana >=3||(board.MaxMana==2&&board.HasCardInHand(Card.Cards.GAME_005)))
-                ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(-99)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(550)); 
-            Bot.Log("空中炮艇 -99 优先级 550");
-            }
-          if(board.HasCardOnBoard(Card.Cards.DRG_023)
-            ){
-            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(250)); 
-           Bot.Log("空中炮艇 不送");
-            }
-#endregion
+// #region 船载火炮 GVG_075 
+//           if(board.HasCardInHand(Card.Cards.GVG_075)
+//             &&haidaonum>=1
+//             &&board.Hand.Exists(card => card.CurrentCost==1)
+//             &&board.MaxMana ==2
+//             ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999)); 
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
+//             Bot.Log("船载火炮 -999 优先级 550");
+//             }
+//           if(board.HasCardInHand(Card.Cards.GVG_075)
+//             &&haidaonum>=1
+//             &&(board.MaxMana >=3||(board.MaxMana==2&&board.HasCardInHand(Card.Cards.GAME_005)))
+//             ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-99)); 
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
+//             Bot.Log("船载火炮 -99 优先级 550");
+//             }
+// #endregion
+// #region  空中炮艇 Skybarge ID：DRG_023  
+//           if(board.HasCardInHand(Card.Cards.DRG_023)
+//             &&haidaonum>=1
+//             &&board.MaxMana ==3
+//             &&enemyAttack<5
+//             ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(-99)); 
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(550)); 
+//             Bot.Log("空中炮艇 -99 优先级 550");
+//             }
+//           if(board.HasCardInHand(Card.Cards.DRG_023)
+//             &&haidaonum>=1
+//             &&(board.MaxMana >=3||(board.MaxMana==2&&board.HasCardInHand(Card.Cards.GAME_005)))
+//                 ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(-99)); 
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(550)); 
+//             Bot.Log("空中炮艇 -99 优先级 550");
+//             }
+//           if(board.HasCardOnBoard(Card.Cards.DRG_023)
+//             ){
+//             p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(250)); 
+//            Bot.Log("空中炮艇 不送");
+//             }
+// #endregion
 
 #region Card.Cards.HERO_01bp 英雄技能
         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_01bp, new Modifier(-550)); 
@@ -412,6 +412,21 @@ namespace SmartBotProfiles
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.NEW1_022, new Modifier(130));  
             Bot.Log("恐怖海盗 130 ");
             }
+#endregion
+#region 剑鱼 TSC_086
+         if(board.HasCardInHand(Card.Cards.TSC_086)
+         && (board.WeaponFriend == null||board.WeaponFriend.Template.Id != Card.Cards.TSC_086)
+          ){
+            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-1000));
+            Bot.Log("剑鱼 -1000");
+          } 
+          if(board.WeaponFriend != null 
+          && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
+          &&board.WeaponFriend.CurrentDurability > 1
+          ){
+            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(9999));
+            Bot.Log("攻击优先级 9999");
+          }
 #endregion
 
 #region 十字路口哨所      BAR_075
