@@ -4,3 +4,4 @@ The card deck is usually in the corresponding mulliganprofiles file. You can als
 卡组一般都在对应的MulliganProfiles文件,也可以来我的直播间看卡组,直播链接
 Radishes and vegetables have their own love, quiet white whoring on the line, PP say less
 萝卜青菜各有所爱,安静白嫖就行,pp话少说
+国内qq群:952364237
