@@ -429,6 +429,13 @@ namespace SmartBotProfiles
           }
 #endregion
 
+#region 重拳先生  DED_006 
+         if(board.HasCardInHand(Card.Cards.DED_006)){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(130)); 
+            Bot.Log("重拳先生 130 ");
+           }
+#endregion
+
 #region 十字路口哨所      BAR_075
 
       // 如果没有随从,降低4费马桶优先级,如果有则提高优先级
