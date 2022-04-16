@@ -429,14 +429,11 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 机械跃迁者 GVG_006
       if(board.HasCardInHand(Card.Cards.GVG_006)
-      &&board.Hand.Count(card => card.CurrentCost<=1)>0
+      &&board.Hand.Count(card => card.CurrentCost<=1)==0
       &&board.MaxMana <=2
       ){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(-150));
-      Bot.Log("机械跃迁者 -150");
-      }else{
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(999));
-      Bot.Log("机械跃迁者 999");    
+      Bot.Log("机械跃迁者 999");
       }
       if(board.HasCardInHand(Card.Cards.GVG_006)
       &&board.MaxMana >2
