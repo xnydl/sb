@@ -47,7 +47,7 @@ using SmartBot.Plugins.API;
 // # 1x (3) 大铡蟹
 // # 2x (3) 石炉守备官 AV_343 
 // # 2x (3) 空中飞爪
-// # 2x (4) 泡泡机器人
+// # 2x (4) 泡泡机器人 TSC_059 
 // # 1x (5) 奇利亚斯
 // # 
 // AAEBAaToAgTqD9n+AqCAA5+3Aw2UD5/1Avb9Atb+Atf+AoeuA/mkBJK1BOG1BNS9BLLBBNrTBNrZBAA=
