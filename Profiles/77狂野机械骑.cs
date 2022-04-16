@@ -229,6 +229,8 @@ namespace SmartBotProfiles
             Bot.Log("手上机器数量"+NumberOfMachinesHave);
              int NumberOfMachinesInner = board.MinionFriend.Count(card => card.Race == Card.CRace.MECHANICAL); 
             Bot.Log("场上机器数量"+NumberOfMachinesInner);
+            int minionNumber=board.Hand.Count(card => card.Type == Card.CType.MINION);
+            Bot.Log("手上随从数量"+minionNumber);
  #endregion
 
 
@@ -355,6 +357,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));//历战先锋 Battleworn Vanguard ID：AV_118 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BOT_423, new Modifier(200));//梦境花栽种师 Dreampetal Florist ID：BOT_423
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_255, new Modifier(200));//凯尔萨斯·逐日者 Kael'thas Sunstrider ID：BT_255 
 #endregion
 #region 技能
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_08bp, new Modifier(-550)); 
@@ -382,13 +385,22 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       Bot.Log("水晶学 -8888");
       }
 #endregion
+#region 神恩术 Divine Favor ID：VAN_EX1_349 
+      if(board.HasCardInHand(Card.Cards.VAN_EX1_349)
+      ){
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.VAN_EX1_349, new Modifier(999)); 
+      Bot.Log("神恩术优先");
+      }
+#endregion
 #region GAME_005
-    //   if(board.HasCardInHand(Card.Cards.GAME_005)
-    //   &&
-    //   ){
-    //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
-    //   Bot.Log("水晶学 -8888");
-    //   }
+      if(board.HasCardInHand(Card.Cards.GAME_005)
+      &&board.MaxMana ==1
+      &&board.HasCardInHand(Card.Cards.AV_343)
+      &&!board.HasCardInHand(Card.Cards.TSC_079)
+      ){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
+      Bot.Log("水晶学 999");
+      }
 #endregion
 #region 石炉守备官 AV_343 
       if(board.HasCardInHand(Card.Cards.AV_343)
@@ -397,12 +409,14 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(-999));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(999)); 
       Bot.Log("石炉守备官 -999");
+      }else{
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(150));
       }
 #endregion
 #region 安保自动机 TSC_928
       if(board.HasCardInHand(Card.Cards.TSC_928)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-140));
-      Bot.Log("安保自动机 -140");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-200));
+      Bot.Log("安保自动机 -200");
       }
 #endregion
 #region 泡泡机器人 TSC_059 
@@ -412,7 +426,6 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       Bot.Log("泡泡机器人"+-20*NumberOfMachinesInner);
       }else{
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_059, new Modifier(130));
-      Bot.Log("泡泡机器人"+130); 
       }
 #endregion
 #region 艾萨拉的观月仪 TSC_644
@@ -421,11 +434,34 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       Bot.Log("艾萨拉的观月仪 -99");
       }
 #endregion
+#region 沉没的观月仪 Sunken Mooncatcher ID：TSC_644t 
+      if(board.HasCardInHand(Card.Cards.TSC_644t)
+      &&board.MinionFriend.Count <6
+      ){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_644t, new Modifier(-150));
+      Bot.Log("艾萨拉的观月仪 -150");
+      }
+#endregion
 #region 机械鲨鱼 TSC_054
       if(board.HasCardInHand(Card.Cards.TSC_054)){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(130));
       Bot.Log("机械鲨鱼 130");
       }
+#endregion
+#region 光铸凯瑞尔 AV_206 
+
+        if(board.HasCardInHand(Card.Cards.AV_206)
+        )
+        {
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(9999)); 
+          Bot.Log("光铸凯瑞尔 -9999");
+        }
+        if(minionNumber>0){
+          // 女王的祝福 Blessing of Queens ID：AV_206p
+          p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_206p, new Modifier(-99));
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_206p, new Modifier(9999)); 
+          }
 #endregion
 #region 机械跃迁者 GVG_006
       if(board.HasCardInHand(Card.Cards.GVG_006)
@@ -441,7 +477,9 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(-150));
       Bot.Log("机械跃迁者 -150");
       }
-    if(board.HasCardOnBoard(Card.Cards.GVG_006))
+    if(board.HasCardOnBoard(Card.Cards.GVG_006)
+    &&NumberOfMachinesHave>0
+    )
     {
     p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(250)); 
     Bot.Log("机械跃迁者不送");
@@ -509,7 +547,6 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
            Bot.Log("剩余卡牌为0  送掉基维斯");
         }else{
             p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.GVG_094, new Modifier(350));
-           Bot.Log("不送基维斯");
         }
      
     //场上有基维斯，提高手里硬币优先值
@@ -523,6 +560,48 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         }
     
 #endregion
+#region 贪婪的书虫      SCH_142
+    // 书虫相关
+        if (board.Hand.Count <=3
+       &&board.Hand.Count(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.SCH_142)==1
+       )//贪婪的书虫      SCH_142
+        {
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(-99));//贪婪的书虫      SCH_142
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(480)); 
+          Bot.Log("贪婪的书虫 -99");
+        }else{
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(150));//贪婪的书虫      SCH_142
+        }
+        if (board.Hand.Count <=4
+       &&board.Hand.Count(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.SCH_142)==2
+       )//贪婪的书虫      SCH_142
+        {
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(-99));//贪婪的书虫      SCH_142
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(480)); 
+          Bot.Log("贪婪的书虫 -99");
+        }else{
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(150));//贪婪的书虫      SCH_142
+        }
+    //场上有书虫，提高手里硬币优先值
+        if (board.HasCardOnBoard(Card.Cards.SCH_142)//贪婪的书虫      SCH_142
+        && board.HasCardInHand(Card.Cards.GAME_005)
+        )
+        {
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-10));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(-10));//雷霆绽放      SCH_427
+          Bot.Log("雷霆绽放 -10 硬币 -10");
+        }
+    
+    //书虫分散投资
+        if (board.HasCardOnBoard(Card.Cards.SCH_142)//贪婪的书虫      SCH_142S
+        )
+        {
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(150));//贪婪的书虫      SCH_142
+          Bot.Log("贪婪的书虫 150");
+        }
+    
+#endregion
+
 #region 攻击优先 卡牌威胁
 
 

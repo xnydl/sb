@@ -40,7 +40,7 @@ using SmartBot.Plugins.API;
 // # 2x (2) 安保自动机 TSC_928
 // # 1x (2) 护盾机器人
 // # 2x (2) 机械跃迁者 GVG_006
-// # 2x (2) 海床救生员
+// # 2x (2) 海床救生员 TSC_083
 // # 2x (2) 深海融合怪
 // # 2x (2) 通电机器人 BOT_907
 // # 2x (2) 雷达探测 TSC_079
@@ -85,19 +85,33 @@ namespace SmartBot.Mulligan
 
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.BOT_906// 格洛顿 BOT_906
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.BOT_906))
-                    {
-                        Keep(card,"格洛顿");
-                    } 
-                }
+                // if(card==Card.Cards.BOT_906// 格洛顿 BOT_906
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.BOT_906))
+                //     {
+                //         Keep(card,"格洛顿");
+                //     } 
+                // }
+                // if(card==Card.Cards.BOT_906// 格洛顿 BOT_906
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.BOT_906))
+                //     {
+                //         Keep(card,"格洛顿");
+                //     } 
+                // }
 
                 if(card==Card.Cards.BOT_909// 水晶学 BOT_909 
                 ){   
                     if(!CardsToKeep.Contains(Card.Cards.BOT_909))
                     {
                         Keep(card,"水晶学");
+                    } 
+                }
+                if(card==Card.Cards.TSC_083// 海床救生员 TSC_083
+                ){   
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_083))
+                    {
+                        Keep(card,"海床救生员");
                     } 
                 }
                 if(card==Card.Cards.TSC_632// 械钳虾 TSC_632
@@ -125,10 +139,8 @@ namespace SmartBot.Mulligan
                     }
                 }
                 if(card==Card.Cards.GVG_006// 机械跃迁者 GVG_006
-                ){ if(!CardsToKeep.Contains(Card.Cards.GVG_006))
-                    {
+                ){ 
                         Keep(card,"机械跃迁者");
-                    }
                 }
                 if(card==Card.Cards.AV_343// 石炉守备官 AV_343
                 ){ if(!CardsToKeep.Contains(Card.Cards.AV_343))
