@@ -3,64 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using SmartBot.Database;
 using SmartBot.Plugins.API;
-
 // ### 任务战
 // # 职业：战士
 // # 模式：标准模式
 // # 狮鹫年
 // #
-// # 2x (1) 血帆桨手 CS3_008 
-// # 2x (1) 海上威胁 SW_027 
-// # 1x (1) 开进码头 SW_028
-// # 2x (1) 体能研习 SCH_237
-// # 2x (2) 雾帆劫掠者 CS3_022
-// # 2x (2) 血帆袭击者 NEW1_018
-// # 2x (2) 港口匪徒 SW_029
-// # 1x (2) 氮素药膏 YOP_015 
-// # 2x (3) 货物保镖 SW_030 
-// # 1x (3) 胁迫 SCH_521
-// # 2x (3) 暴风城海盗 SW_093
-// # 2x (3) 南海船长 CORE_NEW1_027
-// # 2x (4) 收割之镰 SCH_238
-// # 2x (4) 吞剑艺人 DMF_521 
-// # 2x (5) 石槌掌锚手 BAR_896 
-// # 2x (5) 劈砍课程 SCH_623 
-// # 1x (8) 问题学生 SCH_337
-// 厚重板甲  SW_094 
-// 萨鲁法尔大王 BAR_334 
-// 雷区挑战  DMF_522 
-// 克雷什，群龟之王  WC_026
-// #
-// AAECAQcEp84DitADgeQDmPYDDeLMA+PMA/fUA7XeA/7nA9XxA5X2A5b2A5f2A8/7A6aKBK2gBK+gBAA=
-// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
-// # 套牌详情请查看https://hsreplay.net/decks/j2cRZnUAKRPxKW1jMcGDOe/
-// ### 任务战
-// # 职业：战士
-// # 模式：标准模式
-// # 狮鹫年
-// #
-// # 2x (1) 血帆桨手
-// # 1x (1) 砥石战斧
+// # 2x (1) 血帆桨手 CS3_008
+// # 2x (1) 砥石战斧
 // # 2x (1) 海上威胁
-// # 1x (1) 斩杀
 // # 1x (1) 开进码头 SW_028
-// # 2x (2) 黑曜石铸匠 TSC_942
+// # 2x (2) 黑曜石铸匠 TSC_942 
 // # 2x (2) 雾帆劫掠者
 // # 2x (2) 血帆袭击者
-// # 2x (2) 港口匪徒
+// # 2x (2) 港口匪徒 SW_029
 // # 2x (2) 深海融合怪 TSC_069
-// # 2x (2) 拖网海象人 TSC_909 
+// # 1x (2) 拖网海象人 TSC_909
 // # 2x (3) 迪菲亚炮手
 // # 2x (3) 货物保镖
 // # 2x (3) 暴风城海盗
 // # 2x (3) 南海船长
 // # 2x (3) 刺豚拳手
 // # 1x (6) 重拳先生
+// # 1x (7) 奈利，超巨蛇颈龙
 // #
-// AAECAQcEju8DmPYDv4AEn58EDf7nA5X2A5b2A5f2A8/7A5yBBKaKBK2gBK+gBIqwBKmzBJC3BLLBBAA=
+// AAECAQcEmPYDv4AEqbMEjskEDf7nA47vA5X2A5b2A5f2A8/7A5yBBKaKBK2gBK+gBIqwBJC3BLLBBAA=
 // # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
-// # 套牌详情请查看https://hsreplay.net/decks/YdwVTgcmTuFkEfUKOGHkqe/
-
+// # 套牌详情请查看https://hsreplay.net/decks/ensF5iRMHiIGkRQmuRYI0c/
 
 namespace SmartBot.Mulligan
 {
@@ -132,34 +100,6 @@ namespace SmartBot.Mulligan
                         Keep(card,"黑曜石铸匠");
                     }
                 }
-                // if(card==Card.Cards.CORE_NEW1_018// 血帆袭击者 CORE_NEW1_018
-                // ){ if(!CardsToKeep.Contains(Card.Cards.CORE_NEW1_018))
-                //     {
-                //         Keep(card,"血帆袭击者");
-                //     }
-                // }
-                // if(card==Card.Cards.WC_025// 砥石战斧 WC_025
-                // ){ if(!CardsToKeep.Contains(Card.Cards.WC_025))
-                //     {
-                //         Keep(card,"砥石战斧");
-                //     }
-                // }
-
-            //   if(card==Card.Cards.SW_030&&flag1+flag2>=1)//货物保镖 SW_030 
-            //     {
-            //          if(!CardsToKeep.Contains(Card.Cards.SW_030))
-            //         {
-            //             Keep(card,"货物保镖");
-            //         }
-            //     }
-            //   if(card==Card.Cards.SW_093&&flag1+flag2>=1)//暴风城海盗 SW_093
-            //     {
-            //          if(!CardsToKeep.Contains(Card.Cards.SW_093))
-            //         {
-            //             Keep(card,"暴风城海盗");
-            //         }
-            //     }
-        
             }
             return CardsToKeep;
         }

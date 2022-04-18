@@ -54,6 +54,30 @@ using SmartBot.Plugins.API;
 // # 
 // # 想要使用这副套牌，请先复制到剪贴板，然后在游戏中点击“新套牌”进行粘贴。
 
+// ### Paladin
+// # 职业：圣骑士
+// # 模式：狂野模式
+// #
+// # 2x (1) 风驰电掣
+// # 2x (1) 滑板机器人
+// # 2x (1) 水晶学
+// # 2x (1) 械钳虾
+// # 2x (1) 格洛顿
+// # 2x (2) 雷达探测
+// # 2x (2) 通电机器人
+// # 2x (2) 污手街供货商
+// # 2x (2) 机械跃迁者
+// # 2x (2) 护盾机器人
+// # 2x (2) 安保自动机
+// # 2x (3) 飞行器
+// # 1x (3) 大铡蟹
+// # 2x (4) 量产型恐吓机
+// # 2x (5) 战争机兵
+// # 1x (5) 奇利亚斯
+// #
+// AAEBAZ8FAqCAA5+3Aw6UD+oPhBCzuwL3vAKf9QKY+wLW/gLX/gLZ/gLMgQOStQThtQTa0wQA
+// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
+// # 套牌详情请查看https://hsreplay.net/decks/eKT8fDh9ynrXzI1NlUV1Hg/
 
 namespace SmartBot.Mulligan
 {
@@ -107,13 +131,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"水晶学");
                     } 
                 }
-                if(card==Card.Cards.TSC_083// 海床救生员 TSC_083
-                ){   
-                    if(!CardsToKeep.Contains(Card.Cards.TSC_083))
-                    {
-                        Keep(card,"海床救生员");
-                    } 
-                }
+                // if(card==Card.Cards.TSC_083// 海床救生员 TSC_083
+                // ){   
+                //     if(!CardsToKeep.Contains(Card.Cards.TSC_083))
+                //     {
+                //         Keep(card,"海床救生员");
+                //     } 
+                // }
                 if(card==Card.Cards.TSC_632// 械钳虾 TSC_632
                 ){ if(!CardsToKeep.Contains(Card.Cards.TSC_632))
                     {
@@ -126,28 +150,34 @@ namespace SmartBot.Mulligan
                         Keep(card,"雷达探测");
                     }
                 }
-                if(card==Card.Cards.TSC_928// 安保自动机 TSC_928
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_928))
-                    {
-                        Keep(card,"安保自动机");
-                    }
-                }
+                // if(card==Card.Cards.TSC_928// 安保自动机 TSC_928
+                // ){ if(!CardsToKeep.Contains(Card.Cards.TSC_928))
+                //     {
+                //         Keep(card,"安保自动机");
+                //     }
+                // }
                 if(card==Card.Cards.BOT_907// 通电机器人 BOT_907
                 ){ if(!CardsToKeep.Contains(Card.Cards.BOT_907))
                     {
                         Keep(card,"通电机器人");
                     }
                 }
+                if(card==Card.Cards.SW_048// 棱彩珠宝工具 SW_048
+                ){ if(!CardsToKeep.Contains(Card.Cards.SW_048))
+                    {
+                        Keep(card,"棱彩珠宝工具");
+                    }
+                }
                 if(card==Card.Cards.GVG_006// 机械跃迁者 GVG_006
                 ){ 
                         Keep(card,"机械跃迁者");
                 }
-                if(card==Card.Cards.AV_343// 石炉守备官 AV_343
-                ){ if(!CardsToKeep.Contains(Card.Cards.AV_343))
-                    {
-                        Keep(card,"石炉守备官");
-                    }
-                }
+                // if(card==Card.Cards.AV_343// 石炉守备官 AV_343
+                // ){ if(!CardsToKeep.Contains(Card.Cards.AV_343))
+                //     {
+                //         Keep(card,"石炉守备官");
+                //     }
+                // }
                 if(card==Card.Cards.GVG_013// 齿轮大师 Cogmaster ID：GVG_013 
                 ){ if(!CardsToKeep.Contains(Card.Cards.GVG_013))
                     {

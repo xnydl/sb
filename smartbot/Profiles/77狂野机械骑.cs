@@ -231,6 +231,8 @@ namespace SmartBotProfiles
             Bot.Log("场上机器数量"+NumberOfMachinesInner);
             int minionNumber=board.Hand.Count(card => card.Type == Card.CType.MINION);
             Bot.Log("手上随从数量"+minionNumber);
+            // 通电机器人 BOT_907
+            int usedtd=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.BOT_907)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.BOT_907);
  #endregion
 
 
@@ -358,9 +360,10 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));//历战先锋 Battleworn Vanguard ID：AV_118 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BOT_423, new Modifier(200));//梦境花栽种师 Dreampetal Florist ID：BOT_423
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_255, new Modifier(200));//凯尔萨斯·逐日者 Kael'thas Sunstrider ID：BT_255 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
 #endregion
 #region 技能
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_08bp, new Modifier(-550)); 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-50)); 
 #endregion
 #region 海床传送口 TSC_055  
       if(board.HasCardInHand(Card.Cards.TSC_055)){
@@ -415,8 +418,17 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 安保自动机 TSC_928
       if(board.HasCardInHand(Card.Cards.TSC_928)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-200));
-      Bot.Log("安保自动机 -200");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-60));
+      Bot.Log("安保自动机 -60");
+      }
+#endregion
+#region 空中飞爪 DRG_225 
+      if(board.HasCardInHand(Card.Cards.DRG_225)
+      &&board.HasCardOnBoard(Card.Cards.TSC_928)
+      &&board.MinionFriend.Count <=4
+      ){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_225, new Modifier(-99));
+      Bot.Log("空中飞爪 -99");
       }
 #endregion
 #region 泡泡机器人 TSC_059 
@@ -463,45 +475,62 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
           p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_206p, new Modifier(9999)); 
           }
 #endregion
+#region 棱彩珠宝工具 SW_048
+
+        if(board.HasCardInHand(Card.Cards.SW_048)
+        &&board.WeaponFriend == null
+        )
+        {
+                  // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(9999));  
+         p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(-99));
+          Bot.Log("棱彩珠宝工具 -99");
+        }
+        // if(board.HasCardInHand(Card.Cards.SW_048)
+        // &&board.MaxMana ==1
+        // )
+        // {
+        //  p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(-9999));
+        //  p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_ICC_038, new Modifier(999));//正义保护者 CORE_ICC_038
+        //  p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_008, new Modifier(999));//银色侍从  CORE_EX1_008  
+        //  p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_873, new Modifier(999));//圣礼骑士 BAR_873
+        //           p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(9999));  
+        //   Bot.Log("棱彩珠宝工具 -9999");
+        // }
+       
+#endregion
 #region 机械跃迁者 GVG_006
-      if(board.HasCardInHand(Card.Cards.GVG_006)
-      &&board.Hand.Count(card => card.CurrentCost<=1)==0
-      &&board.MaxMana <=2
-      ){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(999));
-      Bot.Log("机械跃迁者 999");
-      }
-      if(board.HasCardInHand(Card.Cards.GVG_006)
-      &&board.MaxMana >2
-      ){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(-150));
-      Bot.Log("机械跃迁者 -150");
-      }
-    if(board.HasCardOnBoard(Card.Cards.GVG_006)
-    &&NumberOfMachinesHave>0
-    )
-    {
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(250)); 
-    Bot.Log("机械跃迁者不送");
-    }
+        if(board.Hand.Count(card => card.CurrentCost<=1)==0
+        &&usedtd==0
+        &&board.MaxMana <=2
+        &&board.HasCardInHand(Card.Cards.GVG_006)
+        ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(999));
+        Bot.Log("机械跃迁者 999");
+        }
+        if(board.Hand.Count(card => card.CurrentCost<=1)==0
+        &&board.MaxMana >2
+        &&board.HasCardInHand(Card.Cards.GVG_006)
+        ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(-300));
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(999)); 
+        Bot.Log("机械跃迁者 -300");  
+        }
+        if(board.HasCardOnBoard(Card.Cards.GVG_006)
+        &&NumberOfMachinesHave>0
+        )
+        {
+        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(250)); 
+        Bot.Log("机械跃迁者不送");
+        }
 #endregion
 #region 通电机器人 BOT_907
-       if(board.HasCardInHand(Card.Cards.BOT_907)
-      &&board.MaxMana <2
+      if(board.HasCardInHand(Card.Cards.BOT_907)
       &&(board.HasCardInHand(Card.Cards.BOT_909)||board.HasCardInHand(Card.Cards.TSC_079))
       ){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(999));
       Bot.Log("通电机器人"+999);
       }else{
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(-100*NumberOfMachinesHave));
-      Bot.Log("通电机器人"+-100*NumberOfMachinesHave);
-      }
-      if(board.HasCardInHand(Card.Cards.BOT_907)
-      &&board.HasCardInHand(Card.Cards.TSC_055)
-      &&board.MaxMana >=3
-      ){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(130)); 
-      Bot.Log("通电机器人"+130);
       }
 #endregion
 #region 沉没的清道夫 Sunken Sweeper ID：TSC_776t
