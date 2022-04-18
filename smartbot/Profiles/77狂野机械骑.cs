@@ -526,7 +526,6 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 通电机器人 BOT_907
       if(board.HasCardInHand(Card.Cards.BOT_907)
       &&(board.HasCardInHand(Card.Cards.BOT_909)||board.HasCardInHand(Card.Cards.TSC_079)
-      &&board.Hand.Count<7
       )
       ){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(999));
