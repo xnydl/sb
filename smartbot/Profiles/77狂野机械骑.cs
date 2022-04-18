@@ -363,7 +363,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
 #endregion
 #region 技能
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-50)); 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-550)); 
 #endregion
 #region 海床传送口 TSC_055  
       if(board.HasCardInHand(Card.Cards.TSC_055)){
