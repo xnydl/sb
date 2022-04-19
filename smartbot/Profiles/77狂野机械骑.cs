@@ -383,6 +383,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 水晶学 BOT_909
       if(board.HasCardInHand(Card.Cards.BOT_909)
+      &&board.Hand.Count<10
       ){
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BOT_909, new Modifier(-8888));
       Bot.Log("水晶学 -8888");
@@ -525,7 +526,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 通电机器人 BOT_907
       if(board.HasCardInHand(Card.Cards.BOT_907)
-      &&(board.HasCardInHand(Card.Cards.BOT_909)||board.HasCardInHand(Card.Cards.TSC_079)
+      &&((board.HasCardInHand(Card.Cards.BOT_909)&&board.Hand.Count<7)
+      ||board.HasCardInHand(Card.Cards.TSC_079&&board.Hand.Count<10)
       )
       ){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(999));
