@@ -513,7 +513,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         &&board.HasCardInHand(Card.Cards.GVG_006)
         ){
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(-300));
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(999)); 
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(9999)); 
         Bot.Log("机械跃迁者 -300");  
         }
         if(board.HasCardOnBoard(Card.Cards.GVG_006)
@@ -534,6 +534,15 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       Bot.Log("通电机器人"+999);
       }else{
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(-100*NumberOfMachinesHave));
+      }
+#endregion
+#region 污手街供货商 CFM_753
+      if(board.HasCardInHand(Card.Cards.CFM_753)
+      &&board.Hand.Count <=2){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_753, new Modifier(999));
+      Bot.Log("污手街供货商"+999);
+      }else{
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_753, new Modifier(-100*minionNumber));
       }
 #endregion
 #region 沉没的清道夫 Sunken Sweeper ID：TSC_776t

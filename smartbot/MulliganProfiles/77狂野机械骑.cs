@@ -131,6 +131,20 @@ namespace SmartBot.Mulligan
                         Keep(card,"水晶学");
                     } 
                 }
+                 if(card==Card.Cards.CFM_753// 污手街供货商 CFM_753
+                ){   
+                    if(!CardsToKeep.Contains(Card.Cards.CFM_753))
+                    {
+                        Keep(card,"污手街供货商");
+                    } 
+                }
+                 if(card==Card.Cards.CFM_753// 污手街供货商 CFM_753
+                ){   
+                    if(!CardsToKeep.Contains(Card.Cards.CFM_753))
+                    {
+                        Keep(card,"污手街供货商");
+                    } 
+                }
                 // if(card==Card.Cards.TSC_083// 海床救生员 TSC_083
                 // ){   
                 //     if(!CardsToKeep.Contains(Card.Cards.TSC_083))
