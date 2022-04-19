@@ -1,5 +1,5 @@
-/*
-!/smartbot/*Profiles
-!/smartbot/*MulliganProfiles
-!/smartbot/*卡组
-!/.gitignore
+/smartbot/*
+!/smartbot/Profiles
+!/smartbot/MulliganProfiles
+!/smartbot/卡组
+!.gitignore
