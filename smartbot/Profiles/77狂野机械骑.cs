@@ -545,6 +545,15 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_753, new Modifier(-100*minionNumber));
       }
 #endregion
+#region 联盟旗手 SW_315
+      if(board.HasCardInHand(Card.Cards.SW_315)
+      &&board.Hand.Count <=2){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_315, new Modifier(999));
+      Bot.Log("联盟旗手"+999);
+      }else{
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_315, new Modifier(-100*minionNumber));
+      }
+#endregion
 #region 沉没的清道夫 Sunken Sweeper ID：TSC_776t
       if(board.HasCardInHand(Card.Cards.TSC_776t)){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_776t, new Modifier(-99));
