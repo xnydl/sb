@@ -508,8 +508,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(999));
         Bot.Log("机械跃迁者 999");
         }
-        if(board.Hand.Count(card => card.CurrentCost<=1)==0
-        &&board.MaxMana >2
+        if(board.MaxMana >2
         &&board.HasCardInHand(Card.Cards.GVG_006)
         ){
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_006, new Modifier(-300));
