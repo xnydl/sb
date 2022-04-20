@@ -301,8 +301,8 @@ namespace SmartBotProfiles
             &&board.Hand.Count<=3
             ){
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-99)); 
-            Bot.Log("秘密通道 -99");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-20)); 
+            Bot.Log("秘密通道 -20");
             }
 #endregion
 #region 影袭 Sinister Strike     CORE_CS2_075
@@ -310,6 +310,14 @@ namespace SmartBotProfiles
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_075, new Modifier(-20)); 
             Bot.Log("影袭 -20");
+            }
+#endregion
+#region 团伙劫掠 TRL_124
+            if(board.HasCardInHand(Card.Cards.TRL_124)
+            ){
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(999)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-99)); 
+            Bot.Log("团伙劫掠 -99");
             }
 #endregion
 #region 海盗帕奇斯 CFM_637 
