@@ -38,7 +38,7 @@ using SmartBot.Plugins.API;
 // # 2x (1) 秘密通道
 // # 1x (1) 海盗帕奇斯
 // # 2x (1) 奖品掠夺者
-// # 2x (1) 南海船工 VAN_CS2_146
+// # 2x (1) 南海船工 CS2_146
 // # 2x (2) 船载火炮 GVG_075
 // # 2x (2) 空降歹徒 DRG_056
 // # 2x (3) 团伙劫掠 TRL_124 
@@ -96,9 +96,9 @@ namespace SmartBot.Mulligan
                         Keep(card,"鱼排斗士");
                     } 
                 }
-                if(card==Card.Cards.VAN_CS2_146// 南海船工 VAN_CS2_146
+                if(card==Card.Cards.CS2_146// 南海船工 CS2_146
                 ){
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_146))
+                    if(!CardsToKeep.Contains(Card.Cards.CS2_146))
                     {
                         Keep(card,"南海船工");
                     } 
