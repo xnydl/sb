@@ -27,6 +27,30 @@ using SmartBot.Plugins.API;
 // AAEBAbfyBAKRvAK/gAQO1AXuBvsP5dEC6bADqssD99QD890DpooEkp8ElJ8EiskE/dMEmtsEAA==
 // # 
 // # 想要使用这副套牌，请先复制到剪贴板，然后在游戏中点击“新套牌”进行粘贴。
+// ### Rogue
+// # 职业：潜行者
+// # 模式：狂野模式
+// #
+// # 2x (0) 伺机待发
+// # 2x (1) 鱼排斗士 TSC_963
+// # 2x (1) 锈水海盗 CORE_AT_029
+// # 2x (1) 致命药膏
+// # 2x (1) 秘密通道
+// # 1x (1) 海盗帕奇斯
+// # 2x (1) 奖品掠夺者
+// # 2x (1) 南海船工 VAN_CS2_146
+// # 2x (2) 船载火炮 GVG_075
+// # 2x (2) 空降歹徒 DRG_056
+// # 2x (3) 团伙劫掠 TRL_124 
+// # 2x (3) 南海船长
+// # 2x (3) 剑鱼 TSC_086
+// # 2x (4) 恐怖海盗
+// # 2x (5) 劈砍课程
+// # 1x (6) 重拳先生
+// #
+// AAEBAaIHApG8Ar+ABA7UBe4G+w/VjAPpsAOqywP31APz3QOSnwT3nwSvoASKyQT90wSa2wQA
+// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
+// # 套牌详情请查看https://hsreplay.net/decks/C5hcMC35SdKwjPXifdsNse/
 
 namespace SmartBot.Mulligan
 {
@@ -72,6 +96,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"鱼排斗士");
                     } 
                 }
+                if(card==Card.Cards.VAN_CS2_146// 南海船工 VAN_CS2_146
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.VAN_CS2_146))
+                    {
+                        Keep(card,"南海船工");
+                    } 
+                }
                 if(card==Card.Cards.LOOT_033// 洞穴探宝者 LOOT_033
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.LOOT_033))
@@ -105,6 +136,13 @@ namespace SmartBot.Mulligan
                     if(!CardsToKeep.Contains(Card.Cards.TSC_086))
                     {
                         Keep(card,"剑鱼");
+                    } 
+                }
+                if(card==Card.Cards.TRL_124// 团伙劫掠 TRL_124 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TRL_124))
+                    {
+                        Keep(card,"团伙劫掠");
                     } 
                 }
                 if(card==Card.Cards.VAN_NEW1_022&&flag1>0// 恐怖海盗 VAN_NEW1_022
