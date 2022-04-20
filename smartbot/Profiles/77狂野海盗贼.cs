@@ -312,6 +312,13 @@ namespace SmartBotProfiles
             Bot.Log("影袭 -20");
             }
 #endregion
+#region 致命药膏 Deadly Poison ID：CORE_CS2_074 
+            if(board.HasCardInHand(Card.Cards.CORE_CS2_074)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_074, new Modifier(-20)); 
+            Bot.Log("致命药膏 -20");
+            }
+#endregion
 #region 团伙劫掠 TRL_124
             if(board.HasCardInHand(Card.Cards.TRL_124)
             ){
