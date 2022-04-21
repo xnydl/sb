@@ -318,8 +318,15 @@ namespace SmartBotProfiles
             }
 #endregion
 #region 劈砍课程 SCH_623
+            // if(board.HasCardInHand(Card.Cards.SCH_623)
+            // &&board.WeaponFriend.CurrentAtk>=4
+            // ){
+            // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-99)); 
+            // Bot.Log("劈砍课程 -99");
+            // }
             if(board.HasCardInHand(Card.Cards.SCH_623)
-            &&board.WeaponFriend.CurrentAtk>=4
+            &&board.WeaponFriend != null 
+            && board.WeaponFriend.Template.Id == Card.Cards.TSC_086;
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-99)); 
             Bot.Log("劈砍课程 -99");
