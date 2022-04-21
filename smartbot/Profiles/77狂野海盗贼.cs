@@ -287,6 +287,7 @@ namespace SmartBotProfiles
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));//迪菲亚炮手  DED_519
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CFM_807, new Modifier(200));//大富翁比尔杜 Auctionmaster Beardo ID：CFM_807 
+    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(200));//机械鲨鱼 TSC_054
   
 #endregion
 #region 空降歹徒 DRG_056
