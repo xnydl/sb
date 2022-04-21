@@ -326,7 +326,7 @@ namespace SmartBotProfiles
             // }
             if(board.HasCardInHand(Card.Cards.SCH_623)
             &&board.WeaponFriend != null 
-            && board.WeaponFriend.Template.Id == Card.Cards.TSC_086;
+            && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-99)); 
             Bot.Log("劈砍课程 -99");
