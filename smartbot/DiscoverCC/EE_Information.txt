@@ -1,0 +1,16 @@
+Date: Thursday, 21 April 2022 V(120.14)
+Discover settings : EE_Discover.cs
+----------------------------------------
+Specials: Kazakus, Golem Shaper
+          Guess the Weight
+          Bru'kan of the Elements
+          Capture Coldtooth Mine
+Standard 117 files, 5192 cards
+          discover.ini 1393 cards
+Wild 245 files, 15075 cards
+          discover.ini 3675 cards
+Arena 54 files, 515 cards
+          discover.ini 834 cards
+Classic 1 files, 42 cards
+          discover.ini 382 cards
+Total 417 files, 20824 cards

@@ -297,12 +297,14 @@ namespace SmartBotProfiles
 #endregion
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
-            &&board.ManaAvailable >= 4
+            &&board.ManaAvailable >= 5
             &&board.Hand.Count<=3
             ){
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-20)); 
-            Bot.Log("秘密通道 -20");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-99)); 
+            Bot.Log("秘密通道 -99");
+            }else{
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             }
 #endregion
 #region 影袭 Sinister Strike     CORE_CS2_075
