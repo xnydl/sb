@@ -316,6 +316,14 @@ namespace SmartBotProfiles
             Bot.Log("影袭 -20");
             }
 #endregion
+#region 劈砍课程 SCH_623
+            if(board.HasCardInHand(Card.Cards.SCH_623)
+            &&board.WeaponFriend.CurrentAtk>=4
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-99)); 
+            Bot.Log("劈砍课程 -99");
+            }
+#endregion
 #region 致命药膏 Deadly Poison ID：CORE_CS2_074 
             if(board.HasCardInHand(Card.Cards.CORE_CS2_074)
             ){
