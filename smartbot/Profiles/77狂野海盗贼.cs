@@ -618,42 +618,6 @@ Bot.Log("恩佐斯的副官 -99 ");
             }
 #endregion
 
-#region 船长洛卡拉 SW_028t5 
-          if(board.HasCardInHand(Card.Cards.SW_028t5)
-          &&board.MinionFriend.Count<=5
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(-9999)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(9999)); 
-            Bot.Log("船长洛卡拉 -9999 9999 ");
-            }else{
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(999)); 
-            }
-          if(board.HasCardOnBoard(Card.Cards.SW_028t5)||board.FriendGraveyard.Contains(Card.Cards.SW_028t5) )
-          {
-              p.GlobalWeaponsAttackModifier = -999 ;
-              Bot.Log("攻击值 -999 ");
-          }
-          if(
-            usedhaidao<=6
-            &&luokala==0
-          ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS2_146, new Modifier(-99)); //南海船工 CS2_146 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_637, new Modifier(-99)); //海盗帕奇斯 CFM_637  
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_024, new Modifier(-99)); //空中悍匪 DRG_024  
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-99)); //血帆桨手 CS3_008 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_325, new Modifier(-99)); //蹩脚海盗 CFM_325 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.NEW1_025, new Modifier(-99)); //血帆海盗  NEW1_025 
-            Bot.Log("提高做任务的优先级 ");
-          }
-          if(
-            usedhaidao==6
-            &&luokala==0
-           ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.OG_312, new Modifier(-999));//恩佐斯的副官 OG_312   
-            Bot.Log("提高做恩佐斯的副官 ");
-          }
-#endregion
-
 #region 对阵牧师
       //对面是牧师，火车王随便下
 			if (board.EnemyClass == Card.CClass.PRIEST)
