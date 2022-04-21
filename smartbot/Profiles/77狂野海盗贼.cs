@@ -233,6 +233,8 @@ namespace SmartBotProfiles
             Bot.Log("场上海盗数量"+changshanghaidaonum);
             int luokala=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.SW_028t5)+board.Hand.Count(x => x.Template.Id == Card.Cards.SW_028t5)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.SW_028t5);
             // Bot.Log("船长洛卡拉"+luokala);
+            int jianyu=board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_086)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_086);
+            Bot.Log("船长洛卡拉"+luokala);
             // 坟场海盗数量
             int fenchanghaidao=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PIRATE);
             Bot.Log("坟场海盗数量"+fenchanghaidao);
@@ -338,9 +340,10 @@ namespace SmartBotProfiles
 #endregion
 #region 洞穴探宝者 LOOT_033 
             if(board.HasCardInHand(Card.Cards.LOOT_033)
+            &&jianyu<2
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-20)); 
-            Bot.Log("洞穴探宝者 -20");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-99)); 
+            Bot.Log("洞穴探宝者 -99");
             }
 #endregion
 #region 葛拉卡爬行蟹 Golakka Crawler ID：UNG_807 
