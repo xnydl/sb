@@ -231,10 +231,8 @@ namespace SmartBotProfiles
             int changshanghaidaonum=board.MinionFriend.Count(card => card.Race == Card.CRace.PIRATE);
             int enemychangshanghaidaonum=board.MinionEnemy.Count(card => card.Race == Card.CRace.PIRATE);
             Bot.Log("场上海盗数量"+changshanghaidaonum);
-            int luokala=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.SW_028t5)+board.Hand.Count(x => x.Template.Id == Card.Cards.SW_028t5)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.SW_028t5);
-            // Bot.Log("船长洛卡拉"+luokala);
             int jianyu=board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_086)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_086);
-            Bot.Log("船长洛卡拉"+luokala);
+            Bot.Log("剑鱼用过数量"+jianyu);
             // 坟场海盗数量
             int fenchanghaidao=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PIRATE);
             Bot.Log("坟场海盗数量"+fenchanghaidao);
@@ -296,6 +294,16 @@ namespace SmartBotProfiles
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_056, new Modifier(999)); 
             Bot.Log("空降歹徒 999");
+            }
+#endregion
+#region 海盗将领钩牙 TSC_934 
+            if(board.HasCardInHand(Card.Cards.TSC_934)
+            &&usedhaidao>=8
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_934, new Modifier(-999)); 
+            Bot.Log("海盗将领钩牙 -999");
+            }else{
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_934, new Modifier(999)); 
             }
 #endregion
 #region 秘密通道 SCH_305
@@ -635,12 +643,6 @@ Bot.Log("恩佐斯的副官 -99 ");
 
 #region 重拳先生  DED_006 
          if(board.HasCardInHand(Card.Cards.DED_006)){
-           if(usedhaidao==6
-            &&luokala==0){
-              p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(999)); 
-            Bot.Log("重拳先生 999 ");
-        
-           }else{
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(130)); 
             Bot.Log("重拳先生 130 ");
            }
