@@ -328,8 +328,8 @@ namespace SmartBotProfiles
             &&board.WeaponFriend != null 
             && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-99)); 
-            Bot.Log("劈砍课程 -99");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-150)); 
+            Bot.Log("劈砍课程 -150");
             }
 #endregion
 #region 致命药膏 Deadly Poison ID：CORE_CS2_074 
@@ -342,7 +342,7 @@ namespace SmartBotProfiles
 #region 团伙劫掠 TRL_124
             if(board.HasCardInHand(Card.Cards.TRL_124)
             ){
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(9999)); 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-99)); 
             Bot.Log("团伙劫掠 -99");
             }
@@ -358,8 +358,19 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.LOOT_033)
             &&jianyu<2
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-99)); 
-            Bot.Log("洞穴探宝者 -99");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-150)); 
+            Bot.Log("洞穴探宝者 -150");
+            }
+#endregion
+#region 锈水海盗 CORE_AT_029
+            if(board.HasCardInHand(Card.Cards.CORE_AT_029)
+            &&board.MaxMana ==1
+            &&board.HasCardInHand(Card.Cards.CORE_AT_029)//剑鱼 TSC_086
+            &&board.HasCardInHand(Card.Cards.GAME_005)
+            &&!board.HasCardInHand(Card.Cards.GVG_075)//船载火炮 GVG_075 
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_AT_029, new Modifier(-150)); 
+            Bot.Log("锈水海盗 -150");
             }
 #endregion
 #region 葛拉卡爬行蟹 Golakka Crawler ID：UNG_807 
