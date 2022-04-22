@@ -308,12 +308,9 @@ namespace SmartBotProfiles
 #endregion
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
-            &&board.ManaAvailable >= 5
-            &&board.Hand.Count<=3
+            &&board.ManaAvailable >= 4
             ){
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-99)); 
-            Bot.Log("秘密通道 -99");
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             }
@@ -366,8 +363,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.LOOT_033)
             &&jianyu<2
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-150)); 
-            Bot.Log("洞穴探宝者 -150");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-999)); 
+            Bot.Log("洞穴探宝者 -999");
             }
 #endregion
 #region 锈水海盗 CORE_AT_029
