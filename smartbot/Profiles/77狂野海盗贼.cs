@@ -646,8 +646,6 @@ Bot.Log("恩佐斯的副官 -99 ");
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(130)); 
             Bot.Log("重拳先生 130 ");
            }
-          
-            }
 #endregion
 
 #region 对阵牧师
