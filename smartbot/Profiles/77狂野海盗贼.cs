@@ -357,6 +357,7 @@ namespace SmartBotProfiles
 #region 洞穴探宝者 LOOT_033 
             if(board.HasCardInHand(Card.Cards.LOOT_033)
             &&jianyu<2
+            &&!board.HasCardInHand(Card.Cards.TSC_086)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
