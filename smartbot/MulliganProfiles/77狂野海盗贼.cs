@@ -176,7 +176,7 @@ namespace SmartBot.Mulligan
                         Keep(card,"南海船工");
                     } 
                 }
-                if(card==Card.Cards.LOOT_033&&flag1=0&&HasCoin==false// 洞穴探宝者 LOOT_033
+                if(card==Card.Cards.LOOT_033&&flag1==0&&HasCoin==false// 洞穴探宝者 LOOT_033
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.LOOT_033))
                     {
@@ -218,7 +218,7 @@ namespace SmartBot.Mulligan
                         Keep(card,"锈水海盗");
                     } 
                 }
-                if(card==Card.Cards.TSC_086&&(HasCoin==true||flag3=0)// 剑鱼 TSC_086
+                if(card==Card.Cards.TSC_086&&(HasCoin==true||flag3==0)// 剑鱼 TSC_086
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.TSC_086))
                     {
