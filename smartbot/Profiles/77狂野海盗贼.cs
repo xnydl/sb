@@ -357,6 +357,7 @@ namespace SmartBotProfiles
 #region 洞穴探宝者 LOOT_033 
             if(board.HasCardInHand(Card.Cards.LOOT_033)
             &&jianyu<2
+            &&board.ManaAvailable >1
             &&!board.HasCardInHand(Card.Cards.TSC_086)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-999)); 
@@ -433,7 +434,7 @@ namespace SmartBotProfiles
         ){
             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-150));
             Bot.Log("剑鱼 -150");
-          } 
+        } 
          if(board.HasCardInHand(Card.Cards.TSC_086)
           ){
             p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(-50));
