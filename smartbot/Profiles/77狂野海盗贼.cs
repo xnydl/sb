@@ -428,9 +428,10 @@ namespace SmartBotProfiles
 #endregion
 #region 剑鱼 TSC_086
          if(board.HasCardInHand(Card.Cards.TSC_086)
+        &&board.WeaponFriend != null 
         ){
-            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-99));
-            Bot.Log("剑鱼 -99");
+            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-150));
+            Bot.Log("剑鱼 -150");
           } 
          if(board.HasCardInHand(Card.Cards.TSC_086)
           ){
