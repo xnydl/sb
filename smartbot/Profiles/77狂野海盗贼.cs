@@ -142,7 +142,7 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
+            var p = new ProfileParameters(BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 };           
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
@@ -311,6 +311,8 @@ namespace SmartBotProfiles
             &&board.ManaAvailable >= 4
             ){
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-200)); 
+
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             }
