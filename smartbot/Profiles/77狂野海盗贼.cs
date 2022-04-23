@@ -446,13 +446,6 @@ namespace SmartBotProfiles
         //     p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(999));
         //     Bot.Log("攻击优先级 999");
         //   }
-          if(board.HasCardInHand(Card.Cards.TSC_086)
-          &&board.HasCardInHand(Card.Cards.GAME_005)
-          &&board.ManaAvailable <=2
-          ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
-            Bot.Log("硬币 999");
-          } 
 #endregion
 #region 血帆教徒 Bloodsail Cultist      OG_315 
         if(board.HasCardInHand(Card.Cards.OG_315)
