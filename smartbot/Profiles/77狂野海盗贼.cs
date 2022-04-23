@@ -316,10 +316,11 @@ namespace SmartBotProfiles
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
             &&board.ManaAvailable >= 5
+            &&board.Hand.Count<=3
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-99)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-150)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
-             Bot.Log("秘密通道 -99");
+             Bot.Log("秘密通道 -150");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             }
@@ -526,13 +527,6 @@ namespace SmartBotProfiles
             p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(9999));
             Bot.Log("攻击优先级 9999");
           }
-#endregion
-
-#region 重拳先生  DED_006 
-         if(board.HasCardInHand(Card.Cards.DED_006)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(130)); 
-            Bot.Log("重拳先生 130 ");
-           }
 #endregion
 
 #region 十字路口哨所      BAR_075
