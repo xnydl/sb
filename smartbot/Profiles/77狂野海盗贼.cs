@@ -348,8 +348,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.TRL_124)
             ){
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(9999)); 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-99)); 
-            Bot.Log("团伙劫掠 -99");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-150)); 
+            Bot.Log("团伙劫掠 -150");
             }
 #endregion
 #region 海盗帕奇斯 CFM_637 

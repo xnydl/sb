@@ -44,7 +44,7 @@ using SmartBot.Plugins.API;
 // # 2x (3) 团伙劫掠 TRL_124 
 // # 2x (3) 南海船长
 // # 2x (3) 剑鱼 TSC_086
-// # 2x (4) 恐怖海盗
+// # 2x (4) 恐怖海盗 NEW1_022
 // # 2x (5) 劈砍课程
 // # 1x (6) 重拳先生
 // #
@@ -159,6 +159,13 @@ namespace SmartBot.Mulligan
                     if(!CardsToKeep.Contains(Card.Cards.VAN_NEW1_022))
                     {
                         Keep(card,"恐怖海盗");
+                    } 
+                }
+                if(card==Card.Cards.NEW1_022&&flag1>0// 恐怖海盗 NEW1_022
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.NEW1_022))
+                    {
+                        Keep(card,"恐怖海盗2");
                     } 
                 }
                 if(card==Card.Cards.SCH_623&&flag1>0// 劈砍课程 SCH_623
