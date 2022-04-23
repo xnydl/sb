@@ -31,7 +31,7 @@ using SmartBot.Plugins.API;
 // # 职业：潜行者
 // # 模式：狂野模式
 // #
-// # 2x (0) 伺机待发
+// # 2x (0) 伺机待发 CORE_EX1_145 
 // # 2x (1) 鱼排斗士 TSC_963
 // # 2x (1) 锈水海盗 CORE_AT_029
 // # 2x (1) 致命药膏
@@ -70,7 +70,7 @@ namespace SmartBot.Mulligan
             bool HasCoin = choices.Count >= 4;
 
             int flag1=0;//剑鱼 TSC_086
-            int flag2=0;//血帆桨手 CS3_008
+            int flag2=0;//团伙劫掠 TRL_124 
             
             foreach (Card.Cards card in choices)
             {
@@ -78,6 +78,8 @@ namespace SmartBot.Mulligan
                 ){flag1+=1;}
                 if(card==Card.Cards.LOOT_033//洞穴探宝者 LOOT_033
                 ){flag1+=1;}
+                if(card==Card.Cards.TRL_124//团伙劫掠 TRL_124  
+                ){flag2+=1;}
             }
 
             foreach (Card.Cards card in choices)
@@ -94,6 +96,13 @@ namespace SmartBot.Mulligan
                     if(!CardsToKeep.Contains(Card.Cards.TSC_963))
                     {
                         Keep(card,"鱼排斗士");
+                    } 
+                }
+                if(card==Card.Cards.CORE_EX1_145&&flag2>0// 伺机待发 CORE_EX1_145 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_145))
+                    {
+                        Keep(card,"伺机待发");
                     } 
                 }
                 if(card==Card.Cards.CS2_146// 南海船工 CS2_146
