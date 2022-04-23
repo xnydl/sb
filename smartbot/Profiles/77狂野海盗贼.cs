@@ -359,6 +359,7 @@ namespace SmartBotProfiles
             &&jianyu<2
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
             Bot.Log("洞穴探宝者 -999");
             }
 #endregion
