@@ -116,7 +116,7 @@ namespace SmartBot.Mulligan
             }
             if(opponentClass==Card.CClass.HUNTER){
             HUNTER+=1;
-            kuaigong+=1;
+            mansu+=1;
             }
             if(opponentClass==Card.CClass.MAGE){
             MAGE+=1;

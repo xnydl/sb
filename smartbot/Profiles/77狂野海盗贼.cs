@@ -246,29 +246,6 @@ namespace SmartBotProfiles
             Bot.Log("使用过的海盗数量"+usedhaidao);
  #endregion
 
-#region 增加随从威胁值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_155, new Modifier(200));//废料场巨像 Scrapyard Colossus     BT_155 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_709, new Modifier(200));// 增加巨型图腾埃索尔 Grand Totem Eys'or     DMF_709 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(200));// 增加艾露恩神谕者      SW_419 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(200));// 增加农夫 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.WC_006, new Modifier(200));
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_033, new Modifier(200));//运河慢步者 Canal Slogger     SW_033
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CS3_007, new Modifier(200));//电击学徒 Novice Zapper     CS3_007 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_074, new Modifier(200));//前沿哨所      BAR_074 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_918, new Modifier(200));//塔姆辛·罗姆 Tamsin Roame     BAR_918 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_230, new Modifier(200));//伊格诺斯 Il'gynoth     DMF_230 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_733, new Modifier(200));//莫尔葛工匠 Mo'arg Artificer     BT_733 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_734, new Modifier(200));//格雷布     DMF_734  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_035, new Modifier(200));//月牙 Moon方    YOP_035
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GVG_040, new Modifier(200));//沙鳞灵魂行者 Siltfin Spiritwalker ID：GVG_040
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_304, new Modifier(200));//改进型恐惧魔王 Enhanced Dreadlord ID：BT_304
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_068, new Modifier(200));//莫尔葛熔魔 Mo'arg Forgefiend ID：SW_068 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));//迪菲亚炮手  DED_519
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CFM_807, new Modifier(200));//大富翁比尔杜 Auctionmaster Beardo ID：CFM_807 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(200));//机械鲨鱼 TSC_054
-  
-#endregion
 #region 空降歹徒 DRG_056
             if(board.HasCardInHand(Card.Cards.DRG_056)
             &&filterHaidao>=1
@@ -524,6 +501,38 @@ namespace SmartBotProfiles
 #region 攻击优先 卡牌威胁（通用） 
 
 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.GVG_040))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GVG_040, new Modifier(200));
+            }//沙鳞灵魂行者 Siltfin Spiritwalker ID：GVG_040
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BT_304))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_304, new Modifier(200));
+            }//改进型恐惧魔王 Enhanced Dreadlord ID：BT_304
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_068))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_068, new Modifier(200));
+            }//莫尔葛熔魔 Mo'arg Forgefiend ID：SW_068 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_860))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));
+            }//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DED_519))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));
+            }//迪菲亚炮手  DED_519
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CFM_807))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CFM_807, new Modifier(200));
+            }//大富翁比尔杜 Auctionmaster Beardo ID：CFM_807 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_054))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(200));
+            }//机械鲨鱼 TSC_054
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.GIL_646))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GIL_646, new Modifier(200));
+            }//发条机器人 Clockwork Automaton ID：GIL_646 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ULD_231))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ULD_231, new Modifier(200));
