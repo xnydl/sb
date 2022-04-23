@@ -343,10 +343,9 @@ namespace SmartBotProfiles
 #endregion
 #region 劈砍课程 SCH_623
             if(board.HasCardInHand(Card.Cards.SCH_623)
-            &&board.WeaponFriend.CurrentAtk>=4
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-150)); 
-            Bot.Log("劈砍课程 -150");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-99)); 
+            Bot.Log("劈砍课程 -99");
             }
             // if(board.HasCardInHand(Card.Cards.SCH_623)
             // &&board.WeaponFriend != null 
@@ -434,50 +433,13 @@ namespace SmartBotProfiles
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
             Bot.Log("船载火炮 -999 优先级 550");
             }
-        //   if(board.HasCardInHand(Card.Cards.GVG_075)
-        //     &&haidaonum>=1
-        //     &&(board.MaxMana >=2||(board.MaxMana==2&&board.HasCardInHand(Card.Cards.GAME_005)))
-        //     ){
-        //     p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-250)); 
-        //     p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
-        //     Bot.Log("船载火炮 -99 优先级 550");
-        //     }
-#endregion
-#region  空中炮艇 Skybarge ID：DRG_023  
-          if(board.HasCardInHand(Card.Cards.DRG_023)
-            &&haidaonum>=1
-            &&board.MaxMana ==3
-            &&enemyAttack<5
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(-99)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(550)); 
-            Bot.Log("空中炮艇 -99 优先级 550");
-            }
-          if(board.HasCardInHand(Card.Cards.DRG_023)
-            &&haidaonum>=1
-            &&(board.MaxMana >=3||(board.MaxMana==2&&board.HasCardInHand(Card.Cards.GAME_005)))
-                ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(-99)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(550)); 
-            Bot.Log("空中炮艇 -99 优先级 550");
-            }
-          if(board.HasCardOnBoard(Card.Cards.DRG_023)
-            ){
-            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.DRG_023, new Modifier(250)); 
-           Bot.Log("空中炮艇 不送");
-            }
+       
 #endregion
 
 #region Card.Cards.HERO_03bp 英雄技能
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-550)); 
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-99)); 
 #endregion
-#region 棘齿城私掠者 BAR_061 
-         if(board.HasCardInHand(Card.Cards.BAR_061)
-         ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_061, new Modifier(-60)); 
-             Bot.Log("棘齿城私掠者 -60 ");
-            }
-#endregion
+
 
 
 #region 恐怖海盗 NEW1_022
@@ -488,24 +450,22 @@ namespace SmartBotProfiles
 #endregion
 #region 剑鱼 TSC_086
          if(board.HasCardInHand(Card.Cards.TSC_086)
-         && board.WeaponFriend.Template.Id != Card.Cards.TSC_086
         ){
-            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-1000));
-            Bot.Log("剑鱼 -1000");
+            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-99));
+            Bot.Log("剑鱼 -99");
           } 
          if(board.HasCardInHand(Card.Cards.TSC_086)
-         && board.WeaponFriend.Template.Id == Card.Cards.CS2_082//邪恶短刀 Wicked Knife ID：CS2_082 
           ){
             p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(-50));
             Bot.Log("邪恶短刀不a");
           } 
-          if(board.WeaponFriend != null 
-          && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
-          &&board.WeaponFriend.CurrentDurability > 1
-          ){
-            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(999));
-            Bot.Log("攻击优先级 999");
-          }
+        //   if(board.WeaponFriend != null 
+        //   && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
+        //   &&board.WeaponFriend.CurrentDurability > 1
+        //   ){
+        //     p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(999));
+        //     Bot.Log("攻击优先级 999");
+        //   }
           if(board.HasCardInHand(Card.Cards.TSC_086)
           &&board.HasCardInHand(Card.Cards.GAME_005)
           &&board.ManaAvailable <=2
@@ -561,57 +521,6 @@ namespace SmartBotProfiles
            }
 #endregion
 
-#region 对阵牧师
-      //对面是牧师，火车王随便下
-			if (board.EnemyClass == Card.CClass.PRIEST)
-			{
-				p.CastMinionsModifiers.AddOrUpdate(Card.Cards.EX1_116, new Modifier(-50));//修改火车王的优先级
-                    //提高雏龙威胁值雏龙 Whelp ID：EX1_116t 
-			p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.EX1_116t, new Modifier(100));
-			}
-#endregion
-
-#region 贪婪的书虫      SCH_142
-    // 书虫相关
-        if (board.Hand.Count <=3
-       &&board.Hand.Count(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.SCH_142)==1
-       )//贪婪的书虫      SCH_142
-        {
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(-99));//贪婪的书虫      SCH_142
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(480)); 
-          Bot.Log("贪婪的书虫 -99");
-        }else{
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(150));//贪婪的书虫      SCH_142
-        }
-        if (board.Hand.Count <=4
-       &&board.Hand.Count(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.SCH_142)==2
-       )//贪婪的书虫      SCH_142
-        {
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(-99));//贪婪的书虫      SCH_142
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(480)); 
-          Bot.Log("贪婪的书虫 -99");
-        }else{
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(150));//贪婪的书虫      SCH_142
-        }
-    //场上有书虫，提高手里硬币优先值
-        if (board.HasCardOnBoard(Card.Cards.SCH_142)//贪婪的书虫      SCH_142
-        && board.HasCardInHand(Card.Cards.GAME_005)
-        )
-        {
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-10));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(-10));//雷霆绽放      SCH_427
-          Bot.Log("雷霆绽放 -10 硬币 -10");
-        }
-    
-    //书虫分散投资
-        if (board.HasCardOnBoard(Card.Cards.SCH_142)//贪婪的书虫      SCH_142S
-        )
-        {
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(150));//贪婪的书虫      SCH_142
-          Bot.Log("贪婪的书虫 150");
-        }
-    
-#endregion
 #region 攻击优先 卡牌威胁（通用） 
 
 
