@@ -318,8 +318,7 @@ namespace SmartBotProfiles
             &&board.ManaAvailable >= 5
             &&board.Hand.Count(x=>x.CurrentCost<4)<2
             ){
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-250)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             }
