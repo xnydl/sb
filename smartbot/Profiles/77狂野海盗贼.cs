@@ -525,6 +525,13 @@ namespace SmartBotProfiles
             p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(9999));
             Bot.Log("攻击优先级 9999");
           }
+          if(board.HasCardInHand(Card.Cards.TSC_086)
+          &&board.HasCardInHand(Card.Cards.GAME_005)
+          &&board.ManaAvailable <=2
+          ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
+            Bot.Log("硬币 999");
+          } 
 #endregion
 
 #region 重拳先生  DED_006 
