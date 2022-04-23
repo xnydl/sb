@@ -296,6 +296,13 @@ namespace SmartBotProfiles
             Bot.Log("空降歹徒 999");
             }
 #endregion
+#region 掩息海星 Smothering Starfish ID：TSC_926 
+            if(board.HasCardInHand(Card.Cards.TSC_926)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_926, new Modifier(150)); 
+            Bot.Log("掩息海星 150");
+            }
+#endregion
 #region 海盗将领钩牙 TSC_934 
             if(board.HasCardInHand(Card.Cards.TSC_934)
             &&usedhaidao>=8
@@ -322,6 +329,13 @@ namespace SmartBotProfiles
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_075, new Modifier(-20)); 
             Bot.Log("影袭 -20");
+            }
+#endregion
+#region 行骗 Swindle ID：DMF_515 
+            if(board.HasCardInHand(Card.Cards.DMF_515)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_515, new Modifier(-20)); 
+            Bot.Log("行骗 -20");
             }
 #endregion
 #region 伺机待发 CORE_EX1_145
