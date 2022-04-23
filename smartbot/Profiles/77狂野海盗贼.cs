@@ -432,8 +432,8 @@ namespace SmartBotProfiles
          if(board.HasCardInHand(Card.Cards.TSC_086)
         &&board.WeaponFriend == null 
         ){
-            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-150));
-            Bot.Log("剑鱼 -150");
+            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-1000));
+            Bot.Log("剑鱼 -1000");
         } 
          if(board.HasCardInHand(Card.Cards.TSC_086)
           ){
