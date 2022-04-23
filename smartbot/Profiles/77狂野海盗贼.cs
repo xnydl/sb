@@ -296,6 +296,13 @@ namespace SmartBotProfiles
             Bot.Log("空降歹徒 999");
             }
 #endregion
+#region 鱼排斗士 TSC_963
+            if(board.HasCardInHand(Card.Cards.TSC_963)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_963, new Modifier(130)); 
+            Bot.Log("鱼排斗士 130");
+            }
+#endregion
 #region 掩息海星 Smothering Starfish ID：TSC_926 
             if(board.HasCardInHand(Card.Cards.TSC_926)
             ){
@@ -454,21 +461,20 @@ namespace SmartBotProfiles
 #region 船载火炮 GVG_075 
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
-            &&board.Hand.Exists(card => card.CurrentCost==1)
-            &&board.MaxMana ==1
+            &&board.Hand.Count(card => card.CurrentCost==1)>=1
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
             Bot.Log("船载火炮 -999 优先级 550");
             }
-          if(board.HasCardInHand(Card.Cards.GVG_075)
-            &&haidaonum>=1
-            &&(board.MaxMana >=3||(board.MaxMana==2&&board.HasCardInHand(Card.Cards.GAME_005)))
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-99)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
-            Bot.Log("船载火炮 -99 优先级 550");
-            }
+        //   if(board.HasCardInHand(Card.Cards.GVG_075)
+        //     &&haidaonum>=1
+        //     &&(board.MaxMana >=2||(board.MaxMana==2&&board.HasCardInHand(Card.Cards.GAME_005)))
+        //     ){
+        //     p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-250)); 
+        //     p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
+        //     Bot.Log("船载火炮 -99 优先级 550");
+        //     }
 #endregion
 #region  空中炮艇 Skybarge ID：DRG_023  
           if(board.HasCardInHand(Card.Cards.DRG_023)
@@ -519,6 +525,12 @@ namespace SmartBotProfiles
           ){
             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-1000));
             Bot.Log("剑鱼 -1000");
+          } 
+         if(board.HasCardInHand(Card.Cards.TSC_086)
+         && board.WeaponFriend.Template.Id == Card.Cards.CS2_082//邪恶短刀 Wicked Knife ID：CS2_082 
+          ){
+            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(-50));
+            Bot.Log("邪恶短刀不a");
           } 
           if(board.WeaponFriend != null 
           && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
