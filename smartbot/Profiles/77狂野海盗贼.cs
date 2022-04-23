@@ -142,7 +142,7 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 };           
+            var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
@@ -322,6 +322,13 @@ namespace SmartBotProfiles
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_075, new Modifier(-20)); 
             Bot.Log("影袭 -20");
+            }
+#endregion
+#region 伺机待发 CORE_EX1_145
+            if(board.HasCardInHand(Card.Cards.CORE_EX1_145)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_145, new Modifier(-20)); 
+            Bot.Log("伺机待发 -20");
             }
 #endregion
 #region 劈砍课程 SCH_623
