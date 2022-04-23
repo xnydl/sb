@@ -326,6 +326,13 @@ namespace SmartBotProfiles
 #endregion
 #region 伺机待发 CORE_EX1_145
             if(board.HasCardInHand(Card.Cards.CORE_EX1_145)
+            &&board.HasCardInHand(Card.Cards.SCH_623)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_145, new Modifier(-20)); 
+            Bot.Log("伺机待发 -20");
+            }
+            if(board.HasCardInHand(Card.Cards.CORE_EX1_145)
+            &&board.HasCardInHand(Card.Cards.TRL_124)
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_145, new Modifier(-20)); 
             Bot.Log("伺机待发 -20");
