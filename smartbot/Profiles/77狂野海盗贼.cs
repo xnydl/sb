@@ -408,10 +408,19 @@ namespace SmartBotProfiles
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
             &&board.Hand.Count(card => card.CurrentCost<=2)>=1
+            &&board.ManaAvailable <3
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
             Bot.Log("船载火炮 -999 优先级 550");
+            }
+          if(board.HasCardInHand(Card.Cards.GVG_075)
+            &&haidaonum>=1
+            &&board.ManaAvailable >=3
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-99)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
+            Bot.Log("船载火炮 -99 优先级 550");
             }
        
 #endregion
