@@ -464,6 +464,14 @@ namespace SmartBotProfiles
         //     Bot.Log("攻击优先级 999");
         //   }
 #endregion
+#region 携刃信使 Cutlass Courier ID：TSC_085 
+        if(board.HasCardInHand(Card.Cards.TSC_085)
+        &&board.WeaponFriend != null
+        ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(-99));  
+            Bot.Log("携刃信使 -99 ");
+         }
+#endregion
 #region 血帆教徒 Bloodsail Cultist      OG_315 
         if(board.HasCardInHand(Card.Cards.OG_315)
         &&changshanghaidaonum==0

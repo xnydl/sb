@@ -49,6 +49,7 @@ using SmartBot.Plugins.API;
 // # 2x (4) 恐怖海盗 NEW1_022
 // # 2x (5) 劈砍课程
 // # 1x (6) 重拳先生
+// # 1x (6) 携刃信使 Cutlass Courier ID：TSC_085
 // #
 // AAEBAaIHApG8Ar+ABA7UBe4G+w/VjAPpsAOqywP31APz3QOSnwT3nwSvoASKyQT90wSa2wQA
 // # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
