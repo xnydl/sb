@@ -308,14 +308,14 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.CORE_EX1_145)
             &&board.HasCardInHand(Card.Cards.SCH_623)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_145, new Modifier(-20)); 
-            Bot.Log("伺机待发 -20");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_145, new Modifier(5)); 
+            Bot.Log("伺机待发 5");
             }
             if(board.HasCardInHand(Card.Cards.CORE_EX1_145)
             &&board.HasCardInHand(Card.Cards.TRL_124)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_145, new Modifier(-20)); 
-            Bot.Log("伺机待发 -20");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_145, new Modifier(5)); 
+            Bot.Log("伺机待发 5");
             }
 #endregion
 #region 劈砍课程 SCH_623
