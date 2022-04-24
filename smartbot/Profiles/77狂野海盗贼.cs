@@ -457,6 +457,7 @@ namespace SmartBotProfiles
             Bot.Log("有剑鱼一费不跳币");
         } 
          if(board.HasCardInHand(Card.Cards.TSC_086)
+         &&board.ManaAvailable >=3
           ){
             p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(999));
             Bot.Log("邪恶短刀不a");
