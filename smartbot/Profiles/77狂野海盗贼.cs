@@ -446,6 +446,7 @@ namespace SmartBotProfiles
         } 
          if(board.HasCardInHand(Card.Cards.TSC_086)
         &&board.ManaAvailable ==1
+        &&board.HasCardInHand(Card.Cards.GAME_005)
         ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999)); 
             Bot.Log("有剑鱼一费不跳币");
