@@ -325,6 +325,20 @@ namespace SmartBotProfiles
             Bot.Log("空降歹徒 999");
             }
 #endregion
+#region 奈利，超巨蛇颈龙 Nellie, the Great Thresher ID：TSC_660 
+            if(board.HasCardInHand(Card.Cards.TSC_660)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_660, new Modifier(-150)); 
+            Bot.Log("奈利，超巨蛇颈龙 -150");
+            }
+#endregion
+#region 奈利的海盗船 Nellie's Pirate Ship ID：TSC_660t 
+            if(board.HasCardOnBoard(Card.Cards.TSC_660t)
+            ){
+            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.TSC_660t,new Modifier(-5));
+            Bot.Log("奈利，超巨蛇颈龙送");
+            }
+#endregion
 #region 海盗帕奇斯 CFM_637 
             if(board.HasCardInHand(Card.Cards.CFM_637)
             ){
