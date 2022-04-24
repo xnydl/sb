@@ -345,7 +345,6 @@ namespace SmartBotProfiles
 #region 团伙劫掠 TRL_124
             if(board.HasCardInHand(Card.Cards.TRL_124)
             ){
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(999)); 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-150)); 
             Bot.Log("团伙劫掠 -150");
             }

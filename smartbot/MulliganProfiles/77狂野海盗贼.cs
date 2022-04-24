@@ -191,13 +191,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"空降歹徒");
                     } 
                 }
-                if(card==Card.Cards.GVG_075// 船载火炮 GVG_075
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.GVG_075))
-                    {
-                        Keep(card,"船载火炮");
-                    } 
-                }
+                // if(card==Card.Cards.GVG_075// 船载火炮 GVG_075
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.GVG_075))
+                //     {
+                //         Keep(card,"船载火炮");
+                //     } 
+                // }
                 if(card==Card.Cards.DMF_519&&kuaigong>0// 奖品掠夺者 DMF_519
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.DMF_519))
