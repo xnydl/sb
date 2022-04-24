@@ -445,7 +445,13 @@ namespace SmartBotProfiles
 #endregion
 #region 剑鱼 TSC_086
          if(board.HasCardInHand(Card.Cards.TSC_086)
-        &&(board.WeaponFriend == null||board.WeaponFriend.Template.Id != Card.Cards.TSC_086) 
+        &&board.WeaponFriend == null 
+        ){
+            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-1000));
+            Bot.Log("剑鱼 -1000");
+        } 
+         if(board.HasCardInHand(Card.Cards.TSC_086)
+        &&board.WeaponFriend.Template.Id == Card.Cards.CS2_082
         ){
             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-1000));
             Bot.Log("剑鱼 -1000");
@@ -459,7 +465,7 @@ namespace SmartBotProfiles
         } 
          if(board.HasCardInHand(Card.Cards.TSC_086)
           ){
-            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(-50));
+            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(999));
             Bot.Log("邪恶短刀不a");
           } 
         //   if(board.WeaponFriend != null 
