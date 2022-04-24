@@ -107,6 +107,7 @@ namespace SmartBotProfiles
             {Card.Cards.BAR_319t, 4},//邪恶挥刺（等级2） Wicked Stab (Rank 2)     BAR_319t
             {Card.Cards.BAR_319t2, 6},//邪恶挥刺（等级3） Wicked Stab (Rank 3)     BAR_319t2 
             {Card.Cards.CORE_CS2_075, 3},//影袭 Sinister Strike     CORE_CS2_075
+            {Card.Cards.TSC_086, 4},//剑鱼 TSC_086
             //术士
             {Card.Cards.CORE_CS2_062, 3},//地狱烈焰 Hellfire     CORE_CS2_062
             //战士
@@ -423,7 +424,11 @@ namespace SmartBotProfiles
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
             Bot.Log("船载火炮 -99 优先级 550");
             }
-       
+          if(board.HasCardOnBoard(Card.Cards.GVG_075)
+            ){
+            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(150)); 
+            Bot.Log("船载火炮 不送");
+            }
 #endregion
 
 #region Card.Cards.HERO_03bp 英雄技能
