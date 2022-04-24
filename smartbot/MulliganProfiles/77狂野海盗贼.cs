@@ -226,7 +226,7 @@ namespace SmartBot.Mulligan
                         Keep(card,"剑鱼");
                     } 
                 }
-                if(card==Card.Cards.TRL_124// 团伙劫掠 TRL_124 
+                if(card==Card.Cards.TRL_124&&(flag1+flag3==0)// 团伙劫掠 TRL_124 
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.TRL_124))
                     {
