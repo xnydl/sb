@@ -104,6 +104,8 @@ namespace SmartBot.Mulligan
                 ){flag4+=1;}
                 if(card==Card.Cards.CS2_146//南海船工 CS2_146
                 ){flag4+=1;}
+                if(card==Card.Cards.DRG_035//血帆飞贼 Bloodsail Flybooter ID：DRG_035 
+                ){flag4+=1;}
             }
             Bot.Log("对阵职业"+opponentClass);
 
@@ -161,6 +163,13 @@ namespace SmartBot.Mulligan
                     if(!CardsToKeep.Contains(Card.Cards.TSC_963))
                     {
                         Keep(card,"鱼排斗士");
+                    } 
+                }
+                if(card==Card.Cards.DRG_035// 血帆飞贼 Bloodsail Flybooter ID：DRG_035 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.DRG_035))
+                    {
+                        Keep(card,"血帆飞贼");
                     } 
                 }
                 if(card==Card.Cards.CORE_EX1_145&&flag2>0// 伺机待发 CORE_EX1_145 
