@@ -345,8 +345,8 @@ namespace SmartBotProfiles
 #region 团伙劫掠 TRL_124
             if(board.HasCardInHand(Card.Cards.TRL_124)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-150)); 
-            Bot.Log("团伙劫掠 -150");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-250)); 
+            Bot.Log("团伙劫掠 -250");
             }
 #endregion
 #region 海盗帕奇斯 CFM_637 
@@ -432,7 +432,7 @@ namespace SmartBotProfiles
 #endregion
 
 #region Card.Cards.HERO_03bp 英雄技能
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(100)); 
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(55)); 
 #endregion
 
 
