@@ -281,7 +281,7 @@ namespace SmartBotProfiles
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
             &&board.ManaAvailable >= 5
-            &&board.Hand.Count<=3
+            &&board.Hand.Count<=4
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-150)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
@@ -430,7 +430,7 @@ namespace SmartBotProfiles
 #endregion
 #region 剑鱼 TSC_086
          if(board.HasCardInHand(Card.Cards.TSC_086)
-        &&board.WeaponFriend == null 
+        &&(board.WeaponFriend == null||board.WeaponFriend.Template.Id == Card.Cards.CS2_082) 
         ){
             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-1000));
             Bot.Log("剑鱼 -1000");
