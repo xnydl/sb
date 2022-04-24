@@ -323,8 +323,8 @@ namespace SmartBotProfiles
 #region 劈砍课程 SCH_623
             if(board.HasCardInHand(Card.Cards.SCH_623)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-150)); 
-            Bot.Log("劈砍课程 -150");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-180)); 
+            Bot.Log("劈砍课程 -180");
             }
             // if(board.HasCardInHand(Card.Cards.SCH_623)
             // &&board.WeaponFriend != null 
@@ -344,8 +344,8 @@ namespace SmartBotProfiles
 #region 团伙劫掠 TRL_124
             if(board.HasCardInHand(Card.Cards.TRL_124)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-250)); 
-            Bot.Log("团伙劫掠 -250");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-170)); 
+            Bot.Log("团伙劫掠 -170");
             }
 #endregion
 #region 海盗帕奇斯 CFM_637 
