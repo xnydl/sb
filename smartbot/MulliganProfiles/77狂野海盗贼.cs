@@ -242,18 +242,11 @@ namespace SmartBot.Mulligan
                 //         Keep(card,"团伙劫掠");
                 //     } 
                 // }
-                if(card==Card.Cards.VAN_NEW1_022&&flag1+flag3>0// 恐怖海盗 VAN_NEW1_022
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.VAN_NEW1_022))
-                    {
-                        Keep(card,"恐怖海盗");
-                    } 
-                }
-                if(card==Card.Cards.NEW1_022&&flag1+flag3>0// 恐怖海盗 NEW1_022
+                if(card==Card.Cards.NEW1_022&&(flag1+flag3>0)// 恐怖海盗 NEW1_022
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.NEW1_022))
                     {
-                        Keep(card,"恐怖海盗2");
+                        Keep(card,"恐怖海盗");
                     } 
                 }
                 if(card==Card.Cards.SCH_623&&flag1+flag3>0// 劈砍课程 SCH_623
