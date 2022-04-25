@@ -282,10 +282,9 @@ namespace SmartBotProfiles
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
             &&board.ManaAvailable >= 3
-            &&board.Hand.Count<=5
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-150)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
+            // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-150)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
              Bot.Log("秘密通道 -150");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(150)); 
@@ -431,7 +430,7 @@ namespace SmartBotProfiles
 #endregion
 
 #region Card.Cards.HERO_03bp 英雄技能
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(55)); 
+        // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(85)); 
 #endregion
 
 
