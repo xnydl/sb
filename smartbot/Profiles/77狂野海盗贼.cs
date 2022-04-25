@@ -476,6 +476,12 @@ namespace SmartBotProfiles
         //     p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(999));
         //     Bot.Log("攻击优先级 999");
         //   }
+          if(board.HasCardInHand(Card.Cards.SCH_305)
+          &&board.ManaAvailable >=4
+        ){
+            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(130));
+            Bot.Log("剑鱼慢点a");
+        } 
 #endregion
 #region 携刃信使 Cutlass Courier ID：TSC_085 
         if(board.HasCardInHand(Card.Cards.TSC_085)
