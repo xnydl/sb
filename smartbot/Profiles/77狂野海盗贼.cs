@@ -299,6 +299,7 @@ namespace SmartBotProfiles
 #endregion
 #region 迈拉的不稳定元素 Myra's Unstable Element ID：BOT_242 
             if(board.HasCardInHand(Card.Cards.BOT_242)
+            &&!board.HasCardInHand(Card.Cards.SCH_305)
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BOT_242, new Modifier(-20)); 
             Bot.Log("迈拉的不稳定元素 -20");
