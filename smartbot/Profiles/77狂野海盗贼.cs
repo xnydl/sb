@@ -251,8 +251,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.DRG_056)
             &&filterHaidao>=1
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_056, new Modifier(999)); 
-            Bot.Log("空降歹徒 999");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_056, new Modifier(150)); 
+            Bot.Log("空降歹徒 150");
             }
 #endregion
 #region 鱼排斗士 TSC_963
