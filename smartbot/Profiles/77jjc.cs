@@ -326,14 +326,14 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
 #endregion
 #region 憎恨之翼（等级2） Wings of Hate (Rank 1) ID：ONY_016t 
       if(board.HasCardInHand(Card.Cards.ONY_016t)){
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_016t, new Modifier(-60));
-        Bot.Log("憎恨之翼（等级2） -60");
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_016t, new Modifier(-999));
+        Bot.Log("憎恨之翼（等级2） -999");
       }
 #endregion
 #region 憎恨之翼（等级3） Wings of Hate (Rank 1) ID：ONY_016t2 
       if(board.HasCardInHand(Card.Cards.ONY_016t2)){
-         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_016t2, new Modifier(-80));
-        Bot.Log("憎恨之翼（等级3） -80");
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_016t2, new Modifier(-999));
+        Bot.Log("憎恨之翼（等级3） -999");
       }
 #endregion
 #region 小鬼侵染 Impfestation ID：ONY_033 
