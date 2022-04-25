@@ -283,9 +283,9 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.SCH_305)
             &&board.ManaAvailable >= 3
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-20)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-5)); 
             // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
-             Bot.Log("秘密通道 -20");
+             Bot.Log("秘密通道 -5");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(150)); 
             }
