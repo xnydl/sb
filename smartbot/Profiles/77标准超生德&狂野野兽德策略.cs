@@ -1229,8 +1229,6 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_307, new Modifier(-15*friendCount));
         Bot.Log("旅行商人:"+-15*friendCount);
       }
-      
-
 #endregion
 
 // #region 二费手上有二费牌不用一费牌

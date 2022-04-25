@@ -221,7 +221,23 @@ namespace SmartBotProfiles
                     enemyMinionHealth += board.MinionEnemy[x].CurrentHealth;
                 }
             }
+            // 友方随从数量
+            int friendCount = board.MinionFriend.Count;
  #endregion
+
+#region 旅行商人   SW_307 
+      //  如果随从为0,降低旅行商人优先值,如果随从大于等于1可以用
+      if(board.MinionFriend.Count <=1
+      &&board.HasCardInHand(Card.Cards.SW_307)){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_307, new Modifier(999));
+        Bot.Log("旅行商人 999 ");
+      }
+      if(board.MinionFriend.Count >=2
+      &&board.HasCardInHand(Card.Cards.SW_307)){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_307, new Modifier(-15*friendCount));
+        Bot.Log("旅行商人:"+-15*friendCount);
+      }
+#endregion
 
 #region 掩息海星 TSC_926 
             if(board.HasCardInHand(Card.Cards.TSC_926)
