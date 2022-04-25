@@ -265,8 +265,8 @@ namespace SmartBotProfiles
 #region 掩息海星 TSC_926 
             if(board.HasCardInHand(Card.Cards.TSC_926)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_926, new Modifier(350)); 
-            Bot.Log("掩息海星 350");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_926, new Modifier(250)); 
+            Bot.Log("掩息海星 250");
             }
 #endregion
 #region 海盗将领钩牙 TSC_934 
@@ -281,14 +281,14 @@ namespace SmartBotProfiles
 #endregion
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
-            &&board.ManaAvailable >= 5
+            &&board.ManaAvailable >= 3
             &&board.Hand.Count<=5
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-150)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
              Bot.Log("秘密通道 -150");
             }else{
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(150)); 
             }
 #endregion
 #region 影袭 CORE_CS2_075
