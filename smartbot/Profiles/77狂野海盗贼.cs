@@ -442,8 +442,8 @@ namespace SmartBotProfiles
         // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(85)); 
          if(board.HasCardInHand(Card.Cards.TSC_086)
         ){
-             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-550));
-            Bot.Log("英雄技能 -550");
+             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));
+            Bot.Log("英雄技能 999");
         } 
 #endregion
 
@@ -464,6 +464,7 @@ namespace SmartBotProfiles
          if(board.HasCardInHand(Card.Cards.TSC_086)
         &&board.ManaAvailable ==1
         &&board.HasCardInHand(Card.Cards.GAME_005)
+        &&!board.HasCardInHand(Card.Cards.GVG_075)//船载火炮 GVG_075 
         ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999)); 
             Bot.Log("有剑鱼一费不跳币");
