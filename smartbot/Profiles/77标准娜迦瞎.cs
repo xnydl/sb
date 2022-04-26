@@ -269,9 +269,6 @@ namespace SmartBotProfiles
        &&board.ManaAvailable <3){
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
           Bot.Log("有德雷克，三费之前不用硬币");
-      }else{
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
-          Bot.Log("硬币 55");
       }
 #endregion
 
