@@ -247,6 +247,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
+#region 曼科里克 Mankrik ID：BAR_721 
+            if(board.HasCardInHand(Card.Cards.BAR_721)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_721, new Modifier(-99)); 
+            Bot.Log("曼科里克 -99");
+            }
+#endregion
+
 #region 德雷克塔尔 Drek'Thar ID：AV_100  
          if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-999));
