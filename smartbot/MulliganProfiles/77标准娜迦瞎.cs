@@ -68,11 +68,11 @@ namespace SmartBot.Mulligan
             }
             if(opponentClass==Card.CClass.HUNTER){
             HUNTER+=1;
-            mansu+=1;
+            kuaigong+=1;
             }
             if(opponentClass==Card.CClass.MAGE){
             MAGE+=1;
-            mansu+=1;
+            kuaigong+=1;
             }
             if(opponentClass==Card.CClass.PRIEST){
             PRIEST+=1;
@@ -147,6 +147,13 @@ namespace SmartBot.Mulligan
                     if(!CardsToKeep.Contains(Card.Cards.BAR_721))
                     {
                         Keep(card,"曼科里克");
+                    } 
+                }
+                if(card==Card.Cards.TSC_002&&kuaigong>0// 刺豚拳手 Pufferfist ID：TSC_002 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_002))
+                    {
+                        Keep(card,"刺豚拳手");
                     } 
                 }
             }
