@@ -490,9 +490,9 @@ namespace SmartBotProfiles
 #endregion
 #region 携刃信使 Cutlass Courier ID：TSC_085 
         if(board.HasCardInHand(Card.Cards.TSC_085)
-        &&board.WeaponFriend != null
         ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(-99));  
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(-99)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(999)); 
             Bot.Log("携刃信使 -99 ");
          }
 #endregion
@@ -510,7 +510,6 @@ namespace SmartBotProfiles
         &&changshanghaidaonum==0
         ){
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_027, new Modifier(150)); 
-  
             Bot.Log("南海船长 150 ");
             }
 #endregion
