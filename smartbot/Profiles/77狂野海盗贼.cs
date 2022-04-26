@@ -442,8 +442,8 @@ namespace SmartBotProfiles
         // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(85)); 
          if(board.HasCardInHand(Card.Cards.TSC_086)
         ){
-             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(55));
-            Bot.Log("英雄技能 55");
+             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-550));
+            Bot.Log("英雄技能 -550");
         } 
 #endregion
 
