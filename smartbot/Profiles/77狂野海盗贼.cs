@@ -417,7 +417,6 @@ namespace SmartBotProfiles
             &&haidaonum>=1
             &&board.Hand.Count(card => card.CurrentCost<=2)>=1
             &&board.ManaAvailable <3
-            &&!board.HasCardInHand(Card.Cards.TSC_086)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
