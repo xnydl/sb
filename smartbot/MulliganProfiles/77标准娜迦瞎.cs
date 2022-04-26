@@ -142,6 +142,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"德雷克塔尔");
                     } 
                 }
+                if(card==Card.Cards.BAR_721// 曼科里克 Mankrik ID：BAR_721
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.BAR_721))
+                    {
+                        Keep(card,"曼科里克");
+                    } 
+                }
             }
             return CardsToKeep;
         }
