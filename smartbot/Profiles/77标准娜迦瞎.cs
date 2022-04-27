@@ -250,8 +250,8 @@ namespace SmartBotProfiles
 #region 曼科里克 Mankrik ID：BAR_721 
             if(board.HasCardInHand(Card.Cards.BAR_721)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_721, new Modifier(-99)); 
-            Bot.Log("曼科里克 -99");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_721, new Modifier(-150)); 
+            Bot.Log("曼科里克 -150");
             }
 #endregion
 
