@@ -268,6 +268,13 @@ namespace SmartBotProfiles
             Bot.Log("曼科里克 -150");
             }
 #endregion
+#region 召唤咒符 WC_003
+            if(board.HasCardInHand(Card.Cards.WC_003)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.WC_003, new Modifier(-20)); 
+            Bot.Log("召唤咒符 -20");
+            }
+#endregion
 
 #region 宝藏守卫 Treasure Guard ID：TSC_938 
             if(board.HasCardInHand(Card.Cards.TSC_938)
