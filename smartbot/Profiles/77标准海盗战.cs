@@ -310,7 +310,7 @@ namespace SmartBotProfiles
 #region 奈利的海盗船 Nellie's Pirate Ship ID：TSC_660t 
             if(board.HasCardOnBoard(Card.Cards.TSC_660t)
             ){
-            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.TSC_660t,new Modifier(-5));
+            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.TSC_660t,new Modifier(-99));
             Bot.Log("奈利，超巨蛇颈龙送");
             }
 #endregion
