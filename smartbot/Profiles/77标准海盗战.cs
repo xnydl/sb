@@ -6,33 +6,6 @@ using SmartBot.Plugins.API;
 using SmartBotAPI.Plugins.API;
 using SmartBotAPI.Battlegrounds;
 using SmartBot.Plugins.API.Actions;
-// ### Alterac：铭枫 海盗战
-// # 职业：战士
-// # 模式：标准模式
-// # 狮鹫年
-// #
-// # 1x (1) 开进码头-99
-// # 2x (1) 海上威胁
-// # 2x (1) 砥石战斧
-// # 2x (1) 血帆桨手-90
-// # 2x (2) 港口匪徒-80
-// # 2x (2) 血帆袭击者-80
-// # 2x (2) 雾帆劫掠者-75
-// # 2x (3) 南海船长-65
-// # 2x (3) 暴风城海盗-70
-// # 2x (3) 棘齿城私掠者-60
-// # 2x (3) 货物保镖-70
-// # 2x (3) 迪菲亚炮手-60
-// # 2x (4) 吞剑艺人-50
-// # 2x (4) 马戏团融合怪-50
-// # 2x (5) 石槌掌锚手-40
-// # 1x (6) 重拳先生-30
-// # 
-// AAECAZfDAwKY9gO/gAQOtd4D9N8D/ucDkugDju8D1fEDlfYDlvYDl/YDz/sDnIEEpooEraAEr6AEAA==
-// # 
-// # 想要使用这副套牌，请先复制到剪贴板，然后在游戏中点击“新套牌”进行粘贴。
-
-
 /* Explanation on profiles :
  * 
  * 配置文件中定义的所有值都是百分比修饰符，这意味着它将影响基本配置文件的默认值。
@@ -338,6 +311,14 @@ namespace SmartBotProfiles
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-9999)); 
             Bot.Log("血帆桨手 -90");
+            }
+#endregion
+
+#region 布莱恩·铜须 Brann Bronzebeard ID：CORE_LOE_077 
+            if(board.HasCardInHand(Card.Cards.CORE_LOE_077 )
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_077 , new Modifier(130)); 
+            Bot.Log("布莱恩·铜须 130");
             }
 #endregion
 
