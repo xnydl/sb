@@ -32,14 +32,14 @@ namespace SmartBot.Mulligan
             int DEMONHUNTER=0;
             int kuaigong=0;
             int mansu=0;
-            int flag1=0;//剑鱼 TSC_086
+            int flag1=0;//凶恶的滑矛纳迦 TSC_827
             int flag2=0;//团伙劫掠 TRL_124 
             int flag3=0;//洞穴探宝者 LOOT_033
             int flag4=0;//一费海盗
             
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.TSC_086//剑鱼 TSC_086
+                if(card==Card.Cards.TSC_827//凶恶的滑矛纳迦 TSC_827
                 ){flag1+=1;}
                 if(card==Card.Cards.LOOT_033//洞穴探宝者 LOOT_033
                 ){flag3+=1;}
@@ -68,11 +68,11 @@ namespace SmartBot.Mulligan
             }
             if(opponentClass==Card.CClass.HUNTER){
             HUNTER+=1;
-            mansu+=1;
+            kuaigong+=1;
             }
             if(opponentClass==Card.CClass.MAGE){
             MAGE+=1;
-            mansu+=1;
+            kuaigong+=1;
             }
             if(opponentClass==Card.CClass.PRIEST){
             PRIEST+=1;
@@ -107,6 +107,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"深铁穴居人");
                     } 
                 }
+                if(card==Card.Cards.SW_451// 魔变鱼人 Metamorfin ID：SW_451
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.SW_451))
+                    {
+                        Keep(card,"魔变鱼人");
+                    } 
+                }
                 if(card==Card.Cards.CORE_BT_351// 战斗邪犬 CORE_BT_351
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.CORE_BT_351))
@@ -128,6 +135,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"凶恶的滑矛纳迦");
                     } 
                 }
+                // if(card==Card.Cards.TSC_058&&flag1>0// 捕掠 Predation ID：TSC_058 
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.TSC_058))
+                //     {
+                //         Keep(card,"捕掠");
+                //     } 
+                // }
                 if(card==Card.Cards.AV_118// 历战先锋 AV_118
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.AV_118))
@@ -142,7 +156,29 @@ namespace SmartBot.Mulligan
                         Keep(card,"德雷克塔尔");
                     } 
                 }
-                if(card==Card.Cards.WC_003// 召唤咒符 WC_003 
+                if(card==Card.Cards.BAR_721// 曼科里克 Mankrik ID：BAR_721
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.BAR_721))
+                    {
+                        Keep(card,"曼科里克");
+                    } 
+                }
+                // if(card==Card.Cards.TSC_002&&kuaigong>0// 刺豚拳手 Pufferfist ID：TSC_002 
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.TSC_002))
+                //     {
+                //         Keep(card,"刺豚拳手");
+                //     } 
+                // }
+                if(card==Card.Cards.TSC_217// 游荡贤者 Wayward Sage ID：TSC_217 
+
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_217))
+                    {
+                        Keep(card,"游荡贤者");
+                    } 
+                }
+                 if(card==Card.Cards.WC_003// 召唤咒符 WC_003 
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.WC_003))
                     {
