@@ -268,6 +268,14 @@ namespace SmartBotProfiles
 //             Bot.Log("血帆桨手 -99");
 //             }
 // #endregion
+#region 雾帆劫掠者 CS3_022 
+            if(board.HasCardInHand(Card.Cards.CS3_022)
+            &&board.WeaponFriend == null
+            ){
+                p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(130)); 
+                Bot.Log("雾帆劫掠者 130 ");
+            }
+#endregion
 #region 拖网海象人 TSC_909 
             if(board.HasCardInHand(Card.Cards.TSC_909)
             ){
@@ -311,18 +319,6 @@ namespace SmartBotProfiles
 //          if(board.HasCardInHand(Card.Cards.CORE_NEW1_018)){
 //             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_018, new Modifier(-80)); 
 //            Bot.Log("港口匪徒 -80 ");
-//             }
-// #endregion
-
-// #region 雾帆劫掠者 CS3_022 
-//          if(board.HasCardInHand(Card.Cards.CS3_022)){
-//            if(board.WeaponFriend == null){
-//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(130)); 
-//             Bot.Log("雾帆劫掠者 130 ");
-//            }else{
-//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-75)); 
-//             Bot.Log("雾帆劫掠者 -75 ");
-//            }
 //             }
 // #endregion
 
