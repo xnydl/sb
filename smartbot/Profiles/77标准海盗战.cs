@@ -315,6 +315,23 @@ namespace SmartBotProfiles
             }
 #endregion
 
+#region 船长洛卡拉 SW_028t5 
+          if(board.HasCardInHand(Card.Cards.SW_028t5)
+          &&board.MinionFriend.Count<=5
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(-9999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(9999)); 
+            Bot.Log("船长洛卡拉 -9999 9999 ");
+            }else{
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(999)); 
+            }
+          if(board.HasCardOnBoard(Card.Cards.SW_028t5)||board.FriendGraveyard.Contains(Card.Cards.SW_028t5) )
+          {
+              p.GlobalWeaponsAttackModifier = -999 ;
+              Bot.Log("攻击值 -999 ");
+          }
+#endregion
+
 // #region 港口匪徒 SW_029 
 //          if(board.HasCardInHand(Card.Cards.SW_029)){
 //             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-80)); 
@@ -417,34 +434,6 @@ namespace SmartBotProfiles
 //             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(130)); 
 //             Bot.Log("重拳先生 130 ");
 //             }
-// #endregion
-
-// #region 船长洛卡拉 SW_028t5 
-//           if(board.HasCardInHand(Card.Cards.SW_028t5)
-//           &&board.MinionFriend.Count<=5
-//             ){
-//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(-9999)); 
-//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(9999)); 
-//             Bot.Log("船长洛卡拉 -9999 9999 ");
-//             }else{
-//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(999)); 
-//             }
-//           if(board.HasCardOnBoard(Card.Cards.SW_028t5)||board.FriendGraveyard.Contains(Card.Cards.SW_028t5) )
-//           {
-//               p.GlobalWeaponsAttackModifier = -999 ;
-//               Bot.Log("攻击值 -999 ");
-//           }
-//           if(
-//             usedhaidao<=6
-//             &&luokala==0
-//           ){
-//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-9999)); //血帆桨手 CS3_008 
-//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-888));  
-//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_018, new Modifier(-888));  
-//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-777));  
-//              Bot.Log("提高做任务的优先级 ");
-//           }
-        
 // #endregion
 
 #region 攻击优先 卡牌威胁（通用）
