@@ -283,6 +283,13 @@ namespace SmartBotProfiles
             Bot.Log("血帆桨手 -99");
             }
 #endregion
+#region 黑曜石铸匠 TSC_9429 
+            if(board.HasCardInHand(Card.Cards.TSC_9429)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_9429, new Modifier(-99)); 
+            Bot.Log("黑曜石铸匠 -99");
+            }
+#endregion
 
 #region 布莱恩·铜须 Brann Bronzebeard ID：CORE_LOE_077 
             if(board.HasCardInHand(Card.Cards.CORE_LOE_077 )
