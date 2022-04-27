@@ -269,6 +269,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
+#region 宝藏守卫 Treasure Guard ID：TSC_938 
+            if(board.HasCardInHand(Card.Cards.TSC_938)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_938, new Modifier(-99)); 
+            Bot.Log("宝藏守卫 -99");
+            }
+#endregion
+
 #region 德雷克塔尔 Drek'Thar ID：AV_100  
          if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-999));
