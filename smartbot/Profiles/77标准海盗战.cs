@@ -309,8 +309,15 @@ namespace SmartBotProfiles
 #region 血帆桨手 CS3_008 
             if(board.HasCardInHand(Card.Cards.CS3_008)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-9999)); 
-            Bot.Log("血帆桨手 -90");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-99)); 
+            Bot.Log("血帆桨手 -99");
+            }
+#endregion
+#region 拖网海象人 TSC_909 
+            if(board.HasCardInHand(Card.Cards.TSC_909)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_909, new Modifier(-99)); 
+            Bot.Log("血帆桨手 -99");
             }
 #endregion
 
@@ -395,9 +402,9 @@ namespace SmartBotProfiles
          if(board.HasCardInHand(Card.Cards.DED_519)
          &&(board.WeaponFriend != null||board.Hand.Any(card => card.Type == Card.CType.WEAPON))
          ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-9999)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-99)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(999)); 
-            Bot.Log("迪菲亚炮手 -9999");
+            Bot.Log("迪菲亚炮手 -99");
             }
 #endregion
 
@@ -468,8 +475,8 @@ namespace SmartBotProfiles
 
 #region 重拳先生  DED_006 
          if(board.HasCardInHand(Card.Cards.DED_006)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(150)); 
-            Bot.Log("重拳先生 150 ");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(130)); 
+            Bot.Log("重拳先生 130 ");
             }
 #endregion
 
