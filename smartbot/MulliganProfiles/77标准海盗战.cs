@@ -3,32 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using SmartBot.Database;
 using SmartBot.Plugins.API;
-// ### 任务战
-// # 职业：战士
-// # 模式：标准模式
-// # 狮鹫年
-// #
-// # 2x (1) 血帆桨手 CS3_008
-// # 2x (1) 砥石战斧
-// # 2x (1) 海上威胁
-// # 1x (1) 开进码头 SW_028
-// # 2x (2) 黑曜石铸匠 TSC_942 
-// # 2x (2) 雾帆劫掠者
-// # 2x (2) 血帆袭击者
-// # 2x (2) 港口匪徒 SW_029
-// # 2x (2) 深海融合怪 TSC_069
-// # 1x (2) 拖网海象人 TSC_909
-// # 2x (3) 迪菲亚炮手
-// # 2x (3) 货物保镖
-// # 2x (3) 暴风城海盗
-// # 2x (3) 南海船长
-// # 2x (3) 刺豚拳手
-// # 1x (6) 重拳先生
-// # 1x (7) 奈利，超巨蛇颈龙
-// #
-// AAECAQcEmPYDv4AEqbMEjskEDf7nA47vA5X2A5b2A5f2A8/7A5yBBKaKBK2gBK+gBIqwBJC3BLLBBAA=
-// # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
-// # 套牌详情请查看https://hsreplay.net/decks/ensF5iRMHiIGkRQmuRYI0c/
 
 namespace SmartBot.Mulligan
 {
@@ -98,6 +72,30 @@ namespace SmartBot.Mulligan
                 ){ if(!CardsToKeep.Contains(Card.Cards.TSC_942))
                     {
                         Keep(card,"黑曜石铸匠");
+                    }
+                }
+                if(card==Card.Cards.DED_519// 迪菲亚炮手 DED_519
+                ){ if(!CardsToKeep.Contains(Card.Cards.DED_519))
+                    {
+                        Keep(card,"迪菲亚炮手");
+                    }
+                }
+                if(card==Card.Cards.CORE_NEW1_027// 南海船长 CORE_NEW1_027
+                ){ if(!CardsToKeep.Contains(Card.Cards.CORE_NEW1_027))
+                    {
+                        Keep(card,"南海船长");
+                    }
+                }
+                if(card==Card.Cards.WC_025//砥石战斧 WC_025
+                ){ if(!CardsToKeep.Contains(Card.Cards.WC_025))
+                    {
+                        Keep(card,"砥石战斧");
+                    }
+                }
+                if(card==Card.Cards.CORE_NEW1_018//血帆袭击者 CORE_NEW1_018
+                ){ if(!CardsToKeep.Contains(Card.Cards.CORE_NEW1_018))
+                    {
+                        Keep(card,"血帆袭击者");
                     }
                 }
             }

@@ -156,6 +156,14 @@ namespace SmartBot.Mulligan
                         Keep(card,"刺豚拳手");
                     } 
                 }
+                if(card==Card.Cards.TSC_217// 游荡贤者 Wayward Sage ID：TSC_217 
+
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_217))
+                    {
+                        Keep(card,"游荡贤者");
+                    } 
+                }
             }
             return CardsToKeep;
         }
