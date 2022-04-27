@@ -283,10 +283,10 @@ namespace SmartBotProfiles
             Bot.Log("血帆桨手 -99");
             }
 #endregion
-#region 黑曜石铸匠 TSC_9429 
-            if(board.HasCardInHand(Card.Cards.TSC_9429)
+#region 黑曜石铸匠 TSC_942 
+            if(board.HasCardInHand(Card.Cards.TSC_942)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_9429, new Modifier(-99)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_942, new Modifier(-99)); 
             Bot.Log("黑曜石铸匠 -99");
             }
 #endregion
