@@ -74,30 +74,30 @@ namespace SmartBot.Mulligan
                         Keep(card,"黑曜石铸匠");
                     }
                 }
-                if(card==Card.Cards.DED_519// 迪菲亚炮手 DED_519
-                ){ if(!CardsToKeep.Contains(Card.Cards.DED_519))
-                    {
-                        Keep(card,"迪菲亚炮手");
-                    }
-                }
-                if(card==Card.Cards.CORE_NEW1_027// 南海船长 CORE_NEW1_027
-                ){ if(!CardsToKeep.Contains(Card.Cards.CORE_NEW1_027))
-                    {
-                        Keep(card,"南海船长");
-                    }
-                }
-                if(card==Card.Cards.WC_025//砥石战斧 WC_025
-                ){ if(!CardsToKeep.Contains(Card.Cards.WC_025))
-                    {
-                        Keep(card,"砥石战斧");
-                    }
-                }
-                if(card==Card.Cards.CORE_NEW1_018//血帆袭击者 CORE_NEW1_018
-                ){ if(!CardsToKeep.Contains(Card.Cards.CORE_NEW1_018))
-                    {
-                        Keep(card,"血帆袭击者");
-                    }
-                }
+                // if(card==Card.Cards.DED_519// 迪菲亚炮手 DED_519
+                // ){ if(!CardsToKeep.Contains(Card.Cards.DED_519))
+                //     {
+                //         Keep(card,"迪菲亚炮手");
+                //     }
+                // }
+                // if(card==Card.Cards.CORE_NEW1_027// 南海船长 CORE_NEW1_027
+                // ){ if(!CardsToKeep.Contains(Card.Cards.CORE_NEW1_027))
+                //     {
+                //         Keep(card,"南海船长");
+                //     }
+                // }
+                // if(card==Card.Cards.WC_025//砥石战斧 WC_025
+                // ){ if(!CardsToKeep.Contains(Card.Cards.WC_025))
+                //     {
+                //         Keep(card,"砥石战斧");
+                //     }
+                // }
+                // if(card==Card.Cards.CORE_NEW1_018//血帆袭击者 CORE_NEW1_018
+                // ){ if(!CardsToKeep.Contains(Card.Cards.CORE_NEW1_018))
+                //     {
+                //         Keep(card,"血帆袭击者");
+                //     }
+                // }
             }
             return CardsToKeep;
         }
