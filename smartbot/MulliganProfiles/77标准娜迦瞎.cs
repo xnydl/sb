@@ -135,13 +135,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"凶恶的滑矛纳迦");
                     } 
                 }
-                if(card==Card.Cards.TSC_058&&flag1>0// 捕掠 Predation ID：TSC_058 
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.TSC_058))
-                    {
-                        Keep(card,"捕掠");
-                    } 
-                }
+                // if(card==Card.Cards.TSC_058&&flag1>0// 捕掠 Predation ID：TSC_058 
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.TSC_058))
+                //     {
+                //         Keep(card,"捕掠");
+                //     } 
+                // }
                 if(card==Card.Cards.AV_118// 历战先锋 AV_118
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.AV_118))
@@ -163,13 +163,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"曼科里克");
                     } 
                 }
-                if(card==Card.Cards.TSC_002&&kuaigong>0// 刺豚拳手 Pufferfist ID：TSC_002 
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.TSC_002))
-                    {
-                        Keep(card,"刺豚拳手");
-                    } 
-                }
+                // if(card==Card.Cards.TSC_002&&kuaigong>0// 刺豚拳手 Pufferfist ID：TSC_002 
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.TSC_002))
+                //     {
+                //         Keep(card,"刺豚拳手");
+                //     } 
+                // }
                 if(card==Card.Cards.TSC_217// 游荡贤者 Wayward Sage ID：TSC_217 
 
                 ){
