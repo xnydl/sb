@@ -230,89 +230,44 @@ namespace SmartBotProfiles
             // 坟场海盗数量
             int fenchanghaidao=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PIRATE);
             Bot.Log("坟场海盗数量"+fenchanghaidao);
-            int paqisi=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.CFM_637)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CFM_637);
-            Bot.Log("使用过的帕奇斯和空降歹徒数量"+(paqisi));
               // 使用过的海盗数量
-            int usedhaidao=fenchanghaidao+changshanghaidaonum-paqisi;
-            Bot.Log("使用过的海盗数量(不算帕奇斯)"+usedhaidao);
+            int usedhaidao=fenchanghaidao+changshanghaidaonum;
+            Bot.Log("使用过的海盗数量"+usedhaidao);
  #endregion
 
-#region 武器优先级
-    // p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.SW_025, new Modifier(-50));//拍卖行木槌 Auctionhouse Gavel     SW_025 
-#endregion
+// #region 开进码头 SW_028
+//    if(board.HasCardInHand(Card.Cards.SW_028)){
+//         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_028, new Modifier(-9999));
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_028, new Modifier(1000)); 
+//         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999)); 
 
-#region  随从优先级
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_062, new Modifier(-20)); //提高旋岩虫 Gyreworm     DMF_062 优先级
-  
-#endregion
-  
-#region 法术优先级
-    // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
-#endregion
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS2_146, new Modifier(-500));   
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.OG_312, new Modifier(-500));   
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CFM_637, new Modifier(-500));   
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DRG_024, new Modifier(-500));   
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-500));   
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CFM_325, new Modifier(-500));   
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-500));   
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-500));   
+//        Bot.Log("开进码头 -1000");
+//         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS2_146, new Modifier(999));   
+//         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.OG_312, new Modifier(999));   
+//         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_637, new Modifier(999));   
+//         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_024, new Modifier(999));   
+//         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(999));   
+//         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_325, new Modifier(999));   
+//         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(999));   
+//         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(999));   
+//             }
+// #endregion
 
-#region 不送怪的逻辑
-    // p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_080, new Modifier(250));// 考内留斯·罗姆 Cornelius Roame     SW_080
-
-#endregion
-
-#region 增加随从威胁值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_155, new Modifier(200));//废料场巨像 Scrapyard Colossus     BT_155 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_709, new Modifier(200));// 增加巨型图腾埃索尔 Grand Totem Eys'or     DMF_709 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(200));// 增加艾露恩神谕者      SW_419 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(200));// 增加农夫 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.WC_006, new Modifier(200));
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_033, new Modifier(200));//运河慢步者 Canal Slogger     SW_033
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CS3_007, new Modifier(200));//电击学徒 Novice Zapper     CS3_007 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_074, new Modifier(200));//前沿哨所      BAR_074 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_918, new Modifier(200));//塔姆辛·罗姆 Tamsin Roame     BAR_918 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_230, new Modifier(200));//伊格诺斯 Il'gynoth     DMF_230 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_733, new Modifier(200));//莫尔葛工匠 Mo'arg Artificer     BT_733 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_734, new Modifier(200));//格雷布     DMF_734  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_035, new Modifier(200));//月牙 Moon方    YOP_035
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GVG_040, new Modifier(200));//沙鳞灵魂行者 Siltfin Spiritwalker ID：GVG_040
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_304, new Modifier(200));//改进型恐惧魔王 Enhanced Dreadlord ID：BT_304
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_068, new Modifier(200));//莫尔葛熔魔 Mo'arg Forgefiend ID：SW_068 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));//迪菲亚炮手  DED_519
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SCH_400, new Modifier(200));//决斗大师莫扎奇 Mozaki, Master Duelist ID：SCH_400 
-     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(200));//深铁穴居人 Irondeep Trogg ID：AV_137 
-     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_261, new Modifier(200));//深铁穴居人 Irondeep Trogg ID：AV_137 
-  
-#endregion
-
-#region 开进码头 SW_028
-   if(board.HasCardInHand(Card.Cards.SW_028)){
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_028, new Modifier(-9999));
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_028, new Modifier(1000)); 
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999)); 
-
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS2_146, new Modifier(-500));   
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.OG_312, new Modifier(-500));   
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CFM_637, new Modifier(-500));   
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DRG_024, new Modifier(-500));   
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-500));   
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CFM_325, new Modifier(-500));   
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-500));   
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-500));   
-       Bot.Log("开进码头 -1000");
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS2_146, new Modifier(999));   
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.OG_312, new Modifier(999));   
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_637, new Modifier(999));   
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_024, new Modifier(999));   
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(999));   
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_325, new Modifier(999));   
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(999));   
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(999));   
-            }
-#endregion
-
-#region 血帆桨手 CS3_008 
-            if(board.HasCardInHand(Card.Cards.CS3_008)
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-99)); 
-            Bot.Log("血帆桨手 -99");
-            }
-#endregion
+// #region 血帆桨手 CS3_008 
+//             if(board.HasCardInHand(Card.Cards.CS3_008)
+//             ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-99)); 
+//             Bot.Log("血帆桨手 -99");
+//             }
+// #endregion
 #region 拖网海象人 TSC_909 
             if(board.HasCardInHand(Card.Cards.TSC_909)
             ){
@@ -345,237 +300,151 @@ namespace SmartBotProfiles
             }
 #endregion
 
-#region 港口匪徒 SW_029 
-         if(board.HasCardInHand(Card.Cards.SW_029)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-80)); 
-           Bot.Log("港口匪徒 -80 ");
-            }
-#endregion
+// #region 港口匪徒 SW_029 
+//          if(board.HasCardInHand(Card.Cards.SW_029)){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-80)); 
+//            Bot.Log("港口匪徒 -80 ");
+//             }
+// #endregion
 
-#region 血帆袭击者 CORE_NEW1_018 
-         if(board.HasCardInHand(Card.Cards.CORE_NEW1_018)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_018, new Modifier(-80)); 
-           Bot.Log("港口匪徒 -80 ");
-            }
-#endregion
+// #region 血帆袭击者 CORE_NEW1_018 
+//          if(board.HasCardInHand(Card.Cards.CORE_NEW1_018)){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_018, new Modifier(-80)); 
+//            Bot.Log("港口匪徒 -80 ");
+//             }
+// #endregion
 
-#region 雾帆劫掠者 CS3_022 
-         if(board.HasCardInHand(Card.Cards.CS3_022)){
-           if(board.WeaponFriend == null){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(130)); 
-            Bot.Log("雾帆劫掠者 130 ");
-           }else{
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-75)); 
-            Bot.Log("雾帆劫掠者 -75 ");
-           }
-            }
-#endregion
+// #region 雾帆劫掠者 CS3_022 
+//          if(board.HasCardInHand(Card.Cards.CS3_022)){
+//            if(board.WeaponFriend == null){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(130)); 
+//             Bot.Log("雾帆劫掠者 130 ");
+//            }else{
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-75)); 
+//             Bot.Log("雾帆劫掠者 -75 ");
+//            }
+//             }
+// #endregion
 
-#region 南海船长 CORE_NEW1_027
-        if(board.HasCardInHand(Card.Cards.CORE_NEW1_027)
-        &&changshanghaidaonum==0
-        ){
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_027, new Modifier(150)); 
-            Bot.Log("南海船长 150 ");
-            }else{
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_027, new Modifier(-65)); 
-            Bot.Log("南海船长 -65 ");
-            }
-#endregion
+// #region 南海船长 CORE_NEW1_027
+//         if(board.HasCardInHand(Card.Cards.CORE_NEW1_027)
+//         &&changshanghaidaonum==0
+//         ){
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_027, new Modifier(150)); 
+//             Bot.Log("南海船长 150 ");
+//             }else{
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_027, new Modifier(-65)); 
+//             Bot.Log("南海船长 -65 ");
+//             }
+// #endregion
 
-#region 暴风城海盗  SW_093 
-         if(board.HasCardInHand(Card.Cards.SW_093)){
-           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_093, new Modifier(-70)); 
-           Bot.Log("暴风城海盗 -70 ");
-            }
-#endregion
+// #region 暴风城海盗  SW_093 
+//          if(board.HasCardInHand(Card.Cards.SW_093)){
+//            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_093, new Modifier(-70)); 
+//            Bot.Log("暴风城海盗 -70 ");
+//             }
+// #endregion
 
-#region 棘齿城私掠者 BAR_061 
-         if(board.HasCardInHand(Card.Cards.BAR_061)
-         ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_061, new Modifier(-60)); 
-             Bot.Log("棘齿城私掠者 -60 ");
-            }
-#endregion
+// #region 棘齿城私掠者 BAR_061 
+//          if(board.HasCardInHand(Card.Cards.BAR_061)
+//          ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_061, new Modifier(-60)); 
+//              Bot.Log("棘齿城私掠者 -60 ");
+//             }
+// #endregion
 
-#region 迪菲亚炮手  DED_519  
-         if(board.HasCardInHand(Card.Cards.DED_519)
-         &&(board.WeaponFriend != null||board.Hand.Any(card => card.Type == Card.CType.WEAPON))
-         ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-99)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(999)); 
-            Bot.Log("迪菲亚炮手 -99");
-            }
-#endregion
+// #region 迪菲亚炮手  DED_519  
+//          if(board.HasCardInHand(Card.Cards.DED_519)
+//          &&(board.WeaponFriend != null||board.Hand.Any(card => card.Type == Card.CType.WEAPON))
+//          ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-99)); 
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(999)); 
+//             Bot.Log("迪菲亚炮手 -99");
+//             }
+// #endregion
 
-#region 吞剑艺人 Sword Eater      DMF_521 
-        if(board.HasCardInHand(Card.Cards.DMF_521)
-         ){
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DMF_521, new Modifier(-99)); 
+// #region 吞剑艺人 Sword Eater      DMF_521 
+//         if(board.HasCardInHand(Card.Cards.DMF_521)
+//          ){
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DMF_521, new Modifier(-99)); 
   
-            Bot.Log("吞剑艺人 -99 ");
-            }
-#endregion
+//             Bot.Log("吞剑艺人 -99 ");
+//             }
+// #endregion
 
-#region 马戏团融合怪  DMF_532 
-        if(board.HasCardInHand(Card.Cards.DMF_532)
-         ){
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DMF_532, new Modifier(-99)); 
+// #region 马戏团融合怪  DMF_532 
+//         if(board.HasCardInHand(Card.Cards.DMF_532)
+//          ){
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DMF_532, new Modifier(-99)); 
   
-            Bot.Log("马戏团融合怪 -99 ");
-            }
-#endregion
+//             Bot.Log("马戏团融合怪 -99 ");
+//             }
+// #endregion
 
-#region 石槌掌锚手 BAR_896 
-        if(board.HasCardInHand(Card.Cards.BAR_896)
-         ){
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BAR_896, new Modifier(-40)); 
+// #region 石槌掌锚手 BAR_896 
+//         if(board.HasCardInHand(Card.Cards.BAR_896)
+//          ){
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BAR_896, new Modifier(-40)); 
   
-            Bot.Log("石槌掌锚手 -40 ");
-            }
-#endregion
+//             Bot.Log("石槌掌锚手 -40 ");
+//             }
+// #endregion
 
-#region 货物保镖  SW_030 
-         if(board.HasCardInHand(Card.Cards.SW_030)
-         ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_030, new Modifier(-40)); 
-             Bot.Log("货物保镖 -40 ");
-            }
-#endregion
+// #region 货物保镖  SW_030 
+//          if(board.HasCardInHand(Card.Cards.SW_030)
+//          ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_030, new Modifier(-40)); 
+//              Bot.Log("货物保镖 -40 ");
+//             }
+// #endregion
 
-#region Card.Cards.HERO_01bp 英雄技能
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_01bp, new Modifier(-550)); 
-#endregion
+// #region Card.Cards.HERO_01bp 英雄技能
+//         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_01bp, new Modifier(-550)); 
+// #endregion
 
-#region 恐怖海盗 Dread Corsair  NEW1_022
-        if(board.HasCardInHand(Card.Cards.NEW1_022)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.NEW1_022, new Modifier(130));  
-            Bot.Log("恐怖海盗 130 ");
-            }
-#endregion
+// #region 恐怖海盗 Dread Corsair  NEW1_022
+//         if(board.HasCardInHand(Card.Cards.NEW1_022)){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.NEW1_022, new Modifier(130));  
+//             Bot.Log("恐怖海盗 130 ");
+//             }
+// #endregion
 
+// #region 重拳先生  DED_006 
+//          if(board.HasCardInHand(Card.Cards.DED_006)){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(130)); 
+//             Bot.Log("重拳先生 130 ");
+//             }
+// #endregion
 
-
-#region 
-      if (board.HasCardInHand(Card.Cards.SCH_526)//巴罗夫领主 Lord Barov  ID：SCH_526)
-            )
-			{
-			p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_526, new Modifier(150)); //巴罗夫领主 Lord Barov  ID：SCH_526
-			}
-#endregion
-
-#region 断颚之刃 DMF_521t
-        if(board.WeaponFriend != null 
-          && board.WeaponFriend.Template.Id == Card.Cards.DMF_521t
-         ){
-            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DMF_521t, new Modifier(-99));
-            Bot.Log("断颚之刃 -99");
-          }  
-#endregion
-
-#region 重拳先生  DED_006 
-         if(board.HasCardInHand(Card.Cards.DED_006)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(130)); 
-            Bot.Log("重拳先生 130 ");
-            }
-#endregion
-
-#region 船长洛卡拉 SW_028t5 
-          if(board.HasCardInHand(Card.Cards.SW_028t5)
-          &&board.MinionFriend.Count<=5
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(-9999)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(9999)); 
-            Bot.Log("船长洛卡拉 -9999 9999 ");
-            }else{
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(999)); 
-            }
-          if(board.HasCardOnBoard(Card.Cards.SW_028t5)||board.FriendGraveyard.Contains(Card.Cards.SW_028t5) )
-          {
-              p.GlobalWeaponsAttackModifier = -999 ;
-              Bot.Log("攻击值 -999 ");
-          }
-          if(
-            usedhaidao<=6
-            &&luokala==0
-          ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-9999)); //血帆桨手 CS3_008 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-888));  
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_018, new Modifier(-888));  
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-777));  
-             Bot.Log("提高做任务的优先级 ");
-          }
+// #region 船长洛卡拉 SW_028t5 
+//           if(board.HasCardInHand(Card.Cards.SW_028t5)
+//           &&board.MinionFriend.Count<=5
+//             ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(-9999)); 
+//             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(9999)); 
+//             Bot.Log("船长洛卡拉 -9999 9999 ");
+//             }else{
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(999)); 
+//             }
+//           if(board.HasCardOnBoard(Card.Cards.SW_028t5)||board.FriendGraveyard.Contains(Card.Cards.SW_028t5) )
+//           {
+//               p.GlobalWeaponsAttackModifier = -999 ;
+//               Bot.Log("攻击值 -999 ");
+//           }
+//           if(
+//             usedhaidao<=6
+//             &&luokala==0
+//           ){
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_008, new Modifier(-9999)); //血帆桨手 CS3_008 
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_029, new Modifier(-888));  
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_018, new Modifier(-888));  
+//             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(-777));  
+//              Bot.Log("提高做任务的优先级 ");
+//           }
         
-#endregion
+// #endregion
 
-#region 对阵牧师
-      //对面是牧师，火车王随便下
-			if (board.EnemyClass == Card.CClass.PRIEST)
-			{
-				p.CastMinionsModifiers.AddOrUpdate(Card.Cards.EX1_116, new Modifier(-50));//修改火车王的优先级
-                    //提高雏龙威胁值雏龙 Whelp ID：EX1_116t 
-			p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.EX1_116t, new Modifier(100));
-			}
-#endregion
-
-#region 贪婪的书虫      SCH_142
-    // 书虫相关
-        if (board.Hand.Count <=3
-       &&board.Hand.Count(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.SCH_142)==1
-       )//贪婪的书虫      SCH_142
-        {
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(-99));//贪婪的书虫      SCH_142
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(480)); 
-          Bot.Log("贪婪的书虫 -99");
-        }else{
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(150));//贪婪的书虫      SCH_142
-        }
-        if (board.Hand.Count <=4
-       &&board.Hand.Count(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.SCH_142)==2
-       )//贪婪的书虫      SCH_142
-        {
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(-99));//贪婪的书虫      SCH_142
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(480)); 
-          Bot.Log("贪婪的书虫 -99");
-        }else{
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(150));//贪婪的书虫      SCH_142
-        }
-    //场上有书虫，提高手里硬币优先值
-        if (board.HasCardOnBoard(Card.Cards.SCH_142)//贪婪的书虫      SCH_142
-        && board.HasCardInHand(Card.Cards.GAME_005)
-        )
-        {
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-10));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(-10));//雷霆绽放      SCH_427
-          Bot.Log("雷霆绽放 -10 硬币 -10");
-        }
-    
-    //书虫分散投资
-        if (board.HasCardOnBoard(Card.Cards.SCH_142)//贪婪的书虫      SCH_142S
-        )
-        {
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(150));//贪婪的书虫      SCH_142
-          Bot.Log("贪婪的书虫 150");
-        }
-    
-#endregion
-
-#region 毁灭战舰 The Juggernaut ID：SW_028t6
-//  女巫跟班 Witchy Lackey ID：DAL_615 毁灭战舰 The Juggernaut ID：SW_028t6 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DAL_615, new Modifier(999,Card.Cards.SW_028t6)); 
-#endregion
-#region 大型魔像
-
-        if(board.ManaAvailable >= 5
-            && board.HasCardInHand(Card.Cards.BAR_079_m2)//大型魔像 Greater Golem     BAR_079_m2
-        )
-        {
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_079_m2, new Modifier(-200));
-        } //剩余5费提高用大型魔像优先
-
-#endregion
-
-#region 攻击优先 卡牌威胁（通用）  更新到贫瘠之地
+#region 攻击优先 卡牌威胁（通用）
 
 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ULD_231))
