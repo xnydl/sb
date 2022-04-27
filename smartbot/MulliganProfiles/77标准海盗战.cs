@@ -20,10 +20,62 @@ namespace SmartBot.Mulligan
             Card.CClass ownClass)
         {
             bool HasCoin = choices.Count >= 4;
-
+            int DRUID=0;
+            int HUNTER=0;
+            int MAGE=0;
+            int PALADIN=0;
+            int PRIEST=0;
+            int ROGUE=0;
+            int SHAMAN=0;
+            int WARLOCK=0;
+            int WARRIOR=0;
+            int DEMONHUNTER=0;
+            int kuaigong=0;
+            int mansu=0;
             int flag1=0;//港口匪徒 SW_029
             int flag2=0;//血帆桨手 CS3_008
-            
+            Bot.Log("对阵职业"+opponentClass);
+
+            if(opponentClass==Card.CClass.PALADIN){
+            PALADIN+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.DRUID){
+            DRUID+=1;
+            mansu+=1;
+            }
+            if(opponentClass==Card.CClass.HUNTER){
+            HUNTER+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.MAGE){
+            MAGE+=1;
+            mansu+=1;
+            }
+            if(opponentClass==Card.CClass.PRIEST){
+            PRIEST+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.ROGUE){
+            ROGUE+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.SHAMAN){
+            SHAMAN+=1;
+            mansu+=1;
+            }
+            if(opponentClass==Card.CClass.WARLOCK){
+            WARLOCK+=1;
+            mansu+=1;
+            }
+            if(opponentClass==Card.CClass.WARRIOR){
+            WARRIOR+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.DEMONHUNTER){
+            DEMONHUNTER+=1;
+            kuaigong+=1;
+            }
             foreach (Card.Cards card in choices)
             {
                 if(card==Card.Cards.SW_029//港口匪徒 SW_029
@@ -72,6 +124,12 @@ namespace SmartBot.Mulligan
                 ){ if(!CardsToKeep.Contains(Card.Cards.TSC_942))
                     {
                         Keep(card,"黑曜石铸匠");
+                    }
+                }
+                if(card==Card.Cards.BAR_845&&kuaigong>0// 仇怨累积 Rancor ID：BAR_845 
+                ){ if(!CardsToKeep.Contains(Card.Cards.BAR_845))
+                    {
+                        Keep(card,"仇怨累积");
                     }
                 }
                 // if(card==Card.Cards.DED_519// 迪菲亚炮手 DED_519
