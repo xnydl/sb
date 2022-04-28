@@ -281,10 +281,10 @@ namespace SmartBotProfiles
 #endregion
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
-            &&(board.ManaAvailable >= 5&&board.Hand.Count<=3)||(board.ManaAvailable <= 4&&board.Hand.Count==1)
+            &&(board.ManaAvailable >= 4&&board.Hand.Count<=3)
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-5)); 
-            // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
              Bot.Log("秘密通道 -5");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(150)); 
@@ -460,6 +460,11 @@ namespace SmartBotProfiles
         ){
             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-350));
             Bot.Log("剑鱼 -350");
+        }
+         if(board.HasCardInHand(Card.Cards.TSC_086)
+        ){
+            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-150));
+            Bot.Log("剑鱼 -150");
         }
          if(board.HasCardInHand(Card.Cards.TSC_086)
         &&board.ManaAvailable ==1
