@@ -261,6 +261,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
+#region 刺豚拳手 Pufferfist ID：TSC_002  
+            if(board.HasCardInHand(Card.Cards.TSC_002)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(130)); 
+            Bot.Log("刺豚拳手 130");
+            }
+#endregion
+
 #region 贪婪需求 Need for Greed ID：DED_506
             if(board.HasCardInHand(Card.Cards.DED_506)
             ){
@@ -316,7 +324,6 @@ namespace SmartBotProfiles
           Bot.Log("德雷克塔尔 -999");
       }else{
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
-          Bot.Log("德雷克塔尔 150");
       }
        if(board.HasCardInHand(Card.Cards.AV_100)
        &&board.HasCardInHand(Card.Cards.GAME_005)
