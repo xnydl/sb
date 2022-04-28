@@ -498,7 +498,7 @@ namespace SmartBotProfiles
         if(board.HasCardInHand(Card.Cards.TSC_085)
         ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(-99)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(600)); 
             Bot.Log("携刃信使 -99 ");
          }
 #endregion
