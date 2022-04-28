@@ -261,6 +261,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
+#region 魔变鱼人 Metamorfin ID：SW_451 
+            if(board.HasCardInHand(Card.Cards.SW_451)
+            ){
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_451, new Modifier(-5)); 
+            Bot.Log("魔变鱼人后出");
+            }
+#endregion
+
 #region 曼科里克 Mankrik ID：BAR_721 
             if(board.HasCardInHand(Card.Cards.BAR_721)
             ){
