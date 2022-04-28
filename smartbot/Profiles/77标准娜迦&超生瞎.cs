@@ -278,9 +278,9 @@ namespace SmartBotProfiles
 #endregion
 
 #region 怒火（等级1） Fury (Rank 1) ID：BAR_891
-            if(board.HasCardInHand(Card.Cards.AR_891)
+            if(board.HasCardInHand(Card.Cards.BAR_891)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AR_891, new Modifier(130)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891, new Modifier(130)); 
             Bot.Log("怒火（等级1）130");
             }
 #endregion
