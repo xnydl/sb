@@ -253,6 +253,15 @@ namespace SmartBotProfiles
       }
 #endregion
 
+#region 恐惧牢笼战刃 AV_209
+            if(board.HasCardInHand(Card.Cards.AV_209)
+            &&board.WeaponFriend == null
+            ){
+                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_209, new Modifier(-99));
+                Bot.Log("恐惧牢笼战刃 -99");
+            }
+#endregion
+
 #region 掩息海星 TSC_926 
             if(board.HasCardInHand(Card.Cards.TSC_926)
             ){
