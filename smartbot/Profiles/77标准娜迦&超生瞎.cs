@@ -277,6 +277,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
+#region 怒火（等级1） Fury (Rank 1) ID：BAR_891
+            if(board.HasCardInHand(Card.Cards.AR_891)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AR_891, new Modifier(130)); 
+            Bot.Log("怒火（等级1）130");
+            }
+#endregion
+
 #region 宝藏守卫 Treasure Guard ID：TSC_938 
             if(board.HasCardInHand(Card.Cards.TSC_938)
             ){
