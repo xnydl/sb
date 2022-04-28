@@ -272,8 +272,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.WC_003)
             &&board.MinionFriend.Count <=5
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.WC_003, new Modifier(-150)); 
-            Bot.Log("召唤咒符 -150");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.WC_003, new Modifier(-99)); 
+            Bot.Log("召唤咒符 -99");
             }
 #endregion
 
