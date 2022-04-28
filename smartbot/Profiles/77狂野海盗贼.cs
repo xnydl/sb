@@ -456,11 +456,13 @@ namespace SmartBotProfiles
 #endregion
 #region 剑鱼 TSC_086
          if(board.HasCardInHand(Card.Cards.TSC_086)
-         &&board.WeaponFriend.Template.Id != Card.Cards.TSC_086
+         &&board.WeaponFriend.Template.Id == Card.Cards.TSC_086
         ){
-            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-150));
-            Bot.Log("剑鱼 -150");
-        } 
+            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(130));
+            Bot.Log("剑鱼 -130");
+        }else{
+            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-350));
+        }
          if(board.HasCardInHand(Card.Cards.TSC_086)
         &&board.ManaAvailable ==1
         &&board.HasCardInHand(Card.Cards.GAME_005)
