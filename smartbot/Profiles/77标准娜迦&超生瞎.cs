@@ -280,9 +280,10 @@ namespace SmartBotProfiles
 
 #region 贪婪需求 Need for Greed ID：DED_506
             if(board.HasCardInHand(Card.Cards.DED_506)
+            &&board.ManaAvailable >= 3
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-99)); 
-            Bot.Log("贪婪需求 -99");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-150)); 
+            Bot.Log("贪婪需求 -150");
             }
 #endregion
 
