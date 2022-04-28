@@ -368,9 +368,9 @@ namespace SmartBotProfiles
             &&board.ManaAvailable >1
             &&!board.HasCardInHand(Card.Cards.TSC_086)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-150)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-250)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
-            Bot.Log("洞穴探宝者 -150");
+            Bot.Log("洞穴探宝者 -250");
             }
 #endregion
 #region 锈水海盗 CORE_AT_029
@@ -416,11 +416,11 @@ namespace SmartBotProfiles
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
             &&board.Hand.Count(card => card.CurrentCost<=2)>=1
-            &&board.ManaAvailable <3
+            &&board.ManaAvailable <2
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-150)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
-            Bot.Log("船载火炮 -999 优先级 550");
+            Bot.Log("船载火炮 -150 优先级 550");
             }
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
