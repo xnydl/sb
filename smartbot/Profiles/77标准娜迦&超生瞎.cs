@@ -261,6 +261,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
+#region 贪婪需求 Need for Greed ID：DED_506
+            if(board.HasCardInHand(Card.Cards.DED_506)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-99)); 
+            Bot.Log("贪婪需求 -99");
+            }
+#endregion
+
 #region 魔变鱼人 Metamorfin ID：SW_451 
             if(board.HasCardInHand(Card.Cards.SW_451)
             ){
