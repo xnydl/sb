@@ -454,6 +454,15 @@ namespace SmartBotProfiles
             Bot.Log("恐怖海盗 130 ");
             }
 #endregion
+
+#region 刺豚拳手 Pufferfist ID：TSC_002  
+            if(board.HasCardInHand(Card.Cards.TSC_002)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(130)); 
+            Bot.Log("刺豚拳手 130");
+            }
+#endregion
+
 #region 剑鱼 TSC_086
          if(board.HasCardInHand(Card.Cards.TSC_086)
          &&board.WeaponFriend == null
