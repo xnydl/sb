@@ -260,6 +260,8 @@ namespace SmartBotProfiles
                 p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_209, new Modifier(-99));
                 Bot.Log("恐惧牢笼战刃 -99");
             }
+        board.MinionEnemy.Count(x=>x.IsLifeSteal==true && x.Template.Id==Card.Cards.CS3_034)>=1
+
 #endregion
 
 #region 掩息海星 TSC_926 
