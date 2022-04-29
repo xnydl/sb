@@ -132,6 +132,12 @@ namespace SmartBot.Mulligan
                         Keep(card,"仇怨累积");
                     }
                 }
+                if(card==Card.Cards.CORE_EX1_407&&kuaigong>0// 绝命乱斗 Brawl ID：CORE_EX1_407 
+                ){ if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_407))
+                    {
+                        Keep(card,"绝命乱斗");
+                    }
+                }
                 // if(card==Card.Cards.DED_519// 迪菲亚炮手 DED_519
                 // ){ if(!CardsToKeep.Contains(Card.Cards.DED_519))
                 //     {
