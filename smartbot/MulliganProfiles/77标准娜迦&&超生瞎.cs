@@ -121,6 +121,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"战斗邪犬");
                     } 
                 }
+                if(card==Card.Cards.SW_041// 敏捷咒符 Sigil of Alacrity ID：SW_041 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.SW_041))
+                    {
+                        Keep(card,"敏捷咒符");
+                    } 
+                }
                 if(card==Card.Cards.AV_209// 恐惧牢笼战刃 AV_209
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.AV_209))
