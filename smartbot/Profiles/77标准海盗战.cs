@@ -268,6 +268,13 @@ namespace SmartBotProfiles
 //             Bot.Log("血帆桨手 -99");
 //             }
 // #endregion
+#region 深渊诅咒 Abyssal Curse ID：TSC_955t 
+            if(board.HasCardInHand(Card.Cards.TSC_955t)
+            ){
+                p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_955t, new Modifier(-99)); 
+                Bot.Log("深渊诅咒 -99 ");
+            }
+#endregion
 #region 雾帆劫掠者 CS3_022 
             if(board.HasCardInHand(Card.Cards.CS3_022)
             &&board.WeaponFriend == null
