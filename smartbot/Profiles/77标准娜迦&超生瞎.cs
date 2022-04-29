@@ -283,8 +283,8 @@ namespace SmartBotProfiles
 #region 赛丝诺女士 Lady S'theno ID：TSC_218 
             if(board.HasCardInHand(Card.Cards.TSC_218)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(150)); 
-            Bot.Log("赛丝诺女士 150");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(130)); 
+            Bot.Log("赛丝诺女士 130");
             }
 #endregion
 
