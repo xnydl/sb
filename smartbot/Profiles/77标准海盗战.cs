@@ -439,6 +439,54 @@ namespace SmartBotProfiles
 #region 攻击优先 卡牌威胁（通用）
 
 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_073))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_073, new Modifier(200));
+            }//拉伊·纳兹亚 Raj Naz'jan ID：TSC_073 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DED_006))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(200));
+            }//重拳先生  DED_006 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_310))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_310, new Modifier(200));
+            }//光沐元素 Lightshower Elemental ID：BAR_310 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.AV_118))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));
+            }//历战先锋 Battleworn Vanguard ID：AV_118 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.GVG_040))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GVG_040, new Modifier(200));
+            }//沙鳞灵魂行者 Siltfin Spiritwalker ID：GVG_040
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BT_304))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_304, new Modifier(200));
+            }//改进型恐惧魔王 Enhanced Dreadlord ID：BT_304
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_068))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_068, new Modifier(200));
+            }//莫尔葛熔魔 Mo'arg Forgefiend ID：SW_068 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_860))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));
+            }//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DED_519))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));
+            }//迪菲亚炮手  DED_519
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CFM_807))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CFM_807, new Modifier(200));
+            }//大富翁比尔杜 Auctionmaster Beardo ID：CFM_807 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_054))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(200));
+            }//机械鲨鱼 TSC_054
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.GIL_646))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GIL_646, new Modifier(200));
+            }//发条机器人 Clockwork Automaton ID：GIL_646 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ULD_231))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ULD_231, new Modifier(200));
