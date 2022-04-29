@@ -253,24 +253,24 @@ namespace SmartBotProfiles
       }
 #endregion
 
-#region 恐惧牢笼战刃 AV_209
-            if(board.HasCardInHand(Card.Cards.AV_209)
-            &&board.WeaponFriend == null
-            ){
-                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_209, new Modifier(-5));
-                Bot.Log("恐惧牢笼战刃 -5");
-            }
+// #region 恐惧牢笼战刃 AV_209
+//             if(board.HasCardInHand(Card.Cards.AV_209)
+//             &&board.WeaponFriend == null
+//             ){
+//                 p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_209, new Modifier(-5));
+//                 Bot.Log("恐惧牢笼战刃 -5");
+//             }
 
-#endregion
-#region 奥达奇战刃 Aldrachi Warblades ID：CORE_BT_921 
-            if(board.HasCardInHand(Card.Cards.CORE_BT_921)
-            &&board.HeroFriend.CurrentHealth<=13
-            ){
-                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.CORE_BT_921, new Modifier(-15));
-                Bot.Log("恐惧牢笼战刃 -15");
-            }
+// #endregion
+// #region 奥达奇战刃 Aldrachi Warblades ID：CORE_BT_921 
+//             if(board.HasCardInHand(Card.Cards.CORE_BT_921)
+//             &&board.HeroFriend.CurrentHealth<=13
+//             ){
+//                 p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.CORE_BT_921, new Modifier(-15));
+//                 Bot.Log("恐惧牢笼战刃 -15");
+//             }
 
-#endregion
+// #endregion
 
 #region 掩息海星 TSC_926 
             if(board.HasCardInHand(Card.Cards.TSC_926)
