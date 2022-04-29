@@ -393,6 +393,10 @@ namespace SmartBotProfiles
 #region 攻击优先 卡牌威胁（通用） 
 
 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_073))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_073, new Modifier(200));
+            }//拉伊·纳兹亚 Raj Naz'jan ID：TSC_073 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DED_006))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(200));
