@@ -257,10 +257,9 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.AV_209)
             &&board.WeaponFriend == null
             ){
-                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_209, new Modifier(-99));
-                Bot.Log("恐惧牢笼战刃 -99");
+                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_209, new Modifier(-5));
+                Bot.Log("恐惧牢笼战刃 -5");
             }
-        board.MinionEnemy.Count(x=>x.IsLifeSteal==true && x.Template.Id==Card.Cards.CS3_034)>=1
 
 #endregion
 
