@@ -382,6 +382,10 @@ namespace SmartBotProfiles
 #region 攻击优先 卡牌威胁（通用） 
 
 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DED_006))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(200));
+            }//重拳先生  DED_006 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_310))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_310, new Modifier(200));
