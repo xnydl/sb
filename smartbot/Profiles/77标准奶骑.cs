@@ -325,6 +325,15 @@ namespace SmartBotProfiles
           Bot.Log("圣礼骑士 550");
         } 
 #endregion
+#region 艾萨拉女王 TSC_641
+
+        if(board.HasCardInHand(Card.Cards.TSC_641)
+        )
+        {
+         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_641, new Modifier(130)); 
+          Bot.Log("艾萨拉女王 130");
+        } 
+#endregion
 
 #region Card.Cards.HERO_04bp 英雄技能
         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-999)); 
