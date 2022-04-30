@@ -360,7 +360,7 @@ namespace SmartBotProfiles
         &&sgnum<5
         )
         {
-         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_641, new Modifier(999)); 
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_641, new Modifier(999));
           Bot.Log("艾萨拉女王 999");
         } 
 #endregion
