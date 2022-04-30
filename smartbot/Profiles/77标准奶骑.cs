@@ -263,11 +263,11 @@ namespace SmartBotProfiles
         )
         {
           p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(9999)); 
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-999));
-          p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_206, new Modifier(-999));
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-999));
-          p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-999));
-          p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_206, new Modifier(-999));
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
+          p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
+          p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
+          p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
           Bot.Log("光铸凯瑞尔 -9999");
         }
         if(minionNumber>0){
