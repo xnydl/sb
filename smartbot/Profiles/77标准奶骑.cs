@@ -225,6 +225,8 @@ namespace SmartBotProfiles
             int friendCount = board.MinionFriend.Count;
             int minionNumber=board.Hand.Count(card => card.Type == Card.CType.MINION);
             Bot.Log("手上随从数量"+minionNumber);
+            int sgnum=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_952)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CORE_TRL_307)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CORE_EX1_619)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.DED_502)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_076)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_061);
+            Bot.Log("用过的神圣法术"+sgnum);
  #endregion
 
 #region 联盟旗手 SW_315
@@ -306,6 +308,16 @@ namespace SmartBotProfiles
           Bot.Log("神圣寿司卷 130");
         } 
 #endregion
+#region 正义防御 DED_502
+         if(board.HasCardInHand(Card.Cards.DED_502)
+         &&enemyAttack>=8
+         &&minionNumber>0
+        )
+        {
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_502,new Modifier(-99));
+          Bot.Log("正义防御 -99");
+        } 
+#endregion
 #region 战场军官  SW_063
       if(board.HasCardInHand(Card.Cards.SW_063)
       &&myAttack>=14
@@ -327,12 +339,12 @@ namespace SmartBotProfiles
         } 
 #endregion
 #region 艾萨拉女王 TSC_641
-
         if(board.HasCardInHand(Card.Cards.TSC_641)
+        &&sgnum<5
         )
         {
-         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_641, new Modifier(130)); 
-          Bot.Log("艾萨拉女王 130");
+         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_641, new Modifier(150)); 
+          Bot.Log("艾萨拉女王 150");
         } 
 #endregion
 
