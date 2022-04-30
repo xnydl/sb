@@ -357,7 +357,7 @@ namespace SmartBotProfiles
 #endregion
 #region 艾萨拉女王 TSC_641
         if(board.HasCardInHand(Card.Cards.TSC_641)
-        &&sgnum<5
+        &&sgnum<3
         )
         {
        	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_641, new Modifier(999));
