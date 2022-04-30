@@ -223,6 +223,8 @@ namespace SmartBotProfiles
             }
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
+            int minionNumber=board.Hand.Count(card => card.Type == Card.CType.MINION);
+            Bot.Log("手上随从数量"+minionNumber);
  #endregion
 
 #region 联盟旗手 SW_315
