@@ -279,6 +279,12 @@ namespace SmartBotProfiles
                 p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.BAR_330, new Modifier(999));
                 Bot.Log("獠牙锥刃 999");
             }
+            if(board.HasCardInHand(Card.Cards.BAR_330)
+            &&board.WeaponFriend == null
+            ){
+                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.BAR_330, new Modifier(-99));
+                Bot.Log("獠牙锥刃 -99");
+            }
 
 #endregion
 
