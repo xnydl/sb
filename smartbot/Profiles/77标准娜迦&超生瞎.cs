@@ -223,6 +223,8 @@ namespace SmartBotProfiles
             }
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
+            int wangyunum=board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_325)+board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_326)+board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_938)++board.Hand.Count(x => x.Template.Id == Card.Cards.WC_701);
+            Bot.Log("手上亡语数量"+wangyunum);
  #endregion
 
 #region 旅行商人   SW_307 
@@ -236,6 +238,24 @@ namespace SmartBotProfiles
       &&board.HasCardInHand(Card.Cards.SW_307)){
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_307, new Modifier(-15*friendCount));
         Bot.Log("旅行商人:"+-15*friendCount);
+      }
+#endregion
+
+#region 剃刀野猪 BAR_325
+      if(board.HasCardOnBoard(Card.Cards.BAR_325)
+      &&wangyunum>0
+      ){
+        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_325, new Modifier(-20)); 
+        Bot.Log("剃刀野猪送");
+      }
+#endregion
+
+#region 剃刀沼泽兽王 BAR_326
+      if(board.HasCardOnBoard(Card.Cards.BAR_326)
+      &&wangyunum>0
+      ){
+        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_326, new Modifier(-20)); 
+        Bot.Log("剃刀沼泽兽王送");
       }
 #endregion
 
@@ -424,8 +444,18 @@ namespace SmartBotProfiles
 #endregion
 
 #region 攻击优先 卡牌威胁（通用） 
-
-
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_935))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_935, new Modifier(200));
+            }//自私的扇贝 Selfish Shellfish ID：TSC_935 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CORE_LOE_077))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_077, new Modifier(200));
+            }//布莱恩·铜须 Brann Bronzebeard ID：CORE_LOE_077 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_620))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_620, new Modifier(200));
+            }//恶鞭海妖 Spitelash Siren ID：TSC_620  
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_073))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_073, new Modifier(200));
