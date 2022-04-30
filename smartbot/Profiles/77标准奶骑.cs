@@ -280,6 +280,12 @@ namespace SmartBotProfiles
             Bot.Log("重拳先生 999");
             }
 #endregion
+#region 苦痛侍僧 CORE_EX1_007  
+         if(board.HasCardInHand(Card.Cards.CORE_EX1_007)){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_007, new Modifier(-99)); 
+            Bot.Log("苦痛侍僧 -99");
+            }
+#endregion
 #region 考内留斯·罗姆 SW_080 
 
         if(board.HasCardInHand(Card.Cards.SW_080)
