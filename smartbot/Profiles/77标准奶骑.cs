@@ -319,12 +319,12 @@ namespace SmartBotProfiles
         } 
 #endregion
 #region 神圣寿司卷 TSC_952
-         if(board.HasCardInHand(Card.Cards.TSC_952)
-        )
-        {
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_952,new Modifier(130));
-          Bot.Log("神圣寿司卷 130");
-        } 
+        //  if(board.HasCardInHand(Card.Cards.TSC_952)
+        // )
+        // {
+        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_952,new Modifier(130));
+        //   Bot.Log("神圣寿司卷 130");
+        // } 
 #endregion
 #region 正义防御 DED_502
          if(board.HasCardInHand(Card.Cards.DED_502)
