@@ -260,6 +260,7 @@ namespace SmartBotProfiles
 #region 光铸凯瑞尔 AV_206 
 
         if(board.HasCardInHand(Card.Cards.AV_206)
+        &&board.ManaAvailable >= 7
         )
         {
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_206, new Modifier(-9999));
