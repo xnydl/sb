@@ -227,6 +227,8 @@ namespace SmartBotProfiles
             Bot.Log("手上随从数量"+minionNumber);
             int sgnum=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_952)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CORE_TRL_307)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CORE_EX1_619)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.DED_502)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_076)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_061);
             Bot.Log("用过的神圣法术"+sgnum);
+            int sgnumhand=board.Hand.Count(x => x.Template.Id ==Card.Cards.TSC_952)+board.Hand.Count(x => x.Template.Id ==Card.Cards.CORE_TRL_307)+board.Hand.Count(x => x.Template.Id ==Card.Cards.CORE_EX1_619)+board.Hand.Count(x => x.Template.Id ==Card.Cards.DED_502)+board.Hand.Count(x => x.Template.Id ==Card.Cards.TSC_076)+board.Hand.Count(x => x.Template.Id ==Card.Cards.TSC_061);
+            Bot.Log("手上的神圣法术"+sgnumhand);
  #endregion
 
 #region 联盟旗手 SW_315
@@ -284,6 +286,16 @@ namespace SmartBotProfiles
          if(board.HasCardInHand(Card.Cards.CORE_EX1_007)){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_007, new Modifier(-99)); 
             Bot.Log("苦痛侍僧 -99");
+            }
+#endregion
+#region 闪光翻车鱼 TSC_060
+         if(board.HasCardInHand(Card.Cards.TSC_060)
+         &&sgnumhand>0
+         ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_060, new Modifier(-99)); 
+            Bot.Log("闪光翻车鱼 -99");
+            }else{
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_060, new Modifier(150)); 
             }
 #endregion
 #region 考内留斯·罗姆 SW_080 
