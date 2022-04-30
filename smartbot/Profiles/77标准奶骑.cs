@@ -278,8 +278,8 @@ namespace SmartBotProfiles
 #endregion
 #region 重拳先生  DED_006 
          if(board.HasCardInHand(Card.Cards.DED_006)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(150)); 
-            Bot.Log("重拳先生 150 ");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(999)); 
+            Bot.Log("重拳先生 999");
             }
 #endregion
 #region 考内留斯·罗姆 SW_080 
@@ -293,13 +293,6 @@ namespace SmartBotProfiles
 #endregion
 
 #region 城建税 SW_046
-
-        //  if(
-        //  board.HasCardInHand(Card.Cards.SW_046)
-        // )
-        // {          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_046,new Modifier(150));
-        //   Bot.Log("城建税 150");
-        // } 
          if(
          board.HasCardInHand(Card.Cards.SW_046)
          &&board.FriendDeckCount >0
@@ -307,6 +300,14 @@ namespace SmartBotProfiles
         )
         {          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_046,new Modifier(999));
           Bot.Log("城建税 999");
+        } 
+#endregion
+#region 神圣寿司卷 TSC_952
+         if(board.HasCardInHand(Card.Cards.TSC_952)
+        )
+        {
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_952,new Modifier(130));
+          Bot.Log("神圣寿司卷 130");
         } 
 #endregion
 #region 战场军官  SW_063
