@@ -156,6 +156,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"艾萨拉女王");
                     } 
                 }
+                    if(card==Card.Cards.SW_315)// 联盟旗手 SW_315
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.SW_315))
+                    {
+                        Keep(card,"联盟旗手");
+                    } 
+                }
             }
             return CardsToKeep;
         }
