@@ -407,6 +407,10 @@ namespace SmartBotProfiles
 #region 攻击优先 卡牌威胁（通用） 
 
 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_935))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_935, new Modifier(200));
+            }//自私的扇贝 Selfish Shellfish ID：TSC_935 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CORE_LOE_077))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_077, new Modifier(200));
