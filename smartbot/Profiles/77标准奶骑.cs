@@ -322,7 +322,7 @@ namespace SmartBotProfiles
         //  if(board.HasCardInHand(Card.Cards.TSC_952)
         // )
         // {
-        //   p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_952,new Modifier(130));
+          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_952,new Modifier(130));
         //   Bot.Log("神圣寿司卷 130");
         // } 
 #endregion
