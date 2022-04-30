@@ -360,7 +360,7 @@ namespace SmartBotProfiles
             Bot.Log("贪婪需求优先级提升");
             }
             if(board.HasCardInHand(Card.Cards.DED_506)
-            &&board.Hand.Count<=4
+            &&board.Hand.Count<=5
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-99)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
