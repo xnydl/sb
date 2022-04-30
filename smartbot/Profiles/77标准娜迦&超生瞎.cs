@@ -278,6 +278,7 @@ namespace SmartBotProfiles
             &&board.WeaponFriend == null
             &&board.ManaAvailable ==1
             &&board.HasCardInHand(Card.Cards.AV_118)//历战先锋 AV_118
+            &&!board.HasCardInHand(Card.Cards.BAR_325)//剃刀野猪 BAR_325
             ){
                 p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_209, new Modifier(-5));
                 Bot.Log("恐惧牢笼战刃 -5");
