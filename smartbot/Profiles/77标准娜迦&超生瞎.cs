@@ -223,7 +223,7 @@ namespace SmartBotProfiles
             }
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
-            int wangyunum=board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_325)+board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_326)+board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_938)++board.Hand.Count(x => x.Template.Id == Card.Cards.WC_701);
+            int wangyunum=board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_325)+board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_326)+board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_938)+board.Hand.Count(x => x.Template.Id == Card.Cards.WC_701);
             Bot.Log("手上亡语数量"+wangyunum);
  #endregion
 
