@@ -336,11 +336,6 @@ namespace SmartBotProfiles
         // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(130)); 
 #endregion
 #region 剑圣萨穆罗 BAR_078
-      //       if (board.HasCardInHand(Card.Cards.SCH_526)//巴罗夫领主 Lord Barov  ID：SCH_526)
-      //       )
-			// {
-			// p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_526, new Modifier(150)); //巴罗夫领主 Lord Barov  ID：SCH_526
-			// }
        if(board.HasCardInHand(Card.Cards.BAR_078)
       &&(enemyAttack<=4
       &&board.HeroFriend.CurrentHealth>=20
@@ -349,6 +344,9 @@ namespace SmartBotProfiles
       ){
        	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_078, new Modifier(650)); //巴罗夫领主 Lord Barov  ID：SCH_526
         Bot.Log("剑圣萨穆罗 650");
+      }else{
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_078, new Modifier(130)); //巴罗夫领主 Lord Barov  ID：SCH_526 
+        Bot.Log("剑圣萨穆罗 130");
       }
 #endregion
 #region 吞噬者穆坦努斯 WC_030 
