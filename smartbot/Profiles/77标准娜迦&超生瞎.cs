@@ -258,6 +258,14 @@ namespace SmartBotProfiles
         Bot.Log("剃刀沼泽兽王送");
       }
 #endregion
+#region 锈烂蝰蛇 SW_072
+      if(board.HasCardInHand(Card.Cards.SW_072)
+      &&board.WeaponEnemy == null
+      ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_072, new Modifier(150));
+        Bot.Log("锈烂蝰蛇换");
+      }
+#endregion
 
 #region 怒鳞纳迦 Wrathscale Naga ID：CORE_BT_355 
       //  如果随从为0,降低旅行商人优先值,如果随从大于等于1可以用
