@@ -361,11 +361,11 @@ namespace SmartBotProfiles
             Bot.Log("贪婪需求优先级提升");
             }
             if(board.HasCardInHand(Card.Cards.DED_506)
-            &&board.Hand.Count<=5
+            &&board.Hand.Count<=4
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-99)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-150)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
-            Bot.Log("贪婪需求 -99");
+            Bot.Log("贪婪需求 -150");
             }
 #endregion
 
