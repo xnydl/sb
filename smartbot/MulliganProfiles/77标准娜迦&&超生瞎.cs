@@ -19,6 +19,7 @@ namespace SmartBot.Mulligan
         public List<Card.Cards> HandleMulligan(List<Card.Cards> choices, Card.CClass opponentClass,
             Card.CClass ownClass)
         {
+            //德：DRUID 猎：HUNTER 法：MAGE 骑：PALADIN 牧：PRIEST 贼：ROGUE 萨：SHAMAN 术：WARLOCK 战：WARRIOR 瞎：DEMONHUNTER
             bool HasCoin = choices.Count >= 4;
             int DRUID=0;
             int HUNTER=0;
@@ -33,28 +34,23 @@ namespace SmartBot.Mulligan
             int kuaigong=0;
             int mansu=0;
             int flag1=0;//凶恶的滑矛纳迦 TSC_827
-            int flag2=0;//团伙劫掠 TRL_124 
-            int flag3=0;//洞穴探宝者 LOOT_033
-            int flag4=0;//一费海盗
+            int flag2=0;// 剃刀野猪 BAR_325
+            int flag3=0;// 恐惧牢笼战刃 AV_209
+            int flag4=0;// 獠牙锥刃 BAR_330
+            int flag5=0;// 历战先锋 AV_118
             
             foreach (Card.Cards card in choices)
             {
                 if(card==Card.Cards.TSC_827//凶恶的滑矛纳迦 TSC_827
                 ){flag1+=1;}
-                if(card==Card.Cards.LOOT_033//洞穴探宝者 LOOT_033
-                ){flag3+=1;}
-                if(card==Card.Cards.TRL_124//团伙劫掠 TRL_124  
+                if(card==Card.Cards.BAR_325// 剃刀野猪 BAR_325
                 ){flag2+=1;}
-                if(card==Card.Cards.TSC_963//鱼排斗士 TSC_963
+                if(card==Card.Cards.AV_209// 恐惧牢笼战刃 AV_209
+                ){flag3+=1;}
+                if(card==Card.Cards.BAR_330// 獠牙锥刃 BAR_330
                 ){flag4+=1;}
-                if(card==Card.Cards.CORE_AT_029//锈水海盗 CORE_AT_029 
-                ){flag4+=1;}
-                if(card==Card.Cards.DMF_519//奖品掠夺者 DMF_519 
-                ){flag4+=1;}
-                if(card==Card.Cards.CS2_146//南海船工 CS2_146
-                ){flag4+=1;}
-                if(card==Card.Cards.DRG_035//血帆飞贼 Bloodsail Flybooter ID：DRG_035 
-                ){flag4+=1;}
+                if(card==Card.Cards.AV_118// 历战先锋 AV_118
+                ){flag5+=1;}
             }
             Bot.Log("对阵职业"+opponentClass);
 
@@ -128,14 +124,21 @@ namespace SmartBot.Mulligan
                         Keep(card,"敏捷咒符");
                     } 
                 }
-                if(card==Card.Cards.AV_209// 恐惧牢笼战刃 AV_209
+                if(card==Card.Cards.AV_209&&HasCoin==true&&flag3==0&&WARRIOR==0&&PRIEST==0// 恐惧牢笼战刃 AV_209
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.AV_209))
                     {
                         Keep(card,"恐惧牢笼战刃");
                     } 
                 }
-                if(card==Card.Cards.TSC_827// 凶恶的滑矛纳迦 TSC_827
+                if(card==Card.Cards.TSC_006&&HasCoin==true// 多重打击 Multi-Strike ID：TSC_006 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_006))
+                    {
+                        Keep(card,"多重打击");
+                    } 
+                }
+                if(card==Card.Cards.TSC_827&&(flag3+flag5<2||flag4+flag5<2||flag4+flag2<2||MAGE>0||HUNTER>0||ROGUE>0)// 凶恶的滑矛纳迦 TSC_827
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.TSC_827))
                     {
@@ -170,13 +173,21 @@ namespace SmartBot.Mulligan
                         Keep(card,"曼科里克");
                     } 
                 }
-                // if(card==Card.Cards.TSC_002&&kuaigong>0// 刺豚拳手 Pufferfist ID：TSC_002 
-                // ){
-                //     if(!CardsToKeep.Contains(Card.Cards.TSC_002))
-                //     {
-                //         Keep(card,"刺豚拳手");
-                //     } 
-                // }
+                if(card==Card.Cards.TSC_002&&HasCoin==true&&(flag3>0||flag4>0)// 刺豚拳手 Pufferfist ID：TSC_002 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_002))
+                    {
+                        Keep(card,"刺豚拳手");
+                    } 
+                }
+                if(card==Card.Cards.AV_204&&(HasCoin==true||WARRIOR>0||PALADIN>0)// 裂魔者库尔特鲁斯 Kurtrus, Demon-Render ID：AV_204 
+
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.AV_204))
+                    {
+                        Keep(card,"裂魔者库尔特鲁斯");
+                    } 
+                }
                 if(card==Card.Cards.TSC_217// 游荡贤者 Wayward Sage ID：TSC_217 
 
                 ){
@@ -192,6 +203,34 @@ namespace SmartBot.Mulligan
                         Keep(card,"召唤咒符");
                     } 
                 }
+                 if(card==Card.Cards.BAR_330&&PRIEST==0// 獠牙锥刃 BAR_330
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.BAR_330))
+                    {
+                        Keep(card,"獠牙锥刃");
+                    } 
+                }
+                 if(card==Card.Cards.BAR_325// 剃刀野猪 BAR_325
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.BAR_325))
+                    {
+                        Keep(card,"剃刀野猪");
+                    } 
+                }
+                 if(card==Card.Cards.TSC_938&&flag2>0// 宝藏守卫 TSC_938
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_938))
+                    {
+                        Keep(card,"宝藏守卫");
+                    } 
+                }
+                 if(card==Card.Cards.SW_072&&PALADIN>0// 锈烂蝰蛇 Rustrot Viper ID：SW_072 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.SW_072))
+                    {
+                        Keep(card,"宝藏守卫");
+                    } 
+                }
             }
             return CardsToKeep;
         }
@@ -204,4 +243,4 @@ namespace SmartBot.Mulligan
         }
 
     }
-}//德：DRUID 猎：HUNTER 法：MAGE 骑：PALADIN 牧：PRIEST 贼：ROGUE 萨：SHAMAN 术：WARLOCK 战：WARRIOR 瞎：DEMONHUNTER
+}
