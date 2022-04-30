@@ -323,14 +323,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
-// #region 贪婪需求 Need for Greed ID：DED_506
-//             if(board.HasCardInHand(Card.Cards.DED_506)
-//             &&board.ManaAvailable >= 3
-//             ){
-//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-150)); 
-//             Bot.Log("贪婪需求 -150");
-//             }
-// #endregion
+#region 贪婪需求 Need for Greed ID：DED_506
+            if(board.HasCardInHand(Card.Cards.DED_506)
+            ){
+            // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-150)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
+            Bot.Log("贪婪需求优先级提升");
+            }
+#endregion
 
 #region 多重打击 Multi-Strike ID：TSC_006 
             if(board.HasCardInHand(Card.Cards.TSC_006)
