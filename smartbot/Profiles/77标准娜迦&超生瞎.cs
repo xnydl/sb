@@ -342,6 +342,14 @@ namespace SmartBotProfiles
             Bot.Log("刺豚拳手 130");
             }
 #endregion
+
+#region 大德鲁伊纳拉雷克斯 Archdruid Naralex ID：WC_035 
+            if(board.HasCardInHand(Card.Cards.WC_035)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.WC_035, new Modifier(-99)); 
+            Bot.Log("大德鲁伊纳拉雷克斯 -99");
+            }
+#endregion
 #region 历战先锋 AV_118  
             if(board.HasCardInHand(Card.Cards.AV_118)
             &&board.WeaponFriend == null
