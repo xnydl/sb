@@ -312,6 +312,16 @@ namespace SmartBotProfiles
             Bot.Log("刺豚拳手 130");
             }
 #endregion
+#region 历战先锋 AV_118  
+            if(board.HasCardInHand(Card.Cards.AV_118)
+            &&board.WeaponFriend == null
+            &&board.MaxMana ==2
+            &&!board.HasCardInHand(Card.Cards.GAME_005)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(130)); 
+            Bot.Log("历战先锋 130");
+            }
+#endregion
 
 // #region 贪婪需求 Need for Greed ID：DED_506
 //             if(board.HasCardInHand(Card.Cards.DED_506)
