@@ -330,7 +330,6 @@ namespace SmartBotProfiles
         }
 #endregion
 #region 圣礼骑士 BAR_873
-
         if(board.HasCardInHand(Card.Cards.BAR_873)
         )
         {
@@ -364,6 +363,19 @@ namespace SmartBotProfiles
       }else{
        	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_078, new Modifier(130)); //巴罗夫领主 Lord Barov  ID：SCH_526 
         Bot.Log("剑圣萨穆罗 130");
+      }
+#endregion
+#region 狂野炎术师 CORE_NEW1_020
+       if(board.HasCardInHand(Card.Cards.CORE_NEW1_020)
+      &&(enemyAttack<=4
+      &&board.HeroFriend.CurrentHealth>=20
+      &&board.MinionEnemy.Count !=1
+      )
+      ){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_020, new Modifier(650)); //巴罗夫领主 Lord Barov  ID：SCH_526
+        Bot.Log("狂野炎术师 650");
+      }else{
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_NEW1_020, new Modifier(130)); //巴罗夫领主 Lord Barov  ID：SCH_526 
       }
 #endregion
 #region 吞噬者穆坦努斯 WC_030 
