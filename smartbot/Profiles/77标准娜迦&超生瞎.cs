@@ -338,8 +338,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.TSC_218)
             &&board.MinionEnemy.Count == 0
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(999)); 
-            Bot.Log("赛丝诺女士 999");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(250)); 
+            Bot.Log("赛丝诺女士 250");
             }
 #endregion
 
@@ -427,20 +427,27 @@ namespace SmartBotProfiles
             Bot.Log("怒火（等级1）130");
             }
 #endregion
-// #region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
-//             if(board.HasCardInHand(Card.Cards.BAR_891t)
-//             ){
-//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(130)); 
-//             Bot.Log("怒火（等级1）130");
-//             }
-// #endregion
-// #region 怒火（等级3） Fury (Rank 3) ID：BAR_891t2 
-//             if(board.HasCardInHand(Card.Cards.BAR_891t2)
-//             ){
-//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(130)); 
-//             Bot.Log("怒火（等级1）130");
-//             }
-// #endregion
+#region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
+            if(board.HasCardInHand(Card.Cards.BAR_891t)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(130)); 
+            Bot.Log("怒火（等级2）130");
+            }
+#endregion
+#region 怒火（等级3） Fury (Rank 3) ID：BAR_891t2 
+            if(board.HasCardInHand(Card.Cards.BAR_891t2)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(130)); 
+            Bot.Log("怒火（等级3）130");
+            }
+#endregion
+#region 捕掠 TSC_058
+            if(board.HasCardInHand(Card.Cards.TSC_058)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_058, new Modifier(130)); 
+            Bot.Log("捕掠 130");
+            }
+#endregion
 
 #region 宝藏守卫 Treasure Guard ID：TSC_938 
             if(board.HasCardInHand(Card.Cards.TSC_938)
