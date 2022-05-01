@@ -380,13 +380,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
-// #region 多重打击 Multi-Strike ID：TSC_006 
-//             if(board.HasCardInHand(Card.Cards.TSC_006)
-//             ){
-//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_006, new Modifier(130)); 
-//             Bot.Log("多重打击 130");
-//             }
-// #endregion
+#region 多重打击 Multi-Strike ID：TSC_006 
+            if(board.HasCardInHand(Card.Cards.TSC_006)
+            &&board.MinionEnemy.Count == 0
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_006, new Modifier(130)); 
+            Bot.Log("多重打击 130");
+            }
+#endregion
 
 #region 梦魇 Nightmare ID：DREAM_05 
             if(board.HasCardInHand(Card.Cards.DREAM_05)
@@ -420,27 +421,27 @@ namespace SmartBotProfiles
             }
 #endregion
 
-#region 怒火（等级1） Fury (Rank 1) ID：BAR_891
-            if(board.HasCardInHand(Card.Cards.BAR_891)
-            ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891, new Modifier(130)); 
-            Bot.Log("怒火（等级1）130");
-            }
-#endregion
-#region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
-            if(board.HasCardInHand(Card.Cards.BAR_891t)
-            ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(130)); 
-            Bot.Log("怒火（等级1）130");
-            }
-#endregion
-#region 怒火（等级3） Fury (Rank 3) ID：BAR_891t2 
-            if(board.HasCardInHand(Card.Cards.BAR_891t2)
-            ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(130)); 
-            Bot.Log("怒火（等级1）130");
-            }
-#endregion
+// #region 怒火（等级1） Fury (Rank 1) ID：BAR_891
+//             if(board.HasCardInHand(Card.Cards.BAR_891)
+//             ){
+//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891, new Modifier(130)); 
+//             Bot.Log("怒火（等级1）130");
+//             }
+// #endregion
+// #region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
+//             if(board.HasCardInHand(Card.Cards.BAR_891t)
+//             ){
+//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(130)); 
+//             Bot.Log("怒火（等级1）130");
+//             }
+// #endregion
+// #region 怒火（等级3） Fury (Rank 3) ID：BAR_891t2 
+//             if(board.HasCardInHand(Card.Cards.BAR_891t2)
+//             ){
+//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(130)); 
+//             Bot.Log("怒火（等级1）130");
+//             }
+// #endregion
 
 #region 宝藏守卫 Treasure Guard ID：TSC_938 
             if(board.HasCardInHand(Card.Cards.TSC_938)
