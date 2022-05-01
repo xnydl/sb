@@ -250,6 +250,14 @@ namespace SmartBotProfiles
       }
 #endregion
 
+#region 凶恶的滑矛纳迦 TSC_827
+      if(board.HasCardOnBoard(Card.Cards.TSC_827)
+      ){
+        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.TSC_827, new Modifier(150)); 
+        Bot.Log("凶恶的滑矛纳迦不送");
+      }
+#endregion
+
 #region 剃刀沼泽兽王 BAR_326
       if(board.HasCardOnBoard(Card.Cards.BAR_326)
       &&wangyunum>0
@@ -272,7 +280,7 @@ namespace SmartBotProfiles
       if(board.MinionFriend.Count <=1
       &&board.HasCardInHand(Card.Cards.CORE_BT_355)){
         p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_BT_355, new Modifier(999));
-        Bot.Log("旅行商人 999 ");
+        Bot.Log("怒鳞纳迦 999 ");
       }
       if(board.MinionFriend.Count >=2
       &&board.HasCardInHand(Card.Cards.CORE_BT_355)){
