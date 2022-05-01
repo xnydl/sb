@@ -355,8 +355,8 @@ namespace SmartBotProfiles
 #region 大德鲁伊纳拉雷克斯 Archdruid Naralex ID：WC_035 
             if(board.HasCardInHand(Card.Cards.WC_035)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.WC_035, new Modifier(-99)); 
-            Bot.Log("大德鲁伊纳拉雷克斯 -99");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.WC_035, new Modifier(-155)); 
+            Bot.Log("大德鲁伊纳拉雷克斯 -155");
             }
 #endregion
 #region 历战先锋 AV_118  
