@@ -292,7 +292,7 @@ namespace SmartBotProfiles
 #region 恐惧牢笼战刃 AV_209
             if(board.HasCardInHand(Card.Cards.AV_209)
             &&board.WeaponFriend == null
-            &&board.ManaAvailable ==1
+            &&board.MaxMana ==1
             &&board.HasCardInHand(Card.Cards.AV_118)//历战先锋 AV_118
             &&!board.HasCardInHand(Card.Cards.BAR_325)//剃刀野猪 BAR_325
             &&!board.HasCardInHand(Card.Cards.GAME_005)
@@ -305,7 +305,7 @@ namespace SmartBotProfiles
 #region 獠牙锥刃 BAR_330
             if(board.HasCardInHand(Card.Cards.BAR_330)
             &&board.WeaponFriend == null
-            &&board.ManaAvailable ==1
+            &&board.MaxMana ==1
             &&board.HasCardInHand(Card.Cards.AV_118)//历战先锋 AV_118
             ){
                 p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.BAR_330, new Modifier(-15));
