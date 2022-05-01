@@ -344,7 +344,6 @@ namespace SmartBotProfiles
 
 #region 刺豚拳手 Pufferfist ID：TSC_002  
             if(board.HasCardInHand(Card.Cards.TSC_002)
-            &&board.MinionEnemy.Count == 0
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(130)); 
             Bot.Log("刺豚拳手 130");
@@ -422,8 +421,8 @@ namespace SmartBotProfiles
 #region 宝藏守卫 Treasure Guard ID：TSC_938 
             if(board.HasCardInHand(Card.Cards.TSC_938)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_938, new Modifier(-5)); 
-            Bot.Log("宝藏守卫 -5");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_938, new Modifier(-40)); 
+            Bot.Log("宝藏守卫 -40");
             }
 #endregion
 
