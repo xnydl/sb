@@ -448,6 +448,13 @@ namespace SmartBotProfiles
             Bot.Log("捕掠 130");
             }
 #endregion
+#region 邪能弹幕 SW_040 
+            if(board.HasCardInHand(Card.Cards.SW_040)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_040, new Modifier(130)); 
+            Bot.Log("邪能弹幕 130");
+            }
+#endregion
 
 #region 宝藏守卫 Treasure Guard ID：TSC_938 
             if(board.HasCardInHand(Card.Cards.TSC_938)
