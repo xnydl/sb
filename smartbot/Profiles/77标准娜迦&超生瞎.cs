@@ -262,7 +262,7 @@ namespace SmartBotProfiles
       if(board.HasCardInHand(Card.Cards.SW_072)
       &&board.WeaponEnemy == null
       ){
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_072, new Modifier(150));
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_072, new Modifier(999));
         Bot.Log("锈烂蝰蛇换");
       }
 #endregion
