@@ -346,8 +346,8 @@ namespace SmartBotProfiles
 #region 刺豚拳手 Pufferfist ID：TSC_002  
             if(board.HasCardInHand(Card.Cards.TSC_002)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(130)); 
-            Bot.Log("刺豚拳手 130");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(150)); 
+            Bot.Log("刺豚拳手 150");
             }
 #endregion
 
@@ -423,6 +423,20 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.BAR_891)
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891, new Modifier(130)); 
+            Bot.Log("怒火（等级1）130");
+            }
+#endregion
+#region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
+            if(board.HasCardInHand(Card.Cards.BAR_891t)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(130)); 
+            Bot.Log("怒火（等级1）130");
+            }
+#endregion
+#region 怒火（等级3） Fury (Rank 3) ID：BAR_891t2 
+            if(board.HasCardInHand(Card.Cards.BAR_891t2)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(130)); 
             Bot.Log("怒火（等级1）130");
             }
 #endregion
