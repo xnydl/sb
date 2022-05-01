@@ -458,6 +458,7 @@ namespace SmartBotProfiles
 
 #region 宝藏守卫 Treasure Guard ID：TSC_938 
             if(board.HasCardInHand(Card.Cards.TSC_938)
+            &&!board.HasCardInHand(Card.Cards.WC_035)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_938, new Modifier(-99)); 
             Bot.Log("宝藏守卫 -99");
