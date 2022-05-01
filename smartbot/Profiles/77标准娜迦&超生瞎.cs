@@ -420,13 +420,13 @@ namespace SmartBotProfiles
             }
 #endregion
 
-// #region 怒火（等级1） Fury (Rank 1) ID：BAR_891
-//             if(board.HasCardInHand(Card.Cards.BAR_891)
-//             ){
-//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891, new Modifier(130)); 
-//             Bot.Log("怒火（等级1）130");
-//             }
-// #endregion
+#region 怒火（等级1） Fury (Rank 1) ID：BAR_891
+            if(board.HasCardInHand(Card.Cards.BAR_891)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891, new Modifier(130)); 
+            Bot.Log("怒火（等级1）130");
+            }
+#endregion
 // #region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
 //             if(board.HasCardInHand(Card.Cards.BAR_891t)
 //             ){
