@@ -375,6 +375,14 @@ namespace SmartBotProfiles
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
             Bot.Log("贪婪需求 -150");
             }
+            if(board.HasCardInHand(Card.Cards.DED_506)
+            &&board.FriendDeckCount<=3
+            &&board.FriendDeckCount>0
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
+            Bot.Log("贪婪需求 -999");
+            }
 #endregion
 
 #region 多重打击 Multi-Strike ID：TSC_006 
