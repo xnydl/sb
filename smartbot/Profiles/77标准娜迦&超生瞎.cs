@@ -341,6 +341,7 @@ namespace SmartBotProfiles
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(130)); 
             Bot.Log("赛丝诺女士 130");
             }
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(999));
 #endregion
 
 #region 刺豚拳手 Pufferfist ID：TSC_002  
