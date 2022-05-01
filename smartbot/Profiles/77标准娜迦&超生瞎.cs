@@ -387,6 +387,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
+#region 梦魇 Nightmare ID：DREAM_05 
+            if(board.HasCardInHand(Card.Cards.DREAM_05)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DREAM_05, new Modifier(130)); 
+            Bot.Log("梦魇 130");
+            }
+#endregion
+
 #region 魔变鱼人 Metamorfin ID：SW_451 
             if(board.HasCardInHand(Card.Cards.SW_451)
             ){
