@@ -214,7 +214,14 @@ namespace SmartBot.Mulligan
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.SW_072))
                     {
-                        Keep(card,"宝藏守卫");
+                        Keep(card,"锈烂蝰蛇");
+                    } 
+                }
+                 if(card==Card.Cards.ONY_016// 憎恨之翼（等级1） ONY_016
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.ONY_016))
+                    {
+                        Keep(card,"憎恨之翼（等级1）");
                     } 
                 }
             }
