@@ -379,9 +379,9 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.DED_506)
             &&board.Hand.Count<=4
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-150)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
-            Bot.Log("贪婪需求 -150");
+            Bot.Log("贪婪需求 -999");
             }
             if(board.HasCardInHand(Card.Cards.DED_506)
             &&board.FriendDeckCount<=3
