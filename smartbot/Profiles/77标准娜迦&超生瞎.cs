@@ -380,13 +380,13 @@ namespace SmartBotProfiles
             }
 #endregion
 
-#region 多重打击 Multi-Strike ID：TSC_006 
-            if(board.HasCardInHand(Card.Cards.TSC_006)
-            ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_006, new Modifier(130)); 
-            Bot.Log("多重打击 130");
-            }
-#endregion
+// #region 多重打击 Multi-Strike ID：TSC_006 
+//             if(board.HasCardInHand(Card.Cards.TSC_006)
+//             ){
+//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_006, new Modifier(130)); 
+//             Bot.Log("多重打击 130");
+//             }
+// #endregion
 
 #region 梦魇 Nightmare ID：DREAM_05 
             if(board.HasCardInHand(Card.Cards.DREAM_05)
