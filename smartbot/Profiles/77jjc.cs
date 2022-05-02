@@ -405,8 +405,8 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
             &&board.MaxMana ==2
             &&!board.HasCardInHand(Card.Cards.GAME_005)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(130)); 
-            Bot.Log("历战先锋 130");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(150)); 
+            Bot.Log("历战先锋 150");
             }
 #endregion
 
