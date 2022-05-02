@@ -258,6 +258,13 @@ namespace SmartBotProfiles
             Bot.Log("空降歹徒 130");
             }
 #endregion
+#region 锈水海盗 CORE_AT_029
+            if(board.HasCardInHand(Card.Cards.CORE_AT_029)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_AT_029, new Modifier(130)); 
+            Bot.Log("锈水海盗 130");
+            }
+#endregion
 #region 鱼排斗士 TSC_963
             if(board.HasCardInHand(Card.Cards.TSC_963)
             ){
