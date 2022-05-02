@@ -482,7 +482,7 @@ namespace SmartBotProfiles
          if(board.HasCardInHand(Card.Cards.TSC_086)
          &&board.WeaponFriend == null
         ){
-            hasjianyu+=1
+            hasjianyu+=1;
             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-350));
             Bot.Log("剑鱼 -350");
         }
