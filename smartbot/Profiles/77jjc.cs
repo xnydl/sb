@@ -289,13 +289,7 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
         Bot.Log("凶恶的滑矛纳迦不送");
       }
 #endregion
-#region 雷诺·杰克逊 Reno Jackson ID：LOE_011 
-      if(board.HasCardOnBoard(Card.Cards.LOE_011)
-      ){
-        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.LOE_011, new Modifier(150)); 
-        Bot.Log("雷诺·杰克逊");
-      }
-#endregion
+
 
 #region 剃刀沼泽兽王 BAR_326
       if(board.HasCardOnBoard(Card.Cards.BAR_326)
@@ -417,7 +411,20 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
             Bot.Log("贪婪需求 -999");
             }
 #endregion
-
+#region 雷诺·杰克逊 Reno Jackson ID：LOE_011 
+      if(board.HasCardOnBoard(Card.Cards.LOE_011)
+      ){
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.LOE_011, new Modifier(150));  
+        Bot.Log("雷诺·杰克逊不出");
+      }
+#endregion
+#region 暮光幼龙 Twilight Drake ID：CORE_EX1_043 
+      if(board.HasCardOnBoard(Card.Cards.CORE_EX1_043)
+      ){
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CORE_EX1_043, new Modifier(999));
+        Bot.Log("暮光幼龙优先");
+      }
+#endregion
 #region 多重打击 Multi-Strike ID：TSC_006 
             if(board.HasCardInHand(Card.Cards.TSC_006)
             &&board.MinionEnemy.Count == 0
