@@ -205,12 +205,16 @@ namespace SmartBotProfiles
              // 友方随从数量
             int aomiCount = board.Secret.Count;
             int dangqianfeiyong = board.ManaAvailable;
-            Bot.Log("自己奥秘数量"+aomiCount);
             int NumberOfBeastsUsed = board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PET)+board.MinionFriend.Count(card => card.Race == Card.CRace.PET); 
-            Bot.Log("使用过的野兽数量"+NumberOfBeastsUsed);
-            // 用过的的霜狼宝宝 Frostwolf Cub ID：AV_211t 
             int usedFrozen=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.AV_211t)+board.Hand.Count(x => x.Template.Id == Card.Cards.AV_211t)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_211t);
-           Bot.Log("用过的的霜狼宝宝"+usedFrozen);
+            // 海盗数量
+            int haidaonum=board.Hand.Count(card => card.Race == Card.CRace.PIRATE);
+            int changshanghaidaonum=board.MinionFriend.Count(card => card.Race == Card.CRace.PIRATE);
+            int luokala=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.SW_028t5)+board.Hand.Count(x => x.Template.Id == Card.Cards.SW_028t5)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.SW_028t5);
+            // 坟场海盗数量
+            int fenchanghaidao=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PIRATE);
+              // 使用过的海盗数量
+            int usedhaidao=fenchanghaidao+changshanghaidaonum;
  #endregion
 
 
@@ -253,6 +257,314 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
 #endregion
 
+#region 旅行商人   SW_307 
+      //  如果随从为0,降低旅行商人优先值,如果随从大于等于1可以用
+      if(board.MinionFriend.Count <=1
+      &&board.HasCardInHand(Card.Cards.SW_307)){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_307, new Modifier(999));
+        Bot.Log("旅行商人 999 ");
+      }
+      if(board.MinionFriend.Count >=2
+      &&board.HasCardInHand(Card.Cards.SW_307)){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_307, new Modifier(-15*friendCount));
+        Bot.Log("旅行商人:"+-15*friendCount);
+      }
+#endregion
+
+#region 剃刀野猪 BAR_325
+      if(board.HasCardOnBoard(Card.Cards.BAR_325)
+      &&wangyunum>0
+      ){
+        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_325, new Modifier(-20)); 
+        Bot.Log("剃刀野猪送");
+      }
+#endregion
+
+#region 凶恶的滑矛纳迦 TSC_827
+      if(board.HasCardOnBoard(Card.Cards.TSC_827)
+      ){
+        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.TSC_827, new Modifier(150)); 
+        Bot.Log("凶恶的滑矛纳迦不送");
+      }
+#endregion
+
+#region 剃刀沼泽兽王 BAR_326
+      if(board.HasCardOnBoard(Card.Cards.BAR_326)
+      &&wangyunum>0
+      ){
+        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_326, new Modifier(-20)); 
+        Bot.Log("剃刀沼泽兽王送");
+      }
+#endregion
+#region 锈烂蝰蛇 SW_072
+      if(board.HasCardInHand(Card.Cards.SW_072)
+      &&board.WeaponEnemy == null
+      ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_072, new Modifier(999));
+        Bot.Log("锈烂蝰蛇换");
+      }
+#endregion
+
+#region 怒鳞纳迦 Wrathscale Naga ID：CORE_BT_355 
+      //  如果随从为0,降低旅行商人优先值,如果随从大于等于1可以用
+      if(board.MinionFriend.Count <=1
+      &&board.HasCardInHand(Card.Cards.CORE_BT_355)){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_BT_355, new Modifier(999));
+        Bot.Log("怒鳞纳迦 999 ");
+      }
+      if(board.MinionFriend.Count >=2
+      &&board.HasCardInHand(Card.Cards.CORE_BT_355)){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_BT_355, new Modifier(-15*friendCount));
+        Bot.Log("怒鳞纳迦:"+-15*friendCount);
+      }
+#endregion
+
+#region 恐惧牢笼战刃 AV_209
+            if(board.HasCardInHand(Card.Cards.AV_209)
+            &&board.WeaponFriend == null
+            &&board.MaxMana ==1
+            &&board.HasCardInHand(Card.Cards.AV_118)//历战先锋 AV_118
+            &&!board.HasCardInHand(Card.Cards.BAR_325)//剃刀野猪 BAR_325
+            &&!board.HasCardInHand(Card.Cards.GAME_005)
+            ){
+                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_209, new Modifier(-5));
+                Bot.Log("恐惧牢笼战刃 -5");
+            }
+
+#endregion
+#region 獠牙锥刃 BAR_330
+            if(board.HasCardInHand(Card.Cards.BAR_330)
+            &&board.WeaponFriend == null
+            &&board.MaxMana ==1
+            &&board.HasCardInHand(Card.Cards.AV_118)//历战先锋 AV_118
+            ){
+                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.BAR_330, new Modifier(-15));
+                Bot.Log("獠牙锥刃 -5");
+            }
+            if(board.HasCardInHand(Card.Cards.BAR_330)
+            &&board.WeaponFriend != null
+            ){
+                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.BAR_330, new Modifier(999));
+                Bot.Log("獠牙锥刃 999");
+            }
+            if(board.HasCardInHand(Card.Cards.BAR_330)
+            &&board.WeaponFriend == null
+            ){
+                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.BAR_330, new Modifier(-99));
+                Bot.Log("獠牙锥刃 -99");
+            }
+
+#endregion
+
+#region 掩息海星 TSC_926 
+            if(board.HasCardInHand(Card.Cards.TSC_926)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_926, new Modifier(250)); 
+            Bot.Log("掩息海星 250");
+            }
+#endregion
+
+#region 赛丝诺女士 Lady S'theno ID：TSC_218 
+            if(board.HasCardInHand(Card.Cards.TSC_218)
+            &&board.MinionEnemy.Count == 0
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(250)); 
+            Bot.Log("赛丝诺女士 250");
+            }
+#endregion
+
+#region 刺豚拳手 Pufferfist ID：TSC_002  
+            if(board.HasCardInHand(Card.Cards.TSC_002)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(150)); 
+            Bot.Log("刺豚拳手 150");
+            }
+#endregion
+
+#region 大德鲁伊纳拉雷克斯 Archdruid Naralex ID：WC_035 
+            if(board.HasCardInHand(Card.Cards.WC_035)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.WC_035, new Modifier(-155)); 
+            Bot.Log("大德鲁伊纳拉雷克斯 -155");
+            }
+#endregion
+#region 历战先锋 AV_118  
+            if(board.HasCardInHand(Card.Cards.AV_118)
+            &&board.WeaponFriend == null
+            &&board.MaxMana ==2
+            &&!board.HasCardInHand(Card.Cards.GAME_005)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(130)); 
+            Bot.Log("历战先锋 130");
+            }
+#endregion
+
+#region 贪婪需求 Need for Greed ID：DED_506
+            if(board.Hand.Exists(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.DED_506)
+            &&board.FriendDeckCount>0
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
+            Bot.Log("贪婪需求 -999");
+            }
+#endregion
+
+#region 多重打击 Multi-Strike ID：TSC_006 
+            if(board.HasCardInHand(Card.Cards.TSC_006)
+            &&board.MinionEnemy.Count == 0
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_006, new Modifier(130)); 
+            Bot.Log("多重打击 130");
+            }
+#endregion
+
+#region 梦魇 Nightmare ID：DREAM_05 
+            if(board.HasCardInHand(Card.Cards.DREAM_05)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DREAM_05, new Modifier(130)); 
+            Bot.Log("梦魇 130");
+            }
+#endregion
+
+#region 魔变鱼人 Metamorfin ID：SW_451 
+            if(board.HasCardInHand(Card.Cards.SW_451)
+            ){
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_451, new Modifier(-5)); 
+            Bot.Log("魔变鱼人后出");
+            }
+#endregion
+
+#region 曼科里克 Mankrik ID：BAR_721 
+            if(board.HasCardInHand(Card.Cards.BAR_721)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_721, new Modifier(-150)); 
+            Bot.Log("曼科里克 -150");
+            }
+#endregion
+#region 召唤咒符 WC_003
+            if(board.HasCardInHand(Card.Cards.WC_003)
+            &&board.MinionFriend.Count <=5
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.WC_003, new Modifier(-99)); 
+            Bot.Log("召唤咒符 -99");
+            }
+#endregion
+
+#region 怒火（等级1） Fury (Rank 1) ID：BAR_891
+            if(board.HasCardInHand(Card.Cards.BAR_891)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891, new Modifier(130)); 
+            Bot.Log("怒火（等级1）130");
+            }
+#endregion
+#region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
+            if(board.HasCardInHand(Card.Cards.BAR_891t)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(130)); 
+            Bot.Log("怒火（等级2）130");
+            }
+#endregion
+#region 怒火（等级3） Fury (Rank 3) ID：BAR_891t2 
+            if(board.HasCardInHand(Card.Cards.BAR_891t2)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(130)); 
+            Bot.Log("怒火（等级3）130");
+            }
+#endregion
+#region 捕掠 TSC_058
+            if(board.HasCardInHand(Card.Cards.TSC_058)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_058, new Modifier(130)); 
+            Bot.Log("捕掠 130");
+            }
+#endregion
+#region 邪能弹幕 SW_040 
+            if(board.HasCardInHand(Card.Cards.SW_040)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_040, new Modifier(130)); 
+            Bot.Log("邪能弹幕 130");
+            }
+#endregion
+
+#region 宝藏守卫 Treasure Guard ID：TSC_938 
+            if(board.HasCardInHand(Card.Cards.TSC_938)
+            &&!board.HasCardInHand(Card.Cards.WC_035)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_938, new Modifier(-99)); 
+            Bot.Log("宝藏守卫 -99");
+            }
+#endregion
+
+#region 深渊诅咒 Abyssal Curse ID：TSC_955t 
+            if(board.HasCardInHand(Card.Cards.TSC_955t)
+            ){
+                p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_955t, new Modifier(-99)); 
+                Bot.Log("深渊诅咒 -99 ");
+            }
+#endregion
+#region 雾帆劫掠者 CS3_022 
+            if(board.HasCardInHand(Card.Cards.CS3_022)
+            &&board.WeaponFriend == null
+            ){
+                p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_022, new Modifier(130)); 
+                Bot.Log("雾帆劫掠者 130 ");
+            }
+#endregion
+#region 拖网海象人 TSC_909 
+            if(board.HasCardInHand(Card.Cards.TSC_909)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_909, new Modifier(-99)); 
+            Bot.Log("血帆桨手 -99");
+            }
+#endregion
+#region 黑曜石铸匠 TSC_942 
+            if(board.HasCardInHand(Card.Cards.TSC_942)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_942, new Modifier(-99)); 
+            Bot.Log("黑曜石铸匠 -99");
+            }
+#endregion
+
+#region 布莱恩·铜须 Brann Bronzebeard ID：CORE_LOE_077 
+            if(board.HasCardInHand(Card.Cards.CORE_LOE_077 )
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_077 , new Modifier(130)); 
+            Bot.Log("布莱恩·铜须 130");
+            }
+#endregion
+
+#region 奈利，超巨蛇颈龙 Nellie, the Great Thresher ID：TSC_660 
+            if(board.HasCardInHand(Card.Cards.TSC_660)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_660, new Modifier(-150)); 
+            Bot.Log("奈利，超巨蛇颈龙 -150");
+            }
+#endregion
+
+#region 奈利的海盗船 Nellie's Pirate Ship ID：TSC_660t 
+            if(board.HasCardOnBoard(Card.Cards.TSC_660t)
+            ){
+            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.TSC_660t,new Modifier(-99));
+            Bot.Log("奈利，超巨蛇颈龙送");
+            }
+#endregion
+
+#region 船长洛卡拉 SW_028t5 
+          if(board.HasCardInHand(Card.Cards.SW_028t5)
+          &&board.MinionFriend.Count<=5
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(-9999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(9999)); 
+            Bot.Log("船长洛卡拉 -9999 9999 ");
+            }else{
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_028t5, new Modifier(999)); 
+            }
+          if(board.HasCardOnBoard(Card.Cards.SW_028t5)||board.FriendGraveyard.Contains(Card.Cards.SW_028t5) )
+          {
+              p.GlobalWeaponsAttackModifier = -999 ;
+              Bot.Log("攻击值 -999 ");
+          }
+#endregion
 #region 雷霆绽放 SCH_427  硬币 GAME_005
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(55));//雷霆绽放 SCH_427
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));//硬币 GAME_005
