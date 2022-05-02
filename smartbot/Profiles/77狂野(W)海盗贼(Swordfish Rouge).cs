@@ -450,14 +450,14 @@ namespace SmartBotProfiles
 
 #region Card.Cards.HERO_03bp 英雄技能
         // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(85)); 
-         if(board.HasCardInHand(Card.Cards.TSC_086)
-            &&board.MaxMana >2
-            ){
-                p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));
-                Bot.Log("英雄技能 999");
-            }else{
-                p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-25));
-            }
+        //  if(board.HasCardInHand(Card.Cards.TSC_086)
+        //     &&board.MaxMana >2
+        //     ){
+        //         p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));
+        //         Bot.Log("英雄技能 999");
+        //     }else{
+        //         p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-25));
+        //     }
 #endregion
 
 
