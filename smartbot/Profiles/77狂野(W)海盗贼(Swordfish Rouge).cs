@@ -295,6 +295,7 @@ namespace SmartBotProfiles
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-150)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-999)); 
              Bot.Log("秘密通道 -150");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
