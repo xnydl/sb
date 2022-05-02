@@ -289,6 +289,13 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
         Bot.Log("凶恶的滑矛纳迦不送");
       }
 #endregion
+#region 雷诺·杰克逊 Reno Jackson ID：LOE_011 
+      if(board.HasCardOnBoard(Card.Cards.LOE_011)
+      ){
+        p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.LOE_011, new Modifier(150)); 
+        Bot.Log("雷诺·杰克逊");
+      }
+#endregion
 
 #region 剃刀沼泽兽王 BAR_326
       if(board.HasCardOnBoard(Card.Cards.BAR_326)
