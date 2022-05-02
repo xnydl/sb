@@ -364,7 +364,7 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.TRL_124)
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-99)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(100)); 
             Bot.Log("团伙劫掠 -99");
             }
 #endregion
