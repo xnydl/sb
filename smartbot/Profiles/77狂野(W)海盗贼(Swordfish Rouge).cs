@@ -396,11 +396,11 @@ namespace SmartBotProfiles
             }
 #endregion
 #region 南海船工 CS2_146 
-            // if(board.HasCardInHand(Card.Cards.CS2_146)
-            // ){
-            // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS2_146, new Modifier(-20)); 
-            // Bot.Log("南海船工 -20");
-            // }
+            if(board.HasCardInHand(Card.Cards.CS2_146)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS2_146, new Modifier(130)); 
+            Bot.Log("南海船工 130");
+            }
 #endregion
 #region 血帆海盗 Bloodsail Corsair NEW1_025 
             if(board.HasCardInHand(Card.Cards.NEW1_025)
@@ -441,15 +441,12 @@ namespace SmartBotProfiles
 #endregion
 
 #region Card.Cards.HERO_03bp 英雄技能
-        // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(85)); 
-        //  if(board.HasCardInHand(Card.Cards.TSC_086)
-        //     &&board.MaxMana >2
-        //     ){
-        //         p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));
-        //         Bot.Log("英雄技能 999");
-        //     }else{
-        //         p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-25));
-        //     }
+      if(!board.HasCardInHand(Card.Cards.TSC_086)
+      &&board.WeaponFriend == null
+    ){
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-20));//匕首精通 Dagger Mastery ID：HERO_03bp 
+        Bot.Log("英雄技能 -20");
+    }
 #endregion
 
 
