@@ -455,7 +455,9 @@ namespace SmartBotProfiles
             ){
                 p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));
                 Bot.Log("英雄技能 999");
-            } 
+            }else{
+                p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-5));
+            }
 #endregion
 
 
