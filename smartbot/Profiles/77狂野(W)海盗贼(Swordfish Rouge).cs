@@ -496,6 +496,14 @@ namespace SmartBotProfiles
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp   
             Bot.Log("手上为剑鱼,不用技能");
           }  
+        if(board.HasCardInHand(Card.Cards.TSC_086)
+          &&board.ManaAvailable>=3
+          ){
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp   
+            Bot.Log("手上有剑鱼,不用技能");
+          }  
         //  if(board.HasCardInHand(Card.Cards.TSC_086)
         //  &&board.ManaAvailable >=3
         //   ){
