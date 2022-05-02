@@ -254,15 +254,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.DRG_056)
             &&filterHaidao>=1
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_056, new Modifier(130)); 
-            Bot.Log("空降歹徒 130");
-            }
-#endregion
-#region 锈水海盗 CORE_AT_029
-            if(board.HasCardInHand(Card.Cards.CORE_AT_029)
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_AT_029, new Modifier(130)); 
-            Bot.Log("锈水海盗 130");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_056, new Modifier(150)); 
+            Bot.Log("空降歹徒 150");
             }
 #endregion
 #region 鱼排斗士 TSC_963
@@ -395,7 +388,10 @@ namespace SmartBotProfiles
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_AT_029, new Modifier(-150)); 
             Bot.Log("锈水海盗 -150");
+            }else{
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_AT_029, new Modifier(150)); 
             }
+            
 #endregion
 #region 葛拉卡爬行蟹 Golakka Crawler ID：UNG_807 
             if(board.HasCardInHand(Card.Cards.UNG_807)
@@ -429,15 +425,15 @@ namespace SmartBotProfiles
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
             &&board.Hand.Count(card => card.CurrentCost<=2)>=1
-            &&board.ManaAvailable <2
+            &&board.MaxMana <=2
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-150)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-550)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
-            Bot.Log("船载火炮 -150 优先级 550");
+            Bot.Log("船载火炮 -550 优先级 550");
             }
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
-            &&board.ManaAvailable >=3
+            &&board.MaxMana >=3
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-99)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
