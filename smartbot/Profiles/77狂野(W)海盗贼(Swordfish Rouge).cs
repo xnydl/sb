@@ -452,7 +452,6 @@ namespace SmartBotProfiles
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-5));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-5));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(-5));//匕首精通 Dagger Mastery ID：HERO_03bp 
-            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(999));
           }else{
              p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(130));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(130));//匕首精通 Dagger Mastery ID：HERO_03bp 
@@ -521,6 +520,11 @@ namespace SmartBotProfiles
          }else{
              p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(-4)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(600)); 
+         }
+          if(board.HasCardOnBoard(Card.Cards.TSC_085)
+        ){
+            p.GlobalWeaponsAttackModifier = 55;
+            Bot.Log('有携刃信使就a')
          }
 #endregion
 #region 血帆教徒 Bloodsail Cultist      OG_315 
