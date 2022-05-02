@@ -502,6 +502,10 @@ namespace SmartBotProfiles
 #endregion
 
 #region 攻击优先 卡牌威胁（通用） 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_002))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(200));
+            }//刺豚拳手 Pufferfist ID：TSC_002
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_218))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(200));
