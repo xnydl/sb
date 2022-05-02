@@ -143,7 +143,7 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 };           
+            var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
@@ -453,6 +453,15 @@ namespace SmartBotProfiles
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
             Bot.Log("转刀");
+          }
+          if(board.MaxMana ==2
+          &&!board.HasCardInHand(Card.Cards.TSC_086)
+          &&!board.HasCardInHand(Card.Cards.LOOT_033)
+          ){
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-99));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-99));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(-99));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            Bot.Log("2费转刀");
           }
 #endregion
 
