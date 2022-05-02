@@ -456,7 +456,7 @@ namespace SmartBotProfiles
                 p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));
                 Bot.Log("英雄技能 999");
             }else{
-                p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-5));
+                p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-25));
             }
 #endregion
 
@@ -503,7 +503,6 @@ namespace SmartBotProfiles
           &&board.ManaAvailable >=4
         ){
             p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(130));
-            Bot.Log("剑鱼慢点a");
         } 
 #endregion
 #region 携刃信使 Cutlass Courier ID：TSC_085 
