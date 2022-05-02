@@ -375,6 +375,14 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
             Bot.Log("赛丝诺女士 250");
             }
 #endregion
+#region 碉堡中士 Bunker Sergeant ID：AV_126 
+            if(board.HasCardInHand(Card.Cards.AV_126)
+            &&board.MinionEnemy.Count == 0
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_126, new Modifier(150)); 
+            Bot.Log("碉堡中士 150");
+            }
+#endregion
 
 #region 刺豚拳手 Pufferfist ID：TSC_002  
             if(board.HasCardInHand(Card.Cards.TSC_002)
