@@ -452,6 +452,7 @@ namespace SmartBotProfiles
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            Bot.Log("转刀");
           }
 #endregion
 
