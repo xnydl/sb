@@ -332,6 +332,7 @@ namespace SmartBotProfiles
 #endregion
 #region 劈砍课程 SCH_623
             if(board.HasCardInHand(Card.Cards.SCH_623)
+            &&board.WeaponFriend != null 
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_623, new Modifier(-180)); 
             Bot.Log("劈砍课程 -180");
@@ -441,11 +442,13 @@ namespace SmartBotProfiles
 #endregion
 
 #region Card.Cards.HERO_03bp 英雄技能
-    //   if(board.WeaponFriend == null
-    // ){
-    //     p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
-    //     Bot.Log("英雄技能 999");
-    // }
+      if(board.WeaponFriend == null
+    ){
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-20));//匕首精通 Dagger Mastery ID：HERO_03bp 
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-20));//匕首精通 Dagger Mastery ID：HERO_03bp 
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(-20));//匕首精通 Dagger Mastery ID：HERO_03bp 
+        Bot.Log("英雄技能 999");
+    }
 #endregion
 
 
