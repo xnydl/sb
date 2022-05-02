@@ -443,8 +443,8 @@ namespace SmartBotProfiles
 #region Card.Cards.HERO_03bp 英雄技能
       if(board.WeaponFriend == null
     ){
-        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-999));//匕首精通 Dagger Mastery ID：HERO_03bp 
-        Bot.Log("英雄技能 -999");
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
+        Bot.Log("英雄技能 999");
     }
 #endregion
 

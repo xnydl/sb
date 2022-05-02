@@ -35,7 +35,7 @@ using SmartBot.Plugins.API;
 // # 2x (0) 伺机待发 CORE_EX1_145 
 // # 2x (1) 鱼排斗士 TSC_963
 // # 2x (1) 锈水海盗 CORE_AT_029
-// # 2x (1) 致命药膏
+// # 2x (1) 致命药膏 CORE_CS2_074
 // # 2x (1) 秘密通道
 // # 1x (1) 海盗帕奇斯
 // # 2x (1) 奖品掠夺者 DMF_519
@@ -205,6 +205,13 @@ namespace SmartBot.Mulligan
                     if(!CardsToKeep.Contains(Card.Cards.GVG_075))
                     {
                         Keep(card,"船载火炮");
+                    } 
+                }
+                if(card==Card.Cards.CORE_CS2_074&&flag1>0// 致命药膏 CORE_CS2_074
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.CORE_CS2_074))
+                    {
+                        Keep(card,"致命药膏");
                     } 
                 }
                 if(card==Card.Cards.DMF_519&&kuaigong>0// 奖品掠夺者 DMF_519
