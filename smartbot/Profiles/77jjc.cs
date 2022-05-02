@@ -896,6 +896,12 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
           Bot.Log("野性印记 150");
       }
 #endregion
+#region 盾牌格挡 Shield Block ID：CORE_EX1_606 
+         if(board.HasCardInHand(Card.Cards.CORE_EX1_606)){
+               p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_606, new Modifier(-99));
+          Bot.Log("盾牌格挡 -99");
+      }
+#endregion
 #region 野性之心 Heart of the Wild ID：AV_292 
          if(board.HasCardInHand(Card.Cards.AV_292)){
                p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_292, new Modifier(130));
@@ -982,7 +988,6 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
             ||board.Hand.Exists(card => card.CurrentCost==2))
             {
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(130));//降低农夫      SW_319
-            Bot.Log("农夫 130");
              }
         //   敌方一费有随从 不下农夫      SW_319
           if(board.ManaAvailable ==1
@@ -1063,7 +1068,6 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
         Bot.Log("霜狼巢屋-9999");
       }else{
          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(130)); 
-         Bot.Log("霜狼巢屋 130");
       }
 #endregion
 
@@ -1276,7 +1280,6 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
           Bot.Log("德雷克塔尔 -99");
       }else{
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
-          Bot.Log("德雷克塔尔 150");
       }
 #endregion
 #region 深铁穴居人  AV_137  
@@ -1343,7 +1346,6 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
             Bot.Log("钢鬃卫兵-99");
           }else{
              p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_537, new Modifier(150));//钢鬃卫兵      BAR_537 
-            Bot.Log("钢鬃卫兵 150");
           }
         // 场上有钢鬃卫兵      BAR_537 提高格雷布     DMF_734 和教师的爱宠      SCH_244   
         if((board.HasCardOnBoard(Card.Cards.BAR_537)||board.HasCardInHand(Card.Cards.BAR_537))
