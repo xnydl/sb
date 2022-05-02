@@ -449,9 +449,9 @@ namespace SmartBotProfiles
 #region Card.Cards.HERO_03bp 英雄技能
          if(board.WeaponFriend == null 
           ){
-            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-5));//匕首精通 Dagger Mastery ID：HERO_03bp 
-            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-5));//匕首精通 Dagger Mastery ID：HERO_03bp 
-            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(-5));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
           }
 #endregion
 
