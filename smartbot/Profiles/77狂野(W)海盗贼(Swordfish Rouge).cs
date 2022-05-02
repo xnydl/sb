@@ -225,28 +225,20 @@ namespace SmartBotProfiles
             int friendCount = board.MinionFriend.Count;
             // 海盗数量
             int haidaonum=board.Hand.Count(card => card.Race == Card.CRace.PIRATE);
-            Bot.Log("手上海盗数量"+haidaonum);
             // 除去空降匪徒
             int filterHaidao=haidaonum-board.Hand.Count(x => x.Template.Id == Card.Cards.DRG_056);
-            Bot.Log("除去空降匪徒海盗数量"+haidaonum);
             int changshanghaidaonum=board.MinionFriend.Count(card => card.Race == Card.CRace.PIRATE);
             int enemychangshanghaidaonum=board.MinionEnemy.Count(card => card.Race == Card.CRace.PIRATE);
-            Bot.Log("场上海盗数量"+changshanghaidaonum);
             int jianyu=board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_086)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_086);
             Bot.Log("剑鱼用过数量"+jianyu);
             // 坟场海盗数量
             int fenchanghaidao=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PIRATE);
-            Bot.Log("坟场海盗数量"+fenchanghaidao);
             // 使用过的空降歹徒 DRG_056数量
             int nanhai=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.DRG_056)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.DRG_056);
             // 使用过的海盗帕奇斯 CFM_637  加空降歹徒数量
             int paqisi=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.CFM_637)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CFM_637);
-            Bot.Log("使用过的帕奇斯和空降歹徒数量"+(nanhai+paqisi));
               // 使用过的海盗数量(不算帕奇斯和空降歹徒)
             int usedhaidao=fenchanghaidao+changshanghaidaonum;
-            Bot.Log("使用过的海盗数量"+usedhaidao);
-            int hasjianyu=0;
-            Bot.Log("剑鱼用过数量"+hasjianyu);
  #endregion
 
 
@@ -262,8 +254,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.DRG_056)
             &&filterHaidao>=1
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_056, new Modifier(150)); 
-            Bot.Log("空降歹徒 150");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_056, new Modifier(130)); 
+            Bot.Log("空降歹徒 130");
             }
 #endregion
 #region 鱼排斗士 TSC_963
@@ -375,7 +367,7 @@ namespace SmartBotProfiles
 #endregion
 #region 洞穴探宝者 LOOT_033 
             if(board.HasCardInHand(Card.Cards.LOOT_033)
-            &&hasjianyu<2
+            &&jianyu<2
             &&board.ManaAvailable >1
             &&!board.HasCardInHand(Card.Cards.TSC_086)
             ){
@@ -474,7 +466,6 @@ namespace SmartBotProfiles
          if(board.HasCardInHand(Card.Cards.TSC_086)
          &&board.WeaponFriend == null
         ){
-            hasjianyu+=1;
             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-350));
             Bot.Log("剑鱼 -350");
         }
