@@ -369,7 +369,7 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.LOOT_033)
             &&jianyu<2
             &&board.ManaAvailable >1
-            &&(!board.HasCardInHand(Card.Cards.TSC_086)||board.WeaponFriend == null)
+            &&(!board.HasCardInHand(Card.Cards.TSC_086)||(board.WeaponFriend == null))
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-250)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
