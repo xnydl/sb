@@ -481,6 +481,13 @@ namespace SmartBotProfiles
             Bot.Log("剑鱼 -350");
         }
          if(board.HasCardInHand(Card.Cards.TSC_086)
+        &&board.WeaponFriend != null 
+        && (board.WeaponFriend.Template.Id == Card.Cards.CS2_082||board.WeaponFriend.Template.Id == Card.Cards.VAN_CS2_082||board.WeaponFriend.Template.Id == Card.Cards.CS2_082_H1)
+        ){
+            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-350));
+            Bot.Log("剑鱼 -350");
+        }
+         if(board.HasCardInHand(Card.Cards.TSC_086)
         &&board.ManaAvailable ==1
         &&board.HasCardInHand(Card.Cards.GAME_005)
         &&!board.HasCardInHand(Card.Cards.GVG_075)//船载火炮 GVG_075 
