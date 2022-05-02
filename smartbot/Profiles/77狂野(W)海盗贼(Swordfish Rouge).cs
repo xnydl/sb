@@ -524,7 +524,7 @@ namespace SmartBotProfiles
           if(board.HasCardOnBoard(Card.Cards.TSC_085)
         ){
             p.GlobalWeaponsAttackModifier = 55;
-            Bot.Log('有携刃信使就a')
+            Bot.Log("有携刃信使就a");
          }
 #endregion
 #region 血帆教徒 Bloodsail Cultist      OG_315 
