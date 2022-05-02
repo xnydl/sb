@@ -369,7 +369,7 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.LOOT_033)
             &&jianyu<2
             &&board.ManaAvailable >1
-            &&!board.HasCardInHand(Card.Cards.TSC_086)
+            &&(!board.HasCardInHand(Card.Cards.TSC_086)||board.WeaponFriend == null)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-250)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
@@ -443,8 +443,8 @@ namespace SmartBotProfiles
 #region Card.Cards.HERO_03bp 英雄技能
       if(board.WeaponFriend == null
     ){
-        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-20));//匕首精通 Dagger Mastery ID：HERO_03bp 
-        Bot.Log("英雄技能 -20");
+        p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-999));//匕首精通 Dagger Mastery ID：HERO_03bp 
+        Bot.Log("英雄技能 -999");
     }
 #endregion
 
@@ -494,10 +494,14 @@ namespace SmartBotProfiles
 #endregion
 #region 携刃信使 Cutlass Courier ID：TSC_085 
         if(board.HasCardInHand(Card.Cards.TSC_085)
+        &&!board.HasCardInHand(Card.Cards.SCH_305)
         ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(-99)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(600)); 
             Bot.Log("携刃信使 -99 ");
+         }else{
+             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(-4)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(600)); 
          }
 #endregion
 #region 血帆教徒 Bloodsail Cultist      OG_315 
