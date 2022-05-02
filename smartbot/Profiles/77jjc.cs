@@ -215,6 +215,8 @@ namespace SmartBotProfiles
             int fenchanghaidao=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PIRATE);
               // 使用过的海盗数量
             int usedhaidao=fenchanghaidao+changshanghaidaonum;
+            int wangyunum=board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_325)+board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_326)+board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_938)+board.Hand.Count(x => x.Template.Id == Card.Cards.WC_701);
+
  #endregion
 
 
