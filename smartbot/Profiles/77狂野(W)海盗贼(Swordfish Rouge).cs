@@ -355,9 +355,9 @@ namespace SmartBotProfiles
 #region 团伙劫掠 TRL_124
             if(board.HasCardInHand(Card.Cards.TRL_124)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-550)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(-99)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TRL_124, new Modifier(999)); 
-            Bot.Log("团伙劫掠 -550");
+            Bot.Log("团伙劫掠 -99");
             }
 #endregion
 #region 海盗帕奇斯 CFM_637 
