@@ -450,15 +450,17 @@ namespace SmartBotProfiles
 #endregion
 
 #region Card.Cards.HERO_03bp 英雄技能
-        //  if(board.WeaponFriend == null 
-        //   && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
-        //   ){
+         if(board.WeaponFriend == null 
+          ){
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-5));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-5));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(-5));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(999));
-        //     Bot.Log("血帆教徒 -9999");
-        //   }  
+          }else{
+             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(130));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(130));//匕首精通 Dagger Mastery ID：HERO_03bp 
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(130));//匕首精通 Dagger Mastery ID：HERO_03bp   
+          }  
 #endregion
 
 
