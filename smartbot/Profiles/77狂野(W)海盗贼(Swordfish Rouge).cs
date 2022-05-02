@@ -473,12 +473,12 @@ namespace SmartBotProfiles
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999)); 
             Bot.Log("有剑鱼一费不跳币");
         } 
-         if(board.HasCardInHand(Card.Cards.TSC_086)
-         &&board.ManaAvailable >=3
-          ){
-            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(999));
-            Bot.Log("邪恶短刀不a");
-          } 
+        //  if(board.HasCardInHand(Card.Cards.TSC_086)
+        //  &&board.ManaAvailable >=3
+        //   ){
+        //     p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.CS2_082, new Modifier(999));
+        //     Bot.Log("邪恶短刀不a");
+        //   } 
         //   if(board.WeaponFriend != null 
         //   && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
         //   &&board.WeaponFriend.CurrentDurability > 1
