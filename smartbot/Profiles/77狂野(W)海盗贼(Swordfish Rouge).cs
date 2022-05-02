@@ -245,7 +245,18 @@ namespace SmartBotProfiles
               // 使用过的海盗数量(不算帕奇斯和空降歹徒)
             int usedhaidao=fenchanghaidao+changshanghaidaonum;
             Bot.Log("使用过的海盗数量"+usedhaidao);
+            int hasjianyu=0;
+            Bot.Log("剑鱼用过数量"+hasjianyu);
  #endregion
+
+
+#region 刺豚拳手 Pufferfist ID：TSC_002  
+            if(board.HasCardInHand(Card.Cards.TSC_002)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(150)); 
+            Bot.Log("刺豚拳手 150");
+            }
+#endregion
 
 #region 空降歹徒 DRG_056
             if(board.HasCardInHand(Card.Cards.DRG_056)
@@ -364,7 +375,7 @@ namespace SmartBotProfiles
 #endregion
 #region 洞穴探宝者 LOOT_033 
             if(board.HasCardInHand(Card.Cards.LOOT_033)
-            &&jianyu<2
+            &&hasjianyu<2
             &&board.ManaAvailable >1
             &&!board.HasCardInHand(Card.Cards.TSC_086)
             ){
@@ -440,10 +451,11 @@ namespace SmartBotProfiles
 #region Card.Cards.HERO_03bp 英雄技能
         // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(85)); 
          if(board.HasCardInHand(Card.Cards.TSC_086)
-        ){
-             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));
-            Bot.Log("英雄技能 999");
-        } 
+            &&board.MaxMana >2
+            ){
+                p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));
+                Bot.Log("英雄技能 999");
+            } 
 #endregion
 
 
@@ -464,16 +476,12 @@ namespace SmartBotProfiles
 #endregion
 
 #region 剑鱼 TSC_086
+
          if(board.HasCardInHand(Card.Cards.TSC_086)
          &&board.WeaponFriend == null
         ){
             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-350));
             Bot.Log("剑鱼 -350");
-        }
-         if(board.HasCardInHand(Card.Cards.TSC_086)
-        ){
-            p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-150));
-            Bot.Log("剑鱼 -150");
         }
          if(board.HasCardInHand(Card.Cards.TSC_086)
         &&board.ManaAvailable ==1
@@ -560,6 +568,14 @@ namespace SmartBotProfiles
 #region 攻击优先 卡牌威胁（通用） 
 
 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_074))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_074, new Modifier(200));
+            }//前沿哨所 Far Watch Post ID：BAR_074  
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.AV_118))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));
+            }//历战先锋 Battleworn Vanguard ID：AV_118 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.AV_118))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));
