@@ -489,6 +489,11 @@ namespace SmartBotProfiles
             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_086, new Modifier(-350));
             Bot.Log("剑鱼 -350");
         }
+         if(board.WeaponFriend.Template.Id == Card.Cards.CS2_082||board.WeaponFriend.Template.Id == Card.Cards.VAN_CS2_082||board.WeaponFriend.Template.Id == Card.Cards.CS2_082_H1)
+        ){
+            p.GlobalWeaponsAttackModifier = 55;
+            Bot.Log("有携刃信使就a");
+         }
          if(board.HasCardInHand(Card.Cards.TSC_086)
         &&board.ManaAvailable ==1
         &&board.HasCardInHand(Card.Cards.GAME_005)
