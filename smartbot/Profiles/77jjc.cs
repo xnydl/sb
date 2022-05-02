@@ -366,6 +366,13 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
             Bot.Log("掩息海星 250");
             }
 #endregion
+#region 沉睡者伊瑟拉 Ysera the Dreamer ID：CS3_033 
+            if(board.HasCardInHand(Card.Cards.CS3_033)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_033, new Modifier(-150)); 
+            Bot.Log("沉睡者伊瑟拉 -150");
+            }
+#endregion
 
 #region 赛丝诺女士 Lady S'theno ID：TSC_218 
             if(board.HasCardInHand(Card.Cards.TSC_218)
