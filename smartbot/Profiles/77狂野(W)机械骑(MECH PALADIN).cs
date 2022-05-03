@@ -304,6 +304,12 @@ namespace SmartBotProfiles
       Bot.Log("安保自动机 -99");
       }
 #endregion
+#region 格洛顿 BOT_906
+      if(board.HasCardInHand(Card.Cards.BOT_906)){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_906, new Modifier(130)); 
+      Bot.Log("格洛顿 130");
+      }
+#endregion
 #region 空中飞爪 DRG_225 
       if(board.HasCardInHand(Card.Cards.DRG_225)
       &&board.HasCardOnBoard(Card.Cards.TSC_928)
