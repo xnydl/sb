@@ -412,9 +412,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 通电机器人 BOT_907
       if(board.HasCardInHand(Card.Cards.BOT_907)
-      &&((board.HasCardInHand(Card.Cards.GIL_548)&&board.Hand.Count<8)
-      )
-      )
+      &&(board.HasCardInHand(Card.Cards.GIL_548)&&board.Hand.Count<8)
       ){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_907, new Modifier(999));
       Bot.Log("通电机器人"+999);
@@ -445,8 +443,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #region 星占师 BT_014 
       if(board.HasCardOnBoard(Card.Cards.BT_014))
     {
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BT_014, new Modifier(-5)); 
-    Bot.Log("星占师,送掉 -5");
+    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BT_014, new Modifier(-99)); 
+    Bot.Log("星占师,送掉 -99");
     }
     if(board.HasCardInHand(Card.Cards.BT_014))
     {
