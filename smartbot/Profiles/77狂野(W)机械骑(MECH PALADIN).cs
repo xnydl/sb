@@ -548,6 +548,10 @@ namespace SmartBotProfiles
 
 #region 攻击优先 卡牌威胁
 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CORE_AT_029))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CORE_AT_029, new Modifier(200));
+            }//锈水海盗 CORE_AT_029  
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_074))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_074, new Modifier(200));
