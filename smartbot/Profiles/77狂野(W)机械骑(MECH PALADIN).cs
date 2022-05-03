@@ -293,8 +293,9 @@ namespace SmartBotProfiles
 #endregion
 #region 安保自动机 TSC_928
       if(board.HasCardInHand(Card.Cards.TSC_928)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-60));
-      Bot.Log("安保自动机 -60");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-99));
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(999)); 
+      Bot.Log("安保自动机 -99");
       }
 #endregion
 #region 空中飞爪 DRG_225 
