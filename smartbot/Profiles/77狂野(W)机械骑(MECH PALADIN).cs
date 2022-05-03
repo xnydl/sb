@@ -306,8 +306,8 @@ namespace SmartBotProfiles
 #endregion
 #region 格洛顿 BOT_906
       if(board.HasCardInHand(Card.Cards.BOT_906)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_906, new Modifier(130)); 
-      Bot.Log("格洛顿 130");
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BOT_906, new Modifier(150)); 
+      Bot.Log("格洛顿 150");
       }
 #endregion
 #region 空中飞爪 DRG_225 
