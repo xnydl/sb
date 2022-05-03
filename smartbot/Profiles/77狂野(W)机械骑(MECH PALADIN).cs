@@ -255,6 +255,7 @@ namespace SmartBotProfiles
 #region 雷达探测 TSC_079
       if(board.HasCardInHand(Card.Cards.TSC_079)
       &&board.Hand.Count<7
+      &&(board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) > 13
       ){
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_079, new Modifier(-9999));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_079, new Modifier(999)); 
@@ -289,6 +290,7 @@ namespace SmartBotProfiles
 #region 石炉守备官 AV_343 
       if(board.HasCardInHand(Card.Cards.AV_343)
       &&board.Hand.Count<7
+      &&(board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) > 13
       &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_079)<2){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(-8888));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(999)); 
