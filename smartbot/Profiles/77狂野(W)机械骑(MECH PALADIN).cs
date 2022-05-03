@@ -434,7 +434,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 泡泡机器人 TSC_059 
       if(board.HasCardInHand(Card.Cards.TSC_059)
-      &&NumberOfMachinesInner>0){
+      &&NumberOfMachinesInner>2){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_059, new Modifier(-20*NumberOfMachinesInner));
       Bot.Log("泡泡机器人"+-20*NumberOfMachinesInner);
       }else{
