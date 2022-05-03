@@ -321,7 +321,7 @@ namespace SmartBotProfiles
 #endregion
 #region 泡泡机器人 TSC_059 
       if(board.HasCardInHand(Card.Cards.TSC_059)
-      &&NumberOfMachinesInner>=3){
+      &&friendCount>=3){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_059, new Modifier(-99));
       Bot.Log("泡泡机器人"+-99);
       }else{
