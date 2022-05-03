@@ -425,7 +425,7 @@ namespace SmartBotProfiles
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
             &&board.Hand.Count(card => card.CurrentCost<=2)>=1
-            &&board.MaxMana <=2
+            &&board.MaxMana <2
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-550)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
@@ -475,7 +475,7 @@ namespace SmartBotProfiles
 #endregion
 
 #region 剑鱼 TSC_086
-            p.GlobalWeaponsAttackModifier = 55;
+            p.GlobalWeaponsAttackModifier =-55;
 
          if(board.HasCardInHand(Card.Cards.TSC_086)
          &&board.WeaponFriend == null
