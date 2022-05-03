@@ -607,10 +607,6 @@ namespace SmartBotProfiles
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));
             }//历战先锋 Battleworn Vanguard ID：AV_118 
-            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.AV_118))
-            {
-                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));
-            }//历战先锋 Battleworn Vanguard ID：AV_118 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.GVG_040))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GVG_040, new Modifier(200));

@@ -236,132 +236,6 @@ namespace SmartBotProfiles
  #endregion
 
 
-#region sb不爱用的卡牌赋值
-
-p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BT_019, new Modifier(20));//莫戈尔·莫戈尔格 Murgur Murgurgle     BT_019  
-p.CastMinionsModifiers.AddOrUpdate(Card.Cards.YOP_035, new Modifier(10));//月牙 Moonfang     YOP_035
-p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(20));
-p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BAR_880, new Modifier(500));//1级定罪最先使用
-p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BT_018, new Modifier(500));//幽光鱼竿 Underlight Angling Rod     BT_018 最先使用
-p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗岩熔铸体 Granite Forgeborn     SW_032 
-
-
-
-#endregion
-
-#region 对面没用过超凡之盟(正常游戏逻辑)
-if (!board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial Alignment     BAR_539 
-{
-    
-
-//1费逻辑
-
-//2费逻辑
-
-
-
-
-#region 大型魔像
-
-        if(board.ManaAvailable >= 5
-            && board.HasCardInHand(Card.Cards.BAR_079_m2)//大型魔像 Greater Golem     BAR_079_m2
-        )
-        {
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_079_m2, new Modifier(-200));
-        } //剩余5费提高用大型魔像优先
-
-#endregion
-
-}
-#endregion
-
-#region 对面用过超凡之盟(专用逻辑)
-
-if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial Alignment     BAR_539 
-{
-
-}
-#endregion
- 
-
-#region 武器优先级
-    p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.SW_025, new Modifier(-50));//拍卖行木槌 Auctionhouse Gavel     SW_025 
-#endregion
-
-#region  随从优先级
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_062, new Modifier(-20)); //提高旋岩虫 Gyreworm     DMF_062 优先级
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BT_109t, new Modifier(-60)); //终极瓦丝琪 Vashj Prime     BT_109t 
-    // p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.EX1_567, new Modifier(-20));//毁灭之锤 Doomhammer     EX1_567 
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_076, new Modifier(-30));//莫尔杉哨所 Mor'shan Watch Post     BAR_076
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(-200));//艾露恩神谕者      SW_419 
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_080, new Modifier(99));//考内留斯·罗姆 Cornelius Roame     SW_080  
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_244, new Modifier(-999));//教师的爱宠      SCH_244  
-    // // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_734, new Modifier(-140));//格雷布     DMF_734  
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(-40));//提高活泼的松鼠      SW_439 优先级
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_060, new Modifier(-20));//卖花女
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_537, new Modifier(-198));//钢鬃卫兵      BAR_537 
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_306, new Modifier(55));//劳累的驮骡      SW_306
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(25));//农夫      SW_319
-    // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_069, new Modifier(-20));//热情的柜员        SW_069
-  
-#endregion
-  
-#region 法术优先级
-    // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_247, new Modifier(-10));
-    // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.WC_033, new Modifier(-10));
-    // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TRL_243, new Modifier(-10));//飞扑 Pounce     TRL_243 
-    // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_158, new Modifier(-10));//丛林之魂
-    // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(20));//雷霆绽放      SCH_427 
-    // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_422, new Modifier(55));//播种施肥      SW_422
-    // p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_432, new Modifier(55));//科多兽坐骑 Kodo Mount     SW_432 
-
-#endregion
-
-#region 不送怪的逻辑
-   
-    // 不送考内留斯·罗姆 Cornelius Roame     SW_080 
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_080, new Modifier(250)); 
-    // 不送考内留斯·罗姆 Cornelius Roame     SW_080 
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(250)); 
-      //修饰基维斯      GVG_094
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.GVG_094, new Modifier(250));
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(250));
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_431, new Modifier(100));// 花园猎豹 Park Panther     SW_431
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_080, new Modifier(250));// 考内留斯·罗姆 Cornelius Roame     SW_080
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.DMF_230, new Modifier(250));// 伊格诺斯 Il'gynoth ID：DMF_230
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(250));// 农夫SW_319
-#endregion
-
-#region 增加随从威胁值
-    // 增加废料场巨魔的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_155, new Modifier(200));//废料场巨像 Scrapyard Colossus     BT_155 
-    // 增加巨型图腾埃索尔 Grand Totem Eys'or     DMF_709 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_709, new Modifier(200));
-    // 增加艾露恩神谕者      SW_419 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(200));
-    // 增加农夫 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(200));
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.WC_006, new Modifier(200));
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_033, new Modifier(200));//运河慢步者 Canal Slogger     SW_033
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CS3_007, new Modifier(200));//电击学徒 Novice Zapper     CS3_007 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_074, new Modifier(200));//前沿哨所      BAR_074 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_918, new Modifier(200));//塔姆辛·罗姆 Tamsin Roame     BAR_918 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_230, new Modifier(200));//伊格诺斯 Il'gynoth     DMF_230 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_733, new Modifier(200));//莫尔葛工匠 Mo'arg Artificer     BT_733 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_734, new Modifier(200));//格雷布     DMF_734  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_035, new Modifier(200));//月牙 Moon方    YOP_035
-  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_030, new Modifier(200));//货物保镖 Cargo Guard ID：SW_030
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_317, new Modifier(200));//原野联络人 Field Contact ID：BAR_317 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_030, new Modifier(200));//邪火神射手 Felfire Deadeye ID：YOP_030  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));//迪菲亚炮手 Defias Cannoneer ID：DED_519 
-    // p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(600));//剑圣奥卡尼 Blademaster Okani ID：TSC_032 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));//历战先锋 Battleworn Vanguard ID：AV_118 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BOT_423, new Modifier(200));//梦境花栽种师 Dreampetal Florist ID：BOT_423
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_255, new Modifier(200));//凯尔萨斯·逐日者 Kael'thas Sunstrider ID：BT_255 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
-#endregion
 #region 技能
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-550)); 
 #endregion
@@ -653,7 +527,46 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 
 #region 攻击优先 卡牌威胁
 
-
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_074))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_074, new Modifier(200));
+            }//前沿哨所 Far Watch Post ID：BAR_074  
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.AV_118))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));
+            }//历战先锋 Battleworn Vanguard ID：AV_118 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.GVG_040))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GVG_040, new Modifier(200));
+            }//沙鳞灵魂行者 Siltfin Spiritwalker ID：GVG_040
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BT_304))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_304, new Modifier(200));
+            }//改进型恐惧魔王 Enhanced Dreadlord ID：BT_304
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_068))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_068, new Modifier(200));
+            }//莫尔葛熔魔 Mo'arg Forgefiend ID：SW_068 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_860))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));
+            }//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DED_519))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));
+            }//迪菲亚炮手  DED_519
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CFM_807))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CFM_807, new Modifier(200));
+            }//大富翁比尔杜 Auctionmaster Beardo ID：CFM_807 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_054))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(200));
+            }//机械鲨鱼 TSC_054
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.GIL_646))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GIL_646, new Modifier(200));
+            }//发条机器人 Clockwork Automaton ID：GIL_646 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ULD_231))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ULD_231, new Modifier(200));
