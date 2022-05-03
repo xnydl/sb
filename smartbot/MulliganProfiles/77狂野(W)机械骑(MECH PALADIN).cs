@@ -116,13 +116,13 @@ namespace SmartBot.Mulligan
                 //         Keep(card,"格洛顿");
                 //     } 
                 // }
-                // if(card==Card.Cards.BOT_906// 格洛顿 BOT_906
-                // ){
-                //     if(!CardsToKeep.Contains(Card.Cards.BOT_906))
-                //     {
-                //         Keep(card,"格洛顿");
-                //     } 
-                // }
+                if(card==Card.Cards.BOT_906// 格洛顿 BOT_906
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.BOT_906))
+                    {
+                        Keep(card,"格洛顿");
+                    } 
+                }
 
                 if(card==Card.Cards.BOT_909// 水晶学 BOT_909 
                 ){   
@@ -145,13 +145,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"污手街供货商");
                     } 
                 }
-                // if(card==Card.Cards.TSC_083// 海床救生员 TSC_083
-                // ){   
-                //     if(!CardsToKeep.Contains(Card.Cards.TSC_083))
-                //     {
-                //         Keep(card,"海床救生员");
-                //     } 
-                // }
+                if(card==Card.Cards.TSC_083// 海床救生员 TSC_083
+                ){   
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_083))
+                    {
+                        Keep(card,"海床救生员");
+                    } 
+                }
                 if(card==Card.Cards.TSC_632// 械钳虾 TSC_632
                 ){ if(!CardsToKeep.Contains(Card.Cards.TSC_632))
                     {
@@ -164,12 +164,12 @@ namespace SmartBot.Mulligan
                         Keep(card,"雷达探测");
                     }
                 }
-                // if(card==Card.Cards.TSC_928// 安保自动机 TSC_928
-                // ){ if(!CardsToKeep.Contains(Card.Cards.TSC_928))
-                //     {
-                //         Keep(card,"安保自动机");
-                //     }
-                // }
+                if(card==Card.Cards.TSC_928// 安保自动机 TSC_928
+                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_928))
+                    {
+                        Keep(card,"安保自动机");
+                    }
+                }
                 if(card==Card.Cards.BOT_907// 通电机器人 BOT_907
                 ){ if(!CardsToKeep.Contains(Card.Cards.BOT_907))
                     {
@@ -186,16 +186,22 @@ namespace SmartBot.Mulligan
                 ){ 
                         Keep(card,"机械跃迁者");
                 }
-                // if(card==Card.Cards.AV_343// 石炉守备官 AV_343
-                // ){ if(!CardsToKeep.Contains(Card.Cards.AV_343))
-                //     {
-                //         Keep(card,"石炉守备官");
-                //     }
-                // }
+                if(card==Card.Cards.AV_343// 石炉守备官 AV_343
+                ){ if(!CardsToKeep.Contains(Card.Cards.AV_343))
+                    {
+                        Keep(card,"石炉守备官");
+                    }
+                }
                 if(card==Card.Cards.GVG_013// 齿轮大师 Cogmaster ID：GVG_013 
                 ){ if(!CardsToKeep.Contains(Card.Cards.GVG_013))
                     {
                         Keep(card,"齿轮大师");
+                    }
+                }
+                if(card==Card.Cards.BOT_445// 机械袋鼠 BOT_445 
+                ){ if(!CardsToKeep.Contains(Card.Cards.BOT_445))
+                    {
+                        Keep(card,"机械袋鼠");
                     }
                 }
             }
