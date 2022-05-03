@@ -284,9 +284,9 @@ namespace SmartBotProfiles
       if(board.HasCardInHand(Card.Cards.AV_343)
       &&board.Hand.Count<7
       &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_079)<2){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(-999));
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(-8888));
       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(999)); 
-      Bot.Log("石炉守备官 -999");
+      Bot.Log("石炉守备官 -8888");
       }else{
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_343, new Modifier(150));
       }
