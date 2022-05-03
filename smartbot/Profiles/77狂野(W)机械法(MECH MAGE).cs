@@ -367,8 +367,8 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
 #endregion
 #region 怨灵之书 GIL_548  
       if(board.HasCardInHand(Card.Cards.GIL_548)){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GIL_548, new Modifier(-99));
-      Bot.Log("怨灵之书 -99");
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GIL_548, new Modifier(-999));
+      Bot.Log("怨灵之书 -999");
       }
 #endregion
 #region 安保自动机 TSC_928

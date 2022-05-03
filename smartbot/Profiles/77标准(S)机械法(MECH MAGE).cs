@@ -352,18 +352,7 @@ if (board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial A
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));//历战先锋 Battleworn Vanguard ID：AV_118 
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BOT_423, new Modifier(200));//梦境花栽种师 Dreampetal Florist ID：BOT_423
 #endregion
-#region 海床传送口 TSC_055  
-      if(board.HasCardInHand(Card.Cards.TSC_055)){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_055, new Modifier(-99));
-      Bot.Log("海床传送口 -99");
-      }
-#endregion
-#region 安保自动机 TSC_928
-      if(board.HasCardInHand(Card.Cards.TSC_928)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_928, new Modifier(-99));
-      Bot.Log("安保自动机 -99");
-      }
-#endregion
+
 #region 德雷克塔尔 Drek'Thar ID：AV_100  
          if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-999));
