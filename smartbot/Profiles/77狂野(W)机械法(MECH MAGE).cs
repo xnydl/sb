@@ -261,9 +261,12 @@ namespace SmartBotProfiles
       }
 #endregion
 #region 机械鲨鱼 TSC_054
-      if(board.HasCardInHand(Card.Cards.TSC_054)){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(130));
-      Bot.Log("机械鲨鱼 130");
+      if(board.HasCardInHand(Card.Cards.TSC_054)
+      &&board.Hand.Count(card => card.CurrentCost<=1)>2
+      &&board.MinionFriend.Count <=4
+      ){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(-350));
+      Bot.Log("机械鲨鱼 -350");
       }
 #endregion
 #region 机械跃迁者 GVG_006
