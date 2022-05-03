@@ -237,7 +237,13 @@ namespace SmartBotProfiles
 
 
 #region 技能
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-550)); 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-550));//援军 Reinforce ID：HERO_04bp 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS2_101_H1, new Modifier(-550));//援军 Reinforce ID：CS2_101_H1 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS2_101_H2, new Modifier(-550));//援军 Reinforce ID：CS2_101_H2 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CS2_101_H3, new Modifier(-550));//援军 Reinforce ID：CS2_101_H3
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04fbp, new Modifier(-550));//援军 Reinforce ID：HERO_04fbp 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04lbp, new Modifier(-550));//援军 Reinforce ID：HERO_04lbp 
+      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04ubp, new Modifier(-550));//援军 Reinforce ID：HERO_04ubp 
 #endregion
 #region 海床传送口 TSC_055  
       if(board.HasCardInHand(Card.Cards.TSC_055)){
