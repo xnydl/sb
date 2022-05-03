@@ -86,6 +86,12 @@ namespace SmartBot.Mulligan
                         Keep(card,"机械跃迁者");
                     }
                         }
+                if(card==Card.Cards.BT_014// 星占师 Starscryer ID：BT_014 
+                ){  if(!CardsToKeep.Contains(Card.Cards.BT_014))
+                    {
+                        Keep(card,"星占师");
+                    }
+                        }
                 if(card==Card.Cards.BOT_907// 通电机器人 BOT_907
                 ){
                    if(!CardsToKeep.Contains(Card.Cards.BOT_907))
