@@ -116,13 +116,13 @@ namespace SmartBot.Mulligan
                 //         Keep(card,"格洛顿");
                 //     } 
                 // }
-                if(card==Card.Cards.BOT_906// 格洛顿 BOT_906
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.BOT_906))
-                    {
-                        Keep(card,"格洛顿");
-                    } 
-                }
+                // if(card==Card.Cards.BOT_906// 格洛顿 BOT_906
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.BOT_906))
+                //     {
+                //         Keep(card,"格洛顿");
+                //     } 
+                // }
 
                 if(card==Card.Cards.BOT_909// 水晶学 BOT_909 
                 ){   
