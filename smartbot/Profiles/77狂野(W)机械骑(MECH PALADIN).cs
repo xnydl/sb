@@ -319,7 +319,7 @@ namespace SmartBotProfiles
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_059, new Modifier(-20*NumberOfMachinesInner));
       Bot.Log("泡泡机器人"+-20*NumberOfMachinesInner);
       }else{
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_059, new Modifier(130));
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_059, new Modifier(250));
       }
 #endregion
 #region 艾萨拉的观月仪 TSC_644
@@ -340,6 +340,12 @@ namespace SmartBotProfiles
       if(board.HasCardInHand(Card.Cards.TSC_054)){
       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(130));
       Bot.Log("机械鲨鱼 130");
+      }
+#endregion
+#region 布林顿3000型 Blingtron 3000 ID：GVG_119 
+      if(board.HasCardInHand(Card.Cards.GVG_119)){
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_119, new Modifier(-99));
+      Bot.Log("布林顿3000型 -99");
       }
 #endregion
 #region 光铸凯瑞尔 AV_206 
