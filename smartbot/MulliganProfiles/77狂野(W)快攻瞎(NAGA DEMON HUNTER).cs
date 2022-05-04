@@ -166,7 +166,7 @@ namespace SmartBot.Mulligan
                         Keep(card,"德雷克塔尔");
                     } 
                 }
-                if(card==Card.Cards.CFM_790&&mansu// 卑劣的脏鼠 Dirty Rat ID：CFM_790 
+                if(card==Card.Cards.CFM_790&&mansu>0// 卑劣的脏鼠 Dirty Rat ID：CFM_790 
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.CFM_790))
                     {
