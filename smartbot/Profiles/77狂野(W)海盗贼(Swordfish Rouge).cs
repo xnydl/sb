@@ -313,8 +313,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.DMF_515)
             &&board.ManaAvailable >= 3 
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_515, new Modifier(-20)); 
-            Bot.Log("行骗 -20");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_515, new Modifier(-99)); 
+            Bot.Log("行骗 -99");
             }
 #endregion
 #region 伺机待发 CORE_EX1_145
