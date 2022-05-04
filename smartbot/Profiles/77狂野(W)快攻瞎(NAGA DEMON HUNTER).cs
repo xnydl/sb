@@ -274,6 +274,13 @@ namespace SmartBotProfiles
         Bot.Log("锈烂蝰蛇换");
       }
 #endregion
+#region 卑劣的脏鼠 Dirty Rat ID：CFM_790 
+      if(board.HasCardInHand(Card.Cards.CFM_790)
+      ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_790, new Modifier(-99));
+        Bot.Log("卑劣的脏鼠-99");
+      }
+#endregion
 
 #region 怒鳞纳迦 Wrathscale Naga ID：CORE_BT_355 
       //  如果随从为0,降低旅行商人优先值,如果随从大于等于1可以用
