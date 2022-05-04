@@ -473,7 +473,7 @@ namespace SmartBotProfiles
 #endregion
 
 #region 剑鱼 TSC_086
-            p.GlobalWeaponsAttackModifier =-55;
+            // p.GlobalWeaponsAttackModifier =-55;
 
          if(board.HasCardInHand(Card.Cards.TSC_086)
          &&board.WeaponFriend == null
