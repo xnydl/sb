@@ -288,6 +288,7 @@ namespace SmartBotProfiles
             ){ 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-9999)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-9999)); 
              Bot.Log("秘密通道 -9999");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
@@ -447,6 +448,7 @@ namespace SmartBotProfiles
 
 #region Card.Cards.HERO_03bp 英雄技能
          if(board.WeaponFriend == null 
+          &&(!board.HasCardInHand(Card.Cards.TSC_086)&&!board.HasCardInHand(Card.Cards.LOOT_033))
           ){
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-25));//匕首精通 Dagger Mastery ID：HERO_03bp 
