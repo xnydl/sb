@@ -235,7 +235,7 @@ namespace SmartBot.Mulligan
                         Keep(card,"锈水海盗");
                     } 
                 }
-                if(card==Card.Cards.TSC_086&&HasCoin==true// 剑鱼 TSC_086
+                if(card==Card.Cards.TSC_086// 剑鱼 TSC_086
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.TSC_086))
                     {
