@@ -207,7 +207,7 @@ namespace SmartBot.Mulligan
                         Keep(card,"船载火炮");
                     } 
                 }
-                if(card==Card.Cards.CORE_CS2_074&&flag1>0// 致命药膏 CORE_CS2_074
+                if(card==Card.Cards.CORE_CS2_074&&flag1>0&&mansu>0// 致命药膏 CORE_CS2_074
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.CORE_CS2_074))
                     {
