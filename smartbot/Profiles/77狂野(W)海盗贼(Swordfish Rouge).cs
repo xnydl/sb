@@ -163,7 +163,15 @@ namespace SmartBotProfiles
                 Bot.Log("攻击值"+(a * 0.625 + 103.5));
             }	   
                      
-           
+           if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
+                  (BoardHelper.GetEnemyHealthAndArmor(board) -
+                 BoardHelper.GetPotentialMinionDamages(board) -
+               BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
+               BoardHelper.GetTotalBlastDamagesInHand(board)))
+           {
+               p.GlobalAggroModifier = 999;
+           }//如果下一轮可以斩杀对面，攻击性提高
+            
 
        {
  
