@@ -365,8 +365,9 @@ namespace SmartBotProfiles
 #endregion
 #region 致命药膏 CORE_CS2_074 
             if(board.HasCardInHand(Card.Cards.CORE_CS2_074)
-            &&board.HasCardInHand(Card.Cards.TSC_086)
-            &&board.WeaponFriend == null
+            &&board.WeaponFriend != null 
+            && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
+            && board.WeaponFriend.CurrentDurability >= 2
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_074, new Modifier(-99)); 
             Bot.Log("致命药膏 -99");
