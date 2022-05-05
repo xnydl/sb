@@ -253,8 +253,8 @@ namespace SmartBotProfiles
 #region 刺豚拳手 Pufferfist ID：TSC_002  
             if(board.HasCardInHand(Card.Cards.TSC_002)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(250)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(-100)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(150)); 
+            // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(-100)); 
             Bot.Log("刺豚拳手 250");
             }
 #endregion
