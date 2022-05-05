@@ -459,7 +459,7 @@ namespace SmartBotProfiles
             Bot.Log("转刀");
           }
           if(board.MaxMana ==2
-          &&(!board.HasCardInHand(Card.Cards.TSC_086)&&!board.HasCardInHand(Card.Cards.LOOT_033))
+          &&(!board.HasCardInHand(Card.Cards.TSC_086)&&!board.HasCardInHand(Card.Cards.LOOT_033)&&(!board.HasCardInHand(Card.Cards.GVG_075)&&!board.HasCardInHand(Card.Cards.GAME_005)))
           ){
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(-99));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(-99));//匕首精通 Dagger Mastery ID：HERO_03bp 
