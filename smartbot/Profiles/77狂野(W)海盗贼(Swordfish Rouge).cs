@@ -295,6 +295,7 @@ namespace SmartBotProfiles
             &&(board.ManaAvailable >= 4&&board.Hand.Count<=4)
             ){ 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_926, new Modifier(-999)); //掩息海星 TSC_926 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-9999)); 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-9999));
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(-999)); 
