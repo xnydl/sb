@@ -610,6 +610,10 @@ namespace SmartBotProfiles
 #region 攻击优先 卡牌威胁（通用） 
 
 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_635))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_635, new Modifier(200));
+            }//艾萨拉之辉 Radiance of Azshara ID：TSC_635 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_074))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_074, new Modifier(200));
