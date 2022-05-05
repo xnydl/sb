@@ -147,11 +147,10 @@ namespace SmartBotProfiles
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
-             if( board.EnemyClass == Card.CClass.SHAMAN
-                || board.EnemyClass == Card.CClass.PALADIN
+             if( board.EnemyClass == Card.CClass.PALADIN
                 || board.EnemyClass == Card.CClass.WARRIOR
-                || board.EnemyClass == Card.CClass.MAGE
                 || board.EnemyClass == Card.CClass.ROGUE
+                || board.EnemyClass == Card.CClass.DEMONHUNTER
                 )
             {
                 p.GlobalAggroModifier = (int)(a * 0.625 + 96.5);
@@ -159,8 +158,8 @@ namespace SmartBotProfiles
             }
             else
             {
-                p.GlobalAggroModifier = (int)(a * 0.625 + 113.5);
-                Bot.Log("攻击值"+(a * 0.625 + 103.5));
+                p.GlobalAggroModifier = (int)(a * 0.625 + 400);
+                Bot.Log("攻击值"+(a * 0.625 + 400.5));
             }	   
                      
            if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
