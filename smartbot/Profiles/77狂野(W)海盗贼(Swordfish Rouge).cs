@@ -245,8 +245,9 @@ namespace SmartBotProfiles
 #region 刺豚拳手 Pufferfist ID：TSC_002  
             if(board.HasCardInHand(Card.Cards.TSC_002)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(150)); 
-            Bot.Log("刺豚拳手 150");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(250)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(-100)); 
+            Bot.Log("刺豚拳手 250");
             }
 #endregion
 
@@ -312,7 +313,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.DMF_515)
             &&board.ManaAvailable >= 3 
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_515, new Modifier(-99)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DMF_515, new Modifier(-99));
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DMF_515, new Modifier(-100)); 
             Bot.Log("行骗 -99");
             }
 #endregion
@@ -467,8 +469,9 @@ namespace SmartBotProfiles
 
 #region 恐怖海盗 NEW1_022
         if(board.HasCardInHand(Card.Cards.NEW1_022)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.NEW1_022, new Modifier(130));  
-            Bot.Log("恐怖海盗 130 ");
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-100)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.NEW1_022, new Modifier(250));  
+            Bot.Log("恐怖海盗 250 ");
             }
 #endregion
 

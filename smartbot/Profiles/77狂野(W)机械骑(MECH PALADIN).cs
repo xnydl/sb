@@ -547,7 +547,7 @@ namespace SmartBotProfiles
 #endregion
 
 #region 攻击优先 卡牌威胁
-
+    
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CORE_AT_029))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CORE_AT_029, new Modifier(200));
