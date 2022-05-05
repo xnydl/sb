@@ -147,6 +147,23 @@ namespace SmartBotProfiles
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
+             if( board.EnemyClass == Card.CClass.SHAMAN
+                || board.EnemyClass == Card.CClass.PALADIN
+                || board.EnemyClass == Card.CClass.WARRIOR
+                || board.EnemyClass == Card.CClass.MAGE
+                || board.EnemyClass == Card.CClass.ROGUE
+                )
+            {
+                p.GlobalAggroModifier = (int)(a * 0.625 + 96.5);
+                Bot.Log("攻击值"+(a * 0.625 + 96.5));
+            }
+            else
+            {
+                p.GlobalAggroModifier = (int)(a * 0.625 + 113.5);
+                Bot.Log("攻击值"+(a * 0.625 + 103.5));
+            }	   
+                     
+           
 
        {
  
@@ -208,24 +225,7 @@ namespace SmartBotProfiles
                 || myAttack >= (board.HeroEnemy.CurrentHealth) /2
                 ){
                     p.GlobalAggroModifier = (int)(a * 0.625 +9999);
-                }else if( board.EnemyClass == Card.CClass.SHAMAN
-                || board.EnemyClass == Card.CClass.PALADIN
-                || board.EnemyClass == Card.CClass.WARRIOR
-                || board.EnemyClass == Card.CClass.MAGE
-                || board.EnemyClass == Card.CClass.ROGUE
-                )
-            {
-                p.GlobalAggroModifier = (int)(a * 0.625 + 96.5);
-                Bot.Log("攻击值"+(a * 0.625 + 96.5));
-            }
-            else
-            {
-                p.GlobalAggroModifier = (int)(a * 0.625 + 113.5);
-                Bot.Log("攻击值"+(a * 0.625 + 103.5));
-            }	   
-                     
-           
-
+                }
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
             // 海盗数量
