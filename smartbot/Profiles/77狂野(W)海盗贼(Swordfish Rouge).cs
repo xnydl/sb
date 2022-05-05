@@ -170,6 +170,7 @@ namespace SmartBotProfiles
                BoardHelper.GetTotalBlastDamagesInHand(board)))
            {
                p.GlobalAggroModifier = 999;
+               Bot.Log("斩杀了");
            }//如果下一轮可以斩杀对面，攻击性提高
             
 
@@ -394,7 +395,7 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.LOOT_033)
             &&jianyu<2
             &&board.ManaAvailable >1
-            &&(!board.HasCardInHand(Card.Cards.TSC_086)||(board.WeaponFriend == null))
+            &&(!board.HasCardInHand(Card.Cards.TSC_086)&&(board.WeaponFriend == null))
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-250)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
