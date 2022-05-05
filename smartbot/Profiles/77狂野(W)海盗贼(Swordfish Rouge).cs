@@ -220,12 +220,6 @@ namespace SmartBotProfiles
                     enemyMinionHealth += board.MinionEnemy[x].CurrentHealth;
                 }
             }
-             if (!board.MinionEnemy.Any(x => x.IsTaunt)
-                && (BoardHelper.GetEnemyHealthAndArmor(board) - BoardHelper.GetPotentialMinionDamages(board) - BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <= BoardHelper.GetTotalBlastDamagesInHand(board))
-                || myAttack >= (board.HeroEnemy.CurrentHealth) /2
-                ){
-                    p.GlobalAggroModifier = (int)(a * 0.625 +9999);
-                }
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
             // 海盗数量
