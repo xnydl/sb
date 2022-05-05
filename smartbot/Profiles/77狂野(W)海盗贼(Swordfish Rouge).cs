@@ -285,7 +285,7 @@ namespace SmartBotProfiles
 #endregion
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
-            &&(board.ManaAvailable >= 4&&board.Hand.Count<=3)
+            &&(board.ManaAvailable >= 4&&board.Hand.Count<=4)
             ){ 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-9999)); 
