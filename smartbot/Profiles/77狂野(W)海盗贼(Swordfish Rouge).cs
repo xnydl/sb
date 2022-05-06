@@ -318,8 +318,8 @@ namespace SmartBotProfiles
             &&!board.HasCardInHand(Card.Cards.SCH_305)
             &&board.ManaAvailable >= 5
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BOT_242, new Modifier(-999)); 
-            Bot.Log("迈拉的不稳定元素 -999");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BOT_242, new Modifier(-9999)); 
+            Bot.Log("迈拉的不稳定元素 -9999");
             }
 #endregion
 #region 行骗 DMF_515 
