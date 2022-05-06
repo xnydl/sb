@@ -252,10 +252,7 @@ namespace SmartBot.Mulligan
                 }
                 if(card==Card.Cards.SCH_623&&flag1+flag3>0// 劈砍课程 SCH_623
                 ){
-                    if(!CardsToKeep.Contains(Card.Cards.SCH_623))
-                    {
                         Keep(card,"劈砍课程");
-                    } 
                 }
                 if(card==Card.Cards.SCH_305&&flag4>0// 秘密通道 SCH_305 
                 ){
