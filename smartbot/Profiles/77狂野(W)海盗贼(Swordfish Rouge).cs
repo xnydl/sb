@@ -167,6 +167,7 @@ namespace SmartBotProfiles
                  BoardHelper.GetPotentialMinionDamages(board) -
                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
                BoardHelper.GetTotalBlastDamagesInHand(board)))
+               &&board.HeroFriend.CurrentHealth>=13
            {
                p.GlobalAggroModifier = 999;
                Bot.Log("斩杀了");
@@ -299,6 +300,7 @@ namespace SmartBotProfiles
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-9999)); 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-9999));
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(-999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999));//board.HasCardInHand(Card.Cards.GVG_075) 
              Bot.Log("秘密通道 -9999");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
@@ -314,9 +316,10 @@ namespace SmartBotProfiles
 #region 迈拉的不稳定元素 Myra's Unstable Element ID：BOT_242 
             if(board.HasCardInHand(Card.Cards.BOT_242)
             &&!board.HasCardInHand(Card.Cards.SCH_305)
+            &&board.ManaAvailable >= 5
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BOT_242, new Modifier(-20)); 
-            Bot.Log("迈拉的不稳定元素 -20");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BOT_242, new Modifier(-999)); 
+            Bot.Log("迈拉的不稳定元素 -999");
             }
 #endregion
 #region 行骗 DMF_515 
