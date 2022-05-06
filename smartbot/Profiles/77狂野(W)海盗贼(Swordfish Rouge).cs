@@ -493,8 +493,8 @@ namespace SmartBotProfiles
 #region 恐怖海盗 NEW1_022
         if(board.HasCardInHand(Card.Cards.NEW1_022)){
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-100)); 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.NEW1_022, new Modifier(250));  
-            Bot.Log("恐怖海盗 250 ");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.NEW1_022, new Modifier(150));  
+            Bot.Log("恐怖海盗 150 ");
             }
 #endregion
 
