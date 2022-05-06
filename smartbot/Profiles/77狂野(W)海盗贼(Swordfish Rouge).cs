@@ -397,9 +397,9 @@ namespace SmartBotProfiles
             &&board.ManaAvailable >1
             &&(!board.HasCardInHand(Card.Cards.TSC_086)&&(board.WeaponFriend == null))
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-250)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
-            Bot.Log("洞穴探宝者 -250");
+            Bot.Log("洞穴探宝者 -999");
             }
 #endregion
 #region 锈水海盗 CORE_AT_029
