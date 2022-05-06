@@ -254,7 +254,7 @@ namespace SmartBotProfiles
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(150)); 
             // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(-100)); 
-            Bot.Log("刺豚拳手 250");
+            Bot.Log("刺豚拳手 150");
             }
 #endregion
 
@@ -499,7 +499,7 @@ namespace SmartBotProfiles
 #endregion
 
 #region 剑鱼 TSC_086
-            // p.GlobalWeaponsAttackModifier =-55;
+            p.GlobalWeaponsAttackModifier =-55;
 
          if(board.HasCardInHand(Card.Cards.TSC_086)
          &&board.WeaponFriend == null
