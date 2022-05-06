@@ -276,8 +276,8 @@ namespace SmartBotProfiles
 #region 掩息海星 TSC_926 
             if(board.HasCardInHand(Card.Cards.TSC_926)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_926, new Modifier(250)); 
-            Bot.Log("掩息海星 250");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_926, new Modifier(999)); 
+            Bot.Log("掩息海星 999");
             }
 #endregion
 #region 海盗将领钩牙 TSC_934 
