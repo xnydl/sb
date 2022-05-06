@@ -195,10 +195,7 @@ namespace SmartBot.Mulligan
                 }
                 if(card==Card.Cards.DRG_056// 空降歹徒 DRG_056
                 ){
-                    if(!CardsToKeep.Contains(Card.Cards.DRG_056))
-                    {
-                        Keep(card,"空降歹徒");
-                    } 
+                        Keep(card,"空降歹徒"); 
                 }
                 if(card==Card.Cards.GVG_075&&kuaigong>0// 船载火炮 GVG_075
                 ){
@@ -251,10 +248,7 @@ namespace SmartBot.Mulligan
                 // }
                 if(card==Card.Cards.NEW1_022&&(flag1+flag3>0)// 恐怖海盗 NEW1_022
                 ){
-                    if(!CardsToKeep.Contains(Card.Cards.NEW1_022))
-                    {
-                        Keep(card,"恐怖海盗");
-                    } 
+                        Keep(card,"恐怖海盗"); 
                 }
                 if(card==Card.Cards.SCH_623&&flag1+flag3>0// 劈砍课程 SCH_623
                 ){
