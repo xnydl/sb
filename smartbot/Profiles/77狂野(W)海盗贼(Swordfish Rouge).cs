@@ -158,8 +158,8 @@ namespace SmartBotProfiles
             }
             else
             {
-                p.GlobalAggroModifier = (int)(a * 0.625 + 400);
-                Bot.Log("攻击值"+(a * 0.625 + 400.5));
+                p.GlobalAggroModifier = (int)(a * 0.625 + 103);
+                Bot.Log("攻击值"+(a * 0.625 + 103.5));
             }	   
                      
            if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
