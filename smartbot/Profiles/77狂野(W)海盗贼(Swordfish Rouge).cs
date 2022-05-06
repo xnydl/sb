@@ -162,12 +162,12 @@ namespace SmartBotProfiles
                 Bot.Log("攻击值"+(a * 0.625 + 103.5));
             }	   
                      
-           if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
+           if (!board.MinionEnemy.Any(x => x.IsTaunt)&&board.HeroFriend.CurrentHealth>=13 &&
                   (BoardHelper.GetEnemyHealthAndArmor(board) -
                  BoardHelper.GetPotentialMinionDamages(board) -
                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
                BoardHelper.GetTotalBlastDamagesInHand(board)))
-               &&board.HeroFriend.CurrentHealth>=13
+               
            {
                p.GlobalAggroModifier = 999;
                Bot.Log("斩杀了");
