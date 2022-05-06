@@ -228,13 +228,6 @@ namespace SmartBot.Mulligan
                         Keep(card,"刺豚拳手");
                     } 
                 }
-                if(card==Card.Cards.CORE_AT_029// 锈水海盗 CORE_AT_029
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.CORE_AT_029))
-                    {
-                        Keep(card,"锈水海盗");
-                    } 
-                }
                 if(card==Card.Cards.TSC_086&&flag3==0// 剑鱼 TSC_086
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.TSC_086))
