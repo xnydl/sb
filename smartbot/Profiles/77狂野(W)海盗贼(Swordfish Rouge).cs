@@ -462,7 +462,6 @@ namespace SmartBotProfiles
             &&haidaonum>=1
             &&board.Hand.Count(card => card.CurrentCost<=2)>=1
             &&board.MaxMana ==1
-            &&enemyAttack>=3
             &&board.HasCardInHand(Card.Cards.GAME_005)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(9999));//船载火炮 GVG_075 
