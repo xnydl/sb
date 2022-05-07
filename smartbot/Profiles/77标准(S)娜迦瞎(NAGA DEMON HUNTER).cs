@@ -467,9 +467,9 @@ namespace SmartBotProfiles
 
 #region 德雷克塔尔 Drek'Thar ID：AV_100  
          if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-150));
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-999));
           p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(9999));
-          Bot.Log("德雷克塔尔 -150");
+          Bot.Log("德雷克塔尔 -999");
       }else{
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
       }
