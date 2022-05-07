@@ -399,12 +399,12 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.LOOT_033)
             &&jianyu<2
             &&board.ManaAvailable >1
-            &&(!board.HasCardInHand(Card.Cards.TSC_086)&&(board.WeaponFriend == null))
+            &&!board.HasCardInHand(Card.Cards.TSC_086)
             &&!board.HasCardInHand(Card.Cards.GVG_075)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-999)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-300)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
-            Bot.Log("洞穴探宝者 -999");
+            Bot.Log("洞穴探宝者 -300");
             }else{
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-99)); 
             }
@@ -461,23 +461,6 @@ namespace SmartBotProfiles
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-550)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
             Bot.Log("船载火炮 -550 优先级 550");
-            }
-            if(board.HasCardInHand(Card.Cards.GVG_075)
-            &&haidaonum>=1
-            &&board.Hand.Count(card => card.CurrentCost<=2)>=1
-            &&board.MaxMana ==1
-            &&board.HasCardInHand(Card.Cards.GAME_005)
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(9999));//船载火炮 GVG_075 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_AT_029, new Modifier(9999));//锈水海盗 CORE_AT_029
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_963, new Modifier(9999));//鱼排斗士 TSC_963
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_035, new Modifier(9999));//血帆飞贼 Bloodsail Flybooter ID：DRG_035 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS2_146, new Modifier(9999));//南海船工 CS2_146
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_056, new Modifier(9999));//空降歹徒 DRG_056
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DMF_519, new Modifier(9999));//奖品掠夺者 DMF_519
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(9999));//深海融合怪 Amalgam of the Deep ID：TSC_069
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(9999)); 
-            Bot.Log("船载火炮等2费打配合");
             }
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
