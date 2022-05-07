@@ -295,14 +295,10 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.SCH_305)
             &&(board.ManaAvailable >= 4&&board.Hand.Count<=4)
             ){ 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(9999)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_926, new Modifier(-999)); //掩息海星 TSC_926 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-9999)); 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-9999));
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(-999)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999));//board.HasCardInHand(Card.Cards.GVG_075) 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(-999));//携刃信使 Cutlass Courier ID：TSC_085 
-             Bot.Log("秘密通道 -9999");
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(1200)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-1200)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-1200)); 
+             Bot.Log("秘密通道 -1200");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             }
@@ -312,6 +308,13 @@ namespace SmartBotProfiles
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_075, new Modifier(-20)); 
             Bot.Log("影袭 -20");
+            }
+#endregion
+#region 危机四伏 Beneath the Grounds ID：AT_035 
+            if(board.HasCardInHand(Card.Cards.AT_035)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AT_035, new Modifier(-99)); 
+            Bot.Log("危机四伏 -99");
             }
 #endregion
 #region 迈拉的不稳定元素 Myra's Unstable Element ID：BOT_242 

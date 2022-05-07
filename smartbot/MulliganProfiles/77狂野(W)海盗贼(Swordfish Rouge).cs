@@ -82,6 +82,7 @@ namespace SmartBot.Mulligan
             int WARRIOR=0;
             int DEMONHUNTER=0;
             int kuaigong=0;
+            int yuzhou=0;
             int mansu=0;
             int flag1=0;//剑鱼 TSC_086
             int flag2=0;//团伙劫掠 TRL_124 
@@ -116,18 +117,22 @@ namespace SmartBot.Mulligan
             if(opponentClass==Card.CClass.DRUID){
             DRUID+=1;
             mansu+=1;
+            yuzhou+=1;
             }
             if(opponentClass==Card.CClass.HUNTER){
             HUNTER+=1;
             mansu+=1;
+            yuzhou+=1;
             }
             if(opponentClass==Card.CClass.MAGE){
             MAGE+=1;
             mansu+=1;
+            yuzhou+=1;
             }
             if(opponentClass==Card.CClass.PRIEST){
             PRIEST+=1;
             kuaigong+=1;
+            yuzhou+=1;
             }
             if(opponentClass==Card.CClass.ROGUE){
             ROGUE+=1;
@@ -136,10 +141,12 @@ namespace SmartBot.Mulligan
             if(opponentClass==Card.CClass.SHAMAN){
             SHAMAN+=1;
             mansu+=1;
+            yuzhou+=1;
             }
             if(opponentClass==Card.CClass.WARLOCK){
             WARLOCK+=1;
             mansu+=1;
+            yuzhou+=1;
             }
             if(opponentClass==Card.CClass.WARRIOR){
             WARRIOR+=1;
@@ -156,6 +163,13 @@ namespace SmartBot.Mulligan
                     if(!CardsToKeep.Contains(Card.Cards.CORE_AT_029))
                     {
                         Keep(card,"锈水海盗");
+                    } 
+                }
+                if(card==Card.Cards.AT_035&&yuzhou>0// 危机四伏 Beneath the Grounds ID：AT_035 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.AT_035))
+                    {
+                        Keep(card,"危机四伏");
                     } 
                 }
                 if(card==Card.Cards.TSC_963// 鱼排斗士 TSC_963
