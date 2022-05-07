@@ -370,12 +370,11 @@ namespace SmartBotProfiles
 #endregion
 #region 致命药膏 CORE_CS2_074 
             if(board.HasCardInHand(Card.Cards.CORE_CS2_074)
+            &&board.WeaponFriend != null 
             && board.WeaponFriend.CurrentDurability >= 2
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_074, new Modifier(-99)); 
             Bot.Log("致命药膏 -99");
-            }else{
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.CORE_CS2_074, new Modifier(150)); 
             }
 #endregion
 #region 团伙劫掠 TRL_124
