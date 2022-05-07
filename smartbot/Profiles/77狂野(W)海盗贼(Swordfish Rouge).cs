@@ -169,7 +169,7 @@ namespace SmartBotProfiles
                BoardHelper.GetTotalBlastDamagesInHand(board)))
                
            {
-               p.GlobalAggroModifier = 999;
+               p.GlobalAggroModifier = 400;
                Bot.Log("斩杀了");
            }//如果下一轮可以斩杀对面，攻击性提高
             
@@ -296,11 +296,12 @@ namespace SmartBotProfiles
             &&(board.ManaAvailable >= 4&&board.Hand.Count<=4)
             ){  
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-99)); 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-350)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(150)); 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AT_035, new Modifier(150)); 
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(150)); 
-             Bot.Log("秘密通道 -350");
+             Bot.Log("秘密通道 -999");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             }
