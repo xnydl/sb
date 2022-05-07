@@ -101,8 +101,6 @@ namespace SmartBot.Mulligan
                 ){flag4+=1;}
                 if(card==Card.Cards.CORE_AT_029//锈水海盗 CORE_AT_029 
                 ){flag4+=1;}
-                if(card==Card.Cards.DMF_519//奖品掠夺者 DMF_519 
-                ){flag4+=1;}
                 if(card==Card.Cards.CS2_146//南海船工 CS2_146
                 ){flag4+=1;}
                 if(card==Card.Cards.DRG_035//血帆飞贼 Bloodsail Flybooter ID：DRG_035 
@@ -225,7 +223,7 @@ namespace SmartBot.Mulligan
                         Keep(card,"致命药膏");
                     } 
                 }
-                if(card==Card.Cards.DMF_519&&kuaigong>0// 奖品掠夺者 DMF_519
+                if(card==Card.Cards.DMF_519&&(kuaigong>0||flag4==0)// 奖品掠夺者 DMF_519
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.DMF_519))
                     {
