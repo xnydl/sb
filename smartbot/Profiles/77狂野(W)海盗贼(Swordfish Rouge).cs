@@ -299,9 +299,9 @@ namespace SmartBotProfiles
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_926, new Modifier(-999)); //掩息海星 TSC_926 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-9999)); 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-9999));
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(130)); 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(130));//board.HasCardInHand(Card.Cards.GVG_075) 
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(130));//携刃信使 Cutlass Courier ID：TSC_085 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(-999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999));//board.HasCardInHand(Card.Cards.GVG_075) 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(-999));//携刃信使 Cutlass Courier ID：TSC_085 
              Bot.Log("秘密通道 -9999");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
