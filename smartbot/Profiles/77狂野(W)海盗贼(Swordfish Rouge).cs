@@ -294,11 +294,13 @@ namespace SmartBotProfiles
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
             &&(board.ManaAvailable >= 4&&board.Hand.Count<=4)
-            ){ 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(1200)); 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-1200)); 
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-1200)); 
-             Bot.Log("秘密通道 -1200");
+            ){  
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-99)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-350)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(150)); 
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AT_035, new Modifier(150)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_085, new Modifier(150)); 
+             Bot.Log("秘密通道 -350");
             }else{
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(999)); 
             }
