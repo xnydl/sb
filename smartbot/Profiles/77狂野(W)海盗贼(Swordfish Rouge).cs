@@ -408,9 +408,12 @@ namespace SmartBotProfiles
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-300)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
             Bot.Log("洞穴探宝者 -300");
-            }else{
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-99)); 
             }
+            if(((board.WeaponFriend != null && board.WeaponFriend.Template.Id == Card.Cards.TSC_086)||board.HasCardInHand(Card.Cards.TSC_086))
+            &&board.HasCardInHand(Card.Cards.LOOT_033)
+          ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(150)); 
+          }
 #endregion
 #region 锈水海盗 CORE_AT_029
             if(board.HasCardInHand(Card.Cards.CORE_AT_029)
