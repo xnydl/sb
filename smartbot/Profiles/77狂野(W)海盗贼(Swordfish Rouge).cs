@@ -404,6 +404,10 @@ namespace SmartBotProfiles
             &&board.ManaAvailable >1
             &&!board.HasCardInHand(Card.Cards.TSC_086)
             &&!board.HasCardInHand(Card.Cards.GVG_075)
+            &&!(board.WeaponFriend != null 
+          && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
+          &&board.WeaponFriend.CurrentDurability ==1
+          )
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-300)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
