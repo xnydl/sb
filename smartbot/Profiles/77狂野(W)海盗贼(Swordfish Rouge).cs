@@ -461,17 +461,16 @@ namespace SmartBotProfiles
 #region 船载火炮 GVG_075 
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
-            &&board.Hand.Count(card => card.CurrentCost<=2)>=1
-            &&board.MaxMana <2
+            &&board.MaxMana ==1
             &&enemyAttack<3
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-550)); 
-            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
-            Bot.Log("船载火炮 -550 优先级 550");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(999)); 
+            Bot.Log("船载火炮 -999 优先级 999");
             }
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
-            &&board.MaxMana >=3
+            &&board.MaxMana >1
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-99)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
