@@ -509,8 +509,12 @@ namespace SmartBotProfiles
 #endregion
 
 #region 剑鱼 TSC_086
+            
+        if(board.HasCardInHand(Card.Cards.TSC_086)
+        ){
             p.GlobalWeaponsAttackModifier =-55;
-
+            Bot.Log("有剑鱼 增加攻击值");
+        }
          if(board.HasCardInHand(Card.Cards.TSC_086)
          &&board.WeaponFriend == null
         ){
