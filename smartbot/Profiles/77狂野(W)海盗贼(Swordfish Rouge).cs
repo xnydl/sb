@@ -293,7 +293,7 @@ namespace SmartBotProfiles
 #endregion
 #region 秘密通道 SCH_305
             if(board.HasCardInHand(Card.Cards.SCH_305)
-            &&(board.ManaAvailable >= 4&&board.Hand.Count<=4)
+            &&(board.ManaAvailable >= 5&&board.Hand.Count<=3)
             ){  
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(-99)); 
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_305, new Modifier(-99)); 
@@ -404,10 +404,6 @@ namespace SmartBotProfiles
             &&board.ManaAvailable >1
             &&!board.HasCardInHand(Card.Cards.TSC_086)
             &&!board.HasCardInHand(Card.Cards.GVG_075)
-            &&!(board.WeaponFriend != null 
-          && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
-          &&board.WeaponFriend.CurrentDurability ==1
-          )
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(-300)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.LOOT_033, new Modifier(800)); 
