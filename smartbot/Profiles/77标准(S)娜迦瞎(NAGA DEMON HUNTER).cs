@@ -303,7 +303,12 @@ namespace SmartBotProfiles
                 p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.AV_209, new Modifier(-99));
                 Bot.Log("恐惧牢笼战刃 -99");
             }
-
+            if(board.HasCardInHand(Card.Cards.AV_209)
+            &&board.HasCardInHand(Card.Cards.TSC_915)//骸骨战刃 TSC_915
+            ){
+                p.GlobalWeaponsAttackModifier =-55;
+                Bot.Log("恐惧牢笼战刃 增加攻击值");
+            }
 #endregion
 #region 獠牙锥刃 BAR_330
             if(board.HasCardInHand(Card.Cards.BAR_330)
@@ -339,6 +344,7 @@ namespace SmartBotProfiles
 
 #region 赛丝诺女士 Lady S'theno ID：TSC_218 
             if(board.HasCardInHand(Card.Cards.TSC_218)
+            &&(board.MinionEnemy.Count == 0||board.ManaAvailable ==3)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(250)); 
             Bot.Log("赛丝诺女士 250");
