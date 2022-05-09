@@ -383,6 +383,13 @@ namespace SmartBotProfiles
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_006, new Modifier(350)); 
             Bot.Log("多重打击 350");
             }
+             if(board.HasCardInHand(Card.Cards.TSC_006)
+            &&board.MaxMana ==1
+            &&board.HasCardInHand(Card.Cards.AV_118)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_006, new Modifier(999)); 
+            Bot.Log("多重打击 999");
+            }
 #endregion
 
 #region 梦魇 Nightmare ID：DREAM_05 
