@@ -143,7 +143,7 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(board.HeroEnemy.CurrentHealth > 15?BaseProfile.Rush:BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 }; 
+            var p = new ProfileParameters(board.HeroEnemy.CurrentHealth > 20?BaseProfile.Rush:BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 }; 
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
@@ -468,15 +468,15 @@ namespace SmartBotProfiles
 #region 捕掠 TSC_058
             if(board.HasCardInHand(Card.Cards.TSC_058)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_058, new Modifier(130)); 
-            Bot.Log("捕掠 130");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_058, new Modifier(250)); 
+            Bot.Log("捕掠 250");
             }
 #endregion
 #region 邪能弹幕 SW_040 
             if(board.HasCardInHand(Card.Cards.SW_040)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_040, new Modifier(130)); 
-            Bot.Log("邪能弹幕 130");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_040, new Modifier(250)); 
+            Bot.Log("邪能弹幕 250");
             }
 #endregion
 
