@@ -224,13 +224,13 @@ namespace SmartBot.Mulligan
                 //         Keep(card,"宝藏守卫");
                 //     } 
                 // }
-                 if(card==Card.Cards.SW_072&&PALADIN>0// 锈烂蝰蛇 Rustrot Viper ID：SW_072 
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.SW_072))
-                    {
-                        Keep(card,"锈烂蝰蛇");
-                    } 
-                }
+                //  if(card==Card.Cards.SW_072&&PALADIN>0// 锈烂蝰蛇 Rustrot Viper ID：SW_072 
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.SW_072))
+                //     {
+                //         Keep(card,"锈烂蝰蛇");
+                //     } 
+                // }
                  if(card==Card.Cards.ONY_016// 憎恨之翼（等级1） ONY_016
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.ONY_016))
