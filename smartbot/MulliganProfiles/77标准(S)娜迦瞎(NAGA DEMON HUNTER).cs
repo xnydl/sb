@@ -103,6 +103,20 @@ namespace SmartBot.Mulligan
                         Keep(card,"深铁穴居人");
                     } 
                 }
+                if(card==Card.Cards.TSC_006&&HUNTER+MAGE+ROGUE+PALADIN+PRIEST+WARLOCK+SHAMAN>0// 多重打击 TSC_006
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_006))
+                    {
+                        Keep(card,"多重打击");
+                    } 
+                }
+                if(card==Card.Cards.TSC_915&&HUNTER>0// 骸骨战刃 TSC_915
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_915))
+                    {
+                        Keep(card,"骸骨战刃");
+                    } 
+                }
                 if(card==Card.Cards.SW_451// 魔变鱼人 Metamorfin ID：SW_451
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.SW_451))
@@ -173,14 +187,14 @@ namespace SmartBot.Mulligan
                         Keep(card,"曼科里克");
                     } 
                 }
-                if(card==Card.Cards.TSC_002&&HasCoin==true&&(flag3>0||flag4>0)// 刺豚拳手 Pufferfist ID：TSC_002 
+                if(card==Card.Cards.TSC_002&&PALADIN>0// 刺豚拳手 Pufferfist ID：TSC_002 
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.TSC_002))
                     {
                         Keep(card,"刺豚拳手");
                     } 
                 }
-                if(card==Card.Cards.AV_204&&(HasCoin==true||WARRIOR>0||PALADIN>0)// 裂魔者库尔特鲁斯 Kurtrus, Demon-Render ID：AV_204 
+                if(card==Card.Cards.AV_204&&(HasCoin==true||WARRIOR+PALADIN+DRUID+MAGE+ROGUE+PALADIN+WARLOCK+SHAMAN>0)// 裂魔者库尔特鲁斯 Kurtrus, Demon-Render ID：AV_204 
 
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.AV_204))
