@@ -389,6 +389,7 @@ namespace SmartBotProfiles
             if(board.Hand.Exists(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.DED_506)
             &&board.FriendDeckCount>0
             &&board.Hand.Count<7
+            &&board.MaxMana >=6
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
