@@ -224,6 +224,8 @@ namespace SmartBotProfiles
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
             int wangyunum=board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_325)+board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_326)+board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_938)+board.Hand.Count(x => x.Template.Id == Card.Cards.WC_701);
+            int sainuosi=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.TSC_218)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_218);
+            Bot.Log("赛诺斯夫人没用过");
  #endregion
 
 #region 旅行商人   SW_307 
@@ -387,8 +389,7 @@ namespace SmartBotProfiles
 #region 贪婪需求 Need for Greed ID：DED_506
             if(board.Hand.Exists(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.DED_506)
             &&board.FriendDeckCount>0
-            &&board.Hand.Count<7
-            &&board.MaxMana >=6
+            &&board.Hand.Count<5
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
@@ -467,6 +468,7 @@ namespace SmartBotProfiles
 #endregion
 #region 捕掠 TSC_058
             if(board.HasCardInHand(Card.Cards.TSC_058)
+            &&sainuosi==0
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_058, new Modifier(250)); 
             Bot.Log("捕掠 250");
@@ -474,6 +476,7 @@ namespace SmartBotProfiles
 #endregion
 #region 邪能弹幕 SW_040 
             if(board.HasCardInHand(Card.Cards.SW_040)
+            &&sainuosi==0
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_040, new Modifier(250)); 
             Bot.Log("邪能弹幕 250");
