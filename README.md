@@ -10,5 +10,3 @@ Address of live broadcasting room:https://live.bilibili.com/608700
 How to use the file: in the first step, GIT pulls the project, or directly downloads the compressed package. In the second step, extract the smartbot file into the latest version of sb downloaded from the official website and replace the corresponding profiles, mulliganprofiles and discovercc
 白嫖就好好白嫖 别那么大戾气 不至于 总不至于我免费还得被骂吧 爱用用 不用拉到 也不用尬吹 说话过脑就行
 White whoring is good. White whoring is not so violent. It's not always that bad. I have to be scolded for free. If I like to use it, I don't have to pull it or blow it over my head
-以下为黑名单,不欢迎你用我的策略/The following is the blacklist. You are not welcome to use my strategy
-1525533852(揍敌客)
