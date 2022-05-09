@@ -143,7 +143,7 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
+            var p = new ProfileParameters(board.HeroEnemy.CurrentHealth > 15?BaseProfile.Rush:BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 }; 
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
@@ -224,7 +224,6 @@ namespace SmartBotProfiles
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
             int wangyunum=board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_325)+board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_326)+board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_938)+board.Hand.Count(x => x.Template.Id == Card.Cards.WC_701);
-            Bot.Log("手上亡语数量"+wangyunum);
  #endregion
 
 #region 旅行商人   SW_307 
