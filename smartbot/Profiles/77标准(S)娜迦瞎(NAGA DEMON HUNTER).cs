@@ -372,6 +372,7 @@ namespace SmartBotProfiles
 #region 贪婪需求 Need for Greed ID：DED_506
             if(board.Hand.Exists(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.DED_506)
             &&board.FriendDeckCount>0
+            &&board.Hand.Count<7
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_506, new Modifier(999));
