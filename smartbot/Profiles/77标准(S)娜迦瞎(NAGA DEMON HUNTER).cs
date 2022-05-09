@@ -420,22 +420,22 @@ namespace SmartBotProfiles
 #region 怒火（等级1） Fury (Rank 1) ID：BAR_891
             if(board.HasCardInHand(Card.Cards.BAR_891)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891, new Modifier(130)); 
-            Bot.Log("怒火（等级1）130");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891, new Modifier(200)); 
+            Bot.Log("怒火（等级1）200");
             }
 #endregion
 #region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
             if(board.HasCardInHand(Card.Cards.BAR_891t)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(130)); 
-            Bot.Log("怒火（等级2）130");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(200)); 
+            Bot.Log("怒火（等级2）200");
             }
 #endregion
 #region 怒火（等级3） Fury (Rank 3) ID：BAR_891t2 
             if(board.HasCardInHand(Card.Cards.BAR_891t2)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(130)); 
-            Bot.Log("怒火（等级3）130");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(200)); 
+            Bot.Log("怒火（等级3）200");
             }
 #endregion
 #region 捕掠 TSC_058
