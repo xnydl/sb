@@ -305,9 +305,17 @@ namespace SmartBotProfiles
             }
             if(board.HasCardInHand(Card.Cards.AV_209)
             &&board.HasCardInHand(Card.Cards.TSC_915)//骸骨战刃 TSC_915
+            &&board.MaxMana <=4
             ){
                 p.GlobalWeaponsAttackModifier =-55;
                 Bot.Log("恐惧牢笼战刃 增加攻击值");
+            }
+#endregion
+#region 骸骨战刃 TSC_915
+            if(board.HasCardInHand(Card.Cards.TSC_915)
+            ){
+                p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.TSC_915, new Modifier(-99));
+                Bot.Log("骸骨战刃 -99");
             }
 #endregion
 #region 獠牙锥刃 BAR_330
