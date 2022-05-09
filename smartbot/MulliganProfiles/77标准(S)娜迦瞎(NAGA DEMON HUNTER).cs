@@ -217,13 +217,13 @@ namespace SmartBot.Mulligan
                         Keep(card,"召唤咒符");
                     } 
                 }
-                 if(card==Card.Cards.TSC_938&&flag2>0// 宝藏守卫 TSC_938
-                ){
-                    if(!CardsToKeep.Contains(Card.Cards.TSC_938))
-                    {
-                        Keep(card,"宝藏守卫");
-                    } 
-                }
+                //  if(card==Card.Cards.TSC_938&&flag2>0// 宝藏守卫 TSC_938
+                // ){
+                //     if(!CardsToKeep.Contains(Card.Cards.TSC_938))
+                //     {
+                //         Keep(card,"宝藏守卫");
+                //     } 
+                // }
                  if(card==Card.Cards.SW_072&&PALADIN>0// 锈烂蝰蛇 Rustrot Viper ID：SW_072 
                 ){
                     if(!CardsToKeep.Contains(Card.Cards.SW_072))
