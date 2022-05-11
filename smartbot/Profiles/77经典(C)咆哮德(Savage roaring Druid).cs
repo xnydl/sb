@@ -389,6 +389,8 @@ int combo=board.Hand.Count(x => x.Template.Id == Card.Cards.VAN_CS2_011)+board.H
     { 
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_169, new Modifier(150));
         Bot.Log("有双咆哮和单树人，小于10费，留combo");
+    }else{
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_EX1_169, new Modifier(130));
     }
 #endregion
 
