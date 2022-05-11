@@ -273,6 +273,24 @@ namespace SmartBotProfiles
           Bot.Log("伦萨克大王 -99");
         }
 #endregion
+#region 剑圣奥卡尼 TSC_032
+
+        if(board.HasCardInHand(Card.Cards.TSC_032)
+        )
+        {
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(-99));
+          Bot.Log("剑圣奥卡尼 -99");
+        }
+#endregion
+#region 泰兰·弗丁 CS3_024
+
+        if(board.HasCardInHand(Card.Cards.CS3_024)
+        )
+        {
+          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CS3_024, new Modifier(-99));
+          Bot.Log("泰兰·弗丁 -99");
+        }
+#endregion
 #region 大领主弗塔根 SW_047 
 
         if(board.HasCardInHand(Card.Cards.SW_047)
