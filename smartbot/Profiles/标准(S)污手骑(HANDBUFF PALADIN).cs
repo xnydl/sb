@@ -261,6 +261,8 @@ namespace SmartBotProfiles
         {
          p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(-99));
           Bot.Log("棱彩珠宝工具 -99");
+        }else{
+         p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(999));
         }
 #endregion
 #region 伦萨克大王 CS3_025 
