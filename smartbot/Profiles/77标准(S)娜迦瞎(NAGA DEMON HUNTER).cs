@@ -401,8 +401,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.TSC_006)
             &&board.MinionEnemy.Count == 0
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_006, new Modifier(350)); 
-            Bot.Log("多重打击 350");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_006, new Modifier(999)); 
+            Bot.Log("多重打击 999");
             }
              if(board.HasCardInHand(Card.Cards.TSC_006)
             &&board.MaxMana ==1
