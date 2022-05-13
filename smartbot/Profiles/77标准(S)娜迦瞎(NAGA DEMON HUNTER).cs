@@ -466,22 +466,22 @@ namespace SmartBotProfiles
             Bot.Log("怒火（等级3）250");
             }
 #endregion
-// #region 捕掠 TSC_058
-//             if(board.HasCardInHand(Card.Cards.TSC_058)
-//             &&sainuosi==0
-//             ){
-//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_058, new Modifier(250)); 
-//             Bot.Log("捕掠 250");
-//             }
-// #endregion
-// #region 邪能弹幕 SW_040 
-//             if(board.HasCardInHand(Card.Cards.SW_040)
-//             &&sainuosi==0
-//             ){
-//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_040, new Modifier(250)); 
-//             Bot.Log("邪能弹幕 250");
-//             }
-// #endregion
+#region 捕掠 TSC_058
+            if(board.HasCardInHand(Card.Cards.TSC_058)
+            &&sainuosi==0
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_058, new Modifier(250)); 
+            Bot.Log("捕掠 250");
+            }
+#endregion
+#region 邪能弹幕 SW_040 
+            if(board.HasCardInHand(Card.Cards.SW_040)
+            &&sainuosi==0
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_040, new Modifier(250)); 
+            Bot.Log("邪能弹幕 250");
+            }
+#endregion
 
 #region 宝藏守卫 Treasure Guard ID：TSC_938 
             if(board.HasCardInHand(Card.Cards.TSC_938)
