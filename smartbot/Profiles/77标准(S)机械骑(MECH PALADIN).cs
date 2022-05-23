@@ -346,8 +346,8 @@ namespace SmartBotProfiles
 #endregion
 #region 重拳先生  DED_006 
          if(board.HasCardInHand(Card.Cards.DED_006)){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(150)); 
-            Bot.Log("重拳先生 150 ");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(999)); 
+            Bot.Log("重拳先生 999 ");
             }
 #endregion
 #region 剑圣奥卡尼 TSC_032 
