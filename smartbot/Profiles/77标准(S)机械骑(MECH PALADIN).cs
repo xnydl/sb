@@ -350,6 +350,12 @@ namespace SmartBotProfiles
             Bot.Log("重拳先生 150 ");
             }
 #endregion
+#region 剑圣奥卡尼 TSC_032 
+         if(board.HasCardInHand(Card.Cards.TSC_032)){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(-150)); 
+            Bot.Log("剑圣奥卡尼 -150 ");
+            }
+#endregion
 #region 北卫军指挥官 BAR_876
 
         if(board.HasCardInHand(Card.Cards.BAR_876)
@@ -427,6 +433,8 @@ namespace SmartBotProfiles
                   // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(9999));  
          p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(-99));
           Bot.Log("棱彩珠宝工具 -99");
+        }else{
+             p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(9999));
         }
         // if(board.HasCardInHand(Card.Cards.SW_048)
         // &&board.MaxMana ==1
