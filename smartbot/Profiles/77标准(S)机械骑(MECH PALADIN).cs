@@ -649,17 +649,17 @@ namespace SmartBotProfiles
           Bot.Log("女伯爵莉亚德琳 999");
         } 
 #endregion
-#region 瓦里安，暴风城国王 SW_081
+// #region 瓦里安，暴风城国王 SW_081
 
-        if(board.HasCardInHand(Card.Cards.SW_081)
-        )
-        {
-          //  p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_081, new Modifier(10000)); 
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_081, new Modifier(-9999));
+//         if(board.HasCardInHand(Card.Cards.SW_081)
+//         )
+//         {
+//           //  p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_081, new Modifier(10000)); 
+//           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_081, new Modifier(-9999));
 
-          Bot.Log("瓦里安，暴风城国王 -9999");
-        } 
-#endregion
+//           Bot.Log("瓦里安，暴风城国王 -9999");
+//         } 
+// #endregion
 #region 圣礼骑士 BAR_873
 
         if(board.HasCardInHand(Card.Cards.BAR_873)
