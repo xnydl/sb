@@ -692,7 +692,7 @@ namespace SmartBotProfiles
 #endregion
 
 #region Card.Cards.HERO_04bp 英雄技能
-        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-999)); 
+        // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(-999)); 
         // p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_04bp, new Modifier(130)); 
 #endregion
 
