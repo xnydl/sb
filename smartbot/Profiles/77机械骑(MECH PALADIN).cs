@@ -380,6 +380,8 @@ namespace SmartBotProfiles
                   // p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(9999));  
          p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(-99));
           Bot.Log("棱彩珠宝工具 -99");
+        }else{
+         p.CastWeaponsModifiers.AddOrUpdate(Card.Cards.SW_048, new Modifier(999)); 
         }
         // if(board.HasCardInHand(Card.Cards.SW_048)
         // &&board.MaxMana ==1
