@@ -244,8 +244,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.BAR_062)
             &&numberFishMen==0
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(150)); 
-            Bot.Log("甜水鱼人佣兵 150");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(999)); 
+            Bot.Log("甜水鱼人佣兵 999");
             }
 #endregion
 #region 攻击优先 卡牌威胁（通用） 
