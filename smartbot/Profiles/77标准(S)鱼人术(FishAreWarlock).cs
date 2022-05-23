@@ -223,8 +223,31 @@ namespace SmartBotProfiles
             }
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
+             int numberFishMen=board.Hand.Count(card => card.Race == Card.CRace.MURLOC);
+            Bot.Log("场上鱼人数量"+numberFishMen);
  #endregion
-
+#region 艾萨拉的拾荒者 TSC_039
+            if(board.HasCardInHand(Card.Cards.TSC_039)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_039, new Modifier(-99)); 
+            Bot.Log("艾萨拉的拾荒者 -99");
+            }
+#endregion
+#region 沉没的拾荒者 Sunken Scavenger ID：TSC_039t 
+            if(board.HasCardInHand(Card.Cards.TSC_039t)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_039t, new Modifier(-150)); 
+            Bot.Log("沉没的拾荒者 -150");
+            }
+#endregion
+#region 甜水鱼人佣兵 BAR_062
+            if(board.HasCardInHand(Card.Cards.BAR_062)
+            &&numberFishMen==0
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(150)); 
+            Bot.Log("甜水鱼人佣兵 150");
+            }
+#endregion
 #region 攻击优先 卡牌威胁（通用） 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_002))
             {
