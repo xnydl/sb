@@ -81,12 +81,12 @@ namespace SmartBot.Mulligan
                         Keep(card,"械钳虾");
                     }
                 }
-                if(card==Card.Cards.TSC_079// 雷达探测 TSC_079
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_079))
-                    {
-                        Keep(card,"雷达探测");
-                    }
-                }
+                // if(card==Card.Cards.TSC_079// 雷达探测 TSC_079
+                // ){ if(!CardsToKeep.Contains(Card.Cards.TSC_079))
+                //     {
+                //         Keep(card,"雷达探测");
+                //     }
+                // }
                 if(card==Card.Cards.TSC_069// 深海融合怪 TSC_069
                 ){ if(!CardsToKeep.Contains(Card.Cards.TSC_069))
                     {
