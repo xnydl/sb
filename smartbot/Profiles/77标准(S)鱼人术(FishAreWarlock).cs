@@ -258,15 +258,15 @@ namespace SmartBotProfiles
 #region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-20*numberFishMen)); 
-            Bot.Log("寒光先知"+(-20*numberFishMen));
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-30*numberFishMen)); 
+            Bot.Log("寒光先知"+(-30*numberFishMen));
             }
 #endregion
 #region 鱼人领军 Murloc Warleader ID：CORE_EX1_507 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_507)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_507, new Modifier(-10*numberFishMen)); 
-            Bot.Log("鱼人领军"+(-20*numberFishMen));
+            Bot.Log("鱼人领军"+(-10*numberFishMen));
             }
 #endregion
 #region 老巨鳍 Gigafin ID：TSC_962 
