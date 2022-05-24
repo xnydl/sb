@@ -248,6 +248,35 @@ namespace SmartBotProfiles
             Bot.Log("甜水鱼人佣兵 999");
             }
 #endregion
+#region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
+            if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-20*numberFishMen)); 
+            Bot.Log("甜水鱼人佣兵 999");
+            }
+#endregion
+#region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
+            if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-20*numberFishMen)); 
+            Bot.Log("寒光先知"+(-20*numberFishMen));
+            }
+#endregion
+#region 鱼人领军 Murloc Warleader ID：CORE_EX1_507 
+            if(board.HasCardInHand(Card.Cards.CORE_EX1_507)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_507, new Modifier(-10*numberFishMen)); 
+            Bot.Log("鱼人领军"+(-20*numberFishMen));
+            }
+#endregion
+#region 老巨鳍 Gigafin ID：TSC_962 
+            if(board.HasCardInHand(Card.Cards.TSC_962)
+            &&board.MinionEnemy.Count == 0
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_962, new Modifier(150)); 
+            Bot.Log("老巨鳍"+(150));
+            }
+#endregion
 #region 攻击优先 卡牌威胁（通用） 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_002))
             {
