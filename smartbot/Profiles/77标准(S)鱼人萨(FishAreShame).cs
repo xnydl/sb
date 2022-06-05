@@ -224,7 +224,9 @@ namespace SmartBotProfiles
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
              int numberFishMen=board.Hand.Count(card => card.Race == Card.CRace.MURLOC);
-            Bot.Log("场上鱼人数量"+numberFishMen);
+            Bot.Log("手上鱼人数量"+numberFishMen);
+             int numberFishMenFriend=board.MinionFriend.Count(card => card.Race == Card.CRace.MURLOC);
+            Bot.Log("场上上鱼人数量"+numberFishMenFriend);
  #endregion
 #region 艾萨拉的拾荒者 TSC_039
             if(board.HasCardInHand(Card.Cards.TSC_039)
@@ -246,6 +248,21 @@ namespace SmartBotProfiles
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(999)); 
             Bot.Log("甜水鱼人佣兵 999");
+            }
+#endregion
+#region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
+            if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
+            &&numberFishMenFriend>=3
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-99)); 
+            Bot.Log("寒光先知 -99");
+            }
+#endregion
+#region 嗜血 Bloodlust ID：VAN_CS2_046 
+            if(board.HasCardInHand(Card.Cards.VAN_CS2_046)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_046, new Modifier(350));
+            Bot.Log("嗜血 350");
             }
 #endregion
 #region 攻击优先 卡牌威胁（通用） 
