@@ -477,20 +477,20 @@ namespace SmartBotProfiles
             Bot.Log("怒火（等级1）250");
             }
 #endregion
-#region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
-            if(board.HasCardInHand(Card.Cards.BAR_891t)
-            ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(250)); 
-            Bot.Log("怒火（等级2）250");
-            }
-#endregion
-#region 怒火（等级3） Fury (Rank 3) ID：BAR_891t2 
-            if(board.HasCardInHand(Card.Cards.BAR_891t2)
-            ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(250)); 
-            Bot.Log("怒火（等级3）250");
-            }
-#endregion
+// #region 怒火（等级2） Fury (Rank 2) ID：BAR_891t 
+//             if(board.HasCardInHand(Card.Cards.BAR_891t)
+//             ){
+//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t, new Modifier(250)); 
+//             Bot.Log("怒火（等级2）250");
+//             }
+// #endregion
+// #region 怒火（等级3） Fury (Rank 3) ID：BAR_891t2 
+//             if(board.HasCardInHand(Card.Cards.BAR_891t2)
+//             ){
+//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_891t2, new Modifier(250)); 
+//             Bot.Log("怒火（等级3）250");
+//             }
+// #endregion
 #region 捕掠 TSC_058
             if(board.HasCardInHand(Card.Cards.TSC_058)
             &&sainuosi==0
@@ -499,14 +499,14 @@ namespace SmartBotProfiles
             Bot.Log("捕掠 250");
             }
 #endregion
-#region 邪能弹幕 SW_040 
-            if(board.HasCardInHand(Card.Cards.SW_040)
-            &&sainuosi==0
-            ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_040, new Modifier(250)); 
-            Bot.Log("邪能弹幕 250");
-            }
-#endregion
+// #region 邪能弹幕 SW_040 
+//             if(board.HasCardInHand(Card.Cards.SW_040)
+//             &&sainuosi==0
+//             ){
+//             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_040, new Modifier(250)); 
+//             Bot.Log("邪能弹幕 250");
+//             }
+// #endregion
 
 #region 宝藏守卫 Treasure Guard ID：TSC_938 
             if(board.HasCardInHand(Card.Cards.TSC_938)
