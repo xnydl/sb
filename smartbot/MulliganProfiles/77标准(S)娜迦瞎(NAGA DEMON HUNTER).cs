@@ -238,6 +238,34 @@ namespace SmartBot.Mulligan
                         Keep(card,"憎恨之翼（等级1）");
                     } 
                 }
+                 if(card==Card.Cards.TID_704// 化石狂热者 Fossil Fanatic ID：TID_704 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TID_704))
+                    {
+                        Keep(card,"化石狂热者");
+                    } 
+                }
+                 if(card==Card.Cards.SW_041// 敏捷咒符 Sigil of Alacrity ID：SW_041 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.SW_041))
+                    {
+                        Keep(card,"敏捷咒符");
+                    } 
+                }
+                 if(card==Card.Cards.AV_267// 凯丽娅·邪魂 Caria Felsoul ID：AV_267 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.AV_267))
+                    {
+                        Keep(card,"凯丽娅·邪魂");
+                    } 
+                }
+                 if(card==Card.Cards.BT_035// 混乱打击 Chaos Strike ID：BT_035
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.BT_035))
+                    {
+                        Keep(card,"混乱打击");
+                    } 
+                }
             }
             return CardsToKeep;
         }

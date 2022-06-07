@@ -368,6 +368,14 @@ namespace SmartBotProfiles
             }
 #endregion
 
+#region 凯丽娅·邪魂 Caria Felsoul ID：AV_267 
+            if(board.HasCardInHand(Card.Cards.AV_267)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_267, new Modifier(-150)); 
+            Bot.Log("凯丽娅·邪魂 -150");
+            }
+#endregion
+
 #region 大德鲁伊纳拉雷克斯 Archdruid Naralex ID：WC_035 
             if(board.HasCardInHand(Card.Cards.WC_035)
             ){
@@ -418,6 +426,14 @@ namespace SmartBotProfiles
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DREAM_05, new Modifier(130)); 
             Bot.Log("梦魇 130");
+            }
+#endregion
+
+#region 敏捷咒符 Sigil of Alacrity ID：SW_041 
+            if(board.HasCardInHand(Card.Cards.SW_041)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_041, new Modifier(-99)); 
+            Bot.Log("敏捷咒符 -99");
             }
 #endregion
 
