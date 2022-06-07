@@ -397,10 +397,9 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.TID_704)
             &&board.WeaponFriend == null
             &&board.MaxMana ==2
-            &&!board.HasCardInHand(Card.Cards.GAME_005)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TID_704, new Modifier(999)); 
-            Bot.Log("历战先锋 999");
+            Bot.Log("化石狂热者 999");
             }
 #endregion
 
