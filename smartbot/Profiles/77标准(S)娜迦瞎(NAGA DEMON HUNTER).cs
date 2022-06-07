@@ -393,6 +393,16 @@ namespace SmartBotProfiles
             Bot.Log("历战先锋 999");
             }
 #endregion
+#region 化石狂热者 Fossil Fanatic ID：TID_704
+            if(board.HasCardInHand(Card.Cards.TID_704)
+            &&board.WeaponFriend == null
+            &&board.MaxMana ==2
+            &&!board.HasCardInHand(Card.Cards.GAME_005)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TID_704, new Modifier(999)); 
+            Bot.Log("历战先锋 999");
+            }
+#endregion
 
 #region 贪婪需求 Need for Greed ID：DED_506
             if(board.Hand.Exists(x=>x.CurrentCost==3 && x.Template.Id==Card.Cards.DED_506)
