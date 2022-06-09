@@ -119,9 +119,13 @@ namespace SmartBot.Mulligan
                     }
                 }
                 if(card==Card.Cards.TID_004//  小丑鱼 TID_004 
-                ){ if(!CardsToKeep.Contains(Card.Cards.TID_004))
+                ){ 
+                    Keep(card,"小丑鱼");
+                }
+                if(card==Card.Cards.LOE_076//  芬利·莫格顿爵士 Sir Finley Mrrgglton ID：LOE_076 
+                ){ if(!CardsToKeep.Contains(Card.Cards.LOE_076))
                     {
-                        Keep(card,"小丑鱼");
+                        Keep(card,"芬利·莫格顿爵士");
                     }
                 }
             }
