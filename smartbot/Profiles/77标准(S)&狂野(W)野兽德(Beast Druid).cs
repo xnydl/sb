@@ -483,7 +483,6 @@ if (!board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial 
                 Bot.Log("三费之前不用硬币");
             }else{
                 p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
-                Bot.Log("硬币 55");
             }
 #endregion 
 
@@ -672,7 +671,6 @@ if (!board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial 
           Bot.Log("德雷克塔尔 -999");
       }else{
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
-          Bot.Log("德雷克塔尔 150");
       }
 #endregion
 
@@ -723,7 +721,6 @@ if (!board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial 
             Bot.Log("钢鬃卫兵-99");
           }else{
              p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_537, new Modifier(150));//钢鬃卫兵      BAR_537 
-            Bot.Log("钢鬃卫兵 150");
           }
         // 场上有钢鬃卫兵      BAR_537 提高格雷布     DMF_734 和教师的爱宠      SCH_244   
         if((board.HasCardOnBoard(Card.Cards.BAR_537)||board.HasCardInHand(Card.Cards.BAR_537))
@@ -1083,21 +1080,6 @@ if( board.HasCardInHand(Card.Cards.SCH_142)){
         Bot.Log("旅行商人:"+-15*friendCount);
       }
 #endregion
-
-// #region 二费手上有二费牌不用一费牌
-// if(board.ManaAvailable ==2
-//   &&board.Hand.Exists(card => card.CurrentCost==2)
-//       ){
-//       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(999));//农夫      SW_319
-//       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_008, new Modifier(999));//银色侍从  CORE_EX1_008 
-//       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SCH_617t, new Modifier(999));//魔鼠宝宝      SCH_617t 
-//       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_422, new Modifier(999));//播种施肥      SW_422
-//       p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(999));//活泼的松鼠      SW_439
-//       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_333, new Modifier(999));//自然研习  SCH_333
-//       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_617, new Modifier(999));//萌物来袭      SCH_617
-//       Bot.Log("农夫 播种施肥 活泼的松鼠 自然研习 萌物来袭 银色侍从 魔鼠宝宝 999 ");
-//       }
-// #endregion
 
 #region 橡果 Acorn     SW_439t
       if(board.HasCardInHand(Card.Cards.SW_439t)){
