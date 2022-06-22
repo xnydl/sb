@@ -443,20 +443,20 @@ if (!board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial 
 #endregion
 
 #region 霜狼巢屋 AV_360 
-    //     if(board.HasCardInHand(Card.Cards.AV_360)//硬币 GAME_005
-    //     &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_360)==0
-    //     &&board.MinionFriend.Count <7
-    //     &&(usedFrozen==0||usedFrozen==3||usedFrozen==6||usedFrozen==9)
-    //     &&(!board.HasCardInHand(Card.Cards.YOP_026)||board.MinionFriend.Count<5)
-    //     &&!board.HasCardInHand(Card.Cards.AV_100)
-    //   )
-    //   {
-    //     p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-9999));
-    //       p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(9999));
-    //     Bot.Log("霜狼巢屋-9999");
-    //   }else{
-    //      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(130)); 
-    //   }
+        if(board.HasCardInHand(Card.Cards.AV_360)//硬币 GAME_005
+        &&board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_360)==0
+        &&board.MinionFriend.Count <7
+        &&(usedFrozen==0||usedFrozen==3||usedFrozen==6||usedFrozen==9)
+        &&(!board.HasCardInHand(Card.Cards.YOP_026)||board.MinionFriend.Count<5)
+        &&!board.HasCardInHand(Card.Cards.AV_100)
+      )
+      {
+        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(-9999));
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(9999));
+        Bot.Log("霜狼巢屋-9999");
+      }else{
+         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_360, new Modifier(130)); 
+      }
 #endregion
 
 #region 荆棘护卫 Thorngrowth Sentries ID：BAR_533 
