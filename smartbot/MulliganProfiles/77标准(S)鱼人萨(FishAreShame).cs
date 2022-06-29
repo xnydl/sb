@@ -82,6 +82,12 @@ namespace SmartBot.Mulligan
                         Keep(card,"甜水鱼人斥候");
                     }
                 }
+                if(card==Card.Cards.SW_115//  伯尔纳·锤喙 SW_115
+                ){ if(!CardsToKeep.Contains(Card.Cards.SW_115))
+                    {
+                        Keep(card,"伯尔纳·锤喙");
+                    }
+                }
                 if(card==Card.Cards.BAR_062//  甜水鱼人佣兵 BAR_062
                 ){ if(!CardsToKeep.Contains(Card.Cards.BAR_062))
                     {
