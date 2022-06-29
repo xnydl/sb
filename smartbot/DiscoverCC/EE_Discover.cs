@@ -15,7 +15,7 @@ using System.Text.RegularExpressions;
 namespace EE_Discover
 {
     //======================================================//
-    // Operation    Version 5.1            by Evil_Eyes     //
+    // Operation    Version 5.3            by Evil_Eyes     //
     //                                                      //
     //  * Includes cards for Standard, Wild, Classic, Arena //
     //    Duels.                                            //
@@ -34,27 +34,26 @@ namespace EE_Discover
 
     public class EE_Discover : DiscoverPickHandler
     {
-        //Declaration variables
-        readonly String[] heroes = { "none", "WARRIOR", "SHAMAN", "ROGUE", "PALADIN", "HUNTER", "DRUID", "WARLOCK", "MAGE", "PRIEST", "DEMONHUNTER" };
+        //Global variables declaration
         private string _mode = "Wild", _discoverFile, fileName;
         private IniManager _iniTierList0;
-        private Card.Cards bestChoice;
+        private string _log;
 
+        //Card Handle Pick Decision from SB
         public Card.Cards HandlePickDecision(Card.Cards originCard, List<Card.Cards> choices, Board board) //originCard; ID of card played by SB: choices; names of cards for selection: board; 3 states , Even, Losing, Winning
         {
             //Local variables declaration
+            String[] heroes = { "none", "WARRIOR", "SHAMAN", "ROGUE", "PALADIN", "HUNTER", "DRUID", "WARLOCK", "MAGE", "PRIEST", "DEMONHUNTER" };
             int _discoverIndex = 1;
-            string Version = "V5.1", description = null;
-            string Divider = new string('=', 47);
-            string Divider2 = new string('=', 50);
+            string Version = "=====Discover ChoicesV5.3=====", description = null;
+            string Divider = new string('=', 50);
             string Origin_Card = CardTemplate.LoadFromId(originCard).Name;
-
-            //Get play mode
+            Random rnd = new Random();
+            Card.Cards bestChoice = choices[rnd.Next(0, choices.Count)]; //final random choice if no cards found
+            //Get current play mode
             _mode = CurrentMode(Bot.CurrentMode());
-
             //Create card list
             List<CardValue> choicesCardValue = new List<CardValue>();
-
             //Get custom file if exists
             try
             {
@@ -108,7 +107,6 @@ namespace EE_Discover
                         break;
                 }
                 choicesCardValue.Clear();
-
                 //Search for best points
                 int heroIndex = 0;
                 int friend;
@@ -159,9 +157,9 @@ namespace EE_Discover
                 }
                 _discoverIndex++;
             } while (!(TotalPoints > 0 || _discoverIndex > 2));
-
-            // Select best card
+            //Card selection with highest points
             double bestPoints = 0;
+            _log = Version;
             for (var i = 0; i < choicesCardValue.Count; i++) //index through each card
             {
                 var cardValue = choicesCardValue[i]; //index through cardValue
@@ -169,17 +167,17 @@ namespace EE_Discover
                 int heroIndex = cardValue.GetHeroClass(); //calls cardValue subroutine, get hero class
                 bool friend = Convert.ToBoolean(cardValue.GetFriend()); //calls cardValue subroutine, get friend/opponent hero
                 string hero = heroIndex != 0 ? friend ? ", friend - " + heroes[heroIndex] : ", enemy - " + heroes[heroIndex] : null; //preparation to log
-                Bot.Log(i + 1 + ") " + CardTemplate.LoadFromId(cardValue.GetCard()).Name + ": " + pts + hero); //output cards choices to log
+                AddLog(i + 1 + ") " + CardTemplate.LoadFromId(cardValue.GetCard()).Name + ": " + pts + hero); //output cards choices to log
                 if (!(bestPoints < pts)) continue; //selects highest points
                 bestChoice = cardValue.GetCard(); //calls cardValue subroutine, get card assign to bestChoice
                 bestPoints = pts;
             }
-
-            // Out to Bot log
-            Bot.Log(Version + Divider);
-            Bot.Log("Best: " + CardTemplate.LoadFromId(bestChoice).Name + ": " + bestPoints);
-            Bot.Log(description);
-            Bot.Log(Divider2);
+            //Out to Bot log
+            AddLog(Divider);
+            AddLog("Best: " + CardTemplate.LoadFromId(bestChoice).Name + ": " + bestPoints);
+            AddLog(description);
+            AddLog(Divider);
+            Bot.Log(_log);
             return bestChoice; //returns cardID
         }
 
@@ -292,6 +290,12 @@ namespace EE_Discover
             return HSReplayArchetype.Name;
         }
 
+        //Adds text to log variable
+        private void AddLog(string log)
+        {
+            _log += "\r\n" + log;
+        }
+
         // *********** Special conditions ***********
         //Kazakus, Golem Shaper, Forged in the Barrens
         private static double KazakusGolemShaper(string bestChoice, string kazakusCard, Board board)
@@ -372,7 +376,7 @@ namespace EE_Discover
                 points[2] = 100; //Fire Invocation
             else if (board.MinionEnemy.Count > 1 && EnemyMinionCurrentHealth(Bot.CurrentBoard) / board.MinionEnemy.Count < 4) //If opponent has more than 2 minions on board average health 3 or less. Deal 2 damage to all enemy minions
                 points[3] = 90; //for Lightning Invocation
-			else if (EnemyHasLethal(Bot.CurrentBoard)) //Block opponent lethal attack
+            else if (EnemyHasLethal(Bot.CurrentBoard)) //Block opponent lethal attack
                 points[0] = 80; //Earth Invocation
             else if (FriendMinionDamage(Bot.CurrentBoard) > 2) //If friend has more than 2 damaged minions on board. Restore 6 Health to all friendly characters
                 points[1] = 70; //Water Invocation
@@ -428,13 +432,13 @@ namespace EE_Discover
             + (board.HasWeapon(false) && board.HeroEnemy.CountAttack == 0 ? board.WeaponEnemy.CurrentAtk : 0);
         }
 
-        //Calculate friendly attack
+        //Calculate friendly attack value
         private static int FriendAttack(Board board)
         {
             return (board.MinionFriend.FindAll(x => x.CanAttack && (x.IsCharge || x.NumTurnsInPlay != 0) && x.CountAttack == 0 && !x.IsTired).Sum(x => x.CurrentAtk) + (board.HasWeapon(false) && board.HeroFriend.CountAttack == 0 ? board.WeaponFriend.CurrentAtk : 0));
         }
 
-        //Calculate friendly defense
+        //Calculate friendly defense value
         private static int FriendDefence(Board board)
         {
             return board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor + (board.MinionFriend.FindAll(x => x.IsTaunt == true).Sum(x => x.CurrentHealth));
@@ -452,19 +456,19 @@ namespace EE_Discover
             return damageCount;
         }
 
-        //Calculate opponent attack
+        //Calculate opponent attack value
         private static int EnemyAttack(Board board)
         {
             return board.MinionEnemy.FindAll(x => x.CanAttack && (x.IsCharge || x.NumTurnsInPlay != 0) && x.CountAttack == 0 && !x.IsTired).Sum(x => x.CurrentAtk) + (board.HasWeapon(false) && board.HeroEnemy.CountAttack == 0 ? board.WeaponEnemy.CurrentAtk : 0);
         }
 
-        //Calculate opponent defense
+        //Calculate opponent defense value
         private static int EnemyDefence(Board board)
         {
             return board.HeroEnemy.CurrentHealth + board.HeroEnemy.CurrentArmor + (board.MinionEnemy.FindAll(x => x.IsTaunt == true).Sum(x => x.CurrentHealth));
         }
 
-        //Calculate opponent board health
+        //Calculate opponent board health value
         private static int EnemyMinionCurrentHealth(Board board)
         {
             return board.MinionEnemy.FindAll(x => x.CanAttack && (x.IsCharge || x.NumTurnsInPlay != 0) && x.CountAttack == 0 && !x.IsTired).Sum(x => x.CurrentHealth);
