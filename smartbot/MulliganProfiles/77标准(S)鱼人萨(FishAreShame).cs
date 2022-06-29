@@ -34,40 +34,10 @@ namespace SmartBot.Mulligan
 
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.CORE_LOEA10_3// 鱼人宝宝 CORE_LOEA10_3
-                ){ if(!CardsToKeep.Contains(Card.Cards.CORE_LOEA10_3))
-                    {
-                        Keep(card,"鱼人宝宝");
-                    }
-                }
                 if(card==Card.Cards.CORE_EX1_509// 鱼人招潮者 CORE_EX1_509
                 ){ if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_509))
                     {
                         Keep(card,"鱼人招潮者");
-                    }
-                }
-                if(card==Card.Cards.TSC_925// 岩石海底 TSC_925 
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_925))
-                    {
-                        Keep(card,"岩石海底");
-                    }
-                }
-                if(card==Card.Cards.TSC_957// 鱼饵桶 TSC_957 
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_957))
-                    {
-                        Keep(card,"鱼饵桶");
-                    }
-                }
-                if(card==Card.Cards.CORE_EX1_506//  鱼人猎潮者 CORE_EX1_506 
-                ){ if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_506))
-                    {
-                        Keep(card,"鱼人猎潮者");
-                    }
-                }
-                if(card==Card.Cards.TSC_614//  虚鳃鱼人 TSC_614 
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_614))
-                    {
-                        Keep(card,"虚鳃鱼人");
                     }
                 }
                 if(card==Card.Cards.TSC_039//  艾萨拉的拾荒者 TSC_039
@@ -92,12 +62,6 @@ namespace SmartBot.Mulligan
                 ){ if(!CardsToKeep.Contains(Card.Cards.BAR_062))
                     {
                         Keep(card,"甜水鱼人佣兵");
-                    }
-                }
-                if(card==Card.Cards.TSC_753//  血腥邪鳍鱼人 TSC_753
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_753))
-                    {
-                        Keep(card,"血腥邪鳍鱼人");
                     }
                 }
                 if(card==Card.Cards.BAR_751//  孵化池觅食者 BAR_751 

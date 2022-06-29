@@ -265,6 +265,24 @@ namespace SmartBotProfiles
             Bot.Log("嗜血 350");
             }
 #endregion
+#region 元素使者布鲁坎 Bru'kan of the Elements ID：AV_258 
+            if(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_258)
+            &&board.HasCardInHand(Card.Cards.LOE_076)//芬利·莫格顿爵士 Sir Finley Mrrgglton ID：LOE_076 
+            )
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOE_076, new Modifier(999));
+            Bot.Log("不用芬利·莫格顿爵士");
+            }
+#endregion
+#region 伯尔纳·锤喙 SW_115
+            if(board.HasCardInHand(Card.Cards.SW_115)
+            &&!board.HasCardInHand(Card.Cards.TID_004)//小丑鱼 TID_004 
+            )
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));
+            Bot.Log("伯尔纳·锤喙350");
+            }
+#endregion
 #region 攻击优先 卡牌威胁（通用） 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_002))
             {
