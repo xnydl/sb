@@ -250,12 +250,32 @@ namespace SmartBotProfiles
             Bot.Log("甜水鱼人佣兵 999");
             }
 #endregion
+#region 甜水鱼人斥候 BAR_063 
+            if(board.HasCardInHand(Card.Cards.BAR_063)
+            &&numberFishMen==0
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_063, new Modifier(999)); 
+            Bot.Log("甜水鱼人佣兵 999");
+            }
+#endregion
 #region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
             &&numberFishMenFriend>=3
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-99)); 
             Bot.Log("寒光先知 -99");
+            }else{
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(150)); 
+            }
+#endregion
+#region  鱼勇可贾 BAR_041
+            if(board.HasCardInHand(Card.Cards.BAR_041)
+            &&numberFishMenFriend>=3
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(-99)); 
+            Bot.Log("鱼勇可贾 -99");
+            }else{
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(150));   
             }
 #endregion
 #region 嗜血 Bloodlust ID：VAN_CS2_046 
