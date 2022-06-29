@@ -246,35 +246,35 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.BAR_062)
             &&numberFishMenFriend==0
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(350)); 
-            Bot.Log("甜水鱼人佣兵 350");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(150)); 
+            Bot.Log("甜水鱼人佣兵 150");
             }
 #endregion
 #region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
-            &&numberFishMenFriend>=3
+            &&numberFishMenFriend>=2
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-99)); 
             Bot.Log("寒光先知 -99");
             }else{
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(350)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(150)); 
             }
 #endregion
 #region  鱼勇可贾 BAR_041
             if(board.HasCardInHand(Card.Cards.BAR_041)
-            &&numberFishMenFriend>=3
+            &&numberFishMenFriend>=2
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(-99)); 
             Bot.Log("鱼勇可贾 -99");
             }else{
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(350));   
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(150));   
             }
 #endregion
 #region 嗜血 Bloodlust ID：VAN_CS2_046 
             if(board.HasCardInHand(Card.Cards.VAN_CS2_046)
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_046, new Modifier(350));
-            Bot.Log("嗜血 350");
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.VAN_CS2_046, new Modifier(150));
+            Bot.Log("嗜血 150");
             }
 #endregion
 #region 元素使者布鲁坎 Bru'kan of the Elements ID：AV_258 
@@ -289,8 +289,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.SW_115)
             &&!board.HasCardInHand(Card.Cards.TID_004)//小丑鱼 TID_004 
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));
-            Bot.Log("伯尔纳·锤喙350");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(150));
+            Bot.Log("伯尔纳·锤喙150");
             }
 #endregion
 #region 火焰术士弗洛格尔 BAR_860 
