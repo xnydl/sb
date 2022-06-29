@@ -246,8 +246,8 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.BAR_062)
             &&numberFishMenFriend==0
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(999)); 
-            Bot.Log("甜水鱼人佣兵 999");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(350)); 
+            Bot.Log("甜水鱼人佣兵 350");
             }
 #endregion
 #region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
@@ -257,7 +257,7 @@ namespace SmartBotProfiles
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-99)); 
             Bot.Log("寒光先知 -99");
             }else{
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(150)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(350)); 
             }
 #endregion
 #region  鱼勇可贾 BAR_041
@@ -267,7 +267,7 @@ namespace SmartBotProfiles
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(-99)); 
             Bot.Log("鱼勇可贾 -99");
             }else{
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(150));   
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(350));   
             }
 #endregion
 #region 嗜血 Bloodlust ID：VAN_CS2_046 
@@ -291,6 +291,13 @@ namespace SmartBotProfiles
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));
             Bot.Log("伯尔纳·锤喙350");
+            }
+#endregion
+#region 火焰术士弗洛格尔 BAR_860 
+            if(board.HasCardOnBoard(Card.Cards.BAR_860)
+            ){
+             p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(250)); 
+            Bot.Log("火焰术士弗洛格尔不送");
             }
 #endregion
 #region 攻击优先 卡牌威胁（通用） 
