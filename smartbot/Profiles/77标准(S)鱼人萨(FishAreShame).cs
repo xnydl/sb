@@ -244,17 +244,9 @@ namespace SmartBotProfiles
 #endregion
 #region 甜水鱼人佣兵 BAR_062
             if(board.HasCardInHand(Card.Cards.BAR_062)
-            &&numberFishMen==0
+            &&numberFishMenFriend==0
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(999)); 
-            Bot.Log("甜水鱼人佣兵 999");
-            }
-#endregion
-#region 甜水鱼人斥候 BAR_063 
-            if(board.HasCardInHand(Card.Cards.BAR_063)
-            &&numberFishMen==0
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_063, new Modifier(999)); 
             Bot.Log("甜水鱼人佣兵 999");
             }
 #endregion
