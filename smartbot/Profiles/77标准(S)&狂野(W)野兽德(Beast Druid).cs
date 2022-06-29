@@ -226,98 +226,20 @@ namespace SmartBotProfiles
             int friendCount = board.MinionFriend.Count;
             int aomiCount = board.Secret.Count;
             int dangqianfeiyong = board.ManaAvailable;
-            Bot.Log("自己奥秘数量"+aomiCount);
+            // Bot.Log("自己奥秘数量"+aomiCount);
             int NumberOfBeastsUsed = board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PET)+board.MinionFriend.Count(card => card.Race == Card.CRace.PET); 
-            Bot.Log("使用过的野兽数量"+NumberOfBeastsUsed);
+            // Bot.Log("使用过的野兽数量"+NumberOfBeastsUsed);
             // 用过的的霜狼宝宝 Frostwolf Cub ID：AV_211t  霜狼宝宝 Frostwolf Cub ID：AV_211t 
             int usedFrozen=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.AV_211t)+board.Hand.Count(x => x.Template.Id == Card.Cards.AV_211t)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_211t);
-           Bot.Log("用过的的霜狼宝宝"+usedFrozen);
+        //    Bot.Log("用过的的霜狼宝宝"+usedFrozen);
  #endregion
-
-
-#region sb不爱用的卡牌赋值
-
-p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BT_019, new Modifier(20));//莫戈尔·莫戈尔格 Murgur Murgurgle     BT_019  
-p.CastMinionsModifiers.AddOrUpdate(Card.Cards.YOP_035, new Modifier(10));//月牙 Moonfang     YOP_035
-p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(20));
-p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BAR_880, new Modifier(500));//1级定罪最先使用
-p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BT_018, new Modifier(500));//幽光鱼竿 Underlight Angling Rod     BT_018 最先使用
-p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗岩熔铸体 Granite Forgeborn     SW_032 
-
-
-
+#region 普瑞斯托女士 SW_078
+    if(board.HasCardInHand(Card.Cards.SW_078))
+    {
+      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_078, new Modifier(-999));
+      Bot.Log("普瑞斯托女士 -999 ");
+    }
 #endregion
-
-#region 对面没用过超凡之盟(正常游戏逻辑)
-if (!board.EnemyGraveyard.Contains(Card.Cards.BAR_539))//超凡之盟 Celestial Alignment     BAR_539 
-{
-    
-
-//1费逻辑
-
-//2费逻辑
-
-
-
-
-#region 大型魔像
-
-        if(board.ManaAvailable >= 5
-            && board.HasCardInHand(Card.Cards.BAR_079_m2)//大型魔像 Greater Golem     BAR_079_m2
-        )
-        {
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_079_m2, new Modifier(-200));
-        } //剩余5费提高用大型魔像优先
-
-#endregion
-
-}
-#endregion
-
-#region 不送怪的逻辑
-   
-    // 不送考内留斯·罗姆 Cornelius Roame     SW_080 
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_080, new Modifier(250)); 
-    // 不送考内留斯·罗姆 Cornelius Roame     SW_080 
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(250)); 
-      //修饰贪婪的书虫      SCH_142
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SCH_142, new Modifier(250));
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(250));
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_431, new Modifier(100));// 花园猎豹 Park Panther     SW_431
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_080, new Modifier(250));// 考内留斯·罗姆 Cornelius Roame     SW_080
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.DMF_230, new Modifier(250));// 伊格诺斯 Il'gynoth ID：DMF_230
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(250));// 农夫SW_319
-#endregion
-
-#region 增加随从威胁值
-    // 增加废料场巨魔的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_155, new Modifier(200));//废料场巨像 Scrapyard Colossus     BT_155 
-    // 增加巨型图腾埃索尔 Grand Totem Eys'or     DMF_709 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_709, new Modifier(200));
-    // 增加艾露恩神谕者      SW_419 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_419, new Modifier(200));
-    // 增加农夫 的攻击优先值
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(200));
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.WC_006, new Modifier(200));
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_033, new Modifier(200));//运河慢步者 Canal Slogger     SW_033
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CS3_007, new Modifier(200));//电击学徒 Novice Zapper     CS3_007 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_074, new Modifier(200));//前沿哨所      BAR_074 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_918, new Modifier(200));//塔姆辛·罗姆 Tamsin Roame     BAR_918 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_230, new Modifier(200));//伊格诺斯 Il'gynoth     DMF_230 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_733, new Modifier(200));//莫尔葛工匠 Mo'arg Artificer     BT_733 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_734, new Modifier(200));//格雷布     DMF_734  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_035, new Modifier(200));//月牙 Moon方    YOP_035
-  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_030, new Modifier(200));//货物保镖 Cargo Guard ID：SW_030
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_317, new Modifier(200));//原野联络人 Field Contact ID：BAR_317 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.YOP_030, new Modifier(200));//邪火神射手 Felfire Deadeye ID：YOP_030  
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));//迪菲亚炮手 Defias Cannoneer ID：DED_519 
-    // p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(600));//剑圣奥卡尼 Blademaster Okani ID：TSC_032 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));//历战先锋 Battleworn Vanguard ID：AV_118 
-    p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BOT_423, new Modifier(200));//梦境花栽种师 Dreampetal Florist ID：BOT_423
-#endregion
-
 #region 松鼠      SW_439 
     // 如果自己场上有活泼的松鼠,送掉它
     if(board.HasCardOnBoard(Card.Cards.SW_439))
