@@ -266,9 +266,8 @@ namespace SmartBotProfiles
             }
 #endregion
 #region 元素使者布鲁坎 Bru'kan of the Elements ID：AV_258 
-            if(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_258)
+            if(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_258)>0
             &&board.HasCardInHand(Card.Cards.LOE_076)//芬利·莫格顿爵士 Sir Finley Mrrgglton ID：LOE_076 
-            )
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOE_076, new Modifier(999));
             Bot.Log("不用芬利·莫格顿爵士");
