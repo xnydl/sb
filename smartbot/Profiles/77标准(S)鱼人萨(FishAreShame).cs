@@ -300,6 +300,9 @@ namespace SmartBotProfiles
             Bot.Log("火焰术士弗洛格尔不送");
             }
 #endregion
+#region Card.Cards.HERO_02bp
+           p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_02bp, new Modifier(-550)); 
+#endregion
 #region 攻击优先 卡牌威胁（通用） 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_002))
             {
