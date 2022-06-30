@@ -90,6 +90,60 @@ namespace SmartBot.Mulligan
                     }
                     }   
                 }
+                 if((card==Card.Cards.AV_137//深铁穴居人 AV_137 
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.AV_137))
+                    {
+                        Keep(card,"深铁穴居人");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.SW_439//活泼的松鼠 SW_439 
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.SW_439))
+                    {
+                        Keep(card,"活泼的松鼠");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.SW_319//农夫 SW_319
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.SW_319))
+                    {
+                        Keep(card,"农夫");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.DED_003//应急木工 DED_003 
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.DED_003))
+                    {
+                        Keep(card,"应急木工");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.AV_295//占领冷齿矿洞 AV_295 
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.AV_295))
+                    {
+                        Keep(card,"占领冷齿矿洞");
+                    }
+                    }   
+                }
+                 if((card==Card.Cards.BAR_074//前沿哨所 BAR_074 
+                )){
+                    {
+                       if(!CardsToKeep.Contains(Card.Cards.BAR_074))
+                    {
+                        Keep(card,"前沿哨所");
+                    }
+                    }   
+                }
         
             }
             return CardsToKeep;

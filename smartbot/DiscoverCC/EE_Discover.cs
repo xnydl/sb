@@ -134,7 +134,8 @@ namespace EE_Discover
                             if (card == Card.Cards.AV_295b) //More Supplies
                             {
                                 points = CaptureColdtoothMine(Bot.CurrentBoard);
-                                description = points == 100 ? "Capture Coldtooth Mine, selecting highest cost card" : "Capture Coldtooth Mine, selecting lowest cost card";
+                                description =  "Capture Coldtooth Mine, selecting highest cost card";
+                                // description = points == 100 ? "Capture Coldtooth Mine, selecting highest cost card" : "Capture Coldtooth Mine, selecting lowest cost card";
                             }
                             else
                                 points = 10; //More resources
