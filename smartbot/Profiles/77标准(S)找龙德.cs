@@ -292,7 +292,7 @@ namespace SmartBotProfiles
             ||board.Hand.Exists(card => card.CurrentCost==2))
             {
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(130));//降低农夫      SW_319
-            Bot.Log("农夫 130");
+            // Bot.Log("农夫 130");
              }
         //   敌方一费有随从 不下农夫      SW_319
           if(board.ManaAvailable ==1
@@ -394,6 +394,20 @@ namespace SmartBotProfiles
       ){
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_536t2, new Modifier(-99));
       Bot.Log("生命之种（等级3）  -99");
+      }
+#endregion
+#region 更多补给 More Supplies ID：AV_295b 
+      if(board.HasCardInHand(Card.Cards.AV_295b)
+      ){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_295b, new Modifier(-99));
+      Bot.Log("更多补给  -99");
+      }
+#endregion
+#region 更多资源 More Resources ID：AV_295a 
+      if(board.HasCardInHand(Card.Cards.AV_295a)
+      ){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_295a, new Modifier(-20));
+      Bot.Log("更多资源  -20");
       }
 #endregion
 
