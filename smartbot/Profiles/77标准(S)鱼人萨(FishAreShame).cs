@@ -228,23 +228,16 @@ namespace SmartBotProfiles
              int numberFishMenFriend=board.MinionFriend.Count(card => card.Race == Card.CRace.MURLOC);
             Bot.Log("场上上鱼人数量"+numberFishMenFriend);
  #endregion
-#region 艾萨拉的拾荒者 TSC_039
-            if(board.HasCardInHand(Card.Cards.TSC_039)
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_039, new Modifier(-99)); 
-            Bot.Log("艾萨拉的拾荒者 -99");
-            }
-#endregion
-#region 沉没的拾荒者 Sunken Scavenger ID：TSC_039t 
-            if(board.HasCardInHand(Card.Cards.TSC_039t)
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_039t, new Modifier(-150)); 
-            Bot.Log("沉没的拾荒者 -150");
-            }
+#region 深海融合怪 TSC_069 
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(150, Card.Cards.CS2_050)); //灼热图腾 Searing Totem ID：CS2_050 
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(150, Card.Cards.CS2_051)); //石爪图腾 Stoneclaw Totem ID：CS2_051 
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(150, Card.Cards.CS2_058)); //力量图腾 Strength Totem ID：CS2_058 
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(150, Card.Cards.NEW1_009)); //治疗图腾 Healing Totem ID：NEW1_009 
 #endregion
 #region 甜水鱼人佣兵 BAR_062
             if(board.HasCardInHand(Card.Cards.BAR_062)
             &&numberFishMenFriend==0
+            &&board.Hand.Exists(card => card.CurrentCost<=2)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(150)); 
             Bot.Log("甜水鱼人佣兵 150");
