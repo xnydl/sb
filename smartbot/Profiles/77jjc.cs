@@ -259,6 +259,12 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
     p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
 #endregion
 
+#region 荒野探险家 Wildlands Adventurer ID：TOT_056 
+      if(board.HasCardInHand(Card.Cards.TOT_056)){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TOT_056, new Modifier(-99));
+        Bot.Log("荒野探险家 -99 ");
+      }
+#endregion
 #region 旅行商人   SW_307 
       //  如果随从为0,降低旅行商人优先值,如果随从大于等于1可以用
       if(board.MinionFriend.Count <=1

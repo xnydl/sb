@@ -131,14 +131,14 @@ namespace EE_Discover
                                 description = "From: Guess the Weight: " + cardTemplate.Name + "  Cost: " + cardTemplate.Cost.ToString(); //Display name and cost of weight card
                             break;
                         case Card.Cards.AV_295: //Capture Coldtooth Mine, Fractured in Alterac Valley
-                            if (card == Card.Cards.AV_295b) //More Supplies
-                            {
-                                points = CaptureColdtoothMine(Bot.CurrentBoard);
-                                description =  "Capture Coldtooth Mine, selecting highest cost card";
-                                // description = points == 100 ? "Capture Coldtooth Mine, selecting highest cost card" : "Capture Coldtooth Mine, selecting lowest cost card";
-                            }
-                            else
-                                points = 10; //More resources
+                            // if (card == Card.Cards.AV_295b) //More Supplies
+                            // {
+                            //     points = CaptureColdtoothMine(Bot.CurrentBoard);
+                            //     description = points == 100 ? "Capture Coldtooth Mine, selecting highest cost card" : "Capture Coldtooth Mine, selecting lowest cost card";
+                            // }
+                            // else
+                            //     points = 10; //More resources
+                            description = "Capture Coldtooth Mine, selecting highest cost card";
                             break;
                         case Card.Cards.AV_258:  //Bru'kan of the Elements, Fractured in Alterac Valley
                             points = BrukanOfTheElements(card, Bot.CurrentBoard);
