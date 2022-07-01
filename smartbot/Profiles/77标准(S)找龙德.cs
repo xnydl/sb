@@ -396,6 +396,13 @@ namespace SmartBotProfiles
       Bot.Log("生命之种（等级3）  -99");
       }
 #endregion
+#region 占领冷齿矿洞 AV_295
+    if(board.HasCardInHand(Card.Cards.AV_295))
+    {
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_295, new Modifier(-99));  
+      Bot.Log("占领冷齿矿洞:"+-99);
+    }
+#endregion
 #region 更多补给 More Supplies ID：AV_295b 
       if(board.HasCardInHand(Card.Cards.AV_295b)
       ){
@@ -413,13 +420,13 @@ namespace SmartBotProfiles
 
 #region 雷霆绽放 SCH_427  硬币 GAME_005
           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SCH_427, new Modifier(55));//雷霆绽放 SCH_427
-           if(board.HasCardInHand(Card.Cards.GAME_005)
-            &&board.ManaAvailable <2){
-                p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
-                Bot.Log("三费之前不用硬币");
-            }else{
-                p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
-            }
+        //    if(board.HasCardInHand(Card.Cards.GAME_005)
+        //     &&board.ManaAvailable <2){
+        //         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
+        //         Bot.Log("三费之前不用硬币");
+        //     }else{
+        //         p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
+        //     }
 #endregion 
 
 #region 空军指挥官穆维里克 AV_293
@@ -434,14 +441,6 @@ namespace SmartBotProfiles
         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(999)); 
         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_293, new Modifier(999)); 
       Bot.Log("不送空军指挥官穆维里克");
-      }
-#endregion
-
-#region 普瑞斯托女士 Lady Prestor ID：SW_078
-      if(board.HasCardInHand(Card.Cards.SW_078)
-      ){
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_078, new Modifier(-200)); 
-      Bot.Log("普瑞斯托女士 -200");
       }
 #endregion
 
