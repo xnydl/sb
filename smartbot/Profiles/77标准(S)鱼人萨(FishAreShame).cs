@@ -297,7 +297,11 @@ namespace SmartBotProfiles
            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_02bp, new Modifier(-550)); 
 #endregion
 #region 攻击优先 卡牌威胁（通用） 
- if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_319))
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_032))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(200));
+            }//剑圣奥卡尼 Blademaster Okani ID：TSC_032 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_319))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(200));
             }//农夫 SW_319
