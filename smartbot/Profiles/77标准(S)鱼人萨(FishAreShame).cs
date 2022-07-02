@@ -247,20 +247,28 @@ namespace SmartBotProfiles
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
             &&numberFishMenFriend>=2
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-99)); 
-            Bot.Log("寒光先知 -99");
-            }else{
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(150)); 
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-55*(numberFishMenFriend))); 
+            Bot.Log("寒光先知"+-55*(numberFishMenFriend));
+            }
+            if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
+            &&numberFishMenFriend<2
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(130)); 
+            Bot.Log("寒光先知"+130);
             }
 #endregion
 #region  鱼勇可贾 BAR_041
             if(board.HasCardInHand(Card.Cards.BAR_041)
             &&numberFishMenFriend>=2
             ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(-99)); 
-            Bot.Log("鱼勇可贾 -99");
-            }else{
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(150));   
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(-55*(numberFishMenFriend))); 
+            Bot.Log("鱼勇可贾"+-55*(numberFishMenFriend));
+            } 
+            if(board.HasCardInHand(Card.Cards.BAR_041)
+            &&numberFishMenFriend<2
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(130)); 
+            Bot.Log("鱼勇可贾 130");
             }
 #endregion
 #region 嗜血 Bloodlust ID：VAN_CS2_046 
