@@ -235,13 +235,13 @@ namespace SmartBotProfiles
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(999, Card.Cards.NEW1_009)); //治疗图腾 Healing Totem ID：NEW1_009 
 #endregion
 #region 甜水鱼人佣兵 BAR_062
-            if(board.HasCardInHand(Card.Cards.BAR_062)
-            &&numberFishMenFriend==0
-            &&board.Hand.Exists(card => card.CurrentCost<=2)
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(150)); 
-            Bot.Log("甜水鱼人佣兵 150");
-            }
+            // if(board.HasCardInHand(Card.Cards.BAR_062)
+            // &&numberFishMenFriend==0
+            // &&board.Hand.Exists(card => card.CurrentCost<=2)
+            // ){
+            // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(150)); 
+            // Bot.Log("甜水鱼人佣兵 150");
+            // }
 #endregion
 #region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
