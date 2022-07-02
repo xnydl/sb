@@ -229,10 +229,10 @@ namespace SmartBotProfiles
             Bot.Log("场上上鱼人数量"+numberFishMenFriend);
  #endregion
 #region 深海融合怪 TSC_069 
-           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(150, Card.Cards.CS2_050)); //灼热图腾 Searing Totem ID：CS2_050 
-           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(150, Card.Cards.CS2_051)); //石爪图腾 Stoneclaw Totem ID：CS2_051 
-           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(150, Card.Cards.CS2_058)); //力量图腾 Strength Totem ID：CS2_058 
-           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(150, Card.Cards.NEW1_009)); //治疗图腾 Healing Totem ID：NEW1_009 
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(999, Card.Cards.CS2_050)); //灼热图腾 Searing Totem ID：CS2_050 
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(999, Card.Cards.CS2_051)); //石爪图腾 Stoneclaw Totem ID：CS2_051 
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(999, Card.Cards.CS2_058)); //力量图腾 Strength Totem ID：CS2_058 
+           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(999, Card.Cards.NEW1_009)); //治疗图腾 Healing Totem ID：NEW1_009 
 #endregion
 #region 甜水鱼人佣兵 BAR_062
             if(board.HasCardInHand(Card.Cards.BAR_062)
@@ -279,6 +279,7 @@ namespace SmartBotProfiles
             }
 #endregion
 #region 伯尔纳·锤喙 SW_115
+            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));      
             if(board.HasCardInHand(Card.Cards.SW_115)
             &&!board.HasCardInHand(Card.Cards.TID_004)//小丑鱼 TID_004 
             ){
@@ -297,6 +298,10 @@ namespace SmartBotProfiles
            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_02bp, new Modifier(-550)); 
 #endregion
 #region 攻击优先 卡牌威胁（通用） 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ONY_004))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_004, new Modifier(200));
+            }//团本首领奥妮克希亚 Raid Boss Onyxia ID：ONY_004 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_032))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(200));

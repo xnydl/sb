@@ -21,35 +21,23 @@ namespace SmartBot.Mulligan
         {
             bool HasCoin = choices.Count >= 4;
 
-            int flag1=0;//港口匪徒 SW_029
-            int flag2=0;//血帆桨手 CS3_008
+            int flag1=0;//t1
+            int flag2=0;//t2
+            int flag3=0;//t3
             
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.SW_029//港口匪徒 SW_029
-                ){flag1+=1;}
-                if(card==Card.Cards.CS3_008//血帆桨手 CS3_008
-                ){flag2+=1;}
+                if(card==Card.Cards.SW_029||card==Card.Cards.CS3_008||card==Card.Cards.LOE_076){flag1+=1;}
+                if(card==Card.Cards.BAR_063||card==Card.Cards.BAR_062||card==Card.Cards.BAR_860||card==Card.Cards.TSC_069||card==Card.Cards.BAR_040){flag2+=1;}
             }
 
             foreach (Card.Cards card in choices)
             {
+                // t1
                 if(card==Card.Cards.CORE_EX1_509// 鱼人招潮者 CORE_EX1_509
                 ){ if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_509))
                     {
                         Keep(card,"鱼人招潮者");
-                    }
-                }
-                if(card==Card.Cards.TSC_039//  艾萨拉的拾荒者 TSC_039
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_039))
-                    {
-                        Keep(card,"艾萨拉的拾荒者");
-                    }
-                }
-                if(card==Card.Cards.BAR_063//  甜水鱼人斥候 BAR_063 
-                ){ if(!CardsToKeep.Contains(Card.Cards.BAR_063))
-                    {
-                        Keep(card,"甜水鱼人斥候");
                     }
                 }
                 if(card==Card.Cards.SW_115//  伯尔纳·锤喙 SW_115
@@ -58,46 +46,68 @@ namespace SmartBot.Mulligan
                         Keep(card,"伯尔纳·锤喙");
                     }
                 }
-                if(card==Card.Cards.BAR_062//  甜水鱼人佣兵 BAR_062
-                ){ if(!CardsToKeep.Contains(Card.Cards.BAR_062))
-                    {
-                        Keep(card,"甜水鱼人佣兵");
-                    }
-                }
                 if(card==Card.Cards.BAR_751//  孵化池觅食者 BAR_751 
                 ){ if(!CardsToKeep.Contains(Card.Cards.BAR_751))
                     {
                         Keep(card,"孵化池觅食者");
                     }
                 }
-                if(card==Card.Cards.BAR_860//  火焰术士弗洛格尔 BAR_860 
-                ){ if(!CardsToKeep.Contains(Card.Cards.BAR_860))
-                    {
-                        Keep(card,"火焰术士弗洛格尔");
-                    }
-                }
-                if(card==Card.Cards.TSC_069//  深海融合怪 TSC_069 
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_069))
-                    {
-                        Keep(card,"深海融合怪");
-                    }
-                }
-                if(card==Card.Cards.BAR_040//  南海岸酋长 BAR_040 
-                ){ if(!CardsToKeep.Contains(Card.Cards.BAR_040))
-                    {
-                        Keep(card,"南海岸酋长");
-                    }
-                }
                 if(card==Card.Cards.TID_004//  小丑鱼 TID_004 
                 ){ 
                     Keep(card,"小丑鱼");
                 }
-                if(card==Card.Cards.LOE_076//  芬利·莫格顿爵士 Sir Finley Mrrgglton ID：LOE_076 
+                 if(card==Card.Cards.LOE_076//  芬利·莫格顿爵士 Sir Finley Mrrgglton ID：LOE_076 
                 ){ if(!CardsToKeep.Contains(Card.Cards.LOE_076))
                     {
                         Keep(card,"芬利·莫格顿爵士");
                     }
                 }
+                // t2
+                if(flag1>0){
+                        if(card==Card.Cards.BAR_063//  甜水鱼人斥候 BAR_063 
+                    ){ if(!CardsToKeep.Contains(Card.Cards.BAR_063))
+                        {
+                            Keep(card,"甜水鱼人斥候");
+                        }
+                    }
+                    
+                    if(card==Card.Cards.BAR_062//  甜水鱼人佣兵 BAR_062
+                    ){ if(!CardsToKeep.Contains(Card.Cards.BAR_062))
+                        {
+                            Keep(card,"甜水鱼人佣兵");
+                        }
+                    }
+                    
+                    if(card==Card.Cards.BAR_860//  火焰术士弗洛格尔 BAR_860 
+                    ){ if(!CardsToKeep.Contains(Card.Cards.BAR_860))
+                        {
+                            Keep(card,"火焰术士弗洛格尔");
+                        }
+                    }
+                    if(card==Card.Cards.TSC_069//  深海融合怪 TSC_069 
+                    ){ if(!CardsToKeep.Contains(Card.Cards.TSC_069))
+                        {
+                            Keep(card,"深海融合怪");
+                        }
+                    }
+                    if(card==Card.Cards.BAR_040//  南海岸酋长 BAR_040 
+                    ){ if(!CardsToKeep.Contains(Card.Cards.BAR_040))
+                        {
+                            Keep(card,"南海岸酋长");
+                        }
+                    }
+                }
+                if(flag1>0&&flag2>0){
+                    if(card==Card.Cards.BAR_041//   鱼勇可贾 BAR_041
+                    ){ if(!CardsToKeep.Contains(Card.Cards.BAR_041))
+                        {
+                            Keep(card,"鱼勇可贾");
+                        }
+                    }
+                }
+                
+                
+               
             }
             return CardsToKeep;
         }

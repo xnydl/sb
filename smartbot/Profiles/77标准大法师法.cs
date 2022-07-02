@@ -107,9 +107,11 @@ namespace SmartBotProfiles
             {Card.Cards.BAR_319t, 4},//邪恶挥刺（等级2） Wicked Stab (Rank 2)     BAR_319t
             {Card.Cards.BAR_319t2, 6},//邪恶挥刺（等级3） Wicked Stab (Rank 3)     BAR_319t2 
             {Card.Cards.CORE_CS2_075, 3},//影袭 Sinister Strike     CORE_CS2_075
+            {Card.Cards.TSC_086, 4},//剑鱼 TSC_086
             //术士
             {Card.Cards.CORE_CS2_062, 3},//地狱烈焰 Hellfire     CORE_CS2_062
             //战士
+            {Card.Cards.DED_006, 6},//重拳先生 DED_006
             //中立
             {Card.Cards.DREAM_02, 5},//伊瑟拉苏醒 Ysera Awakens     DREAM_02
         };
@@ -141,32 +143,29 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
+            var p = new ProfileParameters(board.HeroEnemy.CurrentHealth > 20?BaseProfile.Rush:BaseProfile.Face) { DiscoverSimulationValueThresholdPercent = -10 }; 
             //Bot.Log("玩家信息: " + rank+"/n"+Legend);
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
             //攻击模式切换
-            if (board.EnemyClass == Card.CClass.HUNTER
-                || board.EnemyClass == Card.CClass.SHAMAN
-                || board.EnemyClass == Card.CClass.ROGUE
+        
+            if ( board.EnemyClass == Card.CClass.SHAMAN
                 || board.EnemyClass == Card.CClass.PALADIN
-                || board.EnemyClass == Card.CClass.WARRIOR)
+                || board.EnemyClass == Card.CClass.WARRIOR
+                || board.EnemyClass == Card.CClass.MAGE
+                || board.EnemyClass == Card.CClass.ROGUE
+                )
             {
                 p.GlobalAggroModifier = (int)(a * 0.625 + 96.5);
                 Bot.Log("攻击值"+(a * 0.625 + 96.5));
             }
             else
             {
-                p.GlobalAggroModifier = (int)(a * 0.625 + 103.5);
+                p.GlobalAggroModifier = (int)(a * 0.625 + 113.5);
                 Bot.Log("攻击值"+(a * 0.625 + 103.5));
-            }	  
-            if (!board.MinionEnemy.Any(x => x.IsTaunt) &&
-                   (BoardHelper.GetEnemyHealthAndArmor(board) -
-                  BoardHelper.GetPotentialMinionDamages(board) -
-                BoardHelper.GetPlayableMinionSequenceDamages(BoardHelper.GetPlayableMinionSequence(board), board) <=
-                BoardHelper.GetTotalBlastDamagesInHand(board)))
-            {
-                p.GlobalAggroModifier = 450;
-            }          
+            }	   
+                     
+           
+
        {
  
         
@@ -222,174 +221,70 @@ namespace SmartBotProfiles
                     enemyMinionHealth += board.MinionEnemy[x].CurrentHealth;
                 }
             }
-            int dangqianfeiyong = board.ManaAvailable;
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
-            // 占领冷齿矿洞 AV_295
-            int flag1=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.AV_295)+board.Hand.Count(x => x.Template.Id == Card.Cards.AV_295)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_295);
-            // 普瑞斯托女士 SW_078
-            int flag2=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.SW_078)+board.Hand.Count(x => x.Template.Id == Card.Cards.SW_078)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.SW_078);
-            // 野性之心古夫 Wildheart Guff ID：AV_205 
-            int flag3=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.AV_205)+board.Hand.Count(x => x.Template.Id == Card.Cards.AV_205)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_205);
-            int usedDRAGON=board.MinionFriend.Count(card => card.Race == Card.CRace.DRAGON)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.DRAGON);
-            Bot.Log("使用过的龙"+usedDRAGON);
  #endregion
-#region 普瑞斯托女士 SW_078
-    if(board.HasCardInHand(Card.Cards.SW_078))
-    {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_078, new Modifier(-999));
-      Bot.Log("普瑞斯托女士 -999 ");
-    }
-#endregion
-#region 卡扎库杉 Kazakusan ID：ONY_005 
-    if(board.HasCardInHand(Card.Cards.ONY_005)
-    &&usedDRAGON>=4)
-    {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(-999));
-      Bot.Log("卡扎库杉 -999 ");
-    }else{
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.ONY_005, new Modifier(350));
-    }
-#endregion
-#region 松鼠      SW_439 
-    // 如果自己场上有活泼的松鼠,送掉它
-    if(board.HasCardOnBoard(Card.Cards.SW_439))
-    {
-    p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(-5)); 
-    Bot.Log("活泼的松鼠,送掉 -5");
-    }
-    if(board.HasCardInHand(Card.Cards.SW_439))
-    {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_439, new Modifier(-999));
-      Bot.Log("活泼的松鼠 -999 ");
-    }
-#endregion
-
-#region 底层掠食鱼 TSC_653
-    if(board.HasCardInHand(Card.Cards.TSC_653))
-    {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_653, new Modifier(-99));
-      Bot.Log("底层掠食鱼 -99 ");
-    }
-#endregion
-#region 暗礁德鲁伊 DED_001
-    if(board.HasCardOnBoard(Card.Cards.DED_001))
-    {
-    p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_001, new Modifier(-200)); 
-    Bot.Log("暗礁德鲁伊,后手出");
-    }
-#endregion
-
-#region 怒爪精锐 Clawfury Adept ID：AV_294 
- if(board.HasCardInHand(Card.Cards.AV_294))
-    {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_294, new Modifier(150));
-      Bot.Log("怒爪精锐 150 ");
-    }
-#endregion
-
-#region 永恒巨龙姆诺兹多 Murozond the Infinite ID：DRG_090 
- if(board.HasCardInHand(Card.Cards.DRG_090))
-    {
-      p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_090, new Modifier(-60));
-      Bot.Log("怒爪精锐 -60 ");
-    }
-#endregion
-
-#region 占领冷齿矿洞 AV_295
-    if(board.HasCardInHand(Card.Cards.AV_295)
-    &&flag2+flag3<2)
-    {
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_295, new Modifier(-999));  
-      Bot.Log("占领冷齿矿洞:-999");
-    }
-#endregion
-#region 更多补给 More Supplies ID：AV_295b 
-      if(board.HasCardInHand(Card.Cards.AV_295b)
-      &&flag2+flag3<2
-      ){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_295b, new Modifier(-999));
-      Bot.Log("更多补给  -999");
-      }
-#endregion
-#region 更多资源 More Resources ID：AV_295a 
-      if(board.HasCardInHand(Card.Cards.AV_295a)
-      ){
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_295a, new Modifier(-20));
-      Bot.Log("更多资源  -20");
+#region 剑圣奥卡尼 TSC_032
+       if(board.HasCardInHand(Card.Cards.TSC_032)){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(-150)); 
+        Bot.Log("剑圣奥卡尼 -150");
       }
 #endregion
 
-#region 施肥 Composting     SW_437
-    //  当随从数量大于等于2时增加施肥 Composting     SW_437优先级施肥 Composting     SW_437
-    if(board.HasCardInHand(Card.Cards.SW_437)
-    )
-    { 
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier((-55*(friendCount))));
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_437, new Modifier(-100)); 
-      Bot.Log("施肥:"+-55*friendCount);
-    }
-#endregion
-
-#region 技能
-      p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_06bp, new Modifier(-550)); 
-#endregion
-
-#region 应急木工 DED_003 
-         if(board.HasCardInHand(Card.Cards.DED_003)
-         &&flag1<2
-         ){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_003, new Modifier(-99));
-          Bot.Log("应急木工 -99");
+#region 巴琳达·斯通赫尔斯 AV_284
+       if(board.HasCardInHand(Card.Cards.AV_284)){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_284, new Modifier(-150)); 
+        Bot.Log("巴琳达·斯通赫尔斯 -150");
       }
 #endregion
 
-#region 月光指引 DED_002 
-         if(board.HasCardInHand(Card.Cards.DED_002)){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.DED_002, new Modifier(-40*(dangqianfeiyong)));
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.DED_002, new Modifier(999));
-          Bot.Log("月光指引优先级"+(-40*(dangqianfeiyong)));
+#region 深水唤醒师 DED_516 
+       if(board.HasCardInHand(Card.Cards.DED_516)){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DED_516, new Modifier(-150)); 
+        Bot.Log("深水唤醒师 -150");
       }
 #endregion
 
-#region 深铁穴居人  AV_137  
-        if(board.HasCardInHand(Card.Cards.AV_137)
-        &&board.MinionFriend.Count<6
-        )
-        {
-         p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(999)); 
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(-99));
-
-          Bot.Log("深铁穴居人 -99");
-        } 
-        if(board.HasCardOnBoard(Card.Cards.AV_137)
-        &&board.MinionFriend.Count<7
-        )
-        {
-         p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.AV_137, new Modifier(250)); 
-          Bot.Log("深铁穴居人 不送");
-        } 
-#endregion
-
-#region 橡果 Acorn     SW_439t
-      if(board.HasCardInHand(Card.Cards.SW_439t)){
-        p.CastSpellsModifiers.AddOrUpdate(Card.Cards.SW_439t, new Modifier(-9999)); // 橡果 Acorn     SW_439t
-        Bot.Log("橡果-9999");
+#region 鲁莽的学徒 Reckless Apprentice ID：BAR_544 
+       if(board.HasCardInHand(Card.Cards.BAR_544)){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_544, new Modifier(130)); 
+        Bot.Log("鲁莽的学徒 130");
       }
 #endregion
 
+#region 费林大使 Ambassador Faelin ID：TSC_067 
+       if(board.HasCardInHand(Card.Cards.TSC_067)){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_067, new Modifier(-99)); 
+        Bot.Log("费林大使 -99");
+      }
+#endregion
+
+#region 野蛮的女巫 Barbaric Sorceress ID：TSC_020 
+       if(board.HasCardInHand(Card.Cards.TSC_020)){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_020, new Modifier(-99)); 
+        Bot.Log("野蛮的女巫 -99");
+      }
+#endregion
+
+#region 大法师的符文 Rune of the Archmage ID：AV_283 
+       if(board.HasCardInHand(Card.Cards.AV_283)){
+       	p.CastSpellsModifiers.AddOrUpdate(Card.Cards.AV_283, new Modifier(-150)); 
+        Bot.Log("大法师的符文 -99");
+      }
+#endregion
+
+#region 龙火护符 Drakefire Amulet ID：ONY_029 
+       if(board.HasCardInHand(Card.Cards.ONY_029)){
+       	p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_029, new Modifier(-150)); 
+        Bot.Log("龙火护符 -99");
+      }
+#endregion
 #region GAME_005
-      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
+    //    p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
 #endregion
 
 
-
-
-#region 攻击优先 卡牌威胁
-
-             {
-                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(200));
-            }//农夫 SW_319
+#region 攻击优先 卡牌威胁（通用） 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_002))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(200));
@@ -458,6 +353,11 @@ namespace SmartBotProfiles
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ULD_231, new Modifier(200));
             }//连环腿大师 Whirlkick Master ULD_231 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_115 ))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_115 , new Modifier(200));
+            }//伯尔纳·锤喙 Bolner Hammerbeak ID：SW_115 
+
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DMF_237))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DMF_237, new Modifier(200));

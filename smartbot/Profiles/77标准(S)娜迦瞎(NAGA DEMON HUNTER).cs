@@ -225,8 +225,18 @@ namespace SmartBotProfiles
             int friendCount = board.MinionFriend.Count;
             int wangyunum=board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_325)+board.Hand.Count(x => x.Template.Id == Card.Cards.BAR_326)+board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_938)+board.Hand.Count(x => x.Template.Id == Card.Cards.WC_701);
             int sainuosi=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.TSC_218)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_218);
-            Bot.Log("赛诺斯夫人没用过");
+            // 渊狱魔犬希拉格 Xhilag of the Abyss ID：TSC_219 
+            int usedjuxing=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.TSC_219)+board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_219)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_219);
  #endregion
+#region 剑圣奥卡尼 TSC_032
+       if(board.HasCardInHand(Card.Cards.TSC_032)){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(-150)); 
+        Bot.Log("剑圣奥卡尼 -150");
+      }
+#endregion
+#region GAME_005
+       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55));
+#endregion
 
 #region 旅行商人   SW_307 
       //  如果随从为0,降低旅行商人优先值,如果随从大于等于1可以用
@@ -358,6 +368,12 @@ namespace SmartBotProfiles
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(250)); 
             Bot.Log("赛丝诺女士 250");
             }
+            if(board.HasCardInHand(Card.Cards.TSC_218)
+            ){
+             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(999));//赛丝诺女士最先使用
+            Bot.Log("赛丝诺女士最先使用");
+            }
+           
 #endregion
 
 #region 刺豚拳手 Pufferfist ID：TSC_002  
@@ -370,9 +386,10 @@ namespace SmartBotProfiles
 
 #region 凯丽娅·邪魂 Caria Felsoul ID：AV_267 
             if(board.HasCardInHand(Card.Cards.AV_267)
+            &&usedjuxing==0
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_267, new Modifier(-150)); 
-            Bot.Log("凯丽娅·邪魂 -150");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_267, new Modifier(-999)); 
+            Bot.Log("凯丽娅·邪魂 -999");
             }
 #endregion
 
@@ -524,21 +541,21 @@ namespace SmartBotProfiles
             }
 #endregion
 
-#region 德雷克塔尔 Drek'Thar ID：AV_100  
-         if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
-          p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-999));
-          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(9999));
-          Bot.Log("德雷克塔尔 -999");
-      }else{
-           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
-      }
-       if(board.HasCardInHand(Card.Cards.AV_100)
-       &&board.HasCardInHand(Card.Cards.GAME_005)
-       &&board.ManaAvailable <3){
-          p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
-          Bot.Log("有德雷克，三费之前不用硬币");
-      }
-#endregion
+// #region 德雷克塔尔 Drek'Thar ID：AV_100  
+//          if(board.HasCardInHand(Card.Cards.AV_100)&&board.MinionFriend.Count<5){
+//           p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(-999));
+//           p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(9999));
+//           Bot.Log("德雷克塔尔 -999");
+//       }else{
+//            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_100, new Modifier(150));
+//       }
+//        if(board.HasCardInHand(Card.Cards.AV_100)
+//        &&board.HasCardInHand(Card.Cards.GAME_005)
+//        &&board.ManaAvailable <3){
+//           p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(999));
+//           Bot.Log("有德雷克，三费之前不用硬币");
+//       }
+// #endregion
 
 #region 深铁穴居人  AV_137  
         if(board.HasCardInHand(Card.Cards.AV_137)

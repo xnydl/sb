@@ -140,7 +140,7 @@ namespace SmartBotProfiles
       public ProfileParameters GetParameters(Board board)
       {
 
-            var p = new ProfileParameters(BaseProfile.Rush) { DiscoverSimulationValueThresholdPercent = -10 };           
+            var p = new ProfileParameters(BaseProfile.Default) { DiscoverSimulationValueThresholdPercent = -10 };           
             int a = (board.HeroFriend.CurrentHealth + board.HeroFriend.CurrentArmor) - BoardHelper.GetEnemyHealthAndArmor(board);
            
                 p.GlobalAggroModifier = a;
@@ -771,12 +771,8 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
 #region 塔楼中士 Tower Sergeant ID：AV_125 
 
       if(board.HasCardInHand(Card.Cards.AV_125)
-      &&board.MinionFriend.Count >=2
       ){
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_125, new Modifier(-99)); 
-        Bot.Log("塔楼中士 -99");
-      }else{
-        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.AV_125, new Modifier(250)); 
+        p.PlayOrderModifiers.AddOrUpdate(Card.Cards.AV_125, new Modifier(-150));
       }
 #endregion
 #region 深渊召唤者 Abyssal Summoner ID：DRG_207 
@@ -845,12 +841,26 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.SW_032, new Modifier(-200));//花岗
         Bot.Log("被背小鬼 -60");
       }
 #endregion
+#region 时道漫步者 Timeway Wanderer ID：TOT_116 
+      if(board.HasCardInHand(Card.Cards.TOT_116)
+      ){
+        p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TOT_116, new Modifier(-99)); 
+        Bot.Log("时道漫步者 -99");
+      }
+#endregion
 #region 痛苦诅咒 Curse of Agony ID：ONY_034 
 // 如果血量小于15,对方无随从,提高优先级
       if(board.HasCardInHand(Card.Cards.ONY_034)//痛苦诅咒 Curse of Agony ID：ONY_034
       ){
       p.CastSpellsModifiers.AddOrUpdate(Card.Cards.ONY_034, new Modifier(-999));
       Bot.Log("痛苦诅咒 -999");
+      }
+#endregion
+#region 临终之息 Final Gasp ID：WC_022 
+      if(board.HasCardInHand(Card.Cards.WC_022)
+      ){
+      p.CastSpellsModifiers.AddOrUpdate(Card.Cards.WC_022, new Modifier(130));
+      Bot.Log("临终之息 130");
       }
 #endregion
 #region 生命分流 Life Tap ID：HERO_07bp
