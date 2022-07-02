@@ -279,20 +279,22 @@ namespace SmartBotProfiles
             }
 #endregion
 #region 元素使者布鲁坎 Bru'kan of the Elements ID：AV_258 
-            if(board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_258)>0
-            &&board.HasCardInHand(Card.Cards.LOE_076)//芬利·莫格顿爵士 Sir Finley Mrrgglton ID：LOE_076 
+            if(board.FriendGraveyard.Contains(Card.Cards.AV_258)
+            &&board.HasCardInHand(Card.Cards.CORE_LOE_076)//芬利·莫格顿爵士 Sir Finley Mrrgglton ID：CORE_LOE_076 
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.LOE_076, new Modifier(999));
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_076, new Modifier(999));
             Bot.Log("不用芬利·莫格顿爵士");
             }
 #endregion
 #region 伯尔纳·锤喙 SW_115
             p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));      
             if(board.HasCardInHand(Card.Cards.SW_115)
-            &&!board.HasCardInHand(Card.Cards.TID_004)//小丑鱼 TID_004 
+            &&board.HasCardInHand(Card.Cards.TID_004)//小丑鱼 TID_004 
             ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(-99));
+            Bot.Log("伯尔纳·锤喙-99");
+            }else{
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));
-            Bot.Log("伯尔纳·锤喙350");
             }
 #endregion
 #region 火焰术士弗洛格尔 BAR_860 
@@ -300,6 +302,11 @@ namespace SmartBotProfiles
             ){
              p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(250)); 
             Bot.Log("火焰术士弗洛格尔不送");
+            }
+            if(board.HasCardInHand(Card.Cards.BAR_860)
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(150));
+            Bot.Log("火焰术士弗洛格尔 150");
             }
 #endregion
 #region Card.Cards.HERO_02bp

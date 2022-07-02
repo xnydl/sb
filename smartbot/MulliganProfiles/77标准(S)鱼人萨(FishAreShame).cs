@@ -27,7 +27,7 @@ namespace SmartBot.Mulligan
             
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.SW_029||card==Card.Cards.CS3_008||card==Card.Cards.LOE_076){flag1+=1;}
+                if(card==Card.Cards.SW_029||card==Card.Cards.CS3_008||card==Card.Cards.CORE_LOE_076){flag1+=1;}
                 if(card==Card.Cards.BAR_063||card==Card.Cards.BAR_062||card==Card.Cards.BAR_860||card==Card.Cards.TSC_069||card==Card.Cards.BAR_040){flag2+=1;}
             }
 
@@ -56,8 +56,8 @@ namespace SmartBot.Mulligan
                 ){ 
                     Keep(card,"小丑鱼");
                 }
-                 if(card==Card.Cards.LOE_076//  芬利·莫格顿爵士 Sir Finley Mrrgglton ID：LOE_076 
-                ){ if(!CardsToKeep.Contains(Card.Cards.LOE_076))
+                 if(card==Card.Cards.CORE_LOE_076//  芬利·莫格顿爵士 Sir Finley Mrrgglton ID：CORE_LOE_076 
+                ){ if(!CardsToKeep.Contains(Card.Cards.CORE_LOE_076))
                     {
                         Keep(card,"芬利·莫格顿爵士");
                     }
