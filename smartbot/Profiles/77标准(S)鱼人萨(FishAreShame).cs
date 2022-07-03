@@ -234,6 +234,13 @@ namespace SmartBotProfiles
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(999, Card.Cards.CS2_058)); //力量图腾 Strength Totem ID：CS2_058 
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(999, Card.Cards.NEW1_009)); //治疗图腾 Healing Totem ID：NEW1_009 
 #endregion
+#region 不送的怪
+          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.CORE_EX1_509, new Modifier(150)); //修饰鱼人招潮者 CORE_EX1_509
+          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(150)); //修饰火焰术士弗洛格尔 BAR_860 
+          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(150)); //修饰伯尔纳·锤喙 SW_115
+          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_063, new Modifier(150)); //修饰甜水鱼人斥候 BAR_063 
+          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.CORE_EX1_507, new Modifier(150)); //修饰鱼人领军 Murloc Warleader ID：CORE_EX1_507 
+#endregion
 #region 甜水鱼人佣兵 BAR_062
             // if(board.HasCardInHand(Card.Cards.BAR_062)
             // &&numberFishMenFriend==0
@@ -297,18 +304,13 @@ namespace SmartBotProfiles
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));
             }
 #endregion
-#region 火焰术士弗洛格尔 BAR_860 
-            if(board.HasCardOnBoard(Card.Cards.BAR_860)
-            ){
-             p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(250)); 
-            Bot.Log("火焰术士弗洛格尔不送");
-            }
-            if(board.HasCardInHand(Card.Cards.BAR_860)
-            ){
-            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(150));
-            Bot.Log("火焰术士弗洛格尔 150");
-            }
-#endregion
+// #region 火焰术士弗洛格尔 BAR_860 
+//             if(board.HasCardOnBoard(Card.Cards.BAR_860)
+//             ){
+//              p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(250)); 
+//             Bot.Log("火焰术士弗洛格尔不送");
+//             }
+// #endregion
 #region Card.Cards.HERO_02bp
            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_02bp, new Modifier(-550)); 
 #endregion
