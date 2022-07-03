@@ -229,6 +229,8 @@ namespace SmartBotProfiles
                     enemyMinionHealth += board.MinionEnemy[x].CurrentHealth;
                 }
             }
+            // 剑鱼 TSC_086
+             int jianyu=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.TSC_086)+board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_086)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_086);
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
             // 海盗数量
@@ -237,7 +239,7 @@ namespace SmartBotProfiles
             int filterHaidao=haidaonum-board.Hand.Count(x => x.Template.Id == Card.Cards.DRG_056);
             int changshanghaidaonum=board.MinionFriend.Count(card => card.Race == Card.CRace.PIRATE);
             int enemychangshanghaidaonum=board.MinionEnemy.Count(card => card.Race == Card.CRace.PIRATE);
-            int jianyu=board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_086)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_086);
+            // int jianyu=board.Hand.Count(x => x.Template.Id == Card.Cards.TSC_086)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.TSC_086);
             Bot.Log("剑鱼用过数量"+jianyu);
             // 坟场海盗数量
             int fenchanghaidao=board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Race  == Card.CRace.PIRATE);
@@ -247,6 +249,7 @@ namespace SmartBotProfiles
             int paqisi=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.CFM_637)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.CFM_637);
               // 使用过的海盗数量(不算帕奇斯和空降歹徒)
             int usedhaidao=fenchanghaidao+changshanghaidaonum;
+
  #endregion
 
 
@@ -262,6 +265,7 @@ namespace SmartBotProfiles
 #region 空降歹徒 DRG_056
             if(board.HasCardInHand(Card.Cards.DRG_056)
             &&filterHaidao>=1
+            &&board.ManaAvailable>2
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.DRG_056, new Modifier(150)); 
             Bot.Log("空降歹徒 150");
@@ -463,6 +467,8 @@ namespace SmartBotProfiles
             &&haidaonum>=1
             &&board.MaxMana ==1
             &&enemyAttack<3
+            &&!board.HasCardInHand(Card.Cards.LOOT_033)
+            &&jianyu<2
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-999)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(999)); 
@@ -472,6 +478,7 @@ namespace SmartBotProfiles
             &&haidaonum>=1
             &&board.MaxMana >1
             &&!board.HasCardInHand(Card.Cards.LOOT_033)
+            &&jianyu<2
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-99)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
