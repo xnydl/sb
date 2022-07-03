@@ -397,6 +397,7 @@ namespace SmartBotProfiles
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CFM_637, new Modifier(-20)); 
             Bot.Log("海盗帕奇斯 -20");
             }
+            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.CFM_637, new Modifier(150)); 
 #endregion
 #region 洞穴探宝者 LOOT_033 
             if(board.HasCardInHand(Card.Cards.LOOT_033)
@@ -470,6 +471,7 @@ namespace SmartBotProfiles
           if(board.HasCardInHand(Card.Cards.GVG_075)
             &&haidaonum>=1
             &&board.MaxMana >1
+            &&!board.HasCardInHand(Card.Cards.LOOT_033)
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(-99)); 
             p.PlayOrderModifiers.AddOrUpdate(Card.Cards.GVG_075, new Modifier(550)); 
@@ -541,20 +543,21 @@ namespace SmartBotProfiles
         } 
         if(board.WeaponFriend != null 
           && board.WeaponFriend.Template.Id == Card.Cards.TSC_086
+          &&board.ManaAvailable !=2
           ){
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
             p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp   
             Bot.Log("手上为剑鱼,不用技能");
           }  
-        if(board.HasCardInHand(Card.Cards.TSC_086)
-          &&board.ManaAvailable>=3
-          ){
-            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
-            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
-            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp   
-            Bot.Log("手上有剑鱼,不用技能");
-          }  
+        // if(board.HasCardInHand(Card.Cards.TSC_086)
+        //   &&board.ManaAvailable>=3
+        //   ){
+        //     p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03bp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
+        //     p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03dbp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp 
+        //     p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_03ebp, new Modifier(999));//匕首精通 Dagger Mastery ID：HERO_03bp   
+        //     Bot.Log("手上有剑鱼,不用技能");
+        //   }  
         //  if(board.HasCardInHand(Card.Cards.TSC_086)
         //  &&board.ManaAvailable >=3
         //   ){
@@ -568,11 +571,11 @@ namespace SmartBotProfiles
         //     p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(999));
         //     Bot.Log("攻击优先级 999");
         //   }
-          if(board.HasCardInHand(Card.Cards.SCH_305)
-          &&board.ManaAvailable >=4
-        ){
-            p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(130));
-        } 
+        //   if(board.HasCardInHand(Card.Cards.SCH_305)
+        //   &&board.ManaAvailable >=4
+        // ){
+        //     p.WeaponsAttackModifiers.AddOrUpdate(Card.Cards.DRG_025, new Modifier(130));
+        // } 
 #endregion
 #region 携刃信使 Cutlass Courier ID：TSC_085 
         if(board.HasCardInHand(Card.Cards.TSC_085)
