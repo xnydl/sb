@@ -68,8 +68,8 @@ namespace SmartBotProfiles
 #region 英雄能力优先级
         private readonly Dictionary<Card.Cards, int> _heroPowersPriorityTable = new Dictionary<Card.Cards, int>
         {
-            {SteadyShot, 9},//猎人
-            {LifeTap, 8},//术士
+            {SteadyShot, 8},//猎人
+            {LifeTap, 9},//术士
             {DaggerMastery, 7},//盗贼
             {Reinforce, 5},//骑士
             {Fireblast, 4},//法师
@@ -241,6 +241,19 @@ namespace SmartBotProfiles
           p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_063, new Modifier(150)); //修饰甜水鱼人斥候 BAR_063 
           p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.CORE_EX1_507, new Modifier(150)); //修饰鱼人领军 Murloc Warleader ID：CORE_EX1_507 
 #endregion
+#region 提高一些怪的出牌优先级
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(999));//火焰术士弗洛格尔 BAR_860 
+          p.PlayOrderModifiers.AddOrUpdate(Card.Cards.CORE_EX1_509, new Modifier(999));//鱼人招潮者 CORE_EX1_509
+#endregion
+#region Card.Cards.GAME_005
+           if(board.HasCardInHand(Card.Cards.GAME_005)
+            &&board.MaxMana >= 2
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55)); 
+            }else{
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(150)); 
+            }
+#endregion
 #region 甜水鱼人佣兵 BAR_062
             // if(board.HasCardInHand(Card.Cards.BAR_062)
             // &&numberFishMenFriend==0
@@ -250,6 +263,13 @@ namespace SmartBotProfiles
             // Bot.Log("甜水鱼人佣兵 150");
             // }
 #endregion
+#region 鳄鱼人掠夺者 Gorloc Ravager ID：TSC_034 
+            if(board.HasCardInHand(Card.Cards.TSC_034)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_034, new Modifier(-99)); 
+            Bot.Log("鳄鱼人掠夺者 -99");
+            }
+#endregion
 #region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
             &&numberFishMenFriend>=2
@@ -258,7 +278,7 @@ namespace SmartBotProfiles
             Bot.Log("寒光先知"+-55*(numberFishMenFriend));
             }
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
-            &&numberFishMenFriend<2
+            &&numberFishMenFriend<1
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(130)); 
             Bot.Log("寒光先知"+130);
@@ -315,6 +335,14 @@ namespace SmartBotProfiles
            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_02bp, new Modifier(-550)); 
 #endregion
 #region 攻击优先 卡牌威胁（通用） 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_458t))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_458t, new Modifier(200));
+            }//塔维什的山羊 Tavish's Ram ID：SW_458t 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.WC_006))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.WC_006, new Modifier(200));
+            }//安娜科德拉 Lady Anacondra ID：WC_006 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ONY_004))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_004, new Modifier(200));

@@ -27,8 +27,14 @@ namespace SmartBot.Mulligan
             
             foreach (Card.Cards card in choices)
             {
-                if(card==Card.Cards.SW_029||card==Card.Cards.CS3_008||card==Card.Cards.CORE_LOE_076){flag1+=1;}
-                if(card==Card.Cards.BAR_063||card==Card.Cards.BAR_062||card==Card.Cards.BAR_860||card==Card.Cards.TSC_069||card==Card.Cards.BAR_040){flag2+=1;}
+                if(card==Card.Cards.SW_029){flag1+=1;}
+                if(card==Card.Cards.CS3_008){flag1+=1;}
+                if(card==Card.Cards.CORE_LOE_076){flag1+=1;}
+                if(card==Card.Cards.BAR_040){flag2+=1;}
+                if(card==Card.Cards.BAR_063){flag2+=1;}
+                if(card==Card.Cards.BAR_062){flag2+=1;}
+                if(card==Card.Cards.BAR_860){flag2+=1;}
+                if(card==Card.Cards.TSC_069){flag2+=1;}
             }
 
             foreach (Card.Cards card in choices)
@@ -63,51 +69,45 @@ namespace SmartBot.Mulligan
                     }
                 }
                 // t2
-                if(flag1>0){
-                        if(card==Card.Cards.BAR_063//  甜水鱼人斥候 BAR_063 
+                    if(card==Card.Cards.BAR_063&&flag1>0//  甜水鱼人斥候 BAR_063 
                     ){ if(!CardsToKeep.Contains(Card.Cards.BAR_063))
                         {
                             Keep(card,"甜水鱼人斥候");
                         }
                     }
                     
-                    if(card==Card.Cards.BAR_062//  甜水鱼人佣兵 BAR_062
+                    if(card==Card.Cards.BAR_062&&flag1>0//  甜水鱼人佣兵 BAR_062
                     ){ if(!CardsToKeep.Contains(Card.Cards.BAR_062))
                         {
                             Keep(card,"甜水鱼人佣兵");
                         }
                     }
                     
-                    if(card==Card.Cards.BAR_860//  火焰术士弗洛格尔 BAR_860 
+                    if(card==Card.Cards.BAR_860&&flag1>0//  火焰术士弗洛格尔 BAR_860 
                     ){ if(!CardsToKeep.Contains(Card.Cards.BAR_860))
                         {
                             Keep(card,"火焰术士弗洛格尔");
                         }
                     }
-                    if(card==Card.Cards.TSC_069//  深海融合怪 TSC_069 
+                    if(card==Card.Cards.TSC_069&&flag1>0//  深海融合怪 TSC_069 
                     ){ if(!CardsToKeep.Contains(Card.Cards.TSC_069))
                         {
                             Keep(card,"深海融合怪");
                         }
                     }
-                    if(card==Card.Cards.BAR_040//  南海岸酋长 BAR_040 
+                    if(card==Card.Cards.BAR_040&&flag1>0//  南海岸酋长 BAR_040 
                     ){ if(!CardsToKeep.Contains(Card.Cards.BAR_040))
                         {
                             Keep(card,"南海岸酋长");
                         }
                     }
-                }
-                if(flag1>0&&flag2>0){
-                    if(card==Card.Cards.BAR_041//   鱼勇可贾 BAR_041
+                    // T3
+                    if(card==Card.Cards.BAR_041&&flag1>0&&flag2>0//   鱼勇可贾 BAR_041
                     ){ if(!CardsToKeep.Contains(Card.Cards.BAR_041))
                         {
                             Keep(card,"鱼勇可贾");
                         }
                     }
-                }
-                
-                
-               
             }
             return CardsToKeep;
         }
