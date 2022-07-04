@@ -310,7 +310,7 @@ namespace SmartBotProfiles
             }
 #endregion
 #region 元素使者布鲁坎 Bru'kan of the Elements ID：AV_258 
-            if(flag1>0)
+            if(flag1>0
             &&board.HasCardInHand(Card.Cards.CORE_LOE_076)//芬利·莫格顿爵士 Sir Finley Mrrgglton ID：CORE_LOE_076 
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_076, new Modifier(999));
