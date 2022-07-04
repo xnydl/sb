@@ -324,12 +324,12 @@ namespace SmartBotProfiles
             }
 #endregion
 #region 伯尔纳·锤喙 SW_115
-            if(board.HasCardInHand(Card.Cards.SW_115)
-            &&!board.HasCardInHand(Card.Cards.TID_004)//小丑鱼 TID_004 
-            ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));
-            Bot.Log("伯尔纳·锤喙 350");
-            }
+            // if(board.HasCardInHand(Card.Cards.SW_115)
+            // &&!board.HasCardInHand(Card.Cards.TID_004)//小丑鱼 TID_004 
+            // ){
+            // p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(150));
+            // Bot.Log("伯尔纳·锤喙 150");
+            // }
 #endregion
 #region 火焰术士弗洛格尔 BAR_860 
             if(board.HasCardInHand(Card.Cards.BAR_860)
