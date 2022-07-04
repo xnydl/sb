@@ -35,6 +35,7 @@ namespace SmartBot.Mulligan
                 if(card==Card.Cards.BAR_062){flag2+=1;}
                 if(card==Card.Cards.BAR_860){flag2+=1;}
                 if(card==Card.Cards.TSC_069){flag2+=1;}
+                if(card==Card.Cards.CORE_LOEA10_3){flag2+=1;}// 鱼人宝宝 Murloc Tinyfin ID：CORE_LOEA10_3
             }
 
             foreach (Card.Cards card in choices)
@@ -99,6 +100,12 @@ namespace SmartBot.Mulligan
                     ){ if(!CardsToKeep.Contains(Card.Cards.BAR_040))
                         {
                             Keep(card,"南海岸酋长");
+                        }
+                    }
+                    if(card==Card.Cards.CORE_LOEA10_3&&flag1>0//  鱼人宝宝 Murloc Tinyfin ID：CORE_LOEA10_3
+                    ){ if(!CardsToKeep.Contains(Card.Cards.CORE_LOEA10_3))
+                        {
+                            Keep(card,"鱼人宝宝");
                         }
                     }
                     // T3

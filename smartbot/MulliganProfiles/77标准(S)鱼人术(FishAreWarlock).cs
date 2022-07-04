@@ -52,12 +52,12 @@ namespace SmartBot.Mulligan
                         Keep(card,"岩石海底");
                     }
                 }
-                if(card==Card.Cards.TSC_957// 鱼饵桶 TSC_957 
-                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_957))
-                    {
-                        Keep(card,"鱼饵桶");
-                    }
-                }
+                // if(card==Card.Cards.TSC_957// 鱼饵桶 TSC_957 
+                // ){ if(!CardsToKeep.Contains(Card.Cards.TSC_957))
+                //     {
+                //         Keep(card,"鱼饵桶");
+                //     }
+                // }
                 if(card==Card.Cards.CORE_EX1_506//  鱼人猎潮者 CORE_EX1_506 
                 ){ if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_506))
                     {
@@ -92,6 +92,12 @@ namespace SmartBot.Mulligan
                 ){ if(!CardsToKeep.Contains(Card.Cards.TSC_753))
                     {
                         Keep(card,"血腥邪鳍鱼人");
+                    }
+                }
+                if(card==Card.Cards.TSC_069&&flag1>0//  深海融合怪 TSC_069 
+                ){ if(!CardsToKeep.Contains(Card.Cards.TSC_069))
+                    {
+                        Keep(card,"深海融合怪");
                     }
                 }
             }

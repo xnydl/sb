@@ -258,6 +258,12 @@ namespace SmartBotProfiles
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(150)); 
             }
 #endregion
+#region 剑圣奥卡尼 TSC_032
+       if(board.HasCardInHand(Card.Cards.TSC_032)){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(-150)); 
+        Bot.Log("剑圣奥卡尼 -150");
+      }
+#endregion
 #region 甜水鱼人佣兵 BAR_062
             // if(board.HasCardInHand(Card.Cards.BAR_062)
             // &&numberFishMenFriend==0
@@ -276,13 +282,13 @@ namespace SmartBotProfiles
 #endregion
 #region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
-            &&numberFishMenFriend>=2
+            &&numberFishMenFriend>=3
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-55*(numberFishMenFriend))); 
             Bot.Log("寒光先知"+-55*(numberFishMenFriend));
             }
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
-            &&numberFishMenFriend<1
+            &&numberFishMenFriend<3
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(130)); 
             Bot.Log("寒光先知"+130);
@@ -290,13 +296,13 @@ namespace SmartBotProfiles
 #endregion
 #region  鱼勇可贾 BAR_041
             if(board.HasCardInHand(Card.Cards.BAR_041)
-            &&numberFishMenFriend>=2
+            &&numberFishMenFriend>=3
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(-55*(numberFishMenFriend))); 
             Bot.Log("鱼勇可贾"+-55*(numberFishMenFriend));
             } 
             if(board.HasCardInHand(Card.Cards.BAR_041)
-            &&numberFishMenFriend<2
+            &&numberFishMenFriend<3
             ){
             p.CastSpellsModifiers.AddOrUpdate(Card.Cards.BAR_041, new Modifier(130)); 
             Bot.Log("鱼勇可贾 130");
@@ -356,6 +362,14 @@ namespace SmartBotProfiles
            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_02bp, new Modifier(-550)); 
 #endregion
 #region 攻击优先 卡牌威胁（通用） 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_431))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_431, new Modifier(200));
+            }//花园猎豹 Park Panther ID：SW_431 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.AV_340))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_340, new Modifier(200));
+            }//亮铜之翼 Brasswing ID：AV_340 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_458t))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_458t, new Modifier(200));

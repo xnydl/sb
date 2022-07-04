@@ -224,13 +224,44 @@ namespace SmartBotProfiles
             // 友方随从数量
             int friendCount = board.MinionFriend.Count;
              int numberFishMen=board.Hand.Count(card => card.Race == Card.CRace.MURLOC);
-            Bot.Log("场上鱼人数量"+numberFishMen);
+            Bot.Log("手上鱼人数量"+numberFishMen);
+             int numberFishMenFriend=board.MinionFriend.Count(card => card.Race == Card.CRace.MURLOC);
+            Bot.Log("场上上鱼人数量"+numberFishMenFriend);
  #endregion
+ #region 不送的怪
+          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.CORE_EX1_509, new Modifier(150)); //修饰鱼人招潮者 CORE_EX1_509
+          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_063, new Modifier(150)); //修饰甜水鱼人斥候 BAR_063 
+          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.CORE_EX1_507, new Modifier(150)); //修饰鱼人领军 Murloc Warleader ID：CORE_EX1_507 
+#endregion
+ #region 送的怪
+          p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.CORE_EX1_509, new Modifier(-10)); //修饰虚鳃鱼人 TSC_614 
+#endregion
+#region Card.Cards.GAME_005
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.GAME_005, new Modifier(55)); 
+#endregion
+#region 生命分流 Life Tap   HERO_07bp
+        if(board.Hand.Count<=9)
+         {   p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_07bp, new Modifier(20));//生命分流 Life Tap ID：HERO_07bp
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.VAN_HERO_07bp, new Modifier(20));//生命分流 Life Tap ID：HERO_07bp
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.CS2_056_H1, new Modifier(20));//生命分流 Life Tap ID：HERO_07bp
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.CS2_056_H2, new Modifier(20));//生命分流 Life Tap ID：HERO_07bp
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.CS2_056_H3, new Modifier(20));//生命分流 Life Tap ID：HERO_07bp
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.HERO_07ebp, new Modifier(20));//生命分流 Life Tap ID：HERO_07bp
+            p.CastHeroPowerModifier.AddOrUpdate(Card.Cards.AV_316hp, new Modifier(20));//恐惧之链 Chains of Dread ID：AV_316hp 
+        }
+#endregion
+#region 剑圣奥卡尼 TSC_032
+       if(board.HasCardInHand(Card.Cards.TSC_032)){
+       	p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(-150)); 
+        Bot.Log("剑圣奥卡尼 -150");
+      }
+#endregion
 #region 艾萨拉的拾荒者 TSC_039
             if(board.HasCardInHand(Card.Cards.TSC_039)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_039, new Modifier(-99)); 
-            Bot.Log("艾萨拉的拾荒者 -99");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_039, new Modifier(-150)); 
+            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.TSC_039, new Modifier(999));
+            Bot.Log("艾萨拉的拾荒者 -150");
             }
 #endregion
 #region 沉没的拾荒者 Sunken Scavenger ID：TSC_039t 
@@ -242,7 +273,7 @@ namespace SmartBotProfiles
 #endregion
 #region 甜水鱼人佣兵 BAR_062
             if(board.HasCardInHand(Card.Cards.BAR_062)
-            &&numberFishMen==0
+            &&numberFishMenFriend==0
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_062, new Modifier(999)); 
             Bot.Log("甜水鱼人佣兵 999");
@@ -251,22 +282,37 @@ namespace SmartBotProfiles
 #region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-20*numberFishMen)); 
-            Bot.Log("甜水鱼人佣兵 999");
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-20*numberFishMenFriend)); 
+            Bot.Log("甜水鱼人佣兵"+-20*numberFishMenFriend);
+            }
+#endregion
+#region 鱼饵桶 TSC_957 
+            if(board.HasCardInHand(Card.Cards.TSC_957)
+            &&numberFishMen>0
+            ){
+            p.CastSpellsModifiers.AddOrUpdate(Card.Cards.TSC_957, new Modifier(-20*numberFishMenFriend)); 
+            Bot.Log("鱼饵桶"+-20*numberFishMenFriend);
             }
 #endregion
 #region 寒光先知 Coldlight Seer ID：CORE_EX1_103 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
+            &&numberFishMenFriend>=3
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-30*numberFishMen)); 
-            Bot.Log("寒光先知"+(-30*numberFishMen));
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(-55*(numberFishMenFriend))); 
+            Bot.Log("寒光先知"+-55*(numberFishMenFriend));
+            }
+            if(board.HasCardInHand(Card.Cards.CORE_EX1_103)
+            &&numberFishMenFriend<3
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_103, new Modifier(130)); 
+            Bot.Log("寒光先知"+130);
             }
 #endregion
 #region 鱼人领军 Murloc Warleader ID：CORE_EX1_507 
             if(board.HasCardInHand(Card.Cards.CORE_EX1_507)
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_507, new Modifier(-10*numberFishMen)); 
-            Bot.Log("鱼人领军"+(-10*numberFishMen));
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_507, new Modifier(-10*numberFishMenFriend)); 
+            Bot.Log("鱼人领军"+(-10*numberFishMenFriend));
             }
 #endregion
 #region 老巨鳍 Gigafin ID：TSC_962 
@@ -277,7 +323,49 @@ namespace SmartBotProfiles
             Bot.Log("老巨鳍"+(150));
             }
 #endregion
+#region 鳄鱼人掠夺者 Gorloc Ravager ID：TSC_034 
+            if(board.HasCardInHand(Card.Cards.TSC_034)
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_034, new Modifier(-99)); 
+            Bot.Log("鳄鱼人掠夺者 -99");
+            }
+#endregion
+// #region 甜水鱼人斥候 Lushwater Scout BAR_063
+//             if(board.HasCardInHand(Card.Cards.BAR_063)
+//             ){
+//               p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_063, new Modifier(130));
+//               Bot.Log("甜水鱼人斥候 130");
+//             }
+// #endregion
 #region 攻击优先 卡牌威胁（通用） 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_431))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_431, new Modifier(200));
+            }//花园猎豹 Park Panther ID：SW_431 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.AV_340))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_340, new Modifier(200));
+            }//亮铜之翼 Brasswing ID：AV_340 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_458t))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_458t, new Modifier(200));
+            }//塔维什的山羊 Tavish's Ram ID：SW_458t 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.WC_006))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.WC_006, new Modifier(200));
+            }//安娜科德拉 Lady Anacondra ID：WC_006 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ONY_004))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_004, new Modifier(200));
+            }//团本首领奥妮克希亚 Raid Boss Onyxia ID：ONY_004 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_032))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(200));
+            }//剑圣奥卡尼 Blademaster Okani ID：TSC_032 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_319))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(200));
+            }//农夫 SW_319
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_002))
             {
                 p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(200));
