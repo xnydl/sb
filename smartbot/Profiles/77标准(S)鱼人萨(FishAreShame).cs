@@ -316,6 +316,12 @@ namespace SmartBotProfiles
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_076, new Modifier(999));
             Bot.Log("不用芬利·莫格顿爵士");
             }
+            if(board.MaxMana >=8
+            &&board.HasCardInHand(Card.Cards.CORE_LOE_076)//芬利·莫格顿爵士 Sir Finley Mrrgglton ID：CORE_LOE_076 
+            ){
+            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_076, new Modifier(999));
+            Bot.Log("不用芬利·莫格顿爵士");
+            }
 #endregion
 #region 伯尔纳·锤喙 SW_115
             if(board.HasCardInHand(Card.Cards.SW_115)
