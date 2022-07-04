@@ -227,6 +227,10 @@ namespace SmartBotProfiles
             Bot.Log("手上鱼人数量"+numberFishMen);
              int numberFishMenFriend=board.MinionFriend.Count(card => card.Race == Card.CRace.MURLOC);
             Bot.Log("场上上鱼人数量"+numberFishMenFriend);
+            // 元素使者布鲁坎 Bru'kan of the Elements ID：AV_258 
+            int flag1=board.MinionFriend.Count(x => x.Template.Id == Card.Cards.AV_258)+board.Hand.Count(x => x.Template.Id == Card.Cards.AV_258)+board.FriendGraveyard.Count(card => CardTemplate.LoadFromId(card).Id == Card.Cards.AV_258);
+            Bot.Log("使用过的元素使者布鲁坎"+flag1);
+
  #endregion
 #region 深海融合怪 TSC_069 
            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.TSC_069, new Modifier(999, Card.Cards.CS2_050)); //灼热图腾 Searing Totem ID：CS2_050 
@@ -306,7 +310,7 @@ namespace SmartBotProfiles
             }
 #endregion
 #region 元素使者布鲁坎 Bru'kan of the Elements ID：AV_258 
-            if(board.FriendGraveyard.Contains(Card.Cards.AV_258)
+            if(flag1>0)
             &&board.HasCardInHand(Card.Cards.CORE_LOE_076)//芬利·莫格顿爵士 Sir Finley Mrrgglton ID：CORE_LOE_076 
             ){
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_076, new Modifier(999));
@@ -314,23 +318,34 @@ namespace SmartBotProfiles
             }
 #endregion
 #region 伯尔纳·锤喙 SW_115
-            p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));      
             if(board.HasCardInHand(Card.Cards.SW_115)
-            &&board.HasCardInHand(Card.Cards.TID_004)//小丑鱼 TID_004 
+            &&!board.HasCardInHand(Card.Cards.TID_004)//小丑鱼 TID_004 
             ){
-            p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(-99));
-            Bot.Log("伯尔纳·锤喙-99");
-            }else{
             p.CastMinionsModifiers.AddOrUpdate(Card.Cards.SW_115, new Modifier(350));
+            Bot.Log("伯尔纳·锤喙 350");
             }
 #endregion
-// #region 火焰术士弗洛格尔 BAR_860 
-//             if(board.HasCardOnBoard(Card.Cards.BAR_860)
-//             ){
-//              p.OnBoardFriendlyMinionsValuesModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(250)); 
-//             Bot.Log("火焰术士弗洛格尔不送");
-//             }
-// #endregion
+#region 火焰术士弗洛格尔 BAR_860 
+            if(board.HasCardInHand(Card.Cards.BAR_860)
+            ){
+              p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(130));
+              Bot.Log("火焰术士弗洛格尔130");
+            }
+#endregion
+#region 鱼人领军 Murloc Warleader ID：CORE_EX1_507 
+            if(board.HasCardInHand(Card.Cards.CORE_EX1_507)
+            ){
+              p.CastMinionsModifiers.AddOrUpdate(Card.Cards.CORE_EX1_507, new Modifier(130));
+              Bot.Log("鱼人领军 130");
+            }
+#endregion
+#region 甜水鱼人斥候 Lushwater Scout BAR_063
+            if(board.HasCardInHand(Card.Cards.BAR_063)
+            ){
+              p.CastMinionsModifiers.AddOrUpdate(Card.Cards.BAR_063, new Modifier(130));
+              Bot.Log("甜水鱼人斥候 130");
+            }
+#endregion
 #region Card.Cards.HERO_02bp
            p.PlayOrderModifiers.AddOrUpdate(Card.Cards.HERO_02bp, new Modifier(-550)); 
 #endregion
