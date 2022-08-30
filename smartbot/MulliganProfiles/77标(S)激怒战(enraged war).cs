@@ -161,6 +161,21 @@ namespace SmartBot.Mulligan
                         Keep(card,"黑曜石铸匠");
                     } 
                 }
+
+                 if(card==Card.Cards.CORE_EX1_603// 严酷的监工 CORE_EX1_603
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_603))
+                    {
+                        Keep(card,"严酷的监工");
+                    } 
+                }
+                 if(card==Card.Cards.CORE_EX1_604// 暴乱狂战士 CORE_EX1_604
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.CORE_EX1_604))
+                    {
+                        Keep(card,"暴乱狂战士");
+                    } 
+                }
             }
             return CardsToKeep;
         }

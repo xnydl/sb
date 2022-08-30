@@ -52,3 +52,30 @@ AAECAb7yBAb26AOV7QOLoATHsgSB3ASI3wQMje0DjKAE0aAE06wEnNQEvNsE/9sEvuIEjuMEtuMEiYMF
 AAECAQcG++gDle0Dv4AEi6AEjaAEgdwEDI3tA5btA4ygBLysBJC3BJzUBLzbBP/bBL7iBKXkBImDBZikBQA=
 # 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
 # 套牌详情请查看https://hsreplay.net/decks/FBv7sS4iuJFwY4BEnuubef/
+### 激怒战
+# 职业：战士
+# 模式：标准模式
+# 狮鹫年
+#
+# 2x (1) 赤红深渊
+# 2x (1) 泥仆员工
+# 2x (1) 战歌大使
+# 2x (2) 黑曜石铸匠
+# 1x (2) 邪恶的厨师
+# 2x (2) 疯狂的可怜鬼
+# 2x (2) 心能提取者
+# 2x (2) 严酷的监工 CORE_EX1_603
+# 2x (3) 苦痛侍僧
+# 2x (3) 灌能战斧
+# 1x (3) 洛卡拉
+# 2x (3) 暴乱狂战士 CORE_EX1_604
+# 2x (4) 旋风争斗者
+# 2x (5) 石槌掌锚手
+# 1x (6) 屠戮者奥格拉
+# 1x (7) 萨鲁法尔大王
+# 1x (7) 活体利刃蕾茉妮雅
+# 1x (8) 格罗玛什·地狱咆哮
+#
+AAECAQcGle0Dqu4Di6AEgdwEiN8E3e0EDI3tA5btA9XxA4ygBI2gBJC3BJzUBLzbBP/bBL7iBKXkBImDBQA=
+# 想要使用这副套牌，请先复制到剪贴板，再在游戏中创建新套牌。
+# 套牌详情请查看https://hsreplay.net/decks/IogXKIsNd5ydFewOpYLKvg/
