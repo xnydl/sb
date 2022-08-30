@@ -1,16 +1,21 @@
-Date: Tuesday, 28 June 2022 V(129.86)
-Discover settings : EE_Discover.cs
+Discover version: (136.86) 16 August 2022
+Support for EE_Discover V5.4
+Support for HS v24.0
+
+Discover settings: EE_Discover.cs
 ----------------------------------------
-Specials: Kazakus, Golem Shaper
+Specials: Murloc Holmes
+          Kazakus, Golem Shaper
           Guess the Weight
           Bru'kan of the Elements
           Capture Coldtooth Mine
-Standard 83 files, 4354 cards
-          discover.ini 935 cards
-Wild 258 files, 16175 cards
-          discover.ini 3728 cards
-Arena 85 files, 926 cards
-          discover.ini 1414 cards
-Classic 1 files, 38 cards
-          discover.ini 382 cards
-Total 427 files, 21493 cards
+Standard 116 files, 7293 cards
+          discover.ini 1108 cards
+Wild 291 files, 18315 cards
+          discover.ini 3879 cards
+Arena 95 files, 425 cards
+          discover.ini 1888 cards
+Classic 1 files, 40 cards
+          discover.ini 383 cards
+Total 503 files, 26073 cards
+discover.ini, 4 files, 7258 cards

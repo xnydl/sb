@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="//cdn.staticfile.org/clipboard.js/2.0.4/clipboard.min.js"></script>
+</head>
+<body>
+    <div id="app">
+       <div style="padding-left:10px;">
+    <div>
+      <!-- 查询卡牌api地址 -->
+      <div style="margin-bottom:10px;">
+        <el-link target="_blank"
+                 href="https://hs.fbigame.com/"
+                 type="primary">查询卡牌api地址</el-link>
+      </div>
+      <el-form ref="form"
+               label-position="left"
+               :model="form"
+               label-width="100px">
+        <el-form-item label="卡片">
+          <div class="cardContainer">
+            <div>
+              <span class="chineseEnglishContainers">中文名</span>
+              <el-input style="width:300px"
+                        v-model="form.chineseName"></el-input>
+            </div>
+            <div>
+              <span class="chineseEnglishContainers">英文名</span>
+              <el-input style="
+                    width:300px"
+                        v-model="form.codeName"></el-input>
+            </div>
+            <div>
+            </div>
+          </div>
+        </el-form-item>
+        <el-form-item label="假设条件">
+          <div class="supposeConditionalContainer">
+            <div class="twoLineTextContainer"
+                 v-for="
+                 (list,index)
+                 in
+                 form.assumptions"
+                 :key="index">
+              <div class="twoLineTextContainer-x">
+                <el-select v-model="list.part1"
+                           :placeholder="`请选择假设条件${index+1}`">
+                  <div v-for="(ass,index) in selectionAssumptions"
+                       :key="index">
+                    <el-option :label="ass.cnName"
+                               :value="ass.code"></el-option>
+                  </div>
+                </el-select>
+                <!-- 输入项或选择项 -->
+                <div style="display: flex;">
+                  <!-- 英雄类型 -->
+                  <template v-if="convertToType(list,'1')==='occupation'">
+                     <el-select 
+                              style="width:150px;margin-left:15px"
+                              v-model="list.part2"
+                              placeholder="选择职业">
+                      <div v-for="(item,index) in enemyCareerChoice"
+                          :key="index">
+                        <el-option :label="item.cnName"
+                                  :value="item.code"></el-option>
+                      </div>
+                    </el-select>
+                  </template>
+                  <!-- 三段类型 -->
+                  <template v-else-if="convertToType(list,'1')==='threeSectionType'">
+                    <el-select style="width:150px;margin-left:15px"
+                               v-model="list.part2"
+                               placeholder="选择关系">
+                      <div v-for="(item,index) in sizeCollection"
+                           :key="index">
+                        <el-option :label="item.cnName"
+                                   :value="item.code"></el-option>
+                      </div>
+                    </el-select>
+                    <el-input style="width:150px;margin-left:15px"
+                              placeholder="参数"
+                              v-model="list.part3"></el-input>
+                  </template>
+                    <template v-else>
+                      <el-input 
+                            style="width:150px;margin-left:15px"
+                            placeholder="参数"
+                            v-model="list.part2"></el-input>
+                    </template>
+                </div>
+              </div>
+              <!-- 条件展示部分 -->
+              <div class="resultDisplayPart">
+                <span class="inputBoxBorder">{{calc(list,'1')|| '待填'}}</span>
+                <el-button type="primary"
+                           @click="copyLink(calc(list,'1'))">复制</el-button>
+              </div>
+            </div>
+            <!-- 新增条件按钮 -->
+            <el-button style="width:100px"
+                       type="primary"
+                       @click="add('1')">新增条件</el-button>
+          </div>
+
+        </el-form-item>
+        <el-form-item label="结果语句">
+          <div class="supposeConditionalContainer">
+            <div class="twoLineTextContainer"
+                 v-for="(list,index) in form.conditionalArray"
+                 :key="index">
+              <div style="margin-bottom:10px;display: flex;">
+                <el-select v-model="
+                   list.part1"
+                           :placeholder="`请选择结果条件${index+1}`">
+                  <div v-for="(ass,index) in conditionalStatementArray"
+                       :key="index">
+                    <el-option :label="ass.cnName"
+                               :value="ass.code"></el-option>
+                  </div>
+                </el-select>
+                <el-input style="width:150px;margin-left:15px"
+                          placeholder="字符参数"
+                          v-model="list.part2"></el-input>
+                <el-input style="width:150px;margin-left:15px"
+                          placeholder="数字参数"
+                          v-model="list.part3"></el-input>
+                <el-input style="width:350px;margin-left:15px"
+                          placeholder="字符参数非必填,a对b生效则填"
+                          v-model="list.part4"></el-input>
+              </div>
+              <!-- 结果条件部分 -->
+              <div class="resultDisplayPart">
+                <span class="inputBoxBorder">{{calc(list,'2')|| '待填'}}</span>
+                <el-button type="primary"
+                           @click="copyLink(calc(list,'2'))">复制</el-button>
+              </div>
+            </div>
+            <!-- 新增结果条件按钮 -->
+            <el-button style="width:100px"
+                       type="primary"
+                       @click="add('2')">新增条件</el-button>
+          </div>
+
+        </el-form-item>
+      </el-form>
+    </div>
+    <!-- 生成语句 -->
+    <div class="generateStatement inputBoxBorder-x"
+         ref="generateStatement">
+      <!-- 头 -->
+      <span>#region {{form.chineseName}} {{form.codeName}}</span>
+      <span>if(</span>
+      <!-- 内容部分 -->
+      <div v-for="(item,index) in form.assumptions"
+           :key="index">
+        <p>
+          <span v-if="index">&&</span>
+          <span>{{item.content}}</span>
+        </p>
+      </div>
+      <span>){</span>
+      <!-- 结尾判定部分 -->
+      <div v-for="item in form.conditionalArray"
+           :key="item.content">
+        <p>
+          <span>{{item.content}}</span>
+        </p>
+      </div>
+      <span>}</span>
+      <!-- 尾 -->
+      <span>#endregion</span>
+    </div>
+    <el-button type="primary"
+               @click="copyLink($refs.generateStatement.innerText)">复制</el-button>
+  </div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#app',
+            data:{
+                // 上次复制的值 
+      lastCopiedValue: '',
+      // 2段结构
+      twoSegmentDataStructureType: [],
+      // 英雄类型
+      heroType: [],
+      // 三段类型
+      threeSectionType: [],
+      resultText: '',
+      form: {
+        // 中文名
+        chineseName: '深渊波流',
+        // 代码名
+        codeName: 'TSC_924',
+        // 卡牌类型
+        selectCardType: 'CastSpellsModifiers',
+        // 假设条件
+        assumptions: [
+          { part1: '', part2: '', part3: '' },
+        ],
+        // 结尾语句
+        conditionalArray: [
+          { part1: '', part2: '', part3: '', part4: '' },
+        ],
+      },
+      // 卡牌类型选集
+      cardTypeSelection: [
+        {
+          code: 'CastSpellsModifiers',
+          cnName: '法术牌'
+        },
+        {
+          code: 'CastMinionsModifiers',
+          cnName: '随从牌'
+        },
+      ],
+      // 假设条件选集
+      // 文本text,数字number,职业occupation,
+      selectionAssumptions: [
+        // 2段结构
+        {
+          code: 'HasCardInHand',
+          cnName: '自己手上有xx',
+          type: '2SectionStructure'
+        },
+        {
+          code: 'HasCardOnBoard',
+          cnName: '自己场上有xx',
+          type: '2SectionStructure'
+        },
+        {
+          code: 'Secret.Contains',
+          cnName: '己方场上奥秘为x',
+          type: '2SectionStructure'
+        },
+        {
+          code: 'SecretEnemy.Contains',
+          cnName: '敌方场上奥秘为x',
+          type: '2SectionStructure'
+        },
+        {
+          code: 'FriendGraveyard.Contains',
+          cnName: '自己坟场有',
+          type: '2SectionStructure'
+        },
+        // 
+        {
+          code: 'FriendGraveyard.Contains',
+          cnName: '坟场(某一类型:比如海盗)数量',
+          type: '2SectionStructure'
+        },
+        // 职业结构
+        {
+          code: 'EnemyClass == ',
+          cnName: '对方是xx职业',
+          type: 'occupation'
+        },
+        // 三段类型
+        {
+          code: 'ManaAvailable ',
+          cnName: '当前剩余法力水晶',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'MaxMana ',
+          cnName: '当前是第几回合',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'FriendDeckCount ',
+          cnName: '牌库剩余卡牌数量',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'FriendDeckCount ',
+          cnName: '牌库剩余卡牌数量',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'MinionEnemy.Count',
+          cnName: '对面有x个怪在场上',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'EnemyAbility.CurrentCost',
+          cnName: '对面的英雄技能花费x',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'HeroEnemy.CurrentHealth',
+          cnName: '敌方英雄的健康',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'HeroFriend.CurrentHealth',
+          cnName: '我方英雄的健康',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'MinionFriend.Count',
+          cnName: '场上的怪的数量',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'Secret.Count',
+          cnName: '自己头上无挂奥秘',
+          type: 'threeSectionType'
+        },
+        {
+          code: 'WeaponFriend != null && board.WeaponFriend.CurrentDurability',
+          cnName: '手上有武器，武器寿命为x',
+          type: 'threeSectionType'
+        },
+        // 三段后面是拼串
+        {
+          code: 'EnemyAbility.Template.Id ',
+          cnName: '对面的英雄技能为x',
+          type: 'threeSectionTypeSpellTail'
+        },
+        {
+          code: 'Ability.Template.Id ',
+          cnName: '自己的英雄技能为x',
+          type: 'threeSectionTypeSpellTail'
+        },
+        {
+          code: 'WeaponFriend != null && board.WeaponFriend.Template.Id',
+          cnName: '手上有武器，而且是xx',
+          type: 'threeSectionTypeSpellTail'
+        },
+      ],
+
+      // 职业
+      enemyCareerChoice: [
+        {
+          code: 'DRUID',
+          cnName: '德 DRUID'
+        },
+        {
+          code: 'HUNTER',
+          cnName: '猎 HUNTER'
+        },
+        {
+          code: 'MAGE',
+          cnName: '法 MAGE'
+        },
+        {
+          code: 'PALADIN',
+          cnName: '骑 PALADIN'
+        },
+        {
+          code: 'PRIEST',
+          cnName: '牧 PRIEST'
+        },
+        {
+          code: 'ROGUE',
+          cnName: '贼 ROGUE'
+        },
+        {
+          code: 'SHAMAN',
+          cnName: '萨 SHAMAN'
+        },
+        {
+          code: 'WARLOCK',
+          cnName: '术 WARLOCK'
+        },
+        {
+          code: 'WARRIOR',
+          cnName: '战 WARRIOR'
+        },
+        {
+          code: 'DEMONHUNTER',
+          cnName: '瞎 DEMONHUNTER'
+        },
+      ],
+      // 大小关系
+      sizeCollection: [
+        {
+          code: '>',
+          cnName: '大于',
+        },
+        {
+          code: '==',
+          cnName: '等于',
+        },
+        {
+          code: '<',
+          cnName: '小于',
+        },
+        {
+          code: '>=',
+          cnName: '大于等于',
+        },
+        {
+          code: '<=',
+          cnName: '小于',
+        },
+        {
+          code: '!=',
+          cnName: '不等于',
+        },
+      ],
+      // 结尾语句数组
+      conditionalStatementArray: [// 条件语句
+        {
+          code: 'CastSpellsModifiers',
+          cnName: '英雄牌类型/术法类型',
+          type: 'conditionalStatementType'
+        },
+        {
+          code: 'PlayOrderModifiers',
+          cnName: '使用优先级',
+          type: 'conditionalStatementType'
+        },
+        {
+          code: 'CastMinionsModifiers',
+          cnName: '随从优先级',
+          type: 'conditionalStatementType'
+        },
+        {
+          code: 'CastHeroPowerModifier',
+          cnName: '随从优先级',
+          type: 'conditionalStatementType'
+        },
+        {
+          code: 'CastWeaponsModifiers',
+          cnName: '武器类型',
+          type: 'conditionalStatementType'
+        },
+        {
+          code: 'OnBoardFriendlyMinionsValuesModifiers',
+          cnName: '随从价值类型',
+          type: 'conditionalStatementType'
+        },
+        {
+          code: 'WeaponsAttackModifiers',
+          cnName: '武器攻击性类型',
+          type: 'conditionalStatementType'
+        },
+        {
+          code: 'TradeModifiers',
+          cnName: '交易类型',
+          type: 'conditionalStatementType'
+        },
+        {
+          code: 'OnBoardBoardEnemyMinionsModifiers',
+          cnName: '敌方随从威胁值',
+          type: 'conditionalStatementType'
+        },]
+            },
+            methods:{
+      copyLink (textToCopy) {
+      if (this.lastCopiedValue === textToCopy){
+				this.$message.error("不要重复复制");
+				return false
+			} 
+			console.log('@@',textToCopy,this.lastCopiedValue)
+      if (!textToCopy){
+				this.$message.error("复制内容不为空");
+				return false
+			} 
+			// navigator clipboard 需要https等安全上下文
+			if (navigator.clipboard && window.isSecureContext) {
+					this.$message.success("复制成功!");
+					this.lastCopiedValue = textToCopy
+					// navigator clipboard 向剪贴板写文本
+					return navigator.clipboard.writeText(textToCopy);
+			} else {
+					// 创建text area
+					this.$message.success("复制成功!");
+					let textArea = document.createElement("textarea");
+					textArea.value = textToCopy;
+					this.lastCopiedValue = textToCopy
+					// 使text area不在viewport，同时设置不可见
+					textArea.style.position = "absolute";
+					textArea.style.opacity = 0;
+					textArea.style.left = "-999999px";
+					textArea.style.top = "-999999px";
+					document.body.appendChild(textArea);
+					textArea.focus();
+					textArea.select();
+					return new Promise((res, rej) => {
+							// 执行复制命令并移除文本框
+							document.execCommand('copy') ? res() : rej();
+							textArea.remove();
+					});
+        }
+    },
+    calc (item, val) {
+      const { part1, part2, part3, part4 } = item
+      let a = null;
+      switch (this.convertToType(item, val)) {
+        // 二段结构
+        case '2SectionStructure':
+          a = `board.${part1 || '待填'}(Card.Cards.${part2 || '待填'}) `
+          break;
+        // 职业结构
+        case 'occupation':
+          a = `board.${part1 || '待填'}Card.Cards.${part2 || '待填'} `
+          break;
+        // 三段类型
+        case 'threeSectionType':
+          a = `board.${part1 || '待填'}${part2 || '待填'}${part3 || '待填'} `
+          break;
+        // 三段类型尾部拼串
+        case 'threeSectionTypeSpellTail':
+          a = `board.${part1 || '待填'}${part2 || '待填'}==Card.Cards.${part3 || '待填'} `
+          break;
+        // 结果语句
+        case 'conditionalStatementType':
+          if (part4) {
+            a = `p.${part1 || '待填'}.AddOrUpdate(Card.Cards.${part2 || '待填'}, new Modifier(${part3 || '待填'},Card.Cards.${part4 || '待填'})); `
+          } else {
+            a = `p.${part1 || '待填'}.AddOrUpdate(Card.Cards.${part2 || '待填'}, new Modifier(${part3 || '待填'})); `
+          }
+          // a = part3 ? `p.${part1 || '待填'}.AddOrUpdate(Card.Cards.${part2 || '待填'}, new Modifier(${part3 || '待填'},Card.Cards.${part4 || '待填'})); ` : `p.${part1 || '待填'}.AddOrUpdate(Card.Cards.${part2 || '待填'}, new Modifier(${part3 || '待填'})); `
+          break;
+
+        default:
+          break;
+      }
+      item.content = a
+      return a
+    },
+    // 将不同限制类型放入不同数组中
+    convertToType (val, string) {
+      let a = null;
+      let b = string === '1' ? this.selectionAssumptions : this.conditionalStatementArray
+      b.forEach((item) => {
+        if (item.code === val.part1) { a = item.type }
+      })
+      return a
+    },
+    // 新增条件
+    add (val) {
+      if (val === '1') {
+        this.form.assumptions.push(
+          { part1: '', part2: '', part3: '' }
+        )
+      } else {
+        this.form.conditionalArray.push(
+          { part1: '', part2: '', part3: '', part4: '' }
+        )
+      }
+    },
+            },
+        })
+    </script>
+</body>
+</html>
+
+<style>
+.generateStatement {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.cardContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.supposeConditionalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.conditionJudgmentArea {
+  display: flex;
+  flex-direction: column;
+}
+.inputBoxBorder {
+  margin-right: 10px;
+  border: 1px solid #dcdfe6;
+  padding: 0 30px;
+  border-radius: 5px;
+}
+.inputBoxBorder-x {
+  margin-right: 10px;
+  border: 1px solid #dcdfe6;
+  padding: 15px 30px;
+  border-radius: 5px;
+}
+.resultDisplayPart {
+  display: flex;
+  height: 40px;
+}
+.twoLineTextContainer {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.twoLineTextContainer-x {
+  margin-bottom: 10px;
+  display: flex;
+}
+.chineseEnglishContainers {
+  width: 100px;
+  margin-right: 30px;
+}
+.parameterContainer {
+  width: 150px;
+  margin-left: 15px;
+}
+</style>

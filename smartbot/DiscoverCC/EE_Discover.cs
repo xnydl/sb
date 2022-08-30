@@ -15,7 +15,7 @@ using System.Text.RegularExpressions;
 namespace EE_Discover
 {
     //======================================================//
-    // Operation    Version 5.3            by Evil_Eyes     //
+    // Operation    Version 5.4            by Evil_Eyes     //
     //                                                      //
     //  * Includes cards for Standard, Wild, Classic, Arena //
     //    Duels.                                            //
@@ -37,7 +37,8 @@ namespace EE_Discover
         //Global variables declaration
         private string _mode = "Wild", _discoverFile, fileName;
         private IniManager _iniTierList0;
-        private string _log;
+        private string _log = "";
+        private string description;
 
         //Card Handle Pick Decision from SB
         public Card.Cards HandlePickDecision(Card.Cards originCard, List<Card.Cards> choices, Board board) //originCard; ID of card played by SB: choices; names of cards for selection: board; 3 states , Even, Losing, Winning
@@ -45,7 +46,7 @@ namespace EE_Discover
             //Local variables declaration
             String[] heroes = { "none", "WARRIOR", "SHAMAN", "ROGUE", "PALADIN", "HUNTER", "DRUID", "WARLOCK", "MAGE", "PRIEST", "DEMONHUNTER" };
             int _discoverIndex = 1;
-            string Version = "=====Discover ChoicesV5.3=====", description = null;
+            string Version = "=====Discover ChoicesV5.4=====";
             string Divider = new string('=', 50);
             string Origin_Card = CardTemplate.LoadFromId(originCard).Name;
             Random rnd = new Random();
@@ -131,18 +132,21 @@ namespace EE_Discover
                                 description = "From: Guess the Weight: " + cardTemplate.Name + "  Cost: " + cardTemplate.Cost.ToString(); //Display name and cost of weight card
                             break;
                         case Card.Cards.AV_295: //Capture Coldtooth Mine, Fractured in Alterac Valley
-                            // if (card == Card.Cards.AV_295b) //More Supplies
-                            // {
-                            //     points = CaptureColdtoothMine(Bot.CurrentBoard);
-                            //     description = points == 100 ? "Capture Coldtooth Mine, selecting highest cost card" : "Capture Coldtooth Mine, selecting lowest cost card";
-                            // }
-                            // else
-                            //     points = 10; //More resources
-                            description = "Capture Coldtooth Mine, selecting highest cost card";
+                            if (card == Card.Cards.AV_295b) //More Supplies
+                            {
+                                points = CaptureColdtoothMine(Bot.CurrentBoard);
+                                // description = points == 100 ? "Capture Coldtooth Mine, selecting highest cost card" : "Capture Coldtooth Mine, selecting lowest cost card";
+                                description = "Capture Coldtooth Mine, selecting highest cost card";
+                            }
+                            else
+                                points = 10; //More resources
                             break;
                         case Card.Cards.AV_258:  //Bru'kan of the Elements, Fractured in Alterac Valley
                             points = BrukanOfTheElements(card, Bot.CurrentBoard);
                             description = "Bru'kan of the Elements";
+                            break;
+                        case Card.Cards.REV_022: //Murloc Holmes, Murder at Castle Nathria
+                            points = MurlocHolmes(card, _mode, Bot.CurrentBoard);
                             break;
                         default:
                             string HeroClass = friend == 1 ? board.FriendClass.ToString() : board.EnemyClass.ToString();//Get friendly/opponent hero class
@@ -349,10 +353,8 @@ namespace EE_Discover
             //Get list of current cards in my deck
             List<Card.Cards> currentDeck = new List<Card.Cards>();
             currentDeck = CurretDeck(Bot.CurrentBoard);
-
             //Cost of last card in hand
             int lastCardCost = board.Hand.LastOrDefault().CurrentCost;
-
             //Return Less/More counting cost
             return currentDeck.Select(CardTemplate.LoadFromId).Count(x => x.Cost < lastCardCost) + "/" + currentDeck.Select(CardTemplate.LoadFromId).Count(x => x.Cost > lastCardCost);
         }
@@ -381,7 +383,6 @@ namespace EE_Discover
                 points[0] = 80; //Earth Invocation
             else if (FriendMinionDamage(Bot.CurrentBoard) > 2) //If friend has more than 2 damaged minions on board. Restore 6 Health to all friendly characters
                 points[1] = 70; //Water Invocation
-
             switch (choice)
             {
                 case Card.Cards.AV_258t:  //Earth Invocation, Summon two 2/3 Elementals with Taunt
@@ -396,31 +397,65 @@ namespace EE_Discover
             return 0;
         }
 
+        //Murloc Holmes, Murder at Castle Nathria.
+        private double MurlocHolmes(Card.Cards choice, string _mode, Board board)
+        {
+            int i = 0;
+            double points = 0;
+            description = "Murloc Holmes, possible choices: ";
+            //Create new empty list, add all opponent cards on board, add cards from opponent grave yard
+            List<Card.Cards> _minionEnemy = new List<Card.Cards>();
+            foreach (var card in board.MinionEnemy)
+                _minionEnemy.Add(card.Template.Id);
+            var _ememyCard = _minionEnemy.Concat(board.EnemyGraveyard).ToList();
+            //Out to bot log
+            foreach (var card in _ememyCard)
+            {
+                description += CardTemplate.LoadFromId(card).Name + ", ";
+            }
+            //First possible choice, the coin
+            if (CardTemplate.LoadFromId(choice).Name == "The Coin")
+                return 500;
+            //Second possible choice apply points to matched cards
+            foreach (var card in _ememyCard)
+            {
+                i++;
+                if (card == choice)
+                    return 500 - i;
+            }
+            //If no cards found, try external file
+            var cardTemplate = CardTemplate.LoadFromId(choice); //cardTemplate = Name of card + [CardId], card = CardId
+            IniManager _iniTierList0 = new IniManager(Directory.GetCurrentDirectory() + @"\DiscoverCC\" + _mode + '\\' + "Murloc Holmes.ini"); //load "discover.ini" file into List
+            double.TryParse(_iniTierList0.GetString(cardTemplate.Name, "points", "0"), NumberStyles.Any, CultureInfo.InvariantCulture, out points);
+            return points;
+        }
+
+        //List of cards in my deck
+        private static List<Card.Cards> StartingDeck(Board board)
+        {
+            //List<Card.Cards> load list of card from deck
+            return Bot.CurrentDeck().Cards.Select(card => (Card.Cards)Enum.Parse(typeof(Card.Cards), card)).ToList(); //from Soviet_Mulligan_Kit
+        }
+
         //Return list of current cards remaining in my deck
         private static List<Card.Cards> CurretDeck(Board board)
         {
             //List<Card.Cards> load list of card from deck -> _myDeck
-            List<Card.Cards> _myDeck = new List<Card.Cards>();
-            _myDeck = Bot.CurrentDeck().Cards.Select(card => (Card.Cards)Enum.Parse(typeof(Card.Cards), card)).ToList(); //from Soviet_Mulligan_Kit
-
+            List<Card.Cards> _myDeck = StartingDeck(Bot.CurrentBoard);
             //List<Card.Cards> load list of cards from hand -> _myHand
             List<Card.Cards> _myHand = new List<Card.Cards>();
             foreach (var card in board.Hand)
                 _myHand.Add(card.Template.Id);
-
             //List<Card.Cards> load list of cards from board -> _myBoard
             List<Card.Cards> _myBoard = new List<Card.Cards>();
             foreach (var card in board.MinionFriend)
                 _myBoard.Add(card.Template.Id);
-
             //List<Card.Cards> load list of cards from my GraveYard -> _myGraveYard
             List<Card.Cards> _myGraveYard = new List<Card.Cards>();
             _myGraveYard = board.FriendGraveyard;
-
             //List combined and (one item per loop subtraction) -> _myDeck
             foreach (var card in _myBoard.Concat(_myHand).Concat(_myGraveYard))
                 _myDeck.Remove(card);
-
             return _myDeck;
         }
 

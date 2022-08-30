@@ -1,0 +1,162 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using SmartBot.Database;
+using SmartBot.Plugins.API;
+
+namespace SmartBot.Mulligan
+{
+    [Serializable]
+    public class DefaultMulliganProfile : MulliganProfile
+    {
+        List<Card.Cards> CardsToKeep = new List<Card.Cards>();
+
+        private readonly List<Card.Cards> WorthySpells = new List<Card.Cards>
+        {
+            
+        };
+
+        public List<Card.Cards> HandleMulligan(List<Card.Cards> choices, Card.CClass opponentClass,
+            Card.CClass ownClass)
+        {
+            //德：DRUID 猎：HUNTER 法：MAGE 骑：PALADIN 牧：PRIEST 贼：ROGUE 萨：SHAMAN 术：WARLOCK 战：WARRIOR 瞎：DEMONHUNTER
+            bool HasCoin = choices.Count >= 4;
+            int DRUID=0;
+            int HUNTER=0;
+            int MAGE=0;
+            int PALADIN=0;
+            int PRIEST=0;
+            int ROGUE=0;
+            int SHAMAN=0;
+            int WARLOCK=0;
+            int WARRIOR=0;
+            int DEMONHUNTER=0;
+            int kuaigong=0;
+            int mansu=0;
+            int flag1=0;//赤红深渊 REV_990
+            int flag2=0;//凶恶的滑矛纳迦 TSC_827
+            
+            foreach (Card.Cards card in choices)
+            {
+                if(card==Card.Cards.REV_990||card==Card.Cards.REV_332||card==Card.Cards.REV_933//赤红深渊 REV_990
+                ){flag1+=1;}
+            }
+            Bot.Log("对阵职业"+opponentClass);
+
+            if(opponentClass==Card.CClass.PALADIN){
+            PALADIN+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.DRUID){
+            DRUID+=1;
+            mansu+=1;
+            }
+            if(opponentClass==Card.CClass.HUNTER){
+            HUNTER+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.MAGE){
+            MAGE+=1;
+            mansu+=1;
+            }
+            if(opponentClass==Card.CClass.PRIEST){
+            PRIEST+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.ROGUE){
+            ROGUE+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.SHAMAN){
+            SHAMAN+=1;
+            mansu+=1;
+            }
+            if(opponentClass==Card.CClass.WARLOCK){
+            WARLOCK+=1;
+            }
+            if(opponentClass==Card.CClass.WARRIOR){
+            WARRIOR+=1;
+            kuaigong+=1;
+            }
+            if(opponentClass==Card.CClass.DEMONHUNTER){
+            DEMONHUNTER+=1;
+            kuaigong+=1;
+            }
+            foreach (Card.Cards card in choices)
+            {
+                if(card==Card.Cards.SW_433// 寻求指引 SW_433
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.SW_433))
+                    {
+                        Keep(card,"寻求指引");
+                    } 
+                }
+                if(card==Card.Cards.BAR_314// 罪罚（等级1） BAR_314
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.BAR_314))
+                    {
+                        Keep(card,"罪罚（等级1）");
+                    } 
+                }
+                 if(card==Card.Cards.REV_945// 模糊的陌生人 REV_945
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.REV_945))
+                    {
+                        Keep(card,"模糊的陌生人");
+                    } 
+                }
+                 if(card==Card.Cards.CS3_028// 暗中生长 CS3_028
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.CS3_028))
+                    {
+                        Keep(card,"暗中生长");
+                    } 
+                }
+                 if(card==Card.Cards.REV_290// 赎罪教堂 REV_290
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.REV_290))
+                    {
+                        Keep(card,"赎罪教堂");
+                    } 
+                }
+                 if(card==Card.Cards.BAR_065// 剧毒魔蝎 BAR_065
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.BAR_065))
+                    {
+                        Keep(card,"剧毒魔蝎");
+                    } 
+                }
+                 if(card==Card.Cards.REV_238// 癫狂公爵西塔尔 REV_238 
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.REV_238))
+                    {
+                        Keep(card,"癫狂公爵西塔尔");
+                    } 
+                }
+                 if(card==Card.Cards.ONY_026// 光腹虚空幼龙 ONY_026
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.ONY_026))
+                    {
+                        Keep(card,"光腹虚空幼龙");
+                    } 
+                }
+                 if(card==Card.Cards.TSC_212// 侍女 TSC_212
+                ){
+                    if(!CardsToKeep.Contains(Card.Cards.TSC_212))
+                    {
+                        Keep(card,"侍女");
+                    } 
+                }
+            }
+            return CardsToKeep;
+        }
+
+        private void Keep(Card.Cards id, string log = "")
+        {
+            CardsToKeep.Add(id);
+            if(log != "")
+                Bot.Log(log);
+        }
+
+    }
+}

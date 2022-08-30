@@ -449,13 +449,165 @@ p.PlayOrderModifiers.AddOrUpdate(Card.Cards.BT_254, new Modifier(888));//塞泰�
         }
 #endregion
 
-#region 攻击优先 卡牌威胁（通用）  更新到贫瘠之地
+#region 攻击优先 卡牌威胁
+            
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.REV_016))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.REV_016, new Modifier(200));
+            }//邪恶的厨师 Crooked Cook ID：REV_016 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.REV_828t))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.REV_828t, new Modifier(200));
+            }//绑架犯的袋子 Kidnapper's Sack ID：REV_828t 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.KAR_006))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.KAR_006, new Modifier(200));
+            }//神秘女猎手 Cloaked Huntress ID：KAR_006 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.REV_332))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.REV_332, new Modifier(200));
+            }//心能提取者 Anima Extractor ID：REV_332 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CORE_LOE_077))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_077, new Modifier(-200));
+            }//布莱恩·铜须 Brann Bronzebeard ID：CORE_LOE_077 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.REV_011))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.REV_011, new Modifier(-200));
+            }//嫉妒收割者 The Harvester of Envy ID：REV_011 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.LOOT_412))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.LOOT_412, new Modifier(200));
+            }//狗头人幻术师 Kobold Illusionist ID：LOOT_412 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_950))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_950, new Modifier(200));
+            }//海卓拉顿 Hydralodon ID：TSC_950  
 
 
-            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ULD_231))
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_062))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_062, new Modifier(200));
+            }//闪金镇豺狼人 Goldshire Gnoll ID：SW_062 
+
+
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.REV_513))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.REV_513, new Modifier(200));
+            }//健谈的调酒师 Chatty Bartender ID：REV_513 
+
+
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_033))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_033, new Modifier(200));
+            }//勘探者车队 Prospector's Caravan ID：BAR_033 （通用）
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ONY_007))
             {
-                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ULD_231, new Modifier(200));
-            }//连环腿大师 Whirlkick Master ULD_231 
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_007, new Modifier(200));
+            }//监护者哈尔琳 Haleh, Matron Protectorate ID：ONY_007 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CS3_032))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CS3_032, new Modifier(200));
+            }//龙巢之母奥妮克希亚 Onyxia the Broodmother ID：CS3_032   更新到贫瘠之地
+
+
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_431))
+             {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_431, new Modifier(200));
+            }//花园猎豹 Park Panther ID：SW_431 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.AV_340))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_340, new Modifier(200));
+            }//亮铜之翼 Brasswing ID：AV_340 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_458t))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_458t, new Modifier(200));
+            }//塔维什的山羊 Tavish's Ram ID：SW_458t 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.WC_006))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.WC_006, new Modifier(200));
+            }//安娜科德拉 Lady Anacondra ID：WC_006 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.ONY_004))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.ONY_004, new Modifier(200));
+            }//团本首领奥妮克希亚 Raid Boss Onyxia ID：ONY_004 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_032))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_032, new Modifier(200));
+            }//剑圣奥卡尼 Blademaster Okani ID：TSC_032 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_319))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_319, new Modifier(200));
+            }//农夫 SW_319
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_002))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_002, new Modifier(200));
+            }//刺豚拳手 Pufferfist ID：TSC_002
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_218))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_218, new Modifier(200));
+            }//赛丝诺女士 Lady S'theno ID：TSC_218 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CORE_LOE_077))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CORE_LOE_077, new Modifier(200));
+            }//布莱恩·铜须 Brann Bronzebeard ID：CORE_LOE_077 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_620))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_620, new Modifier(200));
+            }//恶鞭海妖 Spitelash Siren ID：TSC_620  
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_073))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_073, new Modifier(200));
+            }//拉伊·纳兹亚 Raj Naz'jan ID：TSC_073 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DED_006))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_006, new Modifier(200));
+            }//重拳先生  DED_006 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CORE_AT_029))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CORE_AT_029, new Modifier(200));
+            }//锈水海盗 CORE_AT_029  
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_074))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_074, new Modifier(200));
+            }//前沿哨所 Far Watch Post ID：BAR_074  
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.AV_118))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.AV_118, new Modifier(200));
+            }//历战先锋 Battleworn Vanguard ID：AV_118 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.GVG_040))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GVG_040, new Modifier(200));
+            }//沙鳞灵魂行者 Siltfin Spiritwalker ID：GVG_040
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BT_304))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BT_304, new Modifier(200));
+            }//改进型恐惧魔王 Enhanced Dreadlord ID：BT_304
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.SW_068))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.SW_068, new Modifier(200));
+            }//莫尔葛熔魔 Mo'arg Forgefiend ID：SW_068 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.BAR_860))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.BAR_860, new Modifier(200));
+            }//火焰术士弗洛格尔 Firemancer Flurgl ID：BAR_860
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DED_519))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.DED_519, new Modifier(200));
+            }//迪菲亚炮手  DED_519
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.CFM_807))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.CFM_807, new Modifier(200));
+            }//大富翁比尔杜 Auctionmaster Beardo ID：CFM_807 
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.TSC_054))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.TSC_054, new Modifier(200));
+            }//机械鲨鱼 TSC_054
+            if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.GIL_646))
+            {
+                p.OnBoardBoardEnemyMinionsModifiers.AddOrUpdate(Card.Cards.GIL_646, new Modifier(200));
+            }//发条机器人 Clockwork Automaton ID：GIL_646 
+           
 
             if (board.MinionEnemy.Any(minion => minion.Template.Id == Card.Cards.DMF_237))
             {
