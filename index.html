@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.1.3/axios.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-size: 16px;
+      }
+      #app {
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .highlight {
+        color: #ff8c00;
+      }
+      .relPrice {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .price {
+        color: #1e90ff;
+      }
+
+      h4 .highlight,
+      h5 .highlight {
+        color: #ff4500;
+      }
+
+      h5 .price {
+        color: #1e90ff;
+      }
+      .reRequest {
+        padding: 10px 20px;
+        background-color: #1e90ff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 auto;
+        width: 30%;
+      }
+    </style>
+    <title>实时价格</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <template v-if="exchangeRate">
+        <!-- 时间 -->
+        <h4>
+          当前时间为<span class="highlight"
+            >{{new Date().toLocaleString()}}</span
+          >, <span class="highlight">1欧元</span>等于<span class="highlight"
+            >{{exchangeRate}}元</span
+          >人民币
+        </h4>
+        <h5>
+          月卡原价为<span class="price">10.9EUR</span>,换算为人民币为<span
+            class="price"
+            >{{monthCardPrice}}元</span
+          >,九折之后实付为<span class="highlight relPrice"
+            >{{Math.ceil(monthCardPrice * 0.9)}}元</span
+          >
+        </h5>
+        <h5>
+          季卡原价为<span class="price">25.9EUR</span>,换算为人民币为<span
+            class="price"
+            >{{aSeasonPrice}}元</span
+          >,九折之后实付为<span class="highlight relPrice"
+            >{{Math.ceil(aSeasonPrice * 0.9)}}元</span
+          >
+        </h5>
+        <h5>
+          半年卡原价为<span class="price">45.9EUR</span>,换算为人民币为<span
+            class="price"
+            >{{halfYearCardPrice}}元</span
+          >,九折后实付为<span class="highlight relPrice"
+            >{{Math.ceil(halfYearCardPrice * 0.9)}}元</span
+          >
+        </h5>
+        <h5 class="highlight relPrice">每天十把试用，各模式均可</h5>
+        <h5 class="highlight relPrice">月卡，季卡，半年卡一律9折</h5>
+        <h5>
+          策略地址:
+          <a href="https://gitee.com/xnyld/smartbot" target="_blank"
+            >https://gitee.com/xnyld/smartbot</a
+          >
+        </h5>
+        <h5>
+          官网地址:
+          <a href="https://smartbot.ws/forums/" target="_blank"
+            >https://smartbot.ws/forums/</a
+          >
+        </h5>
+        <h5 class="highlight relPrice">一群群号:952364237</h5>
+        <h5 class="highlight relPrice">二群群号:635105163</h5>
+      </template>
+      <template v-else>
+        <button class="reRequest" @click="sendRequest">重新请求</button>
+      </template>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: "#app",
+      data: {
+        showText: null,
+        // 汇率
+        exchangeRate: null,
+      },
+      mounted() {
+        this.sendRequest();
+      },
+      computed: {
+        monthCardPrice() {
+          return Math.ceil(this.exchangeRate * 10.9);
+        },
+        aSeasonPrice() {
+          return Math.ceil(this.exchangeRate * 25.9);
+        },
+        halfYearCardPrice() {
+          return Math.ceil(this.exchangeRate * 45.9);
+        },
+      },
+      methods: {
+        // 计算价格
+        calculatePrice(exchangeRate) {
+          let monthCardPrice = null;
+          let aSeasonPrice = null;
+          let halfYearCardPrice = null;
+          monthCardPrice = Math.ceil(exchangeRate * 10.9);
+          aSeasonPrice = Math.ceil(exchangeRate * 25.9);
+          halfYearCardPrice = Math.ceil(exchangeRate * 45.9);
+          this.showText = exchangeRate
+            ? `当前时间为${new Date().toLocaleString()},1欧元等于${exchangeRate}人民币,月卡原价为10.9EUR,换算为人民币为${monthCardPrice},九折之后实付为${Math.ceil(
+                monthCardPrice * 0.9
+              )},季卡原价为25.9EUR,换算为人民币为${aSeasonPrice},九折之后实付为${Math.ceil(
+                aSeasonPrice * 0.9
+              )},半年卡原价为45.9EUR,换算为人民币为${halfYearCardPrice},九折后实付为${Math.ceil(
+                halfYearCardPrice * 0.9
+              )}`
+            : "请输入欧元转人民币汇率";
+        },
+        // 发送请求
+        sendRequest() {
+          axios
+            .get(
+              "https://v6.exchangerate-api.com/v6/84fc78dc141fc933c989ff87/latest/EUR"
+            )
+            .then((res) => {
+              this.exchangeRate = res.data.conversion_rates.CNY;
+              console.log("@@164830", this.exchangeRate);
+              this.calculatePrice(this.exchangeRate);
+            })
+            .catch((err) => console.log(err));
+        },
+      },
+    });
+  </script>
+</html>
