@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.1.3/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
       html,
       body {
@@ -23,6 +23,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding-top: 50px;
       }
       .highlight {
         color: #ff8c00;
@@ -108,7 +109,7 @@
           >
         </h5>
         <h5 class="highlight relPrice">一群群号:952364237</h5>
-        <h5 class="highlight relPrice">二群群号:635105163</h5>
+        <!-- <h5 class="highlight relPrice">二群群号:635105163</h5> -->
       </template>
       <template v-else>
         <button class="reRequest" @click="sendRequest">重新请求</button>
@@ -164,10 +165,16 @@
             )
             .then((res) => {
               this.exchangeRate = res.data.conversion_rates.CNY;
-              console.log("@@164830", this.exchangeRate);
               this.calculatePrice(this.exchangeRate);
             })
             .catch((err) => console.log(err));
+        },
+      },
+      watch: {
+        exchangeRate(newVal) {
+          if (!newVal) {
+            this.sendRequest();
+          }
         },
       },
     });
